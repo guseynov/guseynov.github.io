@@ -1,4 +1,3 @@
-
 var dest_carousel = document.getElementById("dest_carousel");
 var package_carousel = document.getElementById("package_carousel");
 
@@ -69,6 +68,7 @@ $(document).ready(function(){
 		touchThreshold:20,
 		prevArrow:$('.dest_carousel-controls .prev'),
 		nextArrow:$('.dest_carousel-controls .next'),
+		accessibility:false,
 		swipe:false
 	});
 	$('.dest_carousel').slickRemove(6);
@@ -111,6 +111,8 @@ $(document).ready(function(){
 			$('.box').html('lorem ipsum #'+($('.dest_carousel').slickCurrentSlide()+1));
 		},10)
 	});
+
+
 
 
 	$('.package_carousel .controls button:last-child').click(

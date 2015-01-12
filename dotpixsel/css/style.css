@@ -1,0 +1,653 @@
+body {
+  min-width: 1100px;
+  position: relative;
+}
+
+h4, p {
+  margin: 0;
+}
+
+button {
+  outline: 0;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.header__first-desc {
+  color: #007ee5;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  text-align: justify;
+  font-size: 47px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.header__second-desc {
+  font-family: 'Raleway', sans-serif;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 300;
+  text-align: justify;
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.header__heading {
+  font-family: 'Raleway', sans-serif;
+  color: #1dd285;
+  font-weight: 300;
+  text-align: justify;
+  font-size: 42px;
+  position: relative;
+  top: 47px;
+  left: 148px;
+  display: inline-block;
+}
+
+.w540 {
+  width: 540px;
+}
+
+.w982 {
+  width: 982px;
+}
+
+.header__stripe {
+  background-color: #007ee5;
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  margin-bottom: 45px;
+}
+
+.header__btn {
+  width: 205px;
+  height: 73px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 8px;
+  -webkit-transition: all .2s ease;
+          transition: all .2s ease;
+}
+
+.header__btn:hover {
+  background-color: #ffffff;
+  color: #007ee5;
+}
+
+header {
+  height: 811px;
+  background: -webkit-linear-gradient(90deg, rgba(88, 49, 255, 0.4) 0%, rgba(78, 35, 143, 0.4) 100%), url(../img/header-bg.png);
+  background: linear-gradient(0deg, rgba(88, 49, 255, 0.4) 0%, rgba(78, 35, 143, 0.4) 100%), url(../img/header-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+header .w540 {
+  position: relative;
+  top: 292px;
+  width: 540px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.lines__line {
+  width: 12.5%;
+  height: 4px;
+  display: inline-block;
+  float: left;
+}
+
+.lines__line:nth-child(1), .lines__line:nth-child(5) {
+  background-color: #ff6e50;
+}
+
+.lines__line:nth-child(2), .lines__line:nth-child(6) {
+  background-color: #2196f3;
+}
+
+.lines__line:nth-child(3), .lines__line:nth-child(7) {
+  background-color: #ed4743;
+}
+
+.lines__line:nth-child(4), .lines__line:nth-child(8) {
+  background-color: #ff962a;
+}
+
+.features {
+  margin-top: 70px;
+}
+.features span {
+  border-bottom: 1px solid;
+}
+.features span:nth-child(1) {
+  color: #22c064;
+  font-weight: 700;
+  border-color: #22c064;
+}
+.features span:nth-child(2) {
+  color: #1352e2;
+  font-weight: 300;
+  border-color: #1352e2;
+}
+.features span:nth-child(3) {
+  color: #ed4743;
+  font-weight: 300;
+  border-color: #ed4743;
+}
+.features span:nth-child(4) {
+  color: #007ee5;
+  font-weight: 500;
+  border-color: #007ee5;
+}
+.features span:nth-child(5) {
+  color: #ff962a;
+  font-weight: 300;
+  border-color: #ff962a;
+}
+
+.features__heading {
+  font-family: 'Raleway', sans-serif;
+  font-size: 44px;
+  text-align: center;
+}
+
+.features__paragraph {
+  font-family: 'PT Sans', sans-serif;
+  color: rgba(52, 54, 67, 0.8);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1.56px;
+  line-height: 17px;
+  width: 60%;
+  margin: 12px auto;
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.thick-stripe, .thin-stripe {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.thick-stripe {
+  height: 2px;
+  background-color: #efefef;
+}
+
+.thin-stripe {
+  height: 1px;
+  background-color: #dedede;
+}
+
+.description__btn-lg, .description__btn-sm {
+  -webkit-transition: all .2s ease;
+          transition: all .2s ease;
+}
+
+.description__btn-lg {
+  border-radius: 5px;
+  border: 1px solid;
+  width: 170px;
+  height: 60px;
+  margin: 0 2px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.description__btn-sm {
+  border-radius: 5px;
+  border: 2px solid;
+  width: 62px;
+  height: 62px;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+
+.iphone {
+  background-image: url(../img/iphone.png);
+  width: 257px;
+  height: 533px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+}
+
+.iphone__screen {
+  box-shadow: 4px 7px 18px 0px rgba(0, 0, 0, 0.35);
+  width: 226px;
+  height: 401px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  left: 16px;
+  top: 65px;
+}
+
+.iphone__screen_pincode {
+  background-image: url(../img/pincode.png);
+}
+
+.iphone__screen_weather {
+  background-image: url(../img/weather.png);
+}
+
+.iphone__screen_shop {
+  background-image: url(../img/shop.png);
+}
+
+.iphone_pos_1 {
+  float: left;
+  margin-top: 75px;
+  margin-left: 40px;
+}
+
+.iphone_pos_2 {
+  float: right;
+  margin-top: 78px;
+  margin-right: 60px;
+}
+
+.iphone_pos_3 {
+  float: left;
+  margin-top: 40px;
+  margin-left: 72px;
+}
+
+.description {
+  display: inline-block;
+  width: 500px;
+  position: relative;
+}
+
+.description_pos_1 {
+  float: right;
+  margin-top: 250px;
+  margin-right: -43px;
+}
+
+.description_pos_2 {
+  float: left;
+  margin-top: 240px;
+  margin-left: 40px;
+}
+
+.description_pos_3 {
+  float: right;
+  margin-top: 183px;
+  margin-right: -46px;
+}
+
+.description__stripe {
+  width: 144px;
+  height: 1px;
+  margin: 8px 0;
+}
+
+.description__stripe_color_green {
+  background-color: #22c064;
+}
+
+.description__stripe_color_blue {
+  background-color: #007ee5;
+}
+
+.description__stripe_color_violet {
+  background-color: #5831ff;
+}
+
+.description__heading {
+  font-family: 'Raleway', sans-serif;
+  font-size: 39px;
+  font-weight: 300;
+  line-height: 43px;
+  text-align: justify;
+}
+
+.description__heading_color_green {
+  color: #22c064;
+}
+
+.description__heading_color_blue {
+  letter-spacing: -1px;
+  color: #007ee5;
+}
+
+.description__heading_color_violet {
+  color: #5831ff;
+}
+
+.description__btn-sm svg {
+  width: 20px;
+  height: 20px;
+}
+
+.description__btn-lg_color_green, .description__btn-sm_color_green {
+  margin-top: 35px;
+  color: #22c064;
+  fill: #22c064;
+  -webkit-transition: all .2s ease;
+          transition: all .2s ease;
+}
+
+.description__btn-lg_color_green:hover, .description__btn-sm_color_green:hover {
+  background-color: #22c064;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.description__btn-lg_color_blue, .description__btn-sm_color_blue {
+  margin-top: 22px;
+  color: #007ee5;
+  fill: #007ee5;
+  -webkit-transition: all .2s ease;
+          transition: all .2s ease;
+}
+
+.description__btn-lg_color_blue:hover, .description__btn-sm_color_blue:hover {
+  background-color: #007ee5;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.description__btn-lg_color_violet, .description__btn-sm_color_violet {
+  margin-top: 25px;
+  color: #5831ff;
+  fill: #5831ff;
+  -webkit-transition: all .2s ease;
+          transition: all .2s ease;
+}
+
+.description__btn-lg_color_violet:hover, .description__btn-sm_color_violet:hover {
+  background-color: #5831ff;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.description__paragraph {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #566473;
+}
+
+.article_height_1 {
+  height: 693px;
+}
+
+.article_height_2 {
+  height: 701px;
+}
+
+.article_height_3 {
+  height: 657px;
+}
+
+.screenshots {
+  background: -webkit-linear-gradient(90deg, rgba(44, 109, 182, 0.3) 0%, rgba(48, 76, 184, 0.3) 40%, rgba(54, 28, 187, 0.3) 100%), #18191e;
+  background: linear-gradient(0deg, rgba(44, 109, 182, 0.3) 0%, rgba(48, 76, 184, 0.3) 40%, rgba(54, 28, 187, 0.3) 100%), #18191e;
+  height: 695px;
+  position: relative;
+}
+
+.screenshots__container {
+  position: relative;
+  top: 68px;
+}
+
+.screenshots__heading {
+  font-family: 'Raleway', sans-serif;
+  color: #2196f3;
+  font-weight: 300;
+  font-size: 38px;
+  text-align: center;
+  margin-bottom: 19px;
+}
+
+.screenshots__paragraph {
+  width: 523px;
+  font-family: 'Raleway', sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 22px;
+}
+
+.iphone_pos_center {
+  margin: 100px auto 0;
+  display: block;
+}
+
+.iphone_size_small {
+  width: 213px;
+  height: 441px;
+}
+
+.iphone__screen_small {
+  width: 188px;
+  height: 333px;
+  left: 0;
+  top: 0;
+  margin: 0 auto;
+}
+
+.iphone__screen_calendar {
+  background-image: url(../img/calendar.png);
+}
+
+.iphone__screen_weather2 {
+  background-image: url(../img/weather2.png);
+}
+
+.screenshots__carousel {
+  width: 1015px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 79px;
+  left: 0;
+  right: 0;
+}
+
+.slick-active {
+  -webkit-transition: opacity .2s ease;
+          transition: opacity .2s ease;
+}
+
+.iphone__black-screen {
+  width: 188px;
+  height: 333px;
+  background-color: #141414;
+  position: relative;
+  top: 54px;
+  left: 13px;
+}
+
+.reviews__carousel {
+  width: 700px;
+  margin: 43px auto 0;
+  text-align: center;
+}
+.reviews__carousel .photo {
+  background-image: url(../img/person.png);
+  width: 146px;
+  height: 146px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.reviews__carousel .dashed {
+  border-radius: 50%;
+  border-width: 2px;
+  border-color: #007ee5;
+  border-style: dashed;
+  width: 160px;
+  height: 160px;
+  display: inline-block;
+}
+.reviews__carousel .name {
+  margin-top: 13px;
+  font-family: 'Raleway', sans-serif;
+  color: #007ee5;
+  font-size: 26px;
+  font-weight: 700;
+}
+.reviews__carousel .review {
+  font-family: 'Raleway', sans-serif;
+  color: #566473;
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 9px;
+}
+.reviews__carousel .slick-dots li {
+  margin: 0 10px;
+}
+.reviews__carousel .slick-dots {
+  bottom: -65px;
+}
+.reviews__carousel .slick-dots li button:before {
+  content: '';
+}
+.reviews__carousel .slick-dots li button {
+  padding: 0;
+  border: 1px solid #343643;
+  border-radius: 50%;
+}
+.reviews__carousel li.slick-active button {
+  border: 5px solid #007ee5;
+}
+
+footer {
+  margin-top: 115px;
+  height: 493px;
+  background-image: url(../img/footer-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.footer__copyright, .footer__ul {
+  font-family: 'Raleway', sans-serif;
+  color: #22c064;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer__copyright {
+  float: left;
+  position: relative;
+  bottom: 5px;
+}
+
+.footer__ul {
+  float: right;
+  margin: 0;
+}
+.footer__ul li {
+  display: inline-block;
+  padding: 0 20px;
+}
+.footer__ul li:first-child {
+  padding-left: 0;
+}
+.footer__ul li:last-child {
+  padding-right: 0;
+}
+.footer__ul a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer__stripe {
+  height: 1px;
+  background-color: #22c064;
+  clear: both;
+  margin-bottom: 30px;
+}
+
+.footer__container {
+  left: 39px;
+  position: relative;
+  top: 58%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.footer__ul, .footer__copyright {
+  margin-bottom: 30px;
+}
+
+.footer__app-store {
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #22c064;
+  border-style: solid;
+  width: 184px;
+  height: 64px;
+  vertical-align: middle;
+}
+.footer__app-store svg {
+  fill: #22c064;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  top: 11px;
+  right: 4px;
+}
+.footer__app-store span {
+  float: right;
+}
+.footer__app-store span:first-of-type {
+  font-family: 'Raleway', sans-serif;
+  color: #22c064;
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+  top: 10px;
+  right: 9px;
+}
+.footer__app-store span:last-of-type {
+  font-family: 'Raleway', sans-serif;
+  color: #22c064;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  bottom: 13px;
+  right: 10px;
+}
+
+.footer__coming {
+  font-family: 'Raleway', sans-serif;
+  color: #22c064;
+  font-size: 20px;
+  font-weight: 600;
+  vertical-align: middle;
+  position: relative;
+  left: 45px;
+  display: inline-block;
+}
+
+.wrapper {
+  width: 365px;
+  height: 64px;
+}
