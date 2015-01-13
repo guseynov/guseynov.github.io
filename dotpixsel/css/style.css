@@ -77,7 +77,7 @@ button {
   font-weight: 700;
   margin: 0 8px;
   -webkit-transition: all .2s ease;
-          transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .header__btn:hover {
@@ -191,7 +191,7 @@ header .w540 {
 
 .description__btn-lg, .description__btn-sm {
   -webkit-transition: all .2s ease;
-          transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .description__btn-lg {
@@ -339,7 +339,7 @@ header .w540 {
   color: #22c064;
   fill: #22c064;
   -webkit-transition: all .2s ease;
-          transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .description__btn-lg_color_green:hover, .description__btn-sm_color_green:hover {
@@ -353,7 +353,7 @@ header .w540 {
   color: #007ee5;
   fill: #007ee5;
   -webkit-transition: all .2s ease;
-          transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .description__btn-lg_color_blue:hover, .description__btn-sm_color_blue:hover {
@@ -367,7 +367,7 @@ header .w540 {
   color: #5831ff;
   fill: #5831ff;
   -webkit-transition: all .2s ease;
-          transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .description__btn-lg_color_violet:hover, .description__btn-sm_color_violet:hover {
@@ -465,7 +465,7 @@ header .w540 {
 
 .slick-active {
   -webkit-transition: opacity .2s ease;
-          transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
 .iphone__black-screen {
@@ -492,8 +492,8 @@ header .w540 {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .reviews__carousel .dashed {
   border-radius: 50%;
@@ -589,8 +589,8 @@ footer {
   position: relative;
   top: 58%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .footer__ul, .footer__copyright {
