@@ -100,7 +100,7 @@ header .contact-us .tel {
   bottom: 0;
 }
 .main-content .carousel .caption:after {
-  bottom: 83%;
+  bottom: 100%;
   left: 606px;
   border: solid transparent;
   content: " ";
@@ -110,7 +110,6 @@ header .contact-us .tel {
   pointer-events: none;
   border-bottom-color: rgba(29, 29, 29, 0.95);
   border-width: 20px;
-  border-bottom-width: 32px;
   margin-left: -31px;
 }
 .main-content .carousel .caption span {
