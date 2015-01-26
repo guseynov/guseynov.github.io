@@ -1,3 +1,9 @@
+body {
+	max-width:2000px;
+	position: relative;
+	margin:0 auto;
+}
+
 h4, p {
 	margin: 0;
 }
@@ -42,39 +48,30 @@ header {
 		float: left;
 		position: relative;
 		margin-bottom: 0;
-		.slide-1 {
-			background-image: url(../img/slide_1.png);
+		.slide {
 			background-size: cover;
 			background-repeat: no-repeat;
 			height: 756px;
+		}
+		.slide-1 {
+			background-image: url(../img/slide_1.png);
+
 		}
 
 		.slide-2 {
 			background-image: url(../img/slide_2.png);
-			background-size: cover;
-			background-repeat: no-repeat;
-			height: 756px;
 		}
 
 		.slide-3 {
 			background-image: url(../img/slide_3.png);
-			background-size: cover;
-			background-repeat: no-repeat;
-			height: 756px;
 		}
 
 		.slide-4 {
 			background-image: url(../img/slide_4.png);
-			background-size: cover;
-			background-repeat: no-repeat;
-			height: 756px;
 		}
 
 		.slide-5 {
 			background-image: url(../img/slide_5.png);
-			background-size: cover;
-			background-repeat: no-repeat;
-			height: 756px;
 		}
 
 		.slick-dots {
@@ -104,22 +101,17 @@ header {
 			}
 		}
 
-		p {
+		.caption {
 			height: 72px;
 			width: 100%;
 			background-color:  rgba(29, 29, 29, 0.95);
 			position: absolute;
 			bottom: 0;
-			font-family: Roboto;
-			color:  #ffffff;
-			font-size: 32px;
-			font-weight: 500;
-			line-height: 72px;
-			padding-left: 85px;
+			
 
 		}
 
-		p:after {
+		.caption:after {
 			bottom: 83%;
 			left: 606px;
 			border: solid transparent;
@@ -132,6 +124,15 @@ header {
 			border-width: 20px;
 			border-bottom-width: 32px;
 			margin-left: -31px;
+		}
+
+		.caption span {
+			font-family: Roboto;
+			color:  #ffffff;
+			font-size: 32px;
+			font-weight: 500;
+			line-height: 72px;
+			padding-left: 85px;
 		}
 	}
 
@@ -164,7 +165,7 @@ header {
 	}
 
 	.form {
-		width: 17%;
+		width: 328px;
 		display: inline-block;
 		height: 756px;
 		float: left;
@@ -508,5 +509,286 @@ header {
 		background-color:#353535;
 		margin-top: 40px;
 		margin-left: -10px;
+	}
+}
+
+.small {
+	display: none;
+}
+
+@media only screen and (max-width:1920px) {
+
+	.contact {
+		float: right;
+		margin-left: 0;
+		margin-right: 50px;
+	}
+}
+
+@media only screen and (max-width:1830px) {
+
+	.arguments .row .item:nth-last-child(2) {
+		margin-left: 50px;
+	}
+}
+
+@media only screen and (max-width:1760px) {
+
+	.arguments .row .item p, .arguments .row .item h4 {
+		width: 75%;
+		float: left;
+		margin-left: 20px;	
+	}
+
+	.arguments .row .item {
+		width: 550px;
+	}
+
+	.row:not(:nth-last-child(1)) {
+		margin-bottom: 90px;
+	}
+
+	.arguments .row .money .stripe, .arguments .row .think .stripe {
+		top: 310px;
+	}
+
+	.arguments .row {
+		height: initial;
+	}
+}
+
+@media only screen and (max-width:1610px) {
+
+	.arguments {
+		margin-left: 50px;
+	}
+
+	.arguments .row .item {
+		width: 480px;
+	}
+
+	.row:not(:nth-last-child(1)) {
+		margin-bottom: 100px;
+	}
+
+	.arguments .row .money .stripe, .arguments .row .think .stripe {
+		top: 390px;
+	}
+
+	.arguments .row .floor .stripe, .arguments .row .engineering .stripe {
+		top: 275px;
+	}
+
+
+}
+
+@media only screen and (max-width:1460px) {
+
+	.contact {
+		display: block;
+		float: none;
+		width: 430px;
+		margin:100px auto 0;
+		text-align: center;
+
+		.stripe {
+			width: 100%;
+			margin-bottom: 50px;
+			margin-left: 0;
+			margin-top: 15px;
+		}
+
+	}
+
+	.contact h4 {
+		width: initial;
+	}
+
+	.clearfix.small {
+		display: block;
+	}
+
+	.main-content .carousel .caption span {
+		padding-left: 10px;
+		font-size:24px;
+	}
+
+	.main-content .carousel .slick-dots {
+		left: 82%;
+	}
+
+	.arguments {
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		display: inline-block;
+		float: none;
+		margin-left: 0;
+		margin-top: 100px;
+	}
+
+	header {
+		margin-top: 50px;
+	}
+}
+
+@media only screen and (max-width:1210px) {
+	.main-content .carousel .slick-dots {
+		left: 75%;
+	}
+}
+
+@media only screen and (max-width:1100px) {
+	.main-content .carousel {
+		display: block;
+		float: none;
+		width: 100% !important;
+	}
+
+	.main-content .carousel .caption:after {
+		left: 460px;
+	}
+
+	.main-content .form {
+		width: 100%;
+		display: block;
+		float: none;
+	}
+	.main-content .form .heading .wrapper {
+		width: 100%;
+		text-align: center;
+	}
+
+	.main-content .form form .wrapper {
+		width: 50%;
+	}
+
+	.main-content .form form .wrapper input[type="submit"] {
+		width: 80%;
+		height: 50px;
+		font-size: 24px;
+		border-radius: 30px;
+	}
+
+	.stripe.small {
+		display: block;
+	}
+
+	.arguments {
+		display: block;
+		float: none;
+		text-align: center;
+	}
+
+	.arguments .row .item {
+		float: none;
+		margin: 0;
+		width: 80%;
+	}
+
+	.arguments .row .item:nth-last-child(2), .row:not(:nth-last-child(1)) {
+		margin: 0;
+	}
+
+	.arguments .row .item .pic {
+		display: block;
+		float: none;
+		margin: 10px auto;
+	}
+
+	.arguments .row .item p, .arguments .row .item h4 {
+		float: none;
+		margin: 0;
+		text-align: justify;
+	}
+
+	.arguments .row .item h4 {
+		text-align: center;
+	}
+
+	.arguments .row .item .stripe {
+		width: 80%;
+		margin: 70px 0;
+		display: inline-block;
+		position: static;
+	}
+
+	header .contact-us, header .logo {
+		display: block;
+		float: none;
+		position: static;
+		text-align: center;
+		margin: 0;
+	}
+	header .contact-us h4 {
+		text-align: center;
+	}
+
+	header .contact-us {
+		margin-top: 50px;
+	}
+
+	.arguments .row .item h4 {
+		margin: 30px;
+	}
+}
+
+@media only screen and (max-width:750px) {
+	.main-content .carousel .caption {
+		height: 120px;
+	}
+
+	.main-content .carousel .caption {
+		text-align: center;
+	}
+
+	.main-content .carousel .slick-dots {
+		left: 0;
+		width: 100%;
+	}
+
+	.main-content .carousel .caption:after {
+		left: 300px;
+	}
+
+	.logo img {
+		width: 80%;
+	}
+
+	.main-content .carousel .caption span {
+		font-size:14px;
+	}
+
+	.main-content .form form .wrapper {
+		width: 90%;
+	}
+}
+
+
+@media only screen and (max-width:750px) {
+	.contact {
+		width: 300px;
+	}
+
+	.main-content .form .heading h4 {
+		font-size:20px;
+	}
+
+	.main-content .form .heading p {
+		font-size:11px;
+	}
+
+	.arguments .row .item p {
+		font-size:14px;
+	}
+
+	.main-content .form .heading .wrapper, .arguments .row .item {
+		width: 90%;
+	}
+
+
+	.main-content .carousel > button {
+		width: 26px;
+		height: 53px;
 	}
 }
