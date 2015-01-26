@@ -1,5 +1,6 @@
 body {
   max-width: 2000px;
+  min-width: 320px;
   position: relative;
   margin: 0 auto;
 }
@@ -13,7 +14,7 @@ h4, p {
 }
 
 header {
-  margin-top: 128px;
+  padding-top: 130px;
 }
 header .logo {
   margin-left: 86px;
@@ -43,7 +44,6 @@ header .contact-us .tel {
 }
 .main-content .carousel {
   width: 82%;
-  display: inline-block;
   float: left;
   position: relative;
   margin-bottom: 0;
@@ -131,7 +131,8 @@ header .contact-us .tel {
   background-color: transparent;
   border: 0;
   opacity: 0.8;
-  transition: opacity .2s ease;
+  -webkit-transition: opacity .2s ease;
+          transition: opacity .2s ease;
 }
 .main-content .carousel > button:hover {
   opacity: 1;
@@ -146,7 +147,6 @@ header .contact-us .tel {
 }
 .main-content .form {
   width: 328px;
-  display: inline-block;
   height: 756px;
   float: left;
 }
@@ -161,7 +161,9 @@ header .contact-us .tel {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
 }
 .main-content .form .heading h4 {
   font-family: Roboto;
@@ -239,10 +241,10 @@ header .contact-us .tel {
   right: 0;
   position: absolute;
   margin: auto;
-  display: inline-block;
   border-radius: 20px;
   opacity: 0.8;
-  transition: opacity .2s ease;
+  -webkit-transition: opacity .2s ease;
+          transition: opacity .2s ease;
 }
 .main-content .form form .wrapper input[type="submit"]:hover {
   opacity: 1;
@@ -270,16 +272,14 @@ header .contact-us .tel {
 }
 
 .arguments {
-  margin-top: 60px;
+  margin-top: 55px;
   margin-left: 105px;
-  display: inline-block;
   float: left;
 }
 .arguments .row {
   height: 300px;
 }
 .arguments .row .item {
-  display: inline-block;
   float: left;
   width: 612px;
   height: 100%;
@@ -292,15 +292,13 @@ header .contact-us .tel {
   position: absolute;
 }
 .arguments .row .item .pic {
-  display: inline-block;
   float: left;
   width: 94px;
   height: 94px;
   border-radius: 50%;
 }
 .arguments .row .item p, .arguments .row .item h4 {
-  display: inline-block;
-  width: 500px;
+  width: 495px;
   float: right;
 }
 .arguments .row .item h4 {
@@ -313,6 +311,8 @@ header .contact-us .tel {
   color: rgba(0, 0, 0, 0.75);
   font-size: 16px;
   font-weight: 400;
+  margin-top: 5px;
+  line-height: 20px;
 }
 .arguments .row .money .stripe, .arguments .row .think .stripe {
   top: 270px;
@@ -377,10 +377,9 @@ header .contact-us .tel {
 }
 
 .contact {
-  display: inline-block;
   float: left;
   width: 280px;
-  margin-top: 45px;
+  margin-top: 40px;
   margin-left: 145px;
 }
 .contact h4 {
@@ -426,7 +425,7 @@ header .contact-us .tel {
   margin-top: 30px;
 }
 .contact .contacts {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .contact .stripe {
   width: 323px;
@@ -496,7 +495,7 @@ header .contact-us .tel {
     top: 275px;
   }
 }
-@media only screen and (max-width: 1460px) {
+@media only screen and (max-width: 1500px) {
   .contact {
     display: block;
     float: none;
@@ -531,15 +530,13 @@ header .contact-us .tel {
   .arguments {
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
     display: inline-block;
     float: none;
     margin-left: 0;
     margin-top: 100px;
-  }
-
-  header {
-    margin-top: 50px;
   }
 }
 @media only screen and (max-width: 1210px) {
@@ -548,6 +545,22 @@ header .contact-us .tel {
   }
 }
 @media only screen and (max-width: 1100px) {
+  .main-content .carousel > button {
+    top: 220px;
+  }
+
+  .main-content .carousel .slide {
+    height: 515px;
+  }
+
+  .arguments .row .item {
+    display: inline-block;
+  }
+
+  header {
+    padding-top: 50px;
+  }
+
   .main-content .carousel {
     display: block;
     float: none;
@@ -610,6 +623,7 @@ header .contact-us .tel {
     float: none;
     margin: 0;
     text-align: justify;
+    display: inline-block;
   }
 
   .arguments .row .item h4 {
@@ -643,18 +657,28 @@ header .contact-us .tel {
     margin: 30px;
   }
 }
+@media only screen and (max-width: 950px) {
+  .main-content .carousel > button {
+    top: 150px;
+  }
+
+  .main-content .carousel .slide {
+    height: 430px;
+  }
+}
 @media only screen and (max-width: 750px) {
-  .main-content .carousel .caption {
-    height: 120px;
+  .main-content .carousel .slide {
+    height: 340px;
   }
 
   .main-content .carousel .caption {
-    text-align: center;
+    text-align: left;
+    height: 60px;
   }
 
   .main-content .carousel .slick-dots {
-    left: 0;
-    width: 100%;
+    right: 50px;
+    left: initial;
   }
 
   .main-content .carousel .caption:after {
@@ -672,8 +696,7 @@ header .contact-us .tel {
   .main-content .form form .wrapper {
     width: 90%;
   }
-}
-@media only screen and (max-width: 750px) {
+
   .contact {
     width: 300px;
   }
@@ -699,5 +722,38 @@ header .contact-us .tel {
     height: 53px;
   }
 }
+@media only screen and (max-width: 530px) {
+  .main-content .carousel .caption {
+    text-align: center;
+  }
+  .main-content .carousel .caption span {
+    padding: 0;
+  }
 
-/*# sourceMappingURL=style.css.map */
+  .main-content .carousel .slick-dots {
+    width: 100%;
+    right: 0;
+    bottom: -3px;
+  }
+
+  .main-content .carousel .slick-dots li {
+    width: 11px;
+    height: 11px;
+  }
+
+  .main-content .carousel .caption span {
+    line-height: 42px;
+  }
+
+  .main-content .carousel .caption:after {
+    left: 200px;
+  }
+
+  .main-content .carousel .slide {
+    height: 250px;
+  }
+
+  .main-content .carousel > button {
+    top: 100px;
+  }
+}

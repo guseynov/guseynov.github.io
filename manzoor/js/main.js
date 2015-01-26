@@ -11,7 +11,7 @@ $(document).ready(function(){
 	} else {
 		viewport = $( window ).width();
 	}
-	$('.carousel').width((viewport-$('.form').width()));
+	$('.carousel').width((viewport-$('.form').width()-18));
 });
 
 $(window).resize(function(){
@@ -21,5 +21,5 @@ $(window).resize(function(){
 	} else {
 		viewport = $( window ).width();
 	}
-	$('.carousel').width((viewport-$('.form').width()));
+	$('.carousel').width((viewport-$('.form').width()-18));
 })
