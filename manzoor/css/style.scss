@@ -8,11 +8,9 @@ h4, p {
 }
 
 header {
-	position: relative;
-	top: 128px;
+	margin-top: 128px;
 	.logo {
-		position: relative;
-		left: 86px;
+		margin-left: 86px;
 		float: left;
 	}
 
@@ -37,12 +35,13 @@ header {
 }
 
 .main-content {
-	position: relative;
-	top: 156px;
+	margin-top: 30px;
 	.carousel {
 		width: 82%;
 		display: inline-block;
 		float: left;
+		position: relative;
+		margin-bottom: 0;
 		.slide-1 {
 			background-image: url(../img/slide_1.png);
 			background-size: cover;
@@ -103,6 +102,36 @@ header {
 			li.slick-active {
 				background-color:  rgba(255, 255, 255, 0.7);
 			}
+		}
+
+		p {
+			height: 72px;
+			width: 100%;
+			background-color:  rgba(29, 29, 29, 0.95);
+			position: absolute;
+			bottom: 0;
+			font-family: Roboto;
+			color:  #ffffff;
+			font-size: 32px;
+			font-weight: 500;
+			line-height: 72px;
+			padding-left: 85px;
+
+		}
+
+		p:after {
+			bottom: 83%;
+			left: 606px;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-bottom-color: rgba(29, 29, 29, 0.95);
+			border-width: 20px;
+			border-bottom-width: 32px;
+			margin-left: -31px;
 		}
 	}
 
@@ -192,8 +221,8 @@ header {
 					color:  #838488;
 					font-size: 14px;
 					font-weight: 400;
-					line-height: 12.458px;
 					box-sizing:border-box;
+					padding: 16px;
 				}
 
 				input {
@@ -201,7 +230,6 @@ header {
 					height: 45px;
 					margin: 6px 0;
 					border: 0;
-					padding: 0;
 				}
 
 				input:first-of-type {
@@ -210,11 +238,40 @@ header {
 
 				textarea {
 					width: 100%;
-					margin-top: 6px;
+					margin-top: 11px;
 					height: 123px;
 					border: 0;
-					padding: 0;
 
+				}
+
+				.stripe {
+					height: 3px;
+					width: 100%;
+					background-color:#30a2cc;
+					margin: 18px 0;
+				}
+
+				input[type="submit"] {
+					background-color:  #ffcb08;
+					width: 177px;
+					height: 42px;
+					font-family: Roboto;
+					color:  #353535;
+					font-size: 17px;
+					font-weight: 700;
+					padding: 0;
+					left: 0;
+					right: 0;
+					position: absolute;
+					margin: auto;
+					display: inline-block;
+					border-radius: 20px;
+					opacity:0.8;
+					transition: opacity .2s ease;
+				}
+
+				input[type="submit"]:hover {
+					opacity:1;
 				}
 
 			}
@@ -242,5 +299,214 @@ header {
 			border-width: 16px;
 			margin-left: -16px;
 		}
+	}
+}
+
+.arguments {
+	margin-top: 60px;
+	margin-left: 105px;
+	display: inline-block;
+	float: left;
+	.row {
+		height: 300px;
+		.item {
+			display: inline-block;
+			float: left;
+			width: 612px;
+			height: 100%;
+			position: relative;
+			.stripe {
+				width: 100%;
+				height: 4px;
+				background-color:#f8f8f8;
+				position: absolute;
+			}
+
+
+
+			.pic {
+				display: inline-block;
+				float: left;
+				width: 94px;
+				height: 94px;
+				border-radius: 50%;
+			}
+			p, h4 {
+				display: inline-block;
+				width: 500px;
+				float: right;
+			}
+
+			h4 {
+				font-family: Roboto;
+				font-size: 25px;
+				font-weight: 700;
+			}
+
+			p {
+				font-family: Roboto;
+				color:  rgba(0, 0, 0, 0.75);
+				font-size: 16px;
+				font-weight: 400;
+			}
+
+		}
+
+		.money, .think {
+			.stripe {
+				top: 270px;
+			}
+
+		}
+
+		.floor, .engineering {
+			.stripe {
+				top: 250px;
+			}
+
+		}
+
+		.item:nth-last-child(2) {
+			margin-left: 112px;
+		}
+
+		.money {
+			.pic {
+				background-color:#009a3d;
+				background-image: url(../img/money.png);
+				background-repeat: no-repeat;
+				background-size: 48px 46px;
+				background-position: center center;
+
+			}
+
+			h4 {
+				color: #009a3d
+			}
+		}
+
+		.floor, .warranty, .engineering, .experience {
+			.pic {
+				background-color:#0085c3;
+			}
+
+			h4 {
+				color: #0085c3
+			}
+		}
+
+		.think {
+			.pic {
+				background-color:#353535;
+			}
+
+			h4 {
+				color: #353535
+			}
+		}
+
+		.floor .pic{
+			background-image: url(../img/arrows.png);
+			background-repeat: no-repeat;
+			background-size: 39px 39px;
+			background-position: center center;
+		}
+
+		.warranty .pic {
+			background-image: url(../img/warranty.png);
+			background-repeat: no-repeat;
+			background-size: 135px 113px;
+			background-position: center center;
+		}
+
+		.engineering .pic {
+			background-image: url(../img/engineering.png);
+			background-repeat: no-repeat;
+			background-size: 32px 54px;
+			background-position: center center;
+		}
+
+		.experience .pic {
+			background-image: url(../img/experience.png);
+			background-repeat: no-repeat;
+			background-size: 90px 55px;
+			background-position: center center;
+		}
+
+		.think .pic {
+			background-image: url(../img/think.png);
+			background-repeat: no-repeat;
+			background-size: 84px 33px;
+			background-position: center center;
+		}
+	}
+}
+
+.contact {
+	display: inline-block;
+	float: left;
+	width: 280px;
+	margin-top: 45px;
+	margin-left: 145px;
+
+	h4 {
+		font-family: Roboto;
+		color:  #353535;
+		font-size: 25px;
+		font-weight: 700;
+		width: 230px;
+		line-height: 30px;
+	}
+
+	.name {
+		font-family: Roboto;
+		color:  #353535;
+		font-size: 20px;
+		font-weight: 700;
+	}
+
+	.position {
+		font-family: Roboto;
+		color:  #353535;
+		font-size: 16px;
+		font-weight: 700;	
+	}
+
+	.phone {
+		font-family: Roboto;
+		color:  #747474;
+		font-size: 16px;
+		font-weight: 700;
+	}
+
+	.email {
+		font-family: Roboto;
+		color:  #0085c3;
+		font-size: 16px;
+		font-weight: 400;
+	}
+
+	img {
+		width: 84px;
+		float: left;
+	}
+
+	.contact__info {
+		float: right;
+	}
+	.wrapper {
+		margin-top: 30px;
+	}
+
+	.contacts {
+		margin-top: 5px;
+	}
+
+	.stripe {
+		width: 323px;
+		height: 3px;
+		background-color:#353535;
+		margin-top: 40px;
+		margin-left: -10px;
 	}
 }
