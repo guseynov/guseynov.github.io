@@ -1,0 +1,224 @@
+h4, p {
+  margin: 0;
+}
+
+.clearfix {
+  clear: both;
+}
+
+header {
+  position: relative;
+  top: 128px;
+}
+header .logo {
+  position: relative;
+  left: 86px;
+  float: left;
+}
+header .contact-us {
+  float: right;
+  position: relative;
+  right: 125px;
+}
+header .contact-us h4 {
+  font-family: Roboto;
+  color: #0085c3;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: right;
+}
+header .contact-us .tel {
+  font-family: Roboto;
+  color: #353535;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.main-content {
+  position: relative;
+  top: 156px;
+}
+.main-content .carousel {
+  width: 82%;
+  display: inline-block;
+  float: left;
+}
+.main-content .carousel .slide-1 {
+  background-image: url(../img/slide_1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 756px;
+}
+.main-content .carousel .slide-2 {
+  background-image: url(../img/slide_2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 756px;
+}
+.main-content .carousel .slide-3 {
+  background-image: url(../img/slide_3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 756px;
+}
+.main-content .carousel .slide-4 {
+  background-image: url(../img/slide_4.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 756px;
+}
+.main-content .carousel .slide-5 {
+  background-image: url(../img/slide_5.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 756px;
+}
+.main-content .carousel .slick-dots {
+  bottom: 5px;
+  left: 68%;
+  width: initial;
+}
+.main-content .carousel .slick-dots li {
+  width: 16px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  margin: 0 7px;
+}
+.main-content .carousel .slick-dots li button {
+  height: 100%;
+  width: 100%;
+}
+.main-content .carousel .slick-dots li button:before {
+  content: '';
+  width: 0;
+  height: 0;
+}
+.main-content .carousel .slick-dots li.slick-active {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.main-content .carousel > button {
+  position: absolute;
+  top: 313px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 43px;
+  height: 87px;
+  outline: 0;
+  background-color: transparent;
+  border: 0;
+  opacity: 0.8;
+  transition: opacity .2s ease;
+}
+.main-content .carousel > button:hover {
+  opacity: 1;
+}
+.main-content .carousel > button.prev {
+  background-image: url(../img/arrow_left.png);
+  left: 10px;
+}
+.main-content .carousel > button.next {
+  background-image: url(../img/arrow_right.png);
+  right: 10px;
+}
+.main-content .form {
+  width: 17%;
+  display: inline-block;
+  height: 756px;
+  float: left;
+}
+.main-content .form .heading {
+  height: 142px;
+  background-color: #1b1b1b;
+  position: relative;
+  z-index: 2;
+}
+.main-content .form .heading .wrapper {
+  width: 270px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-content .form .heading h4 {
+  font-family: Roboto;
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 20px;
+  position: relative;
+  bottom: 8px;
+}
+.main-content .form .heading p {
+  font-family: Roboto;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  position: relative;
+  top: 10px;
+}
+.main-content .form form {
+  height: 614px;
+  background-color: #008fc3;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+.main-content .form form .wrapper {
+  width: 265px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 557px;
+  margin: auto;
+}
+.main-content .form form .wrapper input, .main-content .form form .wrapper textarea {
+  font-family: Arial;
+  color: #838488;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 12.458px;
+  box-sizing: border-box;
+}
+.main-content .form form .wrapper input {
+  width: 100%;
+  height: 45px;
+  margin: 6px 0;
+  border: 0;
+  padding: 0;
+}
+.main-content .form form .wrapper input:first-of-type {
+  margin-top: 0;
+}
+.main-content .form form .wrapper textarea {
+  width: 100%;
+  margin-top: 6px;
+  height: 123px;
+  border: 0;
+  padding: 0;
+}
+.main-content .form .heading:after, .main-content .form .heading:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.main-content .form .heading:after {
+  border-color: rgba(27, 27, 27, 0);
+  border-top-color: #1b1b1b;
+  border-width: 10px;
+  margin-left: -10px;
+}
+.main-content .form .heading:before {
+  border-color: transparent;
+  border-width: 16px;
+  margin-left: -16px;
+}
+
+/*# sourceMappingURL=style.css.map */
