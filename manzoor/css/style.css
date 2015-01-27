@@ -394,7 +394,7 @@ header .contact-us .tel {
   font-weight: 700;
   width: 230px;
   line-height: 30px;
-  text-align: center;
+  display: inline-block;
 }
 .contact .name {
   font-family: Roboto;
