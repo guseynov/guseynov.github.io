@@ -137,7 +137,7 @@ header .contact-us .tel {
   border: 0;
   opacity: 0.8;
   -webkit-transition: opacity .2s ease;
-          transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 .main-content .carousel > button:hover {
   opacity: 1;
@@ -168,7 +168,7 @@ header .contact-us .tel {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .main-content .form .heading h4 {
   font-family: Roboto;
@@ -249,7 +249,7 @@ header .contact-us .tel {
   border-radius: 20px;
   opacity: 0.8;
   -webkit-transition: opacity .2s ease;
-          transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 .main-content .form form .wrapper input[type="submit"]:hover {
   opacity: 1;
@@ -394,6 +394,7 @@ header .contact-us .tel {
   font-weight: 700;
   width: 230px;
   line-height: 30px;
+  text-align: center;
 }
 .contact .name {
   font-family: Roboto;
@@ -537,7 +538,7 @@ header .contact-us .tel {
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
-        transform: translateX(-50%);
+    transform: translateX(-50%);
     display: inline-block;
     float: none;
     margin-left: 0;
