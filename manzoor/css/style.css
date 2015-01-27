@@ -479,7 +479,7 @@ header .contact-us .tel {
   }
 
   .arguments .row {
-    height: 100%;
+    height: auto;
   }
 }
 @media only screen and (max-width: 1610px) {
