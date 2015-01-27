@@ -9,6 +9,11 @@ h4, p {
   margin: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .clearfix {
   clear: both;
 }
@@ -218,7 +223,7 @@ header .contact-us .tel {
 }
 .main-content .form form .wrapper textarea {
   width: 100%;
-  margin-top: 11px;
+  margin-top: 7px;
   height: 123px;
   border: 0;
 }

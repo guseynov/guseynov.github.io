@@ -18,7 +18,9 @@ $(window).resize(function(){
 
 	if ($( window ).width() > 2000) {
 		viewport = 2000;
-	} else {
+	} 
+
+	else {
 		viewport = $( window ).width();
 	}
 	$('.carousel').width((viewport-$('.form').width()-18));
