@@ -76,7 +76,9 @@ header .contact-us .tel {
 .main-content .carousel .slick-dots {
   bottom: 5px;
   left: 68%;
-  width: initial;
+  width: 160px;
+  z-index: 2;
+
 }
 .main-content .carousel .slick-dots li {
   width: 16px;
@@ -738,7 +740,7 @@ header .contact-us .tel {
 
   .main-content .carousel .slick-dots {
     width: 100%;
-    right: 0;
+    left: 0;
     bottom: -10px;
   }
 
@@ -753,6 +755,7 @@ header .contact-us .tel {
 
   .main-content .carousel .caption:after {
     left: 200px;
+    border-width: 15px;
   }
 
   .main-content .carousel .slide {
