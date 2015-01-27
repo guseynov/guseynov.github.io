@@ -739,7 +739,7 @@ header .contact-us .tel {
   .main-content .carousel .slick-dots {
     width: 100%;
     right: 0;
-    bottom: -3px;
+    bottom: -10px;
   }
 
   .main-content .carousel .slick-dots li {
