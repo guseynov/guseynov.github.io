@@ -22,7 +22,7 @@ a {
 }
 
 header {
-  padding-top: 130px;
+  padding-top: 50px;
 }
 header .logo {
   margin-left: 86px;
@@ -60,6 +60,7 @@ header .contact-us .tel {
   background-size: cover;
   background-repeat: no-repeat;
   height: 756px;
+  background-position: 0px -1px;
 }
 .main-content .carousel .slide-1 {
   background-image: url(../img/slide_1.png);
@@ -77,11 +78,11 @@ header .contact-us .tel {
   background-image: url(../img/slide_5.png);
 }
 .main-content .carousel .slick-dots {
-  bottom: 5px;
+  bottom: 27px;
   left: 68%;
   width: 160px;
   z-index: 2;
-
+  margin: 0;
 }
 .main-content .carousel .slick-dots li {
   width: 16px;
@@ -568,10 +569,6 @@ header .contact-us .tel {
     display: inline-block;
   }
 
-  header {
-    padding-top: 50px;
-  }
-
   .main-content .carousel {
     display: block;
     float: none;
@@ -678,6 +675,16 @@ header .contact-us .tel {
   }
 }
 @media only screen and (max-width: 750px) {
+
+  .main-content .carousel>button {
+    top: 120px;
+  }
+
+  .main-content .carousel .caption span {
+    line-height: 60px;
+  }
+
+
   .main-content .carousel .slide {
     height: 340px;
   }
@@ -690,6 +697,7 @@ header .contact-us .tel {
   .main-content .carousel .slick-dots {
     right: 50px;
     left: initial;
+    bottom: 21px;
   }
 
   .main-content .carousel .caption:after {
@@ -744,7 +752,7 @@ header .contact-us .tel {
   .main-content .carousel .slick-dots {
     width: 100%;
     left: 0;
-    bottom: -10px;
+    bottom: 10px;
   }
 
   .main-content .carousel .slick-dots li {
