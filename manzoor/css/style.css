@@ -110,19 +110,23 @@ header .contact-us .tel {
   position: absolute;
   bottom: 0;
 }
-.main-content .carousel .caption:after {
+
+
+.caption-stripe {
+  position: absolute;
   bottom: 100%;
   left: 606px;
   border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
-  position: absolute;
   pointer-events: none;
   border-bottom-color: rgba(29, 29, 29, 0.95);
   border-width: 20px;
   margin-left: -31px;
+  transition: left .3s ease;
 }
+
 .main-content .carousel .caption span {
   font-family: Roboto;
   color: #ffffff;
@@ -575,10 +579,6 @@ header .contact-us .tel {
     width: 100% !important;
   }
 
-  .main-content .carousel .caption:after {
-    left: 460px;
-  }
-
   .main-content .form {
     width: 100%;
     display: block;
@@ -700,10 +700,6 @@ header .contact-us .tel {
     bottom: 21px;
   }
 
-  .main-content .carousel .caption:after {
-    left: 300px;
-  }
-
   .logo img {
     width: 80%;
   }
@@ -764,8 +760,7 @@ header .contact-us .tel {
     line-height: 42px;
   }
 
-  .main-content .carousel .caption:after {
-    left: 200px;
+  .caption-stripe {
     border-width: 15px;
   }
 
