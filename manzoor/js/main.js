@@ -1,8 +1,8 @@
 var viewport, currentSlide = 0;
 $(document).ready(function(){
 	$('.carousel').slick({
-		fade:true,
 		dots:true,
+		autoplay:true,
 		prevArrow:$(".prev"),
 		nextArrow:$(".next")
 	});
