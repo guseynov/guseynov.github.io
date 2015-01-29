@@ -455,7 +455,7 @@ header .contact-us .tel {
   .contact {
     float: right;
     margin-left: 0;
-    margin-right: 50px;
+    margin-right: 33px;
   }
 }
 @media only screen and (max-width: 1830px) {
