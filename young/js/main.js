@@ -1,3 +1,7 @@
+$(window).load(function() {
+	$('.page-loader').fadeOut(400);
+});
+
 $(document).ready(function(){
 	$('.collection__items').slick({
 		dots: true,
