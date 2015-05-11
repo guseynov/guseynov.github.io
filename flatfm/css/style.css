@@ -22,17 +22,17 @@ main {
 }
 
 .schedule__column:first-child {
-	border-left: 1px solid rgba(255, 255, 255, 0.1);
+	border-left: 1px solid #5473af;
 }
 
 .schedule__column {
-	border-right: 1px solid rgba(255, 255, 255, 0.1);
+	border-right: 1px solid #5473af;
 }
 
 .schedule__item {
 	width: 421px;
 	height: 209px;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 1px solid #5473af;
 	margin: 0;
 	padding: 0 12px 0 12px;
 	position: relative;
@@ -41,7 +41,7 @@ main {
 
 .schedule__item:last-child {
 	height: 210px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid #5473af;
 }
 
 .schedule__column {
@@ -57,7 +57,7 @@ main {
 }
 
 .schedule__item--past .item__time {
-	color: rgba(255, 255, 255, 0.5);
+	color: #b8ccf4;
 }
 
 .schedule__item--active .item__time {
@@ -73,6 +73,7 @@ main {
 	right: -1px;
 	bottom: -1px;
 	box-sizing: border-box;
+	z-index: 999;
 }
 
 .item__status {
@@ -80,6 +81,7 @@ main {
 	font-style: italic;
 	font-size: 11px;
 	float: right;
+	color: #95afdf;
 	word-spacing: 0.02em;
 }
 
@@ -98,6 +100,10 @@ main {
 	animation-name: blink;
 	-webkit-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
+}
+
+.schedule__item--active .item__status {
+	color: #ffffff;
 }
 
 
