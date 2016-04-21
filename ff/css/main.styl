@@ -1,0 +1,3506 @@
+
+
+accent-color = #4277b8
+
+accent-color-2 = #f1c40f
+
+accent-text-color = #fff
+
+accent-text-color-2 = #111
+
+font = 'PT Sans'
+
+font-accent-weight = bold
+
+text-color = #111
+
+header-content-height = 40px
+
+root = 16px
+
+main-bg-color = #242424
+
+rem(size, customRoot = root)
+  floor((size/unit(customRoot, 'rem')),5)
+
+overflow-scrolling()
+  -webkit-overflow-scrolling touch
+    
+
+perspective()   
+  -webkit-perspective 1000
+
+font-smoothing()
+  font-smoothing subpixel-antialiased
+
+html
+  font-size root
+
+body
+  font-size 1rem
+
+$middle()
+  display inline-block
+  vertical-align middle
+  
+$top()
+  display inline-block
+  vertical-align top
+
+absolute-center()
+  position absolute
+  left 50%
+  top 50%
+  transform translate3d(-50%, -50%)
+  transform translate3d(-50%, -50%, 0)
+
+bg-cover(url)
+  background: url('../img/'url) center center /cover no-repeat
+  
+bg-contain(url)
+  background: url('../img/'url) center center /contain no-repeat
+  
+toggle(ms)
+  visibility hidden
+  opacity 0
+  transition opacity ms ease, visibility ms 0s
+  &.active
+    visibility visible
+    opacity 1
+    transition opacity ms ease, visibility 0s
+    
+
+btn-transparent-fill(bg, text)
+  background-color alpha(bg, 0.65)
+  color text
+  &:hover
+  &.active
+    background-color text
+    color bg
+    
+
+
+.loader
+  background #c0382a
+  position fixed
+  top 0
+  right 0
+  color #fff
+  bottom 0
+  text-align center
+  left 0
+  toggle(300ms)
+  z-index 9999
+  &__inner
+    position absolute
+    top 50%
+    left 50%
+    margin -100px 0 0 -100px
+    p
+      margin-bottom 45px
+    
+
+
+html
+  line-height 1.4
+
+::-moz-selection
+  background #b3d4fc
+  text-shadow none
+
+::selection
+  background #b3d4fc
+  text-shadow none
+
+hr
+  display block
+  height 1px
+  border 0
+  border-top 1px solid #ccc
+  margin 1em 0
+  padding 0
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video
+  vertical-align middle
+
+fieldset
+  border 0
+  margin 0
+  padding 0
+
+textarea
+  resize vertical
+
+.browserupgrade
+  margin 0.2em 0
+  background #ccc
+  color #000
+  padding 0.2em 0
+
+body
+  font-family font
+  color text-color
+  overflow-x hidden
+  
+.header
+  background-color #fff
+  position absolute
+  left 0
+  width 100%
+  z-index 1000
+  top 0
+  padding rem(12) 0
+  transition transform .45s ease
+  color #000
+  line-height rem(40)
+  font-family 'Arial'
+  font-size rem(18)
+
+.form-fields
+  margin-top rem(32)
+  input[type="text"]
+  input[type="tel"]
+  input[type="email"]
+  textarea
+    background-color: #f3f3f3;
+    font-family: inherit;
+    border: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #f3f3f3;
+    display: block;
+    margin: 0;
+    padding: rem(10) rem(15);
+    height: rem(60);
+    width: 100%;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+    color: #1b1b1b;
+    outline: none;
+    box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    -webkit-appearance: none;
+  textarea
+    @media (max-height: 800px), (max-width: 1450px)
+      height 100px !important
+
+.form-fields
+  textarea
+    height rem(150)
+    padding-top rem(19)
+    
+.form-submit
+  margin-top rem(50)
+  input
+    font-size rem(21)
+    padding rem(8) rem(54)
+    font-size rem(24)
+    
+.right
+  float right
+
+.header__btn,
+.header__btn:focus,
+.header__btn:hover
+  color #fff
+
+.header--hidden
+  -webkit-transform translate(0, -100%)
+  -ms-transform translate(0, -100%)
+  transform translate(0, -100%)
+
+.csstransforms3d
+  .header
+    -webkit-transform translate3d(0, 0, 0) !important
+    transform translate3d(0, 0, 0) !important
+  .header--hidden
+    -webkit-transform translate3d(0, -100%, 0) !important
+    transform translate3d(0, -100%, 0) !important
+  .btn-down
+    -webkit-animation slide-down-3d .8s infinite
+    animation slide-down-3d .8s infinite
+
+.header__logo
+  height header-content-height
+  float left
+  display inline-block
+  line-height 0
+
+.header-title
+  font-size 23px
+  color accent-color
+  margin-left 14px
+  display inline-block
+  vertical-align middle
+  
+.header__title
+  color accent-color !important
+  font-size rem(36)
+  font-family 'Nautilus Pompilius'
+  position relative
+  font-weight normal !important
+  img
+    height rem(40)
+
+.header__logo--mobile
+  position absolute
+  float none
+  display block
+  top 50%
+  left 10px
+  margin-top -19px
+  
+.textblock-heading 
+  font-size 21px
+  font-weight font-accent-weight
+  margin-bottom 27px
+  color inherit
+  
+.textblock-buttons
+  margin-top 45px
+  & > *:first-child
+    margin-right 30px
+  
+
+.btn:active
+.btn.active
+  box-shadow none  
+  
+    
+.textblock
+  &__heading
+    font-size rem(36)
+    font-weight bold
+    margin-bottom rem(14)
+    letter-spacing 0
+    &--broadcast
+      position relative
+      img
+        height 28px
+        margin-top -14px
+        position absolute
+        right 0
+        top 50%
+        
+    &--transparent
+      color transparent
+  &__content
+    margin-bottom rem(43)
+    line-height 1.6
+    // &:last-of-type
+    //   margin-bottom 0
+    &--about
+      margin-bottom rem(43)
+  // &__buttons
+  //   margin-bottom rem(30)
+  //   margin-top -rem(15)
+  //   button
+  //     margin-right rem(20)
+  //     font-weight bold
+  //     &.active
+  //       background-color accent-color
+  //       color accent-text-color
+  &__brief
+    padding-top rem(30)
+    line-height 1.6
+    border-top 1px solid #ccc
+    @media(max-height: 1000px)
+      padding-top rem(35)
+  
+.header__hamburger
+  background none
+  border none
+  padding 0
+  display none
+  line-height 1
+  vertical-align middle
+  color accent-color
+  width 36px
+  height 24px
+  img
+    width 100%
+    height 100%
+  &:focus
+    outline none
+
+.nav-link
+  cursor pointer
+  color #111
+  &.active
+    color accent-color !important
+    font-weight bold
+  &:focus
+    color #111
+
+
+.description-bootstrap-wrap
+  padding-right rem(112)
+  position relative
+  right rem(36)
+  // @media(max-width: 1650px) {
+  //   margin-left 0 !important
+  // }
+
+body
+  position relative
+  &:after
+    content ''
+    display block
+    position absolute
+    top 0
+    z-index 1001
+    right 0
+    bottom 0
+    left 0
+    background rgba(0, 0, 0, 0.85)
+    visibility hidden
+    opacity 0
+    transition opacity .3s ease, visibility .3s 0s
+  &.darkened
+    &:after
+      visibility visible
+      opacity 1
+      transition opacity .3s ease, visibility 0s
+    
+    
+
+
+.header__nav
+  margin 0 0 0 rem(100)
+  padding 0
+  display inline-block
+  
+  li
+    display inline-block
+    margin-right rem(24)
+    text-align center
+    letter-spacing -0.01rem
+    &:last-of-type
+      margin-right 0
+    // @media(max-width: 1720px) {
+    //   margin-right: 35px;
+    // }
+    // @media(max-width: 1650px) {
+    //   margin-right: 20px;
+    // }
+    // @media(max-width: 1450px) {
+    //   margin-right: 15px;
+    // }
+    // @media(max-width: 1200px) {
+    //   margin-right: 7px;
+    // }
+
+.container
+  width 1750px
+
+.frontscreen
+  display inline-block
+  vertical-align middle
+  position relative
+  white-space normal
+  &__logo
+    width rem(121)
+    height rem(85)
+  &__logo
+  &__title-logo
+    display block
+    margin 0 auto
+  &__title-logo
+    margin-bottom rem(50)
+  &__heading
+    font-size rem(48)
+    font-family 'NerisBlack'
+    text-transform uppercase
+  &__subheading
+    margin-bottom rem(55)
+    padding 0
+    .subheading-day
+      display inline-block
+      text-align left
+      margin-right rem(55)
+      &:last-of-type
+        margin-right 0
+      &__icon
+        float left
+        width rem(50)
+        height rem(50)
+      &__text
+        margin-left rem(70)
+        p
+          margin 0
+          line-height 1
+          font-size rem(28)
+          font-weight bold
+      
+  &__btn
+    background-color #c0382a
+    border-radius rem(7)
+    padding rem(15) rem(110) !important
+    margin-bottom rem(30)
+    transition background-color .2s ease
+    font-weight bold
+    font-size rem(21) !important
+    &:hover
+    &:focus
+    &:active
+      color #fff
+      background-color lighten(#c0382a, 20%)
+  &__tel
+    text-decoration none
+    display inline-block
+    font-family 'San Francisco'
+    font-weight 100
+    font-size rem(60)
+    margin-bottom rem(20)
+  
+a.tel  
+  color inherit
+  &:hover
+  &:focus
+  &:active
+    color inherit
+    text-decoration none
+
+p
+  margin 0
+
+a,
+a:hover,
+a:focus,
+a:active
+  color inherit
+  text-decoration none
+
+h2
+  color inherit
+  font-size rem(48)
+  font-weight font-accent-weight
+  line-height rem(66)
+  margin-bottom rem(40)
+  letter-spacing -0.03rem
+  .emphasize
+    font-size rem(85)
+    display block
+    letter-spacing 0px
+    line-height rem(66)
+    margin-bottom rem(58)
+    @media(max-height: 800px) {
+      font-size rem(66)
+      line-height rem(48)
+    }
+    
+.textblock-inner-heading
+  font-weight bold
+  font-size 26px
+  margin 38px 0 15px
+  
+.about
+  &__brief
+    display inline-block
+    vertical-align top
+    &--1
+      margin-right rem(49)
+    &--2
+      margin-right rem(49)
+
+a
+  color accent-color
+  &:focus
+  &:hover
+  &:active
+    color accent-color
+  &.underline
+    box-shadow 0 1px alpha(accent-color, 0.35)
+    -webkit-transition box-shadow .2s ease
+    transition box-shadow .2s ease
+    line-height normal
+    &:hover
+      box-shadow 0 1px accent-color
+    &.underline--white
+        color #fff !important
+        box-shadow 0 1px alpha(#fff, 0.55)
+        &:hover
+          box-shadow 0 1px #fff
+        &:hover
+        &:active
+        &:focus
+          color #fff !important
+
+.cards
+  padding 0 rem(52)
+  position relative
+
+.video
+  .slide[data-anchor=frontscreen]
+    background none
+    #bg-video
+      display block
+      position fixed
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
+      min-width 100%
+      min-height 100%
+      height auto
+      width auto
+      z-index -100
+    
+
+
+.slide
+  background-color #EDECEA
+  position relative
+  overflow hidden
+  padding-top rem(169)
+  -webkit-transition -webkit-transform .5s ease
+  transition -webkit-transform .5s ease
+  transition transform .5s ease
+  transition transform .5s ease, -webkit-transform .5s ease
+  &[data-anchor=story]
+    padding-top rem(183)
+    bg-cover('05_bg.jpg')
+    @media (max-height: 950px), (max-width: 1450px) {
+      padding-top 120px
+    }
+  &[data-anchor=sponsors]
+    padding-top rem(135) 
+    background url('../img/bg_sponsor.jpg') center center /cover no-repeat
+  &[data-anchor=frontscreen]
+    background url('../img/bg_index.jpg') center center /cover no-repeat  
+    color #fff
+    text-align center
+    padding-top 0 !important
+    white-space nowrap
+    #bg-video
+      display none
+    //height 100vh !important
+    padding 0
+    &:after
+      content ''
+      display inline-block
+      vertical-align middle
+      height 100%
+      width 0
+  &[data-anchor=about]
+    color #fff
+    background url('../img/bg_about.jpg') center center /cover no-repeat
+  &[data-anchor=contact]
+    background #f1f1f1
+  &[data-anchor=shops]
+    bg-cover('village.jpg')
+    & .btn--contour
+      font-size 18px
+  &[data-anchor=options]
+    h2
+    .textblock-heading
+      color accent-color
+  &[data-anchor=broadcast]
+    padding-top rem(169)
+    background url('../img/broadcast.jpg') center center /cover no-repeat
+  &[data-anchor=contact]
+  &[data-anchor=shops]
+    @media (max-height: 950px), (max-width: 1450px)
+      padding-top 85px
+  &[data-anchor=contact]
+    padding-top rem(65)
+  &[data-anchor=schedule]
+    background url('../img/bg_programm_left.jpg') left 0 /contain no-repeat, url('../img/bg_programm_right.jpg') right 0 /contain no-repeat, #f1f1f1
+  &[data-anchor=news]
+    background #f1f1f1
+    padding-top rem(90)
+    
+
+.slide[data-anchor=schedule] .btn--contrast
+  width 25.5rem !important
+          
+.vc-content
+  white-space nowrap
+  > div
+    float none
+    display inline-block
+    vertical-align middle
+    white-space normal
+  &:after
+    content ''
+    height 100%
+    width 0
+    display inline-block
+    vertical-align middle
+    
+.sponsors-slider .row
+  white-space nowrap     
+  
+.news-cards
+  white-space nowrap
+  float left
+  font-smoothing()
+  perspective()
+
+.news-card__img 
+  position relative
+  width 100%
+  height 236px
+  overflow hidden
+        
+.news-card__img img 
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+  margin auto
+  width 100%
+
+figure.news-card 
+  width 420px
+  display inline-block
+  margin 0 30px 0 0
+  vertical-align top
+  white-space normal
+  background-color #fff
+
+input[type=range].news-cards-range
+  width 100%
+  cursor pointer
+  border none
+  margin-top rem(60)
+  display inline-block !important
+
+
+.news-card__caption
+  padding 30px
+  box-sizing border-box
+
+.news-card__caption span 
+  font-size 13px
+        
+.news-card__caption p
+  font-size 15px
+  margin-top 3px
+
+figure.news-card:last-of-type
+  margin-right 0
+
+.slide__calendar 
+  padding rem(50) rem(75) rem(15)
+  background-color #fff
+  height calc(100% - rem(130))
+  overflow hidden
+  position relative
+  
+.slide__sponsor
+  background-color #fff
+  height rem(147)
+  line-height rem(107)
+  text-align center
+  margin-bottom rem(30)
+  padding rem(20)
+
+.slide__sponsor img
+  vertical-align middle
+  max-height 100%
+  display inline-block !important
+  max-width 100%
+
+.slide__sponsor--big
+  height rem(265)
+  line-height rem(225)
+  margin-top rem(40)
+
+.sponsors-slider 
+  white-space nowrap
+  margin-top rem(45)
+  
+.sponsor-wrap
+  display inline-block
+  float none
+        
+// .csstransforms .sponsors-slider 
+//   animation sponsors-slider 40s linear infinite; /* IE 10+, Fx 29+ */
+      
+// .csstransforms3d .sponsors-slider
+//   animation sponsors-slider-3d 40s linear infinite; /* IE 10+, Fx 29+ */
+  
+#map
+  width 100%
+  height rem(535)
+  margin-bottom rem(40)
+  
+.anchor--tel
+  color inherit !important
+  text-decoration none !important
+
+.sponsors-desc
+  &-wrap
+    margin rem(30) 0 0 rem(27)
+  &__heading
+    font-size rem(36)
+    font-weight bold
+    margin-bottom rem(19)
+  &__text
+    margin-bottom rem(42)
+    line-height 1.6
+    padding-right rem(60)
+  .action-link
+    font-weight bold
+    margin-left rem(25)
+    
+.btn--broadcast
+  width auto !important
+  padding-left rem(35) !important
+  padding-right rem(35) !important
+
+.registration
+  padding 50px 0
+  form
+    label
+    input
+      display block
+    input
+      margin-bottom 15px
+      height 35px
+      line-height 35px
+      width 100%
+      padding 0 7px
+    label
+      margin-bottom 7px
+
+.owl-arrow
+  background transparent
+  border none
+  position absolute
+  top 41%
+  opacity 0.5
+  &:focus
+    outline none
+  &:hover
+    opacity
+  svg
+    width rem(75)
+    height rem(75)
+    
+.owl-buttons
+  .disabled
+    opacity 0.3
+    
+.owl-next
+.owl-prev
+  transition opacity .3s ease
+  polygon
+    transition fill .3s ease
+  &:hover
+    opacity 1 !important
+    polygon
+      fill #4277b8
+  
+.arrow-left
+  left rem(-67)
+.arrow-right 
+  right rem(-67)
+
+.text-gray
+  color #959595
+  
+
+.article-event
+  margin-bottom rem(25)
+  &__date
+    float left
+    font-weight bold
+  &__desc
+    margin-left rem(180)
+
+.catalog-showcase-item-heading_r
+  color #bfbfbf
+  font-size 36px
+  float right
+  line-height 1
+  
+.form-fields__group
+  margin-bottom rem(32)
+  @media (max-height: 800px), (max-width: 1450px)
+      margin-bottom 20px
+      
+.catalog__showcase
+  background-color #fff
+  margin 0 -15px
+
+.catalog-showcase-item
+  padding 48px 68px
+  overflow hidden
+  position relative
+  background-color #fff
+  position absolute
+  top 0
+  toggle(.2s)
+  color #111
+  left 0
+  width 100%
+  @media(max-height: 950px)
+  	padding 35px 68px
+  
+  
+.feedback-contacts__email
+  color accent-color
+  
+.materials-slider
+  .textblock__content
+    margin-bottom 0
+
+.catalog-showcase-item__content
+  overflow-y auto
+  height 100%
+  padding-bottom 48px
+  @media (max-height: 900px) {
+    padding-bottom 0
+  }
+  //padding-right 60px
+
+.catalog-showcase-item__header
+  border-bottom 2px solid accent-color
+  margin-bottom 40px
+  padding-bottom 35px
+  @media(max-height: 800px) {
+    margin-bottom 20px
+    padding-bottom 20px 
+  }
+
+.catalog-showcase-item-heading
+  font-size 36px
+  font-weight bold
+  margin-bottom 0
+  color accent-color
+  line-height 1
+  float left
+
+.spinner
+  width 200px
+  height 200px
+  margin 100px auto
+  background-color #fff
+  border-radius 100%
+  -webkit-animation sk-scaleout 1.0s infinite ease-in-out
+  animation sk-scaleout 1.0s infinite ease-in-out
+
+  
+.options
+  float left
+  white-space nowrap
+  margin-top 70px
+  @media (max-height: 900px)
+    margin-top 20px
+
+#options 
+  .textblock__content
+    padding 0
+    
+.footer-timer--block
+  display none
+  margin-bottom rem(15)
+    
+.footer--sidescreen 
+  .footer__item
+    height auto !important
+  .footer__item--timer
+    display none
+  .footer-timer--block
+    display block
+  
+
+.option
+  background #3963a6
+  color #fff
+  padding 15px 30px 15px
+  width 744px
+  position relative
+  margin-right 30px
+  display inline-block
+  overflow hidden
+  @media(max-height: 1290px) {
+    width 720px
+   }
+  &:last-of-type
+    margin-right 0
+  .btn
+    border 2px solid alpha(#fff, 0.5)
+    color #fff
+    float right
+    font-size 18px
+    &:hover
+      background-color #fff
+      color #3963a6
+  &__title
+    font-size 46px
+    margin-bottom 15px
+    @media(max-height: 900px)
+      font-size: 40px;
+      margin-bottom: 5px;
+  &__stars
+    margin-bottom 15px
+    @media(max-height: 800px)
+        margin-bottom 10px
+    .star
+      width 29px
+      display inline-block
+      height 28px
+      bg-contain('star.png')
+      margin-right 6px
+      &:last-of-type
+        margin-right 0
+      &:after
+        background #c0382a
+      @media(max-height: 800px) 
+        width 25px
+        height 25px
+  &__params
+    display inline-block
+    .param 
+      width 175px
+      display inline-block
+      vertical-align middle
+      &__old-value
+        text-decoration line-through
+        font-size 20px
+        @media(max-height: 800px) 
+          font-size 18px
+      &__new-value
+        font-size 32px
+        line-height 36px
+        @media(max-height: 800px)
+          font-size 28px
+    	@media(max-width: 1290px) 
+    		width 160px
+      
+  &:after
+    background-color #c0382a
+    padding 5px 0
+    width 200px
+    text-align center
+    content 'Лучший выбор'
+    font-size 15px
+    position absolute
+    top 30px
+    right -50px
+    transform rotate(45deg)
+    
+  &--unavailable
+    &:before
+      content ''
+      top 0
+      display block
+      right 0
+      bottom 0
+      left 0
+      background-color #e0e0e0
+      position absolute
+    &:after
+      content ''
+      width 50px
+      height 64px
+      padding 0
+      transform none
+      display block
+      background url('../img/lock.png')
+      position absolute
+      z-index 1
+      top 50%
+      left 50%
+      margin-top -32px
+      margin-left -25px
+
+      
+.card__caption span 
+  font-size 13px
+  
+h4
+  font-size 24px
+  margin-bottom 7px
+
+.options-range
+  width 100%
+  cursor pointer
+  border none
+  margin-top 35px
+  display inline-block !important
+  @media (max-height: 800px)
+    margin-top 20px
+  
+input[type=range].options-range
+  -webkit-appearance none
+  border none
+  width 100%
+  &::-webkit-slider-runnable-track
+    width 100%
+    height 10px
+    background #bec3c7
+    border none
+  &::-webkit-slider-thumb
+    -webkit-appearance none
+    border none
+    height 30px
+    width 225px
+    border-radius 30px
+    background #3963a6 url('../img/stripes.png') center center /12px 14px no-repeat
+    margin-top -10px
+  &:focus
+    outline none
+  &::-moz-range-track
+    width 100%
+    height 10px
+    background #bec3c7
+    border none
+  &::-moz-range-thumb
+    border none
+    height 30px
+    width 225px
+    border-radius 30px
+    background #3963a6 url('../img/stripes.png') center center /12px 14px no-repeat
+  &:-moz-focusring
+    outline 1px solid transparent
+    outline-offset -1px
+  &::-ms-track
+    width 100%
+    height 10px
+    background #bec3c7
+    border-color transparent
+    border-width 10px 0
+    color transparent
+  &::-ms-thumb
+    border none
+    height 30px
+    width 225px
+    border-radius 30px
+    background #3963a6 url('../img/stripes.png') center center /12px 14px no-repeat
+
+.footer-timer
+  -webkit-animation blink 1s infinite
+  -moz-animation blink 1s infinite
+  -o-animation blink 1s infinite
+  animation blink 1s infinite
+
+input[type=range]:focus
+  &::-ms-fill-lower
+    background #bec3c7
+  &::-ms-fill-upper
+    background #bec3c7
+
+input[type=range]::-ms-fill-lower
+  background #bec3c7
+
+input[type=range]::-ms-fill-upper
+  background #bec3c7
+
+.no-js
+  .loader
+    display none !important
+
+.slide
+  &--swiped
+    transform translateX(-100%)
+    transition transform .5s ease
+
+.winner
+  background-image url(../img/winners_spritesheet.png)
+  background-repeat no-repeat
+  width 15px
+  height 18px
+  margin-right 10px
+  &.winner--1
+    background-position 0 0
+  &.winner--2
+    background-position -15px 0
+  &.winner--3
+    background-position 0 -18px
+  &.winner--4
+    background-position -15px -18px
+  &.winner--5
+    background-position -30px 0
+
+.header__tel
+  a
+    color #111
+  line-height header-content-height
+  $middle()
+  & > *
+    $middle()
+  .fa
+    font-size 32px
+    margin-right 11px
+    color #c0382a
+    @media(max-width: 1450px) {
+      margin-right 7px
+      font-size 27px
+    }
+    @media(max-width: 1290px) {
+      margin-right 2px
+      font-size 23px
+    }
+
+
+.catalog__list
+  list-style none
+  margin 0
+  padding 15px 0
+  background-color alpha(accent-color, 0.65)
+
+.catalog-list-item
+  padding 16px 0 16px 58px
+  display block
+  margin 0 -10px
+  color #fff
+  background-color transparent
+  line-height 1
+  font-size 16px
+  cursor pointer
+  position relative
+  z-index 1
+  -webkit-transition background-color .2s ease
+  transition background-color .2s ease
+  &:hover
+    background-color alpha(accent-color, 0.4)
+  &.active
+    background-color accent-color
+    color #fff
+  & > *
+    display inline-block
+    vertical-align middle
+
+.catalog-item-img
+  max-width 380px
+  max-height 225px
+  float left
+  margin 0 30px 30px 0
+  &:last-of-type
+  	margin-bottom 0
+
+.catalog-item__footer
+  color #898989
+  margin-top 40px
+
+.catalog-list-item__place
+  font-weight bold
+  margin-right 25px
+  
+
+.underline--black-thick
+  box-shadow 0 2px rgba(17, 17, 17, 0.55) !important
+  &:hover
+    box-shadow 0 2px rgba(17, 17, 17, 1) !important
+
+.frontscreen-wrap-mobile
+  font-size 44px
+  white-space normal
+  display inline-block
+  vertical-align middle
+  *
+    font-family 'Open Sans'
+
+.frontscreen__heading--mobile
+  font-size 2em
+  margin-bottom 40px
+  font-weight 800
+  line-height 0.9
+
+.frontscreen__subheading--mobile
+  font-size 1em
+  font-weight bold
+  text-transform uppercase
+  line-height 1
+
+.fsvs-body--mobile
+  overflow-y scroll
+  -webkit-overflow-scrolling touch
+  overflow-x hidden
+  & > *
+    min-height 100% !important
+    height auto !important
+    
+.general-partner
+  width 29.16666667%
+
+h4
+  font-size 24px
+  margin 0 0 7px 0
+  line-height 1.1
+  font-weight 500
+  
+.pinned  
+  color #959595
+  margin-left 7px
+
+.header--mobile
+  position fixed
+  top 0
+  left 0
+  width 100%
+  background #fff
+  height 100px
+  line-height 100px
+  padding 0
+  text-align center
+  font-size 1.2em
+  color accent-color
+
+.slick-slide
+  position relative
+  img
+    display inline-block
+    
+.owl-pagination
+  text-align center
+
+.footer
+  position absolute
+  width 100%
+  height 53px
+  left 0
+  bottom 30px
+  text-align center
+  font-size 14px
+  color #fff
+  z-index 999
+  toggle(200ms)
+  a.underline
+    color inherit
+    box-shadow 0 1px alpha(#fff, 0.55)
+    &:hover
+      box-shadow 0 1px #fff
+    &:hover
+    &:active
+    &:focus
+      color inherit
+  &__item
+    opacity 0
+    transition opacity .3s ease
+    &:after
+      content ''
+      height 100%
+      width 0
+      display inline-block
+      vertical-align middle
+    & .btn-down
+      pointer-events none
+    &.active
+      opacity 1
+      & .btn-down
+        pointer-events initial
+  &__item
+    display inline-block
+    text-align center
+    float left
+    vertical-align middle
+    &:nth-of-type(1)
+    &:nth-of-type(2)
+      width 22.5%
+    &:nth-of-type(3)
+      width 10%
+    &:nth-of-type(4)
+      width 45%
+    &:first-of-type
+      float left
+      text-align left
+    &:last-of-type
+      float right
+      text-align right
+  &__wrap
+    display inline-block
+    vertical-align middle
+    text-align left
+  &--sidescreen
+    height auto
+    .social-buttons
+      display none
+      &--block
+        display block
+    
+    
+.social-buttons
+  margin-left rem(38)
+  &--block
+    display none
+    margin 0 0 rem(15) 0
+  &__item
+    margin-right rem(5)
+    width 36px
+    height 36px
+    display inline-block
+    vertical-align middle
+    &--fb
+      background-position 0 0
+      &:hover
+        background-position 0 -36px*2 !important
+    &--vk
+      background-position -36px 0
+      &:hover
+        background-position -36px -36px*2 !important
+    &--insta
+      background-position -36px*2 0
+      &:hover
+        background-position -36px*2 -36px*2 !important
+    &--top
+      width 144px
+      height 21px
+      background-position -36px*3 - 2 0
+      margin-left rem(22)
+      &:hover
+        background-position -36px*3 - 2 -21px*2 !important
+      
+      
+
+.footer-logo
+  display inline-block
+  vertical-align middle
+  margin-right 15px
+  
+.footer--dark
+  color #111
+  .footer-timer
+    border 1px solid #111
+    color #111
+  a.underline
+    box-shadow 0 1px rgba(0, 0, 0, 0.35)
+    &:hover
+      box-shadow 0 1px rgba(0, 0, 0, 1)
+  .social-buttons
+    &__item
+      width 36px
+      height 36px
+      display inline-block
+      vertical-align middle
+      &--fb
+        background-position 0 -36px
+      &--vk
+        background-position -36px -36px
+      &--insta
+        background-position -36px*2 -36px
+      &--top
+        width 144px
+        height 21px
+        background-position -36px*3 - 2 -21px
+  .btn-down
+    background-position -300px -40px
+  .dimaneva-logo
+    background-position -350px -31px
+  .fbfr-logo
+    background-position -110px -50px
+        
+.footer-icon
+  background-image url('../img/footer_sprite.png')
+  
+.action-link
+    cursor pointer
+    
+.btn
+  padding 0
+  border none
+  display inline-block
+  transition background-color .2s ease, box-shadow .2s ease, color .2s ease, opacity .2s ease
+  color #fff
+  padding rem(14) rem(67)
+  font-weight bold
+  font-size 1rem
+  &:focus
+    outline none !important
+
+.btn--accent
+  background-color alpha(accent-color, 1)
+  color accent-text-color
+  &:hover
+  &:focus
+    background-color accent-color
+    color accent-text-color
+    
+
+
+.btn--general
+  border-radius rem(5)
+  font-size rem(16)
+  background-color #c0382a !important
+  border none
+  color #fff
+  &:hover
+  &:active
+    outline none
+    color #fff
+    background-color lighten(#c0382a, 20%) !important
+  
+.header__btn
+  margin-right rem(35)
+  vertical-align middle
+  display inline-block
+  line-height 1.42857143
+  padding rem(9) rem(41)
+ 
+
+// .sidemenu__btn
+//   line-height header-content-height
+//   margin-right 40px
+//   display inline-block
+//   height header-content-height
+//   padding 0 28px
+//   color #fff
+//   display none
+//   margin-top 15px
+//   &:focus
+//   &:hover
+//     color #fff
+    
+    
+.btn--contour
+   background-color transparent
+   border 2px solid alpha(accent-color, 0.5)
+   color accent-color
+   &:hover
+     background-color accent-color
+     color accent-text-color
+     
+.btn--small
+  padding 10px 28px
+    
+.btn-down
+  width 40px
+  height 40px
+  background-position -300px 0
+  cursor pointer
+  padding 0
+  border none
+  background-color transparent
+  display block
+  margin 0 auto
+  &.active
+    pointer-events initial
+  &:focus
+    outline none
+
+.mobile-sponsors-slide
+  margin 0 25px 
+
+.mobile-footer
+  color #636363
+  margin 20px 0
+  text-align center
+//   a
+//     box-shadow 0 2px #636363
+
+.btn-down--mobile
+  position absolute
+  bottom 60px
+  left 50%
+  margin-left -20px
+    
+.sidemenu
+  transform translate(100%, 0)
+  position fixed
+  top 0
+  right 0
+  height 100%
+  z-index 1002
+  width 60%
+  padding 0 20px
+  background-color #c0382a
+  transition transform .3s ease
+  a
+    display inline-block
+  a
+  i
+    color #fff
+  &.active
+    transform translate(0, 0)
+
+.sidemenu__header
+  line-height 3.125rem
+  padding 5px 0
+  
+.sidemenu__list
+  padding 0
+  list-style none
+  margin 50px 0 0 0
+  li
+    color #fff
+    text-transform uppercase
+    font-weight bold
+    cursor pointer
+    font-size 16px
+    padding 7px 5px
+  img
+    width 28px
+    height 28px
+    margin-right 10px
+    display inline-block
+  span
+    display inline-block
+    vertical-align middle
+  i
+    font-size 28px
+    margin-right 10px
+    display inline-block
+    vertical-align middle
+  &--social
+    margin-top 25px
+    img
+      width 30px
+      height 30px
+    li
+      font-size 18px
+      i
+        font-size 32px
+        
+.sidemenu__btn
+  margin-top 21px !important
+  color #111 !important
+
+.sidemenu__close
+  padding 0
+  border none
+  width 24px
+  background none
+  line-height 0
+  height 24px
+  position absolute
+  top 20.5px
+  right 30px
+  &:focus
+    outline none
+  img
+    width 100%
+    height 100%
+
+.csstransforms
+  .btn-down
+    -webkit-animation slide-down .8s infinite
+    animation slide-down .8s infinite
+
+
+.dimaneva-logo
+  width 31px
+  height 31px
+  display inline-block
+  vertical-align middle
+  margin-right rem(17)
+  background-position -350px 0
+  
+
+
+.fbfr-logo
+  width 67px
+  height 50px
+  display inline-block
+  vertical-align middle
+  background-position -110px 0
+  margin-right rem(17)
+
+
+.bbpro-logo
+  width 38px
+  height 38px
+  background url('../img/bbpro_logo.png') 0 0 no-repeat
+
+.author-img-mobile
+  position absolute
+  right 90px
+  bottom 0
+
+
+.footer-timer
+  font-family 'Arial'
+  font-size rem(28)
+  border 1px solid #fff
+  border-radius rem(7)
+  padding rem(5) rem(18)
+  margin-left rem(10)
+  
+.slick-slide
+  &:focus
+    outline none
+    
+.loader-circle
+  width 126px
+  height 126px
+  background-color #fff
+  position absolute
+  top 0
+  right 0
+  border-radius 50%
+  bottom 0
+  left 0
+  margin auto
+  img
+    width 80px
+    height 80px
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    margin auto
+
+.features-slider
+  &__loader
+    position absolute
+    width 100%
+    toggle(200ms)
+    height 100%
+    bottom 0
+    
+.sole-animation
+  background url(../img/sole_anim.jpg) 0 0
+  height 884px
+  width 650px
+  right 0
+  toggle(200ms)
+  position absolute
+  bottom 0
+  @media(max-width: 1290px) 
+    transform translateX(100px)
+  
+.circle-small-wrap
+  display inline-block
+  vertical-align middle  
+  white-space normal
+  
+.athlete
+  position absolute
+  img
+    position absolute
+    left 45.5%
+    opacity 0
+    transition opacity 0s linear .5s
+  .circle
+    opacity 0
+    transition opacity 0s linear .5s
+    &--small
+      border-radius 50%
+      background #fff
+      position absolute
+      color #111
+      text-align center
+      padding 0 5%
+      white-space nowrap
+      transition opacity 0s linear .8s
+      top -5%
+      left -5%
+      z-index 1
+      &__title
+        font-size rem(36)
+        font-weight bold
+        line-height 1.3
+        box-shadow 0 4px rgba(66,119,184,.35)
+        &:hover
+        &:active
+        &:focus
+          box-shadow 0 4px rgba(66,119,184,1)
+      &__desc
+        line-height rem(25)
+        margin-top rem(10)
+      &:after
+        content ''
+        display block
+        height 100%
+        width 0
+        display inline-block
+        vertical-align middle
+  &.active
+    img
+      opacity 1
+      transition opacity .4s ease 1s
+    .circle
+      opacity 1
+      animation .75s bounceIn .5s ease
+      &--small
+        animation .75s bounceIn .8s ease
+
+
+.footer-vk
+  width 43px
+  vertical-align middle
+  margin-left 20px
+  display inline-block
+  height 43px
+  background url(../img/vk.png) 0 0 no-repeat
+
+
+// ::-webkit-scrollbar
+//   width 15px
+
+// ::-webkit-scrollbar-track
+//   background #edecea
+//   cursor pointer
+
+// ::-webkit-scrollbar-thumb
+//   background accent-color
+//   cursor pointer
+//   border-radius 20px
+
+.calendar-wrap
+  position relative
+  white-space nowrap
+  overflow hidden
+  -webkit-perspective 1000
+  -webkit-font-smoothing subpixel-antialiased
+
+.calendar-carousel
+  -webkit-transition -webkit-transform .5s ease-in-out
+  transition -webkit-transform .5s ease-in-out
+  transition transform .5s ease-in-out
+  transition transform .5s ease-in-out, -webkit-transform .5s ease-in-out
+
+
+.slide__map
+  height 550px
+  overflow hidden
+
+#yandex-map,
+#yandex-map-mobile
+  height 100%
+
+#yandex-map-mobile
+  pointer-events none
+
+.slide__contacts
+  padding-left 55px
+
+.frontscreen__subheading-small
+  text-transform uppercase
+  font-weight bold
+  font-family 'Open Sans'
+  font-size 44px
+  
+.feedback-form
+  background-color #fff
+  padding rem(63) rem(70) rem(50)
+  margin-left rem(-22)
+  position relative
+  &__block
+    display inline-block
+    vertical-align top
+    margin-right rem(69)
+    line-height 1.5
+  &:after
+    content ''
+    display block
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 20px
+    background url('../img/06_post.jpg') repeat-x
+  &__heading 
+    font-size rem(36)
+    margin-bottom rem(30)
+    font-weight font-accent-weight
+  &-block-heading
+    font-weight bold
+    font-size rem(21)
+  &-block-wrapper
+    border-bottom 1px solid #dedede
+    padding-bottom rem(33)
+  .phone
+    font-size rem(21)
+    font-weight font-accent-weight
+  
+    
+
+.mCS-blue-theme.mCSB_scrollTools 
+  .mCSB_dragger_bar
+    background-color #fff
+    width 100%
+  .mCSB_scrollTools
+    width 20px
+    border-radius 20px
+  .mCSB_draggerRail
+    background-color #82090e
+    width 100%
+    
+.mCS-blue-theme-inverse.mCSB_scrollTools 
+  .mCSB_dragger_bar
+    background-color #fff
+    width 100%
+  .mCSB_scrollTools
+    width 20px
+    border-radius 20px
+  .mCSB_draggerRail
+    background-color #82090e
+    width 100%
+    
+    
+.sidescreen
+  .mCS-blue-theme 
+    .mCSB_draggerContainer
+    .mCSB_scrollTools
+      top 88px
+      bottom 88px
+    .mCSB_container
+      padding 53px 0 176px
+    .mCSB_draggerContainer
+      top 0
+    
+.sidescreen
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  z-index 999
+  left 0
+  transform translateX(100%)
+  transition transform .5s ease
+  &.active
+    transform translateX(0)
+  & .about-sidescreen
+      background-color #82090e
+      color #fff
+      padding-top rem(150)
+    
+    button[data-btn-action="back"]
+      margin-bottom rem(48)
+      background-color transparent
+      border none
+      padding 0
+      font-size rem(28)
+      font-weight bold
+    h2
+      margin rem(11) 0 0
+      color inherit
+    .about-sidescreen__sidemenu
+      margin-top rem(20)
+      position fixed
+      // @media(max-height: 800px) {
+      //   margin-top rem(100)
+      // }
+    .about-sidescreen__content
+      margin-left rem(29)
+    .sidemenu-title
+      font-weight bold
+      cursor pointer
+    .sidemenu-list
+      padding 0
+      margin 0 0 rem(28) 0
+    li
+      padding 0 rem(22)
+      list-style none
+      margin 3px 0
+      cursor pointer
+      transition background-color .2s ease
+      &.active
+        background-color #fff !important
+        color #82090e
+      &:hover
+        background-color alpha(#fff, 0.2)
+    .article
+      margin-bottom rem(66)
+      &:last-of-type
+        margin-bottom 0
+      h3
+        font-size rem(26)
+        color inherit
+        font-weight bold
+        margin-bottom rem(33)
+    .article__subheading
+      font-size rem(21)
+      margin rem(38) 0 rem(25)
+      font-weight bold
+      i
+          font-weight normal
+    .article__buttons
+      margin-bottom rem(35)
+      button
+        border-color #fff
+        color inherit
+        margin-right rem(20)
+        &:hover
+          background-color #fff
+          color accent-color
+    .article__content
+      line-height rem(25)
+      padding-right 30%
+      margin-bottom rem(45)
+      @media(max-width: 1290px)
+        padding-right 15%
+    .article__image
+      float left
+      width 25%
+  & .about-sidescreen
+  & .map
+      toggle(0ms)
+      position absolute
+      top 0
+      left 0
+      width 100%
+      
+.instagram-svg
+  margin-bottom rem(20)
+  width rem(100) !important
+  height rem(100) !important
+  
+.instagram-more
+  transition background .2s ease
+  &:hover
+    background #4277b8
+        
+.btn--contour-small
+  padding 3px 18px
+  border 2px solid accent-color
+  font-size 16px
+  
+.textblock-buttons--section
+  margin-top 65px
+  
+.article-images-wrapper
+  margin-bottom 20px
+  &__heading
+    font-size rem(21)
+    font-weight bold
+    margin rem(37) 0 rem(27)
+  
+[data-images]
+  position absolute
+  top 0
+  left 0
+  width 100%
+  transition opacity .3s ease, visibility 0s .3s
+  opacity 0
+  visibility hidden
+  &.active
+    opacity 1
+    visibility visible
+    transition opacity .3s ease, visibility 0s
+  
+[data-anchor=video]
+  padding-top 0
+  background url('../img/04_left_slavin.jpg') left bottom no-repeat, url('../img/04_right_frame.jpg') right bottom no-repeat, #f1f1f1
+
+// .video-wrapper
+//   height 100%
+//   width 88%
+//   margin 0 auto
+//   white-space nowrap
+//   position relative
+//   bottom 17px
+//   &:after
+//     height 100%
+//     content ''
+//     display inline-block
+//     vertical-align middle
+//   [data-video-trigger]
+//     height 100%
+//     .poster
+//       display inline-block
+//       vertical-align middle
+//       width 100%
+//       cursor pointer
+//       &:hover
+//         + .play
+//             opacity 1
+//             transform scale(1.2)
+
+
+// .sponsors-carousel-mobile
+//   .owl-wrapper-outer
+//     margin 0 -15px
+    
+
+.poster
+  margin-right -15px
+  display block
+  cursor pointer
+  &__img
+    width 100%
+  &:hover
+    .poster__play
+      opacity 1
+      transform scale(1.2)
+  &__play
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    margin auto
+    opacity 0.7
+    transition all .2s ease
+    width rem(209)
+    height rem(190)
+    cursor pointer
+    background none
+    border none
+    padding 0
+    &:hover
+      opacity 1
+      transform scale(1.2)
+    img   
+      width 100%
+      height 100%
+      
+.broadcast
+  margin-left -15px
+  background #fff
+  padding rem(40) rem(60)
+  &__advantages
+    margin-bottom  rem(40)
+  &-advantage
+    &__desc
+      font-weight bold
+  &-carousel
+    margin-bottom rem(30)
+    .owl-arrow
+      top 50%
+      padding 0
+      margin-top rem(-36)  
+      svg
+        width rem(40)
+        height rem(72)
+    .arrow-left
+      left 0
+    .arrow-right
+      right 0
+
+.btns-block
+  a
+    display inline-block
+    vertical-align middle
+    font-weight bold
+  a
+    &:first-child
+      margin-right rem(28)
+    
+.schedule
+  &__title
+    text-align center
+    font-size rem(48)
+    //margin-bottom rem(60)
+    margin-bottom rem(0)
+    font-weight bold
+    .emphasize
+      font-size rem(85)
+      margin-top rem(-35)
+      display inline-block
+    
+.broadcast-carousel-item
+  padding 0 rem(90)
+  &__img
+    display inline-block
+    vertical-align middle
+    margin-right rem(35)
+  &__name
+    font-weight bold
+    font-size rem(21)
+  &__position
+    font-style italic
+    font-weight bold
+    margin rem(5) 0
+  &-wrap
+    display inline-block
+    vertical-align middle
+    width 50%
+
+.broadcast-advantage
+  display inline-block
+  text-align center
+  font-size rem(14)
+  &__icon
+    width rem(50)
+    height rem(50)
+
+.popup-video
+  background rgba(0, 0, 0, 0.9)
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  z-index 999999
+  left 0  
+  transition opacity .3s ease, visibility 0s .3s
+  opacity 0
+  visibility hidden
+  &.active
+    opacity 1
+    visibility visible
+    transition opacity .3s ease, visibility 0s
+    
+.video-iframe
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    margin auto
+    width 70%
+    height 70%
+
+
+.card
+  padding rem(32) rem(30)
+  background #fff
+  margin-bottom rem(35)
+  margin 0 rem(25) rem(25)
+  &-header-wrap
+    margin-left rem(68)
+  &-heading
+    font-size rem(21)
+    font-weight bold
+    margin-bottom rem(5)
+  &-subheading
+    font-size rem(15)
+  &-img
+    width rem(50)
+    height rem(50)
+    float left
+    path
+      fill #242424
+  &__btn
+      background #f1f1f1
+      font-size rem(18)
+      color #acabab
+      &:hover
+      &:focus
+      &:active
+        background #4277b8
+        color #fff
+  &__text
+    line-height 1.6
+  &__desc
+    margin-bottom rem(40)
+  &__header
+    margin-bottom rem(27)
+    h3
+      font-weight bold
+      font-size rem(21)
+      color accent-color
+      margin 0 0 rem(5) 0
+      a
+        display inline-block
+        line-height 0.9
+        box-shadow 0 2px alpha(accent-color, 0.3)
+        &:hover 
+          box-shadow 0 2px accent-color
+    img
+      width 50px
+      height 50px
+      float left
+      margin-right 15px   
+    p
+      color #898989
+      font-size 15px
+       
+[data-story-toggle]
+  font-weight bold
+  
+.btn--contrast
+  background #f1c40f
+  color #111
+  width rem(248)
+  font-size rem(18)
+  padding-left 0
+  padding-right 0
+  //padding 12px 0
+  &:hover
+  &:active
+    background #fcee18
+    color #111
+    
+
+.story
+  padding rem(37) rem(71) rem(48) !important
+  border-bottom 2px solid #edecea
+  padding-bottom 20px
+  background #fff
+  margin 0 rem(63)
+  &__btn
+    font-weight bold
+    font-size 18px
+    &:hover
+      opacity 1
+  &__deal
+    text-align center
+    margin-bottom 20px
+    p:first-of-type
+      font-size 26px
+    p:last-of-type
+      font-size 16px
+  &__photos
+    text-align center
+    margin-bottom 35px
+    img
+      margin-right 20px
+      &:last-of-type
+        margin-right 0
+  &__text
+    margin rem(27) 0 rem(33)
+    line-height 1.6
+  &__toggle
+    text-align center
+    font-size rem(36)
+    padding-bottom rem(17)
+    border-bottom 1px solid #edecea
+    a
+      margin-right rem(35)
+      &.underline
+        box-shadow 0 2px accent-color
+      &.active
+        color #111
+        text-decoration none
+        box-shadow none
+        &:hover
+        &:active
+        &:focus
+          color #111
+      &:last-of-type
+        margin-right 0
+        
+[data-story-item="2"]
+  display none
+
+
+.instagram-wrapper
+  position relative
+  width 86%
+  float left
+  height 100%
+  
+.instagram-photo
+  float left
+  background #111
+  height 33.333%
+  width 16.6666666667%
+  position relative
+  overflow hidden
+  &-small
+    float left
+    width 50%
+    height 50%
+    overflow hidden
+    img
+      width 100%
+  img
+    width 100%
+  &:after
+    content ''
+    display block
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background #4277b8
+    opacity 0
+    transition opacity .2s ease
+  &:hover
+    &:after
+      opacity 0.9
+  
+.instagram-carousel
+  .owl-wrapper-outer
+  .owl-wrapper
+  .owl-item
+    height 100% !important
+  
+.instagram-carousel
+  .owl-pagination
+    margin-top 15px
+
+.instagram-more
+  float left
+  width 14%
+  height 100%
+  background #111
+  white-space nowrap
+  font-size rem(21)
+  text-align center
+  color #fff
+  &:after
+    content ''
+    display inline-block
+    vertical-align middle
+    height 100%
+    width 0
+  &-wrap
+    display inline-block
+    vertical-align middle
+  &:hover
+  &:active
+  &:focus
+    color #fff
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0, 0, 0);
+    transform: scale3d(0, 0, 0);
+  }
+
+
+  50% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  75% {
+    -webkit-transform: scale3d(.97, .97, .97);
+    transform: scale3d(.97, .97, .97);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@-webkit-keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0)
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes slide-down {
+    0% {
+        -webkit-transform: translate(0, -10px);
+        transform: translate(0, -10px);
+    }
+    50% {
+        -webkit-transform: translate(0, 10px);
+        transform: translate(0, 10px);
+    }
+    100% {
+        -webkit-transform: translate(0, -10px);
+        transform: translate(0, -10px);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        -webkit-transform: translate(0, -10px);
+        transform: translate(0, -10px);
+    }
+    50% {
+        -webkit-transform: translate(0, 10px);
+        transform: translate(0, 10px);
+    }
+    100% {
+        -webkit-transform: translate(0, -10px);
+        transform: translate(0, -10px);
+    }
+}
+
+@-webkit-keyframes slide-down-3d {
+    0% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+    50% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+}
+
+@keyframes slide-down-3d {
+    0% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+    50% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+}
+
+@media only screen and (max-width: 1820px)
+    // .container {
+    //     width: 1700px;
+    // }
+    // .catalog-list-bootstrap-wrap {
+    //     margin-left: 0 !important;
+    //     width: 33.333% !important;
+    // }
+    // .catalog-showcase-bootstrap-wrap {
+    //     width: 66.666% !important;
+    // }
+    // .catalog-intro-bootstrap-wrap {
+    //     margin-left: 0 !important;
+    //     width: 58.333%;
+    // }
+    
+    // .about__brief--1 {
+    //   margin-right: rem(50);
+    // }
+    
+    // .about__brief--2 {
+    //   margin-right: rem(50);
+    // }
+    
+    .card__btn
+      padding-left 0
+      padding-right 0
+      width 100%
+
+    .container 
+      width 100%
+      padding 0 70px
+      
+    .sponsors-desc
+      width 41.66666667% !important
+
+    .header__nav 
+      margin-left rem(20)
+    
+    .about__brief--1 
+      margin-right rem(25)
+    
+    .about__brief--2 
+      margin-right rem(25)
+  
+    .description-bootstrap-wrap 
+      margin-left 0
+      position static
+
+//@media only screen and (max-width: 1765px) 
+    // .container {
+    //   width: 1600px;
+    // }
+    // .about__btn {
+    //   width: 100%;
+    //   padding-left: 0;
+    //   padding-right: 0;
+    // }
+    
+
+@media only screen and (max-width: 1665px) 
+    // .container 
+    //     width 1500px
+    // 
+    .header-title 
+        font-size 22px
+        margin-left 10px
+    
+    .footer 
+        font-size 12px
+    
+    html 
+        font-size 15px
+    
+    .card__header 
+      margin-bottom rem(15, 15)
+    
+    
+    .card__header img 
+      width 40px
+      height 40px
+    
+    
+    .card__header h3 
+      margin 0 0 rem(3, 15) 0
+    
+    
+    .cards 
+      padding 0 rem(30, 15)
+    
+    .about__brief--1 
+        margin-right rem(20)
+    
+    .about__brief--2 
+      margin-right rem(20)
+
+
+@media only screen and (max-width: 1565px) 
+    // .container 
+    //     width 1380px
+    // 
+    
+    .footer 
+        font-size 12px
+    
+    .header__nav li 
+      margin 0
+    
+    .btn--contrast 
+      width rem(230, 15)
+    
+    
+    .about__brief--1 
+      margin-right rem(20, 15)
+    
+    
+    .about__brief--2 
+      margin-right rem(20, 15)
+    
+    
+    .story__btn 
+      font-size rem(16, 15)
+      
+    .description-bootstrap-wrap
+      padding-right rem(50, 15)
+
+@media only screen and (max-width: 1450px) 
+  .catalog-intro-bootstrap-wrap 
+      width 66.666%
+  
+  .catalog-showcase-item-heading 
+      font-size 33px
+  
+
+  html 
+    font-size 14px
+  
+  .arrow-left 
+    left -30px
+  
+  
+  .arrow-right 
+    right -30px
+  
+  .container
+    padding 0 30px
+  
+  .description-bootstrap-wrap 
+    padding-right 0
+      
+
+  .general-partner
+    width 25%
+    
+    
+@media only screen and (max-width: 1330px) 
+
+    .catalog-list-item 
+        padding 16px 0 16px 30px
+    
+    .catalog-showcase-item-heading 
+        font-size 30px
+    
+    .catalog-item-place 
+        font-size 28px
+        
+    .social-buttons
+      margin-left rem(15, 14)
+      
+    .sponsors-desc
+      width 50% !important
+      
+    .general-partner
+      width 20.833333335%
+    
+    // .container 
+    //     width 1200px
+    // 
+    .social-buttons__item--top 
+      margin-left 0
+  
+    .header__nav 
+      margin-left 0 !important
+    
+    .header__btn 
+      margin-right rem(7, 14) !important
+    
+    .card__text 
+      line-height 1.2 !important
+    
+    .story-bootstrap-wrap 
+      width 100% !important
+      margin 0 !important
+      
+    .footer__item
+      height auto !important
+      
+    .footer
+      bottom 15px
+
+
+@media only screen and (max-width: 1330px) 
+  .card
+    padding rem(15, 14) rem(20, 14)
+
+  .frontscreen
+    bottom rem(70)
+    
+  .circle--small__title
+    font-size rem(28, 14)
+    
+  .footer__item--timer
+    display none
+  .footer-timer--block
+    display block
+  .footer
+    height auto
+    
+  .broadcast-carousel-item
+    padding 0 rem(50)
+    &__img
+      margin-right rem(15)
+    
+  .poster
+    &__play
+      width rem(150)
+      height rem(100)
+      
+  .footer__item:nth-of-type(1)
+  .footer__item:nth-of-type(2)
+  .footer__item:nth-of-type(4)
+    width 45%
+  .footer__item:nth-of-type(3)
+    width 10%
+    
+  .athlete  
+    .circle--small
+      &__title
+        font-size rem(24)
+      &__desc
+        margin-top rem(5, 14)
+
+@media only screen and (max-width: 1199px)
+  .header__nav 
+    display none
+    
+  h2
+    font-size rem(36, 14)
+    
+  .general-partner
+    width 25%
+
+        
+  .header__hamburger
+    display inline-block
+    
+  .social-buttons
+    display none
+    
+  .social-buttons--block
+    display block
+    margin 0 0 rem(15) 0
+    
+    
+  .header
+    font-size 14px
+    &__btn
+      font-size inherit
+    &__btn
+    &__tel
+      margin-right 20px
+      font-size 16px
+    &__nav
+      display none
+      
+  .frontscreen
+    &__heading
+      font-size rem(55, 15)
+      letter-spacing 0
+      
+  .about__brief--1
+  .about__brief--2
+    margin-right rem(10, 14)
+    
+  .description-bootstrap-wrap
+    padding-right 0
+    
+  .sponsors-desc
+    margin 0 0 rem(35, 14) 0
+  
+  .owl-arrow
+    top 37%
+    
+  .cards
+    padding 0 rem(50, 14)
+    
+  .arrow-left
+    left rem(-20, 14)
+  
+  .arrow-right
+    right rem(-20, 14)
+    
+ 
+    
+@media only screen and (max-width: 991px)
+  .container 
+    width 750px
+    
+  .general-partner
+    width 50%  
+    
+  .slide__sponsor--big
+    height 110px
+    line-height 70px
+   
+  .athlete  
+    .circle--small__title
+      box-shadow 0 1px rgba(255,255,255,.55)
+      &:hover
+      &:active
+      &:focus
+        box-shadow 0 1px rgba(255,255,255,1)
+    
+  .description-bootstrap-wrap
+    padding-right 15px
+    
+  .btns-block
+    text-align center
+    a
+      &:first-child
+        margin-bottom 10px
+      
+  .sponsors-desc
+      width 100% !important
+
+  .circle--small__title
+    color #fff
+    
+  .slide[data-anchor="news"]
+  .slide[data-anchor="broadcast"]
+    padding rem(60) 0
+    
+  .poster
+  .broadcast
+    margin 0
+    
+
+  .card
+    margin 0 10px rem(35, 14)
+  
+  .slide[data-anchor=sponsors]
+    padding-top rem(60, 14) !important
+    
+
+  .general-partners-wrap
+    margin 0 10px
+
+  .slide__sponsor
+    margin 0 -10px 10px
+    
+
+  .slide
+    padding-top rem(60, 14)
+    
+  .about__brief--1
+    margin-right rem(5, 14)
+    
+  .about__brief 
+    margin-bottom rem(7, 14)
+  // .athlete 
+  //   display block
+  //   position static
+    
+  .athlete  
+    .circle--small
+      top -15%
+      left -20%
+   
+  .slide[data-anchor=news]
+    padding-top rem(150, 14)
+
+  .cards 
+    padding 0 rem(45, 14)
+
+    
+  
+  input[type=range].news-cards-range
+    display none !important
+    
+        
+  .news-cards
+    overflow-x scroll
+    overflow-scrolling()
+    float none
+    margin 0 -10px
+    padding 0 20px
+    
+  .frontscreen
+    bottom auto
+    display block
+    padding rem(50, 14) 15px
+    &__title-logo
+      width 100%
+    &__heading
+      font-size rem(35, 14)
+      margin-bottom rem(40, 14)
+      br
+        display none
+    // &__subheading
+    //   font-size rem(16, 14)
+    //   margin 0 rem(-10, 14)
+    //   .subheading-day
+    //      text-align center
+    //      display block
+    //      margin 0 0 rem(25, 14)
+    //     width 33.333%
+    //     float left
+    //     margin 0
+    //     padding 0 rem(10, 14)
+    //     &__icon
+    //       display block
+    //       margin 0 auto rem(7, 14)
+    //       float none
+    //     &__text
+    //       font-size rem(18, 14)
+    //       margin-left 0
+    //       text-align center
+    //       br
+    //         display none
+    //      &:last-of-type
+    //        margin-bottom 0
+    
+  .container
+    width auto
+    padding 0 15px
+    
+
+  .circle
+    margin-top rem(80, 14)
+    
+  .athlete
+    position relative
+    left auto !important
+    margin-top rem(50, 14)
+    right auto !important
+    text-align center
+    img
+      left 50%
+    .circle--small
+      left 0
+      
+  .btn--contrast
+    padding .9375rem 6.875rem !important
+    width auto
+    margin 0 auto
+    display block
+
+  .btn
+    width 100% !important
+    display block
+    padding-left 0 !important
+    padding-right 0 !important
+    
+
+    
+  .header
+    position fixed
+    padding 5px 0 !important
+    
+
+  .header__btn
+    //margin-top rem(15, 14)
+    margin-right 2.1875rem
+    display inline-block !important
+    width auto !important
+    padding .5625rem 2.5625rem !important
+    
+@media only screen and (max-width: 767px)
+
+  .sidescreen .article__content
+    padding-right 0
+   
+  .textblock__content--border-bottom
+    border-bottom 1px solid #ccc
+    padding-bottom rem(20, 14)
+    margin-bottom 0
+    
+  .slide__sponsor
+    padding rem(10, 14)
+    
+
+  .article-event__desc
+    margin-left 35%
+
+  .slide[data-anchor=schedule] .btn--contrast
+    width 100% !important
+    
+  .card__btn
+    background #4277b8
+    color #fff
+    
+  .about__btn
+    margin-top rem(10)
+    
+  .textblock__content--about
+    margin-bottom rem(20, 14) !important
+
+  .slide[data-anchor=about]
+    padding-top rem(10, 14)
+    
+  .frontscreen__btn
+    font-size 1rem !important
+    
+  .slide[data-anchor=news]
+    padding-top rem(30, 14) !important
+    
+
+  .btn--broadcast
+    margin-bottom rem(20, 14) !important
+
+  .fade-in
+    transform translateX(100%)
+    transition all 1.2s ease
+    opacity 0
+    text-align right
+    //margin-top 15px
+    height 250px
+    img
+      max-height 100%
+    &.active
+      transform translateX(0)
+      opacity 1
+
+  h2
+    line-height 1
+    .emphasize
+      line-height 1
+      
+  .slide[data-anchor=schedule]
+    padding-top rem(20, 14)
+    background url('../img/bg_programm_mobile.jpg') center 35% /100% auto no-repeat, #f1f1f1
+    
+
+  .slide[data-anchor=about]
+    background #f1f1f1
+    color inherit
+    .underline--white
+      color accent-color !important
+      box-shadow 0 1px alpha(accent-color, 0.35)
+      &:hover
+        box-shadow 0 1px #fff
+      &:hover
+      &:active
+      &:focus
+        color accent-color !important
+      
+  .circle--small__title
+    color accent-color
+
+  .schedule
+    &__title
+      text-align center
+      font-size rem(20, 14)
+      font-weight bold
+      margin-bottom 0
+      .emphasize
+        font-size rem(40, 14)
+        margin-top rem(8, 14)
+    
+  figure.news-card 
+    width 500px
+    
+  .header__btn
+    display none !important
+
+  .frontscreen
+    bottom auto !important
+    padding 10px 15px 20px !important
+    &__heading
+      font-size rem(28, 14)
+    &__subheading
+      font-size rem(16, 14)
+      margin 0 rem(-10, 14)
+      .subheading-day
+        width 33.333%
+        float left
+        margin 0
+        padding 0 rem(10, 14)
+        &__icon
+          display block
+          margin 0 auto rem(7, 14)
+          float none
+        &__text
+          font-size rem(18, 14)
+          margin-left 0
+          text-align center
+          br
+            display none
+          span
+            font-size rem(14, 14)
+            display inline-block
+            line-height 1
+          p
+            line-height inherit
+        // &:last-of-type
+        //   margin-bottom 0
+
+  .news-card__img 
+    height 280px
+    
+  .broadcast-advantage
+    width 100%
+    margin-bottom rem(15)
+
+
+  .slide[data-anchor=contact]
+    padding-top 20px !important
+
+  .feedback-form
+    margin 0
+    
+  .video-wrapper
+    width 100%
+    position static
+  
+    
+  .sidemenu
+    width 75%
+    &__close
+      top 15px
+      right 15px
+
+  .story-bootstrap-wrap
+    width 100% !important
+    margin 0 !important
+    
+  .description-bootstrap-wrap
+    padding 0 15px
+    
+  [data-anchor=video]
+    background #EDECEA !important
+    
+
+    
+  .about-sidescreen__content
+    overflow-y scroll
+    overflow-scrolling()
+    margin 0 -15px !important
+    padding 0 15px
+    
+
+  .sidescreen button[data-btn-action=back]
+    margin 20px 0
+    
+  
+  .sidescreen .article__image
+    width 50%
+
+    
+  .about__btn
+    margin-bottom rem(25, 14)
+      
+  .slide[data-anchor=sponsors]
+    padding rem(20, 14) 0 !important
+    
+  .slide[data-anchor=video]
+  .slide[data-anchor=story]
+    padding rem(50, 14) 0 !important
+    
+  .slide[data-anchor=frontscreen]
+    background url('../img/bg_daler_v2.jpg') center center /cover no-repeat !important
+    
+  #bg-video
+    display none !important
+
+  .play
+    width rem(100)
+    height rem(100)
+    
+  .story__toggle
+    font-size rem(18, 14)
+    
+  .story
+    padding rem(20, 14) rem(30, 14) !important
+    
+  .feedback-form__heading
+    font-size rem(21, 14)
+    
+  .slide[data-anchor=contact]
+    background #f1f1f1 !important
+    
+  .feedback-form 
+    padding rem(40, 14) rem(20, 14)
+    input
+      margin-bottom rem(10, 14) !important
+      
+
+
+@media only screen and (max-width: 650px)
+
+  .news-card__img
+    height 165px
+
+  figure.news-card 
+    width 300px
+
+  // .schedule__title .emphasize
+  //   font-size rem(60, 14)
+    
+@media only screen and (max-width: 610px)
+  .header__btn
+    display none
+     
+  .broadcast-carousel-item-wrap
+  .broadcast-carousel-item__img
+    display block
+    width 100%
+     
+
+  .broadcast-carousel-item__img
+    width auto
+    margin 0 auto
+    
+
+  .broadcast-carousel-item__img
+  .broadcast-carousel-item__desc
+    margin-bottom 15px
+    
+
+
+  // .schedule__title .emphasize
+  //   font-size rem(48, 14)
+  //   margin 0
+    
+       
+@media only screen and (max-width: 480px)
+
+  // .sidemenu__btn
+  //   margin-top 10px
+  //   width 100%
+  //   padding 0
+  //   text-align center
+  //   font-size 15px
+    
+  .textblock__heading--broadcast
+    line-height 1
+    
+  .header__tel
+    display none
+    &--mobile
+      display block
+      color #fff
+      font-size inherit
+      .fa
+        margin-right 7px
+    
+  .sidemenu
+    padding 0 15px
+    // &__list 
+    // li
+    //   font-size inherit
+    // &__btn
+    //   font-size 16px
+      
+
+@media only screen and (max-width: 320px)
+  .sidemenu
+      padding 0 10px
+      
+  .frontscreen__tel
+    font-size rem(32, 14)
+    
+  .article-event__desc
+    margin-left 40%
+    
+  h2 .emphasize
+    font-size rem(52, 14)
+    
+  .story__toggle
+    font-size rem(20, 14)
+    
+  .frontscreen__title-logo
+    height 100px !important
+    
+  .frontscreen__heading
+    margin-bottom rem(15, 14)
+    font-size rem(24, 14)
+    
+  .frontscreen__subheading
+    .subheading-day__text
+      p
+        font-size rem(21, 14)
+    
+  .frontscreen__subheading
+    margin-bottom rem(10, 14)
+    
+  .frontscreen__logo
+    height 65px
+    
+
+//5S fix    
+@media only screen and (max-width: 320px) and (max-height: 500px)
+  .frontscreen
+    padding 15px
+
+/*====================================
+=            Media Height            =
+====================================*/
+@media only screen and (max-height: 1000px) and (min-width: 768px)
+  .slide[data-anchor=video]
+    background url('../img/04_left_slavin.jpg') left bottom / auto 95% no-repeat, url('../img/04_right_frame.jpg') right bottom / contain no-repeat, #f1f1f1
+  
+  .slide
+    padding-top rem(68, 14)
+    
+  .slide[data-anchor=about]
+    padding-top rem(169, 14)
+    
+  .slide[data-anchor=broadcast]
+  .slide[data-anchor=news]
+  .slide[data-anchor=schedule]
+    padding-top rem(85, 14) !important
+    
+  .sidescreen button[data-btn-action=back]
+    margin-bottom rem(15)
+    
+
+
+@media only screen and (max-height: 950px) and (min-width: 768px)
+  .slide[data-anchor=about]
+    padding-top rem(78, 14)
+    
+@media only screen and (max-height: 768px) and (min-width: 768px)
+    .slide[data-anchor=news]
+      padding-top rem(60) !important
+      h2
+        margin-bottom 15px
+        
+    .news-card__img
+      height 155px
+      
+    figure.news-card
+      width 350px
+    
+@media only screen and (max-height: 850px)
+    #map
+      height 340px
+      margin-bottom 15px
+      
+    .broadcast
+      padding 20px 35px
+      
+
+    .broadcast-carousel
+      margin-bottom 10px
+      
+
+    .frontscreen__heading
+      margin-top 15px
+    
+    .frontscreen__subheading
+      margin-bottom 20px
+    
+    .frontscreen__btn 
+      margin-bottom 15px
+      
+    .frontscreen
+      top auto
+      bottom 35px
+      
+    .frontscreen__title-logo
+      height 150px
+      margin-bottom 0
+    
+    
+@media only screen and (max-height: 768px)
+  
+  .broadcast__advantages
+    margin-bottom 10px
+    
+  .sponsors-desc
+    margin-top 15px
+
+  .sponsor-wrap
+    padding 0 5px
+    
+  .slide__sponsor
+    margin-bottom 10px
+    
+  .news-cards-range
+    margin-top 30px
+    
+  .broadcast-carousel-item__img
+    height 115px
+
+  .slide[data-anchor=news]
+    padding-top rem(100, 14)
+
+  .sidescreen button[data-btn-action=back]
+    margin-bottom 10px
+    
+  .slide[data-anchor=about]  
+    h2 .emphasize
+      margin-bottom 0
+    
+  .textblock__content
+    margin-bottom rem(15, 14)
+    
+  .textblock__brief
+    padding-top rem(15, 14)
+    
+  .slide[data-anchor=sponsors]
+    padding-top rem(60, 14)
+    
+  .feedback-form__heading
+    margin-bottom rem(10, 14)
+    
+  .feedback-form-block-wrapper
+    padding-bottom rem(15, 14)
+    
+  .card
+    padding rem(15) rem(20)
+    margin-bottom rem(30, 14)
+    &__header
+      margin-bottom rem(7, 14)
+    &__text
+      line-height 1.4
+      
+  .footer
+    bottom 15px
+    height auto
+      
+  .slide[data-anchor=story]
+    padding-top rem(80, 14)
+    
+  .form-fields
+    margin-top rem(15, 14)
+    &__group
+      margin-bottom rem(15, 14)
+    
+  .form-submit
+    margin-top rem(15, 14)
+    
+  .sponsors-desc__text
+    margin-bottom rem(20, 14)
+    
+  // .story__toggle
+  //   font-size rem(21, 14)
+    
+  .story
+    margin 0
+  
+  .story-bootstrap-wrap
+    margin-left 8.33333333%
+    width 83.33333333%
+
+
+  .news-cards-range
+    margin-top 30px
+    
+@media only screen and (max-height: 700px) and (min-width: 992px)
+  .slide[data-anchor=sponsors]
+    padding-top rem(45, 14)
+    
+  .slide[data-anchor=about]
+    padding-top rem(68, 14)
+    
+  .slide[data-anchor=schedule]
+    padding-top rem(50, 14) !important 
+    
+@media only screen and (max-height: 800px)
+
+  .news-card__caption 
+    padding 20px
+    span
+    p
+      font-size 14px
+    h4
+      margin-bottom 7px
+      font-size 16px
+        
+  .news-cards-range
+      margin-top 40px
+
+  input[type=range].news-cards-range
+    margin-top 20px
+
+  .sponsors-slider
+    margin-top 10px
+
+
+
+// @media only screen and (max-height: 1000px) {
+// .textblock-buttons {
+//     margin-top: 15px;
+// }
+// .textblock__content {
+//   margin-bottom 35px
+// }
+// }
+
+// @media only screen and (max-height: 950px) {
+
+//     h2 {
+//         margin-bottom: 15px;
+//         font-size 40px
+//     }
+//     .sole-animation {
+//       background: url(../img/sole_anim650.jpg) 0 0;
+//       height 650px
+//       width 478px
+//       transform translateX(0)
+//     }
+// }
+
+
+
+
+// @media only screen and (max-height: 800px) {
+    
+//     .textblock-heading {
+//       margin-bottom: 15px;
+//     }
+
+//     .textblock-inner-heading {
+//         margin: 0;
+//     }
+//     .textblock__author {
+//         margin-top: 15px;
+//         padding-top: 10px;
+//     }
+    
+// }
+
+// @media only screen and (max-height: 768px) {
+//   h4 {
+//     font-size: 16px;
+//     margin-bottom: 2px;
+//     }
+//     .frontscreen {
+//         bottom: 0;
+//     }
+//     .textblock__buttons {
+//       margin-top 20px
+//     }
+//     .frontscreen {
+//       top: 0;
+//     }
+//     h2 .emphasize {
+//       margin-bottom: 0;
+//     }
+//     .textblock__brief {
+//       padding-top: 10px;
+//     }
+//     .textblock__content {
+//       margin-bottom: 10px;
+//       }
+// }
+
+
+/*=====  End of Media Height  ======*/
