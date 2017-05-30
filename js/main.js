@@ -15,7 +15,8 @@ $(function() {
                 items: 2
             },
             1199: {
-                items: 3
+                items: 3,
+                startPosition: 1
             }
         }
     });
