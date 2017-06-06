@@ -872,7 +872,7 @@ span.pinned {
     cursor: pointer;
     border: none;
     margin-top: 35px;
-    height: 30px;
+    height: 50px;
     display: inline-block;
 }
 
@@ -1282,6 +1282,7 @@ h4 {
 
 .footer__item--btn-down {
     width: 100%;
+    transform: translateY(-100%);
 }
 
 .footer__wrap {
