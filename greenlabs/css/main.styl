@@ -1103,6 +1103,9 @@ body
 		bottom 20px
 		left 15px
 		right 15px
+		&--static
+			position static
+			margin-top 20px
 		
 			
 	.mobile-menu-close
@@ -1265,10 +1268,6 @@ body
 		&__help
 			margin-left 12px
 		
-	.modal-trigger-container
-		width 100%
-		display block
-		
 	.modal-header
 		margin-bottom 28px
 		
@@ -1285,11 +1284,13 @@ body
 		height 34px
 		line-height inherit
 		position relative
+		width 100%
 		
 	.modal-trigger
 		color #263b82
 		font-size 12px
 		font-weight 400
+		flex-grow 1
 		
 	.modal-form
 		padding 30px 17px
