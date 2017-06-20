@@ -1257,14 +1257,9 @@ body.prevent-scroll {
     z-index: 4;
   }
   .mobile-menu-bottom {
-    position: absolute;
-    bottom: 20px;
-    left: 15px;
-    right: 15px;
-  }
-  .mobile-menu-bottom--static {
-    position: static;
     margin-top: 20px;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
   }
   .mobile-menu-close {
     position: absolute;
@@ -1273,6 +1268,16 @@ body.prevent-scroll {
   }
   .mobile-nav {
     margin-bottom: 20px;
+  }
+  .mobile-menu-wrapper {
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
+  .mobile-menu {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
   .mobile-nav-section {
     border-bottom: 1px solid rgba(245,245,245,0.2);
@@ -1360,6 +1365,7 @@ body.prevent-scroll {
     font-size: 14px;
     font-weight: 900;
     text-transform: uppercase;
+    white-space: nowrap;
   }
   .mobile-cities-trigger:after {
     content: '';
