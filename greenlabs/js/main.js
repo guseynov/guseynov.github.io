@@ -65,7 +65,7 @@
 
       adaptive();
 
-      $(window).on('resize', adaptive);
+      window.addEventListener('resize', adaptive);
 
       $('.main-slider').owlCarousel({
           items: 1,
