@@ -1258,8 +1258,6 @@ body.prevent-scroll {
   }
   .mobile-menu-bottom {
     margin-top: 20px;
-    -ms-flex-item-align: end;
-    align-self: flex-end;
   }
   .mobile-menu-close {
     position: absolute;
@@ -1278,6 +1276,8 @@ body.prevent-scroll {
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
   }
   .mobile-nav-section {
     border-bottom: 1px solid rgba(245,245,245,0.2);
