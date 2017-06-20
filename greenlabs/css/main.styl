@@ -1,0 +1,1320 @@
+placeholder()
+	&::-webkit-input-placeholder
+		{block}
+	&:-moz-placeholder
+		{block}
+	&::-moz-placeholder
+		{block}
+	&:-ms-input-placeholder
+		{block}
+
+/*=============================
+=            reset            =
+=============================*/
+
+button
+	background none
+	border none
+	padding 0
+	outline none !important
+	
+input
+	outline none !important
+	
+p
+	margin 0
+	
+ul
+	margin 0
+	padding 0
+
+.owl-carousel
+	.owl-item
+		img
+			width auto
+			
+.select2-selection
+	outline none !important
+
+
+/*=====  End of reset  ======*/
+
+/*======================================
+=            general styles            =
+======================================*/
+
+body
+	font-family 'Roboto'
+	overflow-x hidden
+	&.prevent-scroll
+		overflow hidden
+	
+@media screen and (min-width: 1200px)
+	.container
+		width 1072px
+		padding 0
+		
+/*=====  End of general styles  ======*/
+
+/*===============================
+=            buttons            =
+===============================*/
+
+.btn
+	border 3px solid #123885
+	color #123885
+	font-size 18px
+	font-weight 700
+	padding 15px 32px
+	transition all .2s ease
+	&:hover
+		background #123885
+		color #fff
+		
+
+/*=====  End of buttons  ======*/
+
+/*==============================
+=            header            =
+==============================*/
+
+.header
+	padding 15px 0
+
+.header-flex-container
+	display flex
+	width 1280px
+	margin 0 auto
+	padding 0 32px
+	& > *
+		align-self center
+	@media screen and (max-width: 1200px)
+		width 100%
+	
+.header-logo
+	margin-right 30px
+	
+.header-link
+	font-size 20px
+	font-weight 700
+	line-height 25px
+	color #d2d2d2
+	transition all .2s ease
+	margin 0 10px
+	display inline-block
+	text-decoration none !important
+	&--active
+	&:hover
+		color #002672
+	&--active
+		border-bottom 4px solid #fff200	
+		
+.circle-btns
+	margin-left auto
+	.circle-btn
+		border 2px solid #eaeaea
+		border-radius 50%
+		display inline-block
+		margin-left 5px
+		width 34px
+		height 34px
+		text-align center
+		line-height 30px
+		transition all .2s ease
+		background-color #fff
+		position relative
+		&--white
+			background transparent
+			&:hover
+				path
+					fill #0F0F0F
+		&:hover
+			border-color #fff200
+			background-color #fff200
+			.circle-btn__tooltip
+				opacity 1
+		&__tooltip
+			position absolute
+			color #fcfdff
+			font-size 12px
+			font-weight 400
+			background #000
+			padding 0px 11px
+			white-space nowrap
+			top 40px
+			right -5px
+			opacity 0
+			transition all .2s ease
+			pointer-events none
+	&--white
+		border-color #3c5b99
+
+.city-contacts
+	margin-right 112px
+	.select2
+		width 160px !important
+		display block
+	.select2-container--open
+		box-shadow none
+	.select2-selection
+		outline none !important
+		&__rendered 
+			color #000 !important
+			font-size 14px
+			font-weight 900
+			text-transform uppercase
+		&--single
+			border none
+			height auto
+			.select2-selection__rendered
+				padding-left 0
+				line-height inherit
+		&__arrow
+			width 9px !important
+			height 6px !important
+			top 5px !important
+			background url('../img/icons/arrow-down.png') center no-repeat
+			b
+				display none
+	&--white
+		.select2-selection
+			background transparent
+			&__rendered 
+				color #fff !important
+			&__arrow
+				width 6px !important
+				height 10px !important
+				top 5px
+				background url('../img/icons/arrow-right--white.png') center no-repeat
+				b
+					display none
+	&__num
+		font-size 14px
+		font-weight 300
+		text-decoration none !important
+		&--white
+			color #fff
+				
+		
+
+/*=====  End of header  ======*/
+
+
+/*=================================
+=            subheader            =
+=================================*/
+
+.subheader
+	background-color #002672
+	padding 11px 0
+	text-align center
+	.subheader-link
+		opacity 0.8
+		font-size 15px
+		font-weight 400
+		color #fff
+		transition all .2s ease
+		margin 0 13px
+		display inline-block
+	.subheader-link--active
+	&:hover
+		color #fff200
+
+/*=====  End of subheader  ======*/
+
+
+/*===================================
+=            main-slider            =
+===================================*/
+
+.main-slider
+	overflow hidden
+	max-height 590px
+	&__container
+		align-self center
+		position relative
+		bottom 95px
+	.owl-dots
+		text-align center
+		position absolute
+		left 0
+		width 100%
+		bottom 224px
+	.owl-dot
+		height 8px
+		width 8px
+		border-radius 50%
+		margin 0 7px
+		display inline-block
+		background-color #fff
+		vertical-align middle
+		transition all .2s ease
+		&.active
+			background-color transparent
+			border 3px solid #fff200
+			width 16px
+			height 16px
+	.owl-nav
+		position absolute
+		height 44px
+		top 36%
+		left 0
+		width 100%
+	.owl-prev
+	.owl-next
+		position absolute
+	.owl-prev
+		left 45px
+	.owl-next
+		right 45px
+			
+.main-slider-item
+	height 590px
+	background-size cover
+	background-position center center
+	background-repeat no-repeat
+	text-align center
+	display flex
+	justify-content center
+	&__title
+		color #eff2f9
+		font-size 83px
+		font-weight 700
+		border-bottom 1px solid rgba(255, 255, 255, 0.3)
+		line-height 1.15
+		margin-bottom -10px
+	&__subtitle
+		color #fff
+		font-size 21px
+		font-weight 100
+
+/*=====  End of main-slider  ======*/
+
+/*==============================
+=            offers            =
+==============================*/
+
+.offers
+	background-color #d8dbe6
+
+.offers-container
+	background-color #eff2f9
+	padding 50px 0 40px
+	margin-top -113px
+	position relative
+	z-index 2
+
+.offers-title
+	color #002672
+	font-size 36px
+	font-weight 700
+	text-align center
+	margin-bottom 35px
+	line-height 1.1
+	
+.offer-triggers-wrapper
+	display flex
+	align-items center
+	justify-content space-around
+		
+	
+.offer-trigger
+	display flex
+	justify-content center
+	position relative
+	&__icon
+	&__title
+		align-self center
+	&__title
+		margin-left 15px
+		color #6e6e6e
+		font-size 18px
+		font-weight 300
+		border-bottom 1px dotted #c9c9c9
+		line-height 1
+		transition all .2s ease
+	&__icon
+		width 62px
+		height 62px
+		background-color #123885
+		transition all .2s ease
+		border-radius 50%
+		display flex
+		justify-content center
+		svg
+			align-self center
+		path
+			transition all .2s ease
+	&--active
+		.offer-trigger__icon
+			background-color #fff200
+			path
+				fill #123885
+		.offer-trigger__title
+			color #123885
+		&:after
+			opacity 1 !important
+	&:after
+		top 100px
+		left 50%
+		border solid transparent
+		content " "
+		height 0
+		width 0
+		position absolute
+		pointer-events none
+		border-color rgba(255, 255, 255, 0)
+		border-top-color #eff2f9
+		border-width 19px
+		margin-left -19px
+		opacity 0
+		transition all .2s ease
+
+
+		
+	
+/*=====  End of offers  ======*/
+
+
+/*======================================
+=            offers-content            =
+======================================*/
+
+.offers-content
+	background-color #d8dbe6
+	
+.offer-content
+	&__img-container
+		border-radius 50%
+		border 12px solid #eff2f9
+	&__img
+		border-radius 50%
+		
+.offer-content-info
+	margin-left 45px
+	&__title
+		color #123885
+		font-size 34px
+		font-weight 700
+		display inline
+		background-color #fff200
+		box-shadow 10px 0 0 #fff200, -10px 0 0 #fff200
+		box-decoration-break clone
+		padding 10px 0
+	&__description
+		color #323232
+		font-size 16px
+		font-weight 300
+		margin 20px 0 27px
+		
+.offer-content-container
+	padding 63px 0 78px 70px
+	display flex
+	align-items center
+
+/*=====  End of offers-content  ======*/
+
+
+/*===============================
+=            popular            =
+===============================*/
+
+.popular
+	padding 90px 0 80px
+	background url('../img/backgrounds/laptop.jpg') center center /cover no-repeat
+	
+.popular-title
+	color #123885
+	font-size 36px
+	font-weight 700
+	text-align center
+	margin-bottom 37px
+	
+.popular-products
+	background-color #123885
+	padding 40px 0 25px
+	display flex
+	align-items flex-start
+	justify-content center
+	
+.popular-product
+	text-align center
+	color #fff
+	font-size 16px
+	font-weight 400
+	margin 0 45px
+	transition all .2s ease
+	&__title
+		width 110px
+	&__icon
+		position relative
+		line-height 0
+		margin-bottom 30px
+		path
+			transition all .2s ease
+		&:after
+			content ''
+			border 3px solid #fff200
+			width 94px
+			height 94px
+			border-radius 50%
+			position absolute
+			top 50%
+			left 50%
+			margin -47px 0 0 -47px
+			transition all .2s ease
+			opacity 0
+	&:hover
+		color #fff200
+		.popular-product
+			&__icon
+				path
+					fill #fff200
+				&:after
+					opacity 1
+	
+/*=====  End of popular  ======*/
+
+/*============================
+=            info            =
+============================*/
+
+.info
+	background-color #eff2f9
+	padding 80px 0 30px
+	
+.info-trigger
+	color #c0c0c0
+	font-size 26px
+	font-weight 700
+	line-height 16px
+	margin 0 15px
+	line-height 1.2
+	&--active
+		color #123885
+		border-bottom 4px solid #fff200
+		
+.info-trigger-container 
+	text-align center
+	margin-bottom 45px
+	
+.info-article
+	margin-bottom 15px
+	&__title
+		color #123885
+		font-size 18px
+		font-weight 500
+		line-height 1.3
+		margin-bottom 13px
+		display inline-block
+	&__text
+		color #343434
+		font-size 16px
+		font-weight 300
+		margin-bottom 7px
+	&__date
+		color #c0c0c0
+		font-size 14px
+		font-weight 400
+		
+.info-content
+	&__ajax-btn-container
+		padding-top 25px
+		text-align center
+		clear both
+		
+.info-content-inner-container
+	display flex
+	flex-wrap wrap
+
+/*=====  End of info  ======*/
+
+/*==============================
+=            footer            =
+==============================*/
+
+.footer
+	background-color #123885
+	text-align center
+	padding 45px 0 33px
+	
+.user
+	margin-bottom 45px
+	&__avatar
+		border-radius 50%
+		border 2px solid rgba(234, 234, 234, 0.3)
+		display flex
+		justify-content center
+		align-items center
+		height 41px
+		width 41px
+		margin 0 auto
+		transition all .2s ease
+		margin-bottom 7px
+		&:hover
+			border 2px solid rgba(234, 234, 234, 1)
+	a
+		color #eff2f9
+		font-size 14px
+		font-weight 300
+		line-height 16px
+		text-decoration underline
+		
+.footer-nav
+	display flex
+	justify-content center
+	margin-bottom 55px
+	
+.footer-nav-category
+	margin 0 5px
+	flex 0.3
+	&:nth-child(2)
+		flex none
+	&__title
+		color #fff200
+		font-size 18px
+		font-weight 400
+		margin-bottom 10px
+	a
+		color #8cabe8
+		font-size 14px
+		font-weight 300
+	li
+		list-style-type none
+		margin-bottom 4px
+		
+.footer-social-networks
+	display flex
+	justify-content center
+	margin-bottom 60px
+		
+.footer-social-network
+	width 54px
+	height 54px
+	border 3px solid rgba(255, 255, 255, 0.2)
+	border-radius 50%
+	display flex
+	justify-content center
+	align-items center
+	transition all .2s ease
+	margin 0 7px
+	path
+		transition all .2s ease
+	&:hover
+		border-color #fff200
+		background #fff200
+		path
+			fill #123885
+			
+.footer-copyright
+	color #8cabe8
+	font-size 12px
+	font-weight 300
+	a
+		color #8cabe8 !important
+
+/*=====  End of footer  ======*/
+
+/*=============================
+=            modal            =
+=============================*/
+
+.modal-dialog
+	background #fff
+	position relative
+	width 704px
+	padding 35px 32px 30px
+	&--wide
+		width 952px
+	
+.modal-close
+	position absolute
+	top 16px
+	right 19px
+
+.modal-title
+	color #123885
+	font-size 26px
+	font-weight 700
+	display inline-block
+	vertical-align middle
+	margin-right 25px
+	position relative
+	&__help
+		color #151515
+		font-size 14px
+		font-weight 500
+		width 22px
+		height 22px
+		border 2px solid #fff200
+		background-color #ffffff
+		border-radius 50%
+		line-height 18px
+		display inline-block
+		text-align center
+		vertical-align middle
+		cursor help
+		&:hover
+			& + .modal-title__tooltip
+					opacity 1
+	&__tooltip
+		color #ffffff
+		font-size 12px
+		font-weight 400
+		background-color #000
+		position absolute
+		width 228px
+		padding 7px 0
+		text-align center
+		top 40px
+		left 0
+		opacity 0
+		transition all .2s ease
+
+.modal-header
+	margin-bottom 28px
+	padding 0
+	border none
+	position relative
+	z-index 2
+	
+.modal-trigger-container
+	display inline-block
+	border 1px solid #8eaff2
+	line-height 34px
+	border-radius 35px
+	overflow hidden
+	vertical-align middle
+
+.modal-trigger
+	font-size 14px
+	font-weight 400
+	color #123885
+	&--active
+		background-color #123885
+		color #fff !important
+	&--middle
+		padding 0 15px
+	&:first-of-type
+	&:last-of-type
+		padding 0 35px 0 20px
+		
+			
+.modal-form
+	background-color #eff2f9
+	padding 40px 35px
+	display flex
+	flex-wrap wrap
+	justify-content space-between
+	align-items flex-end
+	&:before
+	&:after
+		content ''
+		width 100%
+		order 1
+	&__input
+		background-color #fff
+		height 55px
+		border none
+		padding 0 15px
+		margin 0 10px 20px
+		flex-grow 1
+		color #000
+		font-weight 500
+		+placeholder()
+			color #b3b3b3
+			font-weight 300
+		&--small
+			flex-grow 0.35
+	&__label
+		margin 0 10px 20px
+		width 1%
+		flex-grow 1
+		& > span:first-of-type
+			color #757575
+			font-size 14px
+			font-weight 400
+			margin-bottom 5px
+			display block
+		&--half
+			flex-grow 0.5
+	.btn[type="submit"]
+		margin 20px auto 0
+		order 1
+	&__container
+		display flex
+		align-items flex-end
+		width 100%
+		.modal-form__input
+			width 1%
+		
+.modal-select
+	& + .select2
+		width 100%
+		.select2-selection
+			background-color #fff
+			transition all .2s ease
+			height 55px
+			padding 0 16px
+			border none
+			width 100%
+			&:hover
+				background-color #fff42c
+			&__rendered
+				color #000
+				font-size 16px
+				font-weight 500
+				line-height 55px
+				width 100%
+			&__arrow
+					width 10px
+					height 6px
+					background url('../img/icons/triangle-down.png') center /contain no-repeat
+					top 50%
+					margin-top -5px
+					right 16px
+					transition all .2s ease
+					b
+						display none
+			&__placeholder
+				color #b3b3b3
+				font-size 14px
+				font-weight 300
+	& + .select2-container--open
+		.select2-selection
+			&__arrow
+				transform rotate(180deg)
+				opacity 0.2
+				
+.select2-results
+	font-size 16px
+	font-weight 500
+	line-height 34px
+	li
+		line-height 41px
+		background-color #fff !important
+		transition all .2s ease
+		color #000 !important
+		font-size 16px
+		font-weight 500
+		padding 0 15px
+		&.select2-results__option--highlighted
+			background-color #fff42c !important
+			
+.select2-dropdown
+	border none
+				
+.select2-dropdown				
+.select2-container--open
+	box-shadow 0 0 10px rgba(63, 120, 235, 0.31)
+	transition all .2s ease
+				
+.modal-select#city
+	& + .select2
+		width 100%
+		.select2-selection
+			&__arrow
+				width 8px
+				height 12px
+				background url('../img/icons/arrow-right.png') center /contain no-repeat
+				top 50%
+				margin-top -6px
+				right 16px
+				b
+					display none
+					
+.modal-form__textarea
+	box-shadow none
+	border 1px solid #8eaff2
+	background-color #fff
+	transition all .2s ease
+	width 100%
+	height 110px
+	margin 0 10px
+	outline none !important
+	&:active
+	&:hover
+	&:focus
+		box-shadow 0 0 10px rgba(63, 120, 235, 0.31)
+		
+/*=====  End of modal  ======*/
+
+/*==============================
+=            mobile            =
+==============================*/
+
+.mobile-menu
+.mobile-cities
+.modal-close--mobile
+.mobile-menu-trigger
+	display none
+
+@media screen and (max-width: 991px)
+
+	.container
+		width 100% !important
+		
+	.city-contacts
+	.main-links
+	.circle-btns
+		display none
+		
+	.header-logo
+		width 162px
+		
+	.mobile-menu-trigger
+		display block
+		
+	.header-flex-container
+		justify-content space-between
+		padding 0 15px
+		
+	.main-slider
+		&__container
+			z-index 1
+			bottom auto
+			br
+				display none
+		
+	.main-slider-item
+		position relative
+		height 53px
+		&__title
+			color #eff2f9
+			font-size 18px
+			font-weight 700
+			border-bottom none
+			line-height 1.42857143
+			margin-bottom 0
+		&__subtitle
+			color #fff
+			font-size 11px
+			font-weight 100
+		&:after
+			content ''
+			display block
+			position absolute
+			top 0
+			right 0
+			bottom 0
+			left 0
+			background alpha(#20222a, 0.8)
+			
+	.main-slider
+		max-height 53px
+		.owl-dots
+			display none
+		.owl-nav
+			height 21px
+			top 30%
+			pointer-events none
+			div
+				pointer-events auto
+			img
+				height 21px
+	.offers-content
+		padding-bottom 35px	
+
+	.offers-container
+		margin 0 -15px
+		padding 40px 0 20px
+	
+	.subheader
+		display none
+		
+	.offer-triggers-wrapper
+		align-items flex-start
+		
+	.offers-title
+		color #182a6f
+		font-size 16px
+		font-weight 700
+		margin-bottom 20px
+		
+	.offer-trigger
+		display block
+		width 25%
+		&__title
+			font-size 13px
+			font-weight 300
+			margin 0
+		&__icon
+			margin 0 auto 10px
+		&:after
+			top 130px
+			
+	.offer-content-container
+		padding 0
+		
+	.offer-content__img-container
+		display none
+		
+	.offer-content-info
+		margin 0
+		&__title
+			color #162451
+			font-size 20px
+			font-weight 500
+			box-shadow 5px 0 0 #fff200, -5px 0 0 #fff200
+			padding 5px 0
+		
+	.offer-content-info-title-wrapper
+		height 162px
+		margin 0 -15px
+		background-position center center
+		background-size cover
+		background-repeat no-repeat
+		padding 42px 0 0 25px
+		
+	.offer-content-info__description
+		font-size 14px
+		
+	.btn
+		color #f0f2f9
+		font-size 13px
+		font-weight 400
+		background-color #263b82
+		padding-left 10px
+		padding-right 10px
+		width 100%
+		
+	.popular-title
+		color #263b82
+		font-size 16px
+		font-weight 700
+		margin-bottom 25px
+		
+	.popular
+		padding 35px 0
+		
+	.popular-products
+		flex-direction column
+		
+	.popular-product
+		margin 0 auto 41px
+		&__title
+			font-size 14px
+			font-weight 400
+		&__icon
+			margin-bottom 30px
+		&:last-of-type
+			margin-bottom 0
+		&:hover
+			color #fff200
+			
+	.info-trigger
+		color #263b82
+		font-size 16px
+		font-weight 700
+		margin 0 8px
+		
+	.info-trigger-container
+		margin-bottom 25px
+		
+	.info
+		padding 45px 0 30px 
+	
+	.info-content__ajax-btn-container
+		display none
+		
+	.info-content-inner-container
+		.owl-dots
+			text-align center
+			width 100%
+			.owl-dot
+				width 8px
+				height 8px
+				display inline-block
+				vertical-align middle
+				background-color #d8dbe6
+				margin 0 6px
+				border-radius 50%
+				transition all .2s ease
+				&.active
+					background-color #263b82
+					
+	.footer-nav
+		flex-direction column
+		margin-bottom 15px
+		
+	.footer-nav-category
+		margin-bottom 25px
+		
+	.user
+		margin-bottom 30px
+				
+	.mobile-menu
+	.mobile-cities
+	.mobile-search
+		display block
+		background-color #123885
+		position fixed
+		top 0
+		right 0
+		bottom 0
+		overflow-y scroll
+		-webkit-overflow-scrolling touch
+		height 100%
+		transform translateX(100%)
+		transition all .3s ease
+		background-color #123885
+		width 90%
+		opacity 0
+		z-index 3
+		padding 20px 23px
+		&--active
+			transform translateX(0)
+			opacity 1
+		.main-links
+			display block
+			margin 0 -10px 40px
+		.header-link
+			color alpha(#fff, 0.2)
+			font-size 16px
+			font-weight 500
+			&--active
+				color #fff
+				font-size 16px
+				font-weight 500
+		.circle-btns
+		.city-contacts
+			display block !important
+		.circle-btns
+			margin-bottom 25px
+		.circle-btn
+			vertical-align middle
+			&__tooltip
+				display none
+			svg
+				vertical-align middle
+				
+	.mobile-cities
+	.mobile-search
+		width 100%
+		z-index 4
+			
+	.mobile-menu-bottom
+		position absolute
+		bottom 20px
+		left 15px
+		right 15px
+		
+			
+	.mobile-menu-close
+		position absolute
+		top 23px
+		right 23px
+		
+	.mobile-nav
+		margin-bottom 20px
+			
+	.mobile-nav-section
+		border-bottom 1px solid alpha(#f5f5f5, 0.2)
+		padding 10px 0
+		position relative
+		&__title
+			font-size 16px
+			font-weight 500
+			color #fff
+			transition all .2s ease
+			&[aria-expanded="true"]
+				color #fbf239
+		a
+			color #8cabe8
+			transition all .2s ease
+			display inline-block
+			font-size 14px
+			font-weight 400
+			text-decoration none !important
+			margin-bottom 5px
+			&:hover
+				color #fbf239
+		.collapse-container
+			padding-top 10px
+			display flex
+			flex-direction column
+		&__arrow
+			width 20px
+			height 20px
+			display inline-block
+			border-radius 50%
+			border 1px solid alpha(#fff, 0.2)
+			line-height 18px
+			text-align center
+			position absolute
+			right 0
+			top 12px
+			transition all .2s ease
+			svg
+				vertical-align middle
+			path
+				transition all .2s ease
+		[aria-expanded=true]
+			& + .mobile-nav-section__arrow
+				transform rotate(180deg)
+				path
+					fill #ede73d
+			
+	.mobile-menu-links
+		a
+			opacity 0.8
+			color #7a98d6
+			font-size 14px
+			font-weight 400
+			transition all .2s ease
+			text-decoration none !important
+			display inline-block
+			&:after
+				content '|'
+				display inline-block
+				vertical-align middle
+				margin 0 4px
+			&:last-of-type
+				&:after
+					display none
+			&:hover
+				opacity 1
+				color #fff
+				
+	.mobile-cities-trigger
+		color #fff
+		font-size 14px
+		font-weight 900
+		text-transform uppercase
+		&:after
+			content ''
+			display inline-block
+			margin-left 8px
+			width 6px
+			height 10px
+			background url('../img/icons/arrow-right--white.png')
+			
+	.mobile-cities-description
+		color #8cabe8
+		font-size 12px
+		font-weight 300
+		margin-bottom 20px
+			
+		
+	.mobile-search-close
+	.mobile-cities-close
+		display inline-block
+		vertical-align middle
+		
+	.mobile-screen-title
+		color #fff
+		font-size 16px
+		font-weight 500
+		margin-left 20px
+		display inline-block
+		vertical-align middle
+		
+	.mobile-screen-header
+		margin-bottom 40px
+		
+	.mobile-cities-list
+		list-style-type none
+		display flex
+		flex-wrap wrap
+		margin-right -25px
+		li
+			flex 1 0 calc(50% - 25px)
+			margin-right 25px
+		a
+			font-weight 400
+			color #fff
+			text-decoration none !important
+			transition all .2s ease
+			display inline-block
+			font-size 14px
+			line-height 24px
+			&:hover
+				color #fbf239
+		&--big
+			margin-bottom 20px
+			display block
+			a
+				font-size 16px
+				line-height 26px
+				
+	.mobile-search-input
+		background-color #f0f2f9
+		line-height 57px
+		background url(../img/icons/search.png) left 18px center no-repeat, linear-gradient(#f0f2f9,#f0f2f9)
+		padding 0 20px 0 45px
+		border none
+		display block
+		width 100%
+		
+	.modal-close
+		display none
+		position static
+		&--mobile
+			display inline-block
+			margin-right 15px
+		
+	.modal-title
+		color #123885
+		font-size 16px
+		font-weight 500
+		&__help
+			margin-left 12px
+		
+	.modal-trigger-container
+		width 100%
+		display block
+		
+	.modal-header
+		margin-bottom 28px
+		
+	.modal-dialog
+		padding 24px
+		width 100%
+		margin 0
+		height 100%
+		
+	.modal-trigger-container
+		display flex
+		justify-content space-between
+		margin-top 25px
+		height 34px
+		line-height inherit
+		position relative
+		
+	.modal-trigger
+		color #263b82
+		font-size 12px
+		font-weight 400
+		
+	.modal-form
+		padding 30px 17px
+		&__input
+			margin-bottom 15px
+			
+	.modal
+		height 100%
+		background #fff
+		&#call
+			.modal-trigger
+				line-height 12px
+				width 33.333%
+			.modal-trigger:first-of-type, .modal-trigger:last-of-type
+				padding inherit
+			.modal-trigger--middle
+				padding 0
+			.modal-form
+				&__input
+				&__label
+				&__textarea
+					width 100%
+					margin-right 0
+					margin-left 0
+				&__container
+					flex-wrap wrap
+		
+	
+				
+
+/*=====  End of mobile  ======*/
+
+
