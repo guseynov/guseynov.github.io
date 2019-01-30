@@ -6,7 +6,7 @@ $(function() {
         arrows: false,
         autoWidth: true,
         margin: 50,
-        center: true,
+        center: false,
         responsive: {
             0: {
                 items: 1
