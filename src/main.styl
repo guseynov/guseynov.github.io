@@ -1,0 +1,329 @@
+$gray = #231f1c
+$accent = #44ed98
+$accent2 = #6553f6
+
+*
+    box-sizing border-box
+h1
+    position relative
+
+body 
+    background-color $gray
+    color #fff
+    font-family 'Open Sans'
+    font-size 16px
+    overflow-x hidden
+
+.main
+    width 1200px
+    margin 30px auto
+    box-shadow 0 0 50px 0 rgba(0, 0, 0, 0.5)
+    background-color $gray
+    border-radius 10px
+    padding 60px 100px
+    position relative
+    overflow hidden
+
+.main-photo
+    width 300px
+    height 300px
+    border-radius 50%
+    overflow hidden
+    margin-right 60px
+
+.header
+    &__nav
+        margin-bottom 120px
+
+.header-nav-list
+    list-style-type none
+    display flex
+    padding 0
+    margin 0
+    &__item
+        margin-right 30px
+    &__btn
+        background none
+        border none 
+        padding 0
+        transition color .2s ease
+        color #fff
+        font-weight 600
+        cursor pointer
+        &:hover
+            color $accent
+
+.home
+    display flex
+    align-items center
+    margin-bottom 100px
+
+.home-info
+    &__heading
+        font-weight 600
+        font-size 42px
+        line-height 1.3
+        margin 0
+
+h2
+    font-size 32px
+    font-weight 400
+    padding 15px
+    display inline-block
+    margin 0
+    background-color $accent
+    color $gray
+
+.about
+    &__text
+        font-size 21px
+        font-weight 300
+        line-height 1.9
+        position relative
+        span
+            background-color $accent2
+            font-weight 800
+            padding 3px 10px
+            margin 0 5px
+            color $gray
+            border-radius 30px
+
+.workplace
+    padding-left 50px
+    margin-top 50px
+    position relative
+    &:before
+        content ''
+        width 15px
+        height 15px
+        border-radius 50%
+        display inline-block
+        position absolute
+        top 0
+        left -10px
+        border 3px solid $accent
+        background-color $gray
+        overflow hidden
+        z-index 1
+    &:after
+        content ''
+        display inline-block
+        position absolute
+        width 2px
+        top 0
+        left 0
+        bottom -50px
+        background-color $accent
+    &__title
+        font-size 24px
+        font-weight 400
+        display inline-block
+        margin 0
+        line-height 1
+    &__description
+        font-size 18px
+        line-height 1.5
+    &:last-child:after
+        bottom 0
+
+section
+    margin-bottom 100px
+    &:last-child
+        margin-bottom 0
+
+.circle
+    position absolute
+    border-radius 50%
+    z-index 0
+    &--1
+        background-color $accent
+        box-shadow 0 0 45px 0px $accent
+        top -150px
+        left 50%
+        width 500px
+        height 500px
+        transform translate3d(150px, 0, 0) 
+        animation-duration 5s
+        animation-name circle-1-animation
+        animation-iteration-count infinite
+        &.circle--outside
+            top -120px
+    &--2
+        background-color $accent2
+        box-shadow 0 0 20px 1px $accent2
+        width 300px
+        height 300px
+        top 800px
+        right 50%
+        transform translate3d(-400px, 0, 0)
+        animation-duration 3s
+        animation-name circle-2-animation
+        animation-iteration-count infinite
+        &.circle--outside
+            top 830px
+    &--3
+        background-color $accent
+        box-shadow 0 0 20px 1px $accent
+        width 600px
+        height 600px
+        top 1400px
+        right 50%
+        transform translate3d(850px, 0, 0)
+        animation-duration 5s
+        animation-name circle-3-animation
+        animation-iteration-count infinite
+        &.circle--outside
+            top 1430px
+
+@keyframes circle-1-animation {
+  0% {
+    transform translate3d(150px, 0, 0) 
+  }
+
+  50% {
+    transform translate3d(0, 150px, 0) 
+  }
+
+  100% {
+    transform translate3d(150px, 0, 0) 
+  }
+}
+
+@keyframes circle-2-animation {
+  0% {
+    transform translate3d(-400px, 0, 0) 
+  }
+
+  50% {
+    transform translate3d(-500px, 150px, 0) 
+  }
+
+  100% {
+    transform translate3d(-400px, 0, 0) 
+  }
+}
+
+@keyframes circle-3-animation {
+  0% {
+      transform translate3d(850px, 0, 0)
+  }
+
+  50% {
+      transform translate3d(1000px, -200px, 0)
+  }
+
+  100% {
+      transform translate3d(850px, 0, 0)
+  }
+}  
+
+.portfolio-inner
+    background #fff
+    box-shadow inset 0 0 25px 0 rgba(0, 0, 0, 0.9)
+    margin 30px -100px 0
+    padding 50px
+
+.portfolio-slide
+    transform scale(.8) translateZ(0)
+    display block
+    transition all .2s ease
+    img 
+        width 100%
+    &:hover
+        transform scale(1) translateZ(0)
+
+.glide__arrow
+    border 2px solid rgba(0,0,0,0.5)
+    color #000
+    &:hover
+        border-color #000
+
+.glide__bullets
+    bottom -15px
+
+.glide__bullet
+    background-color rgba(0,0,0,0.5)
+    &:hover
+    &:focus
+        border 2px solid #000
+        background-color rgba(0,0,0,0.5)
+    &--active
+        background-color #000
+
+.education
+    font-size 18px
+
+.contact-links
+    margin-top 30px
+    display flex
+
+.contact-link
+    margin-right 30px
+    width 60px
+    height 60px
+    border-radius 50%
+    background-color #0f98e9
+    background-image linear-gradient(48deg, #0f98e9 0, #00e4a0 50%, #0f98e9 100%)
+    background-position 0 94%
+    background-size 200% 200%
+    transition all .2s ease
+    display flex
+    align-items center
+    justify-content center
+    &:last-child
+        margin-right 0
+    &:hover
+    &:focus
+    &:active
+        text-decoration none
+        color #fff
+        background-color #00e4a0
+        background-position 100% 7%
+        box-shadow 0 0 0 0 transparent
+    img 
+        width 30px
+
+.box
+.sm-circle
+.triangle
+    width 50px
+    height 50px
+    position absolute
+    animation-duration 20s   
+    animation-name falling-animation
+
+
+.box
+    border 5px solid $accent2
+    box-shadow 0 0 50px 0 $accent2
+    transform rotate(30deg)
+
+.sm-circle
+    border-radius 50%
+    border 5px solid $accent
+    box-shadow 0 0 50px 0 $accent
+
+.triangle
+    clip-path polygon(50% 0, 0 100%, 100% 100%)
+    box-shadow 0 0 50px 0 $accent2
+    background $accent2
+    display flex
+    align-items center
+    justify-content center
+    transform rotate(60deg)
+    &__inner
+        width 30px
+        height 30px
+        background $gray
+        clip-path polygon(50% 0, 0 100%, 100% 100%)
+        transform translateY(3px)
+
+@keyframes falling-animation {
+  0% {
+      top 0%
+  }
+
+  100% {
+      top 100%
+  }
+}

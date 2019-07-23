@@ -1,0 +1,151 @@
+html
+    head
+        title Ahmed Guseynov — a frontend web developer from St. Petersburg, Russia
+        link(rel="icon", type="image/png", sizes="32x32", src=require('./img/favicon-32x32.png'))
+        link(rel="icon", type="image/png", sizes="16x16", src=require('./img/favicon-16x16.png'))
+        link(rel="shortcut icon", src=require('./img/favicon.ico'))
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap")
+    body
+        .circle.circle--1.circle--outside
+        .circle.circle--2.circle--outside
+        .circle.circle--3.circle--outside
+        main.main
+            .circle.circle--1
+            .circle.circle--2
+            .circle.circle--3
+            header.header
+                .container
+                    nav.header__nav
+                        ul.header__nav-list.header-nav-list
+                            li.header-nav-list__item
+                                button.header-nav-list__btn Home
+                            li.header-nav-list__item
+                                button.header-nav-list__btn About me
+                            li.header-nav-list__item
+                                button.header-nav-list__btn Work
+                            li.header-nav-list__item
+                                button.header-nav-list__btn Education
+                            li.header-nav-list__item
+                                button.header-nav-list__btn Portfolio
+                            li.header-nav-list__item
+                                button.header-nav-list__btn Contact
+            section.home#home
+                .home-photo-container
+                    img.main-photo(src=require('./img/photo.jpg'))
+                .home-info
+                    h1.home-info__heading
+                        | Hello 👋
+                        br
+                        | I'm Ahmed, a frontend web developer who creates modern websites and web applications
+
+            section.about#about
+                h2 About me
+                p.about__text
+                    | I've been working as a frontend engineer for more than
+                    span three years
+                    | and now I'm searching for a position that would allow me to grow as a professional, use the latest technologies and techniques. Preferably I would love to participate in construction and maintenance of a modern, complex single page application. I write semantic
+                    span HTML5
+                    | markup, use
+                    span CSS3
+                    | techniques for implementing complex responsive designs and animations, build pixel-perfect pages and use
+                    span JavaScript
+                    | with popular libraries to create fast, functional and dynamic applications. I have no working experience with
+                    span React
+                    | , but I'm currently learning React/Redux stack and willing to gain experience. In my workflow I use
+                    span npm
+                    | modules,
+                    span git
+                    | for version control,
+                    span pug
+                    | as a template engine,
+                    span Stylus
+                    |,
+                    span SASS
+                    | or
+                    span LESS
+                    | as style preprocessors,
+                    span BEM
+                    | methodology as a naming convention,
+                    span React
+                    | as the main JS library and
+                    span Webpack
+                    | for generating the final product.
+
+            section.work#work
+                h2 Working experience
+                .workplace
+                    h3.workplace__title RoyalMark
+                    p.workplace__period  March 2015 to May 2017
+                    p.workplace__description
+                        | At RoyalMark most of my projects were landing pages. There I usually created responsive pixel perfect web-pages using design mockups, made them interactive and capable of sending and receiving necessary information using APIs of the server.
+                .workplace
+                    h3.workplace__title Netrika
+                    p.workplace__period  June 2017 to November 2018
+                    p.workplace__description
+                        | At Netrika I was dealing with updating and upgrading existing websites, sometimes making some relatively small projects from scratch. It was hard to grow professionally while working there, which is important for me, so I decided to quit.
+                .workplace
+                    h3.workplace__title Freelancer
+                    p.workplace__period  November 2018 — now 
+            
+            section.education#education
+                h2 Education
+                p I graduated from Herzen University in 2017 as a Bachelor of Computer Science
+            
+            section.portfolio#portfolio
+                h2 Portfolio
+                .portfolio-inner
+                    .portfolio-slider.glide
+                        .glide__track(data-glide-el="track")
+                            ul.glide__slides
+                                li.glide__slide
+                                    a.portfolio-slide(href="http://festivalstudio.ru", target="_blank")
+                                        img(src=require('./img/portfolio_2.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="projects/landing", target="_blank")
+                                        img(src=require('./img/portfolio_7.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="http://nbt-prim.ru", target="_blank")
+                                        img(src=require('./img/portfolio_3.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="http://optgeneticlab.ru", target="_blank")
+                                        img(src=require('./img/portfolio_4.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="projects/sz", target="_blank")
+                                        img(src=require('./img/portfolio_6.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="projects/delo", target="_blank")
+                                        img(src=require('./img/portfolio_8.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="projects/loginova", target="_blank")
+                                        img(src=require('./img/portfolio_9.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="projects/delivery", target="_blank")
+                                        img(src=require('./img/portfolio_10.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="projects/ag", target="_blank")
+                                        img(src=require('./img/portfolio_11.jpg'))
+                                li.glide__slide
+                                    a.portfolio-slide(href="projects/ff", target="_blank")
+                                        img(src=require('./img/portfolio_12.jpg'))
+                        .glide__bullets(data-glide-el="controls[nav]")
+                            .glide__bullet(data-glide-dir="=0")
+                            .glide__bullet(data-glide-dir="=1")
+                            .glide__bullet(data-glide-dir="=2")
+                            .glide__bullet(data-glide-dir="=3")
+                            .glide__bullet(data-glide-dir="=4")
+                            .glide__bullet(data-glide-dir="=5")
+                            .glide__bullet(data-glide-dir="=6")
+                            .glide__bullet(data-glide-dir="=7")
+                            .glide__bullet(data-glide-dir="=8")
+                            .glide__bullet(data-glide-dir="=9")
+            section.contact#contact
+                h2 Contact me
+                .contact-links
+                    a.contact-link(href="mailto:ahmed.guseynov.23@gmail.com", target="_blank")
+                        img(src=require('./img/at.svg'))
+                    a.contact-link(href="https://msng.link/tg/ahmedguseynov")
+                        img(src=require('./img/telegram.svg'))
+                    a.contact-link(href="https://msng.link/wa/79110191285")
+                        img(src=require('./img/whatsapp.svg'))
+                    a.contact-link(href="https://msng.link/sk/ahmed.guseynov.23")
+                        img(src=require('./img/skype.svg'))
