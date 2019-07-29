@@ -4,6 +4,10 @@ $accent2 = #6553f6
 
 *
     box-sizing border-box
+
+html
+body 
+    overflow-x hidden
 h1
     position relative
 
@@ -13,6 +17,8 @@ body
     font-family 'Open Sans'
     font-size 16px
     overflow-x hidden
+    position relative
+    padding-bottom 100px
 
 .main
     width 1200px
@@ -56,7 +62,6 @@ body
 .home
     display flex
     align-items center
-    margin-bottom 100px
 
 .home-info
     &__heading
@@ -67,12 +72,13 @@ body
 
 h2
     font-size 32px
-    font-weight 400
-    padding 15px
-    display inline-block
+    font-weight 300
     margin 0
     background-color $accent
     color $gray
+    padding 7px 20px
+    display inline-block
+    border-radius 7px
 
 .about
     &__text
@@ -87,6 +93,7 @@ h2
             margin 0 5px
             color $gray
             border-radius 30px
+            white-space nowrap
 
 .workplace
     padding-left 50px
@@ -218,58 +225,40 @@ section
 }  
 
 .portfolio-inner
-    background #fff
-    box-shadow inset 0 0 25px 0 rgba(0, 0, 0, 0.9)
-    margin 30px -100px 0
-    padding 50px
+    margin 0 -100px
 
 .portfolio-slide
-    transform scale(.8) translateZ(0)
     display block
-    transition all .2s ease
+    position relative
     img 
         width 100%
-    &:hover
-        transform scale(1) translateZ(0)
-
-.glide__arrow
-    border 2px solid rgba(0,0,0,0.5)
-    color #000
-    &:hover
-        border-color #000
-
-.glide__bullets
-    bottom -15px
-
-.glide__bullet
-    background-color rgba(0,0,0,0.5)
-    &:hover
-    &:focus
-        border 2px solid #000
-        background-color rgba(0,0,0,0.5)
-    &--active
-        background-color #000
+        position relative
+        z-index 1
+    &:after
+        width 100px
+        height 100px
+        content ''
+        display block
+        position absolute
+        top 0
+        left 35px
+        border-radius 50%
+        background-color $accent2
 
 .education
     font-size 18px
 
 .contact-links
-    margin-top 30px
+    margin-top 45px
     display flex
 
 .contact-link
     margin-right 30px
-    width 60px
-    height 60px
-    border-radius 50%
-    background-color #0f98e9
-    background-image linear-gradient(48deg, #0f98e9 0, #00e4a0 50%, #0f98e9 100%)
-    background-position 0 94%
-    background-size 200% 200%
     transition all .2s ease
     display flex
     align-items center
     justify-content center
+    position relative
     &:last-child
         margin-right 0
     &:hover
@@ -277,53 +266,91 @@ section
     &:active
         text-decoration none
         color #fff
-        background-color #00e4a0
-        background-position 100% 7%
-        box-shadow 0 0 0 0 transparent
     img 
         width 30px
-
+        position relative
+        z-index 1
+    &:after
+        content ''
+        display inline-block
+        width 60px
+        height 60px
+        position absolute
+        opacity 0
+        top 50%
+        left 50%
+        margin -30px 0 0 -30px
+        border-radius 50%
+        background-size 200% 200%
+        background-color #00e4a0
+        background-position 100% 7%
+        transition all .2s ease
+        background-image linear-gradient(48deg, #0f98e9 0, #00e4a0 50%, #0f98e9 100%)
+    &:hover:after 
+        opacity 1
 .box
 .sm-circle
 .triangle
     width 50px
     height 50px
     position absolute
-    animation-duration 20s   
+    animation-duration 40s   
     animation-name falling-animation
+    animation-timing-function linear
+    transform translate3d(0, 0, 0) rotate(0)
+    top -10%
 
 
 .box
     border 5px solid $accent2
     box-shadow 0 0 50px 0 $accent2
-    transform rotate(30deg)
 
 .sm-circle
     border-radius 50%
     border 5px solid $accent
     box-shadow 0 0 50px 0 $accent
 
-.triangle
-    clip-path polygon(50% 0, 0 100%, 100% 100%)
-    box-shadow 0 0 50px 0 $accent2
-    background $accent2
-    display flex
-    align-items center
-    justify-content center
-    transform rotate(60deg)
-    &__inner
-        width 30px
-        height 30px
-        background $gray
-        clip-path polygon(50% 0, 0 100%, 100% 100%)
-        transform translateY(3px)
+@keyframes falling-animation
+    0%
+        top -10%
 
-@keyframes falling-animation {
-  0% {
-      top 0%
-  }
+    90%
+        opacity 1
 
-  100% {
-      top 100%
-  }
-}
+    100%
+        top 90%
+        opacity 0
+        transform translate3d(0, 0, 0) rotate(360deg)
+
+.glide__bullets
+    bottom 0
+
+@media screen and (max-width: 1200px)
+    .main
+        width 100%
+        margin 30px 0
+        border-radius 0
+
+@media screen and (max-width: 767px)
+    body 
+        padding-bottom 0
+    .main
+        padding 60px 15px
+    .home
+        flex-direction column
+    .header
+        display none
+    section
+        margin-bottom 30px
+    .main-photo
+        margin 0 0 15px
+    .home-info
+        &__heading
+            font-size 28px
+            text-align center
+    .about__text
+        font-size 16px
+    h2
+        font-size 28px
+    .workplace
+        padding-left 25px
