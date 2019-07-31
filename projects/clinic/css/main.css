@@ -514,6 +514,7 @@ h2.about__title {
 a.about__link {
     font-size: 16px;
     font-weight: 600;
+    color: #100f0f;
 }
 
 .about__link img {

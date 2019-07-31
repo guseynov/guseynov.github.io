@@ -66,4 +66,10 @@ $(document).ready(function() {
             that.next('.header-menu-item__dropdown').toggleClass('active');
         }
     });
+
+    $('.show-map').click(function(e) {
+        e.preventDefault();
+        $('.mobile-menu').removeClass('active');
+        $(window).scrollTop($('section.map').offset().top);
+    });
 });
