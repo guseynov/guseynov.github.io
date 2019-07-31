@@ -34,7 +34,7 @@
             <div class="col-8">
               <nav class="header-menu">
                 <ul class="header-menu__list">
-                  <li class="header-menu__item header-menu-item"><a href="">Программы</a>
+                  <li class="header-menu__item header-menu-item"><a href="" data-link="0">Программы</a>
                     <ul class="header-menu-item__dropdown">
                       <li class="header-menu-item__subitem"> <a href="">Однодневные</a></li>
                       <li class="header-menu-item__subitem"> <a href="">Пятидневные</a></li>
@@ -50,7 +50,7 @@
             </div>
             <div class="col-2">
               <div class="header-phone"><a class="header-phone-link" href="tel:+78126797707">8 (812) 679-77-07</a>
-                <button class="callback-btn dashed">Заказать звонок</button>
+                <button class="callback-btn dashed" data-toggle="modal" data-target="#callback-modal">Заказать звонок</button>
               </div>
             </div>
           </div>
@@ -110,7 +110,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-6"><a class="mobile-menu-help__subtitle" href="tel:+78126797707">8 (812) 679-77-07</a><a class="dashed dashed--sm">Заказать звонок</a></div>
+            <div class="col-6"><a class="mobile-menu-help__subtitle" href="tel:+78126797707">8 (812) 679-77-07</a><a class="dashed dashed--sm" data-toggle="modal" data-target="#callback-modal">Заказать звонок</a></div>
             <div class="col-6">
               <p class="mobile-menu-help__subtitle">ул. Беринга 5А, пом. 44Н</p><a class="dashed dashed--sm">Показать на карте</a>
             </div>
@@ -130,10 +130,10 @@
     <div class="row">
       <div class="offset-xl-2 col-xl-8 text-center">
         <h1 class="top-screen__title">Десятидневная оздоровительная программа</h1>
-        <button class="scroll-btn"><img src="img/icons/point.svg" alt=""/></button>
       </div>
     </div>
   </div>
+  <button class="scroll-btn"><img src="img/icons/point.svg" alt=""/></button>
 </section>
 <section class="program-desc">
   <div class="container">
@@ -381,6 +381,62 @@
     </div>
   </div>
 </footer>
+<div class="modal fade" id="callback-modal" tabindex="-1" role="dialog" aria-labelledby="callback-modal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="square-decor square-decor--green">
+        <div class="square-decor__inner square-decor__inner--top"></div>
+        <div class="square-decor__inner square-decor__inner--bottom"></div>
+      </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Перезвоните мне</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <form class="modal-body">
+        <p class="modal-desc">Введите номер и мы свяжемся с вами в течение 10 минут.</p>
+        <input type="tel" placeholder="+7"/>
+        <button class="btn" type="submit">Отправить форму</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="callback-success-modal" tabindex="-1" role="dialog" aria-labelledby="callback-success-modal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="square-decor square-decor--green">
+        <div class="square-decor__inner square-decor__inner--top"></div>
+        <div class="square-decor__inner square-decor__inner--bottom"></div>
+      </div>
+      <div class="modal-header text-center">
+        <h5 class="modal-title">Спасибо за обращение!</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="modal-desc">Мы свяжемся с вами в течение 10 минут.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="booking-modal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="square-decor square-decor--green">
+        <div class="square-decor__inner square-decor__inner--top"></div>
+        <div class="square-decor__inner square-decor__inner--bottom"></div>
+      </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Запись на прием</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <form class="modal-body">
+        <p class="modal-desc">Заполните форму и мы подберем для вас удобные даты.</p>
+        <input type="text" placeholder="Иван Иванович"/>
+        <input type="tel" placeholder="+7"/>
+        <button class="btn" type="submit">Записаться</button>
+      </form>
+    </div>
+  </div>
+</div>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

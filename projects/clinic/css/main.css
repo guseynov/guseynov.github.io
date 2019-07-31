@@ -25,6 +25,7 @@ h1 {
 h2 {
     font-size: 48px;
     line-height: 56px;
+    display: inline-block;
 }
 
 h3 {
@@ -34,20 +35,14 @@ h3 {
 
 .heading-decor-left {
     display: inline-block;
-    left: -90px;
-    top: 50%;
-    margin-top: -3px;
     vertical-align: middle;
-    position: absolute;
+    margin: 0px 10px 0 0;
 }
 
 .heading-decor-right {
     display: inline-block;
-    right: -45px;
-    top: 50%;
-    margin-top: -1px;
     vertical-align: middle;
-    position: absolute;
+    margin: 0px 0 0 10px;
 }
 
 .heading-decor-left:after {
@@ -124,8 +119,8 @@ h3 {
     height: 48px;
     padding: 0;
     color: #100f0f !important;
-    background: #d2a56c;
-    border: 2px solid #100f0f;
+    background: #d2a56c !important;
+    border: 2px solid #100f0f !important;
     position: relative;
     border-radius: 0;
 }
@@ -262,7 +257,7 @@ button.callback-btn {
 .top-screen {
     background: url('../img/backgrounds/top-screen.jpg') center center /cover no-repeat;
     color: #fff;
-    padding: 65px 0 80px;
+    padding: 65px 0 200px;
     position: relative;
     margin-bottom: 65px;
 }
@@ -299,6 +294,13 @@ button.callback-btn {
 img.advantage__icon {
     width: 193px;
     margin-bottom: 45px;
+}
+
+.scroll-btn {
+    animation-duration: 1s;
+    animation-name: scroll;
+    animation-iteration-count: infinite;
+    pointer-events: none;
 }
 
 .advantage {
@@ -430,6 +432,7 @@ p.recovery-program__price {
     left: 7px;
     pointer-events: none;
     border: 2px solid #fff;
+    z-index: 999;
 }
 
 .square-decor__inner--top:before,
@@ -440,6 +443,21 @@ p.recovery-program__price {
     width: 10px;
     height: 10px;
     border: 2px solid #fff;
+    position: absolute;
+}
+
+.square-decor--green {
+    border-color: #d2a56c;
+}
+
+.square-decor--green .square-decor__inner--top:before,
+.square-decor--green .square-decor__inner--top:after,
+.square-decor--green .square-decor__inner--bottom:before,
+.square-decor--green .square-decor__inner--bottom:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 2px solid #d2a56c;
     position: absolute;
 }
 
@@ -688,6 +706,7 @@ p.review__date {
 section.questions {
     color: #fff;
     padding: 120px 0;
+    margin-top: 40px;
 }
 
 h2.questions__title {
@@ -854,14 +873,7 @@ p.copyright {
     left: -100px;
 }
 
-.about .heading-decor-left {
-    left: -100px;
-}
-
-.certificates .heading-decor-left {
-    top: 35px;
-    left: -95px;
-}
+.certificates .heading-decor-left {}
 
 .header-menu-item {
     position: relative;
@@ -884,7 +896,7 @@ p.copyright {
     border-top: 2px solid #d2a56c;
 }
 
-.header-menu-item:hover .header-menu-item__dropdown {
+.header-menu-item__dropdown.active {
     opacity: 1;
     pointer-events: auto;
 }
@@ -1186,32 +1198,37 @@ h2.program-step__title {
     color: #202020;
 }
 
-.program-step__title--left {
+.program-step__title--left,
+.about-us-fact__title--left {
     padding-left: 39px;
 }
 
-.program-step--left {
+.program-step--left,
+.about-us-fact--left {
     padding-left: 100px;
 }
 
-p.program-step__desc {
+p.program-step__desc,
+p.about-us-fact__desc {
     font-size: 20px;
     font-weight: 300;
+    margin-top: 10px;
 }
 
-p.program-step__additional {
+p.program-step__additional,
+p.about-us-fact__additional {
     font-weight: 300;
     color: #9a958d;
 }
 
-img.program-step-image {
+img.program-step-image,
+img.about-us-fact-image {
     width: 100%;
     margin-bottom: 80px;
 }
 
-h2.program-step__title {}
-
-.program-step.program-step--right {
+.program-step.program-step--right,
+.about-us-fact.about-us-fact--right {
     padding-left: 100px;
 }
 
@@ -1404,6 +1421,317 @@ h2.all-inclusive__title {
     margin-bottom: 80px;
 }
 
+.specialists__title .heading-decor-left {
+    left: 429px;
+}
+
+img.specialist__photo {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+p.specialist__name {
+    color: #100f0f;
+    font-family: "Playfair Display";
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+p.specialist__position {
+    color: #100f0f;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.specialist {
+    padding-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.specialist:before {
+    content: '';
+    height: 2px;
+    width: 100%;
+    display: block;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    background-color: #d2a56c;
+}
+
+.specialist:after {
+    content: '';
+    height: 16px;
+    width: 16px;
+    display: block;
+    bottom: -6px;
+    right: 0;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #fff;
+    border: 2px solid #d2a56c;
+}
+
+.specialist .dashed {
+    font-size: 16px;
+}
+
+body.page-404 {
+    background: url('../img/backgrounds/pattern.jpg');
+    color: #fff;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+a.btn {
+    line-height: 44px;
+}
+
+h1.page-404__title {
+    margin-bottom: 50px;
+    font-size: 283px;
+    line-height: 1;
+}
+
+h2.page-404__subtitle {
+    margin-bottom: 60px;
+}
+
+.infrastructure-carousel .owl-dots {
+    margin-top: 35px;
+    text-align: center;
+}
+
+section.infrastructure {
+    margin-bottom: 50px;
+}
+
+.about-us-fact {
+    margin-bottom: 70px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.about-us-wrapper {
+    padding-top: 75px;
+}
+
+.requisites {
+    border: 1px solid #d2a56c;
+    padding: 20px 90px;
+    margin: 50px 0 130px;
+}
+
+.scroll-btn {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    margin-left: -28px;
+}
+
+p.contacts__address {
+    font-size: 20px;
+    color: #140f0c;
+    border-bottom: 1px solid #d2a56c;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+h2.contacts__title {}
+
+p.contacts__hours {
+    color: #202020;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.contacts__title a {
+    color: #202020;
+    padding: 10px 0;
+    display: inline-block;
+}
+
+p.requisites__title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+p.requisites__desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+input.contacts-form__input {
+    display: block;
+    width: 100%;
+    margin-top: 45px;
+    border-width: 0 0 1px;
+    border-bottom: 1px solid #202020;
+}
+
+input.contacts-form__input:last-of-type {
+    margin-bottom: 90px;
+}
+
+.modal-dialog {
+    width: 90%;
+    max-width: 1400px;
+}
+
+img.specialist-modal__photo {
+    margin-left: -15px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.modal-header .close {
+    font-size: 42px;
+}
+
+p.specialist-modal__title {
+    color: #202020;
+    font-family: "Playfair Display";
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+p.specialist-modal__position {
+    color: #100f0f;
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.specialist-modal__header {
+    border-bottom: 2px solid #d2a56c;
+    position: relative;
+    z-index: 1;
+}
+
+.specialist-header-wrapper:after {
+    border: 2px solid #d2a56c;
+    content: '';
+    position: absolute;
+    width: 16px;
+    background: #fff;
+    bottom: -8px;
+    right: 0;
+    border-radius: 50%;
+    height: 16px;
+}
+
+.specialist-modal__body {
+    padding-top: 30px;
+    font-size: 20px;
+    height: 560px;
+    overflow-y: scroll;
+}
+
+ul.specialist-modal__list {
+    padding-left: 20px;
+}
+
+p.specialist-modal__price {
+    margin: 0;
+}
+
+.specialist-modal__body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.specialist-modal__body::-webkit-scrollbar-track {
+    width: 1px;
+    background-color: rgba(155, 152, 146, 0.5);
+}
+
+.specialist-modal__body::-webkit-scrollbar-thumb {
+    background-color: #9b9892;
+    height: 140px;
+    width: 5px;
+    border-radius: 20px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 0;
+}
+
+#callback-modal .modal-dialog,
+#callback-success-modal .modal-dialog,
+#booking-modal .modal-dialog {
+    width: 780px;
+}
+
+.modal-header {
+    border: none;
+    padding: 0;
+}
+
+#callback-modal .modal-content,
+#callback-success-modal .modal-content,
+#booking-modal .modal-content {
+    padding: 80px 130px;
+}
+
+#callback-modal button.close,
+#callback-success-modal button.close,
+#booking-modal button.close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.modal h5 {
+    color: #202020;
+    font-family: "Playfair Display";
+    font-size: 36px;
+    font-weight: 700;
+    width: 100%;
+    display: block;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+p.modal-desc {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.modal input {
+    display: block;
+    width: 100%;
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #202020;
+    margin-bottom: 60px;
+}
+
+@keyframes scroll {
+    from {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(0, 50px);
+        opacity: 0;
+    }
+}
+
 @media screen and (min-width: 1630px) {
     .container {
         max-width: 1600px;
@@ -1419,6 +1747,9 @@ h2.all-inclusive__title {
     }
     a.header-phone-link {
         font-size: 16px;
+    }
+    .about-us-fact.about-us-fact--right {
+        padding-left: 0;
     }
     button.callback-btn.dashed {
         font-size: 16px;
@@ -1438,8 +1769,10 @@ h2.all-inclusive__title {
         font-size: 21px;
     }
     h2 {
-        font-size: 34px;
+        font-size: 24px;
         line-height: 1.2;
+        margin-bottom: 0;
+        vertical-align: middle;
     }
     p.recovery-program-hover__title {
         font-size: 32px;
@@ -1586,7 +1919,7 @@ h2.all-inclusive__title {
         margin: 0;
     }
     h1.top-screen__title {
-        font-size: 20px;
+        font-size: 32px;
         line-height: 1.2;
         margin-bottom: 15px;
     }
@@ -1595,17 +1928,11 @@ h2.all-inclusive__title {
     }
     h2.recovery__title {
         font-size: 18px;
-        margin: 15px;
-    }
-    span.heading-decor-left {
-        left: -15px;
+        margin-bottom: 0;
     }
     .heading-decor-left:before {
         width: 19px;
         height: 1px;
-    }
-    span.heading-decor-right {
-        right: 30px;
     }
     .heading-decor-right:after {
         width: 19px;
@@ -1613,7 +1940,7 @@ h2.all-inclusive__title {
     }
     p.recovery__desc {
         font-size: 10px;
-        margin-bottom: 25px;
+        margin: 15px 0 25px;
         line-height: 16px;
     }
     .recovery-program {
@@ -1781,7 +2108,7 @@ h2.all-inclusive__title {
         width: 33px;
     }
     section.top-screen {
-        padding: 80px 0 40px;
+        padding: 40px 0;
         margin-bottom: 30px;
     }
     button.header-mobile__burger {
@@ -1793,6 +2120,7 @@ h2.all-inclusive__title {
     .advantage {
         padding: 0;
         margin-bottom: 30px;
+        text-align: left;
     }
     section.advantages {
         margin-bottom: 10px;
@@ -1896,9 +2224,6 @@ h2.all-inclusive__title {
     .footer-mobile-top p {
         margin-top: 15px;
     }
-    .recovery .heading-decor-right {
-        right: -10px;
-    }
     .about .heading-decor-right {
         right: 60px;
     }
@@ -1971,4 +2296,108 @@ h2.all-inclusive__title {
     li.all-inclusive-list__item {
         margin-bottom: 5px;
     }
+    span.heading-decor-left {
+        margin: 0px 0px 0 0;
+        display: none;
+    }
+    span.heading-decor-right {
+        margin: 0 0 0 0px;
+        display: none;
+    }
+    h2.specialists__title {
+        margin-bottom: 0;
+    }
+    p.specialist__name {
+        font-size: 16px;
+    }
+    p.specialist__position {
+        font-size: 10px;
+        color: #9b9892;
+    }
+    .specialist .dashed {
+        font-size: 12px;
+    }
+    .specialist {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    h1.page-404__title {
+        font-size: 150px;
+    }
+    .program-step--left,
+    .about-us-fact--left {
+        padding: 0;
+    }
+    .program-step--left,
+    .about-us-fact--left {
+        padding: 0;
+    }
+    .about-us-wrapper {
+        padding-top: 20px;
+    }
+    img.program-step-image,
+    img.about-us-fact-image {
+        margin-bottom: 20px;
+    }
+    p.program-step__desc,
+    p.about-us-fact__desc {
+        font-size: 14px;
+    }
+    .about-us-fact {
+        margin-bottom: 30px;
+    }
+    .specialist-modal__photo-wrapper {
+        height: 300px;
+        background-size: cover;
+        margin: 0 -15px 15px;
+    }
+    .modal-dialog {
+        width: auto;
+    }
+    button.close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        font-size: 32px;
+    }
+    .modal-header.specialist-modal__header {
+        padding: 0;
+    }
+    p.specialist-modal__title {
+        font-size: 16px;
+    }
+    p.specialist-modal__position {
+        color: #9b9892;
+        font-size: 10px;
+        font-weight: 300;
+        margin-bottom: 10px;
+    }
+    .modal-body.specialist-modal__body {
+        font-size: 10px;
+        padding: 15px 0;
+        height: auto;
+        overflow: visible;
+    }
+    p.specialist-modal__price {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    #callback-modal .modal-dialog,
+    #callback-success-modal .modal-dialog,
+    #booking-modal .modal-dialog {
+        width: 100%;
+    }
+    #callback-modal .modal-content,
+    #callback-success-modal .modal-content,
+    #booking-modal .modal-content {
+        padding: 50px;
+    }
+    h5.modal-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+}
+
+#callback-success-modal p.modal-desc {
+    margin-bottom: 0;
 }

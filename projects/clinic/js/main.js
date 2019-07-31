@@ -35,6 +35,17 @@ $(document).ready(function() {
         }
     });
 
+    $('.infrastructure-carousel').owlCarousel({
+        startPosition: 1,
+        items: 1,
+        margin: 30,
+        responsive: {
+            1200: {
+                stagePadding: 300
+            }
+        }
+    });
+
     $('.header-mobile__burger').click(function() {
         $('.mobile-menu').addClass('active');
     });
@@ -46,5 +57,13 @@ $(document).ready(function() {
     $('.read-more').click(function() {
         $('.mission-toggle').css('max-height', 'none');
         $('.read-more').remove();
+    });
+
+    $('.header-menu-item a').click(function(e) {
+        if ($(this).attr('data-link') === '0') {
+            e.preventDefault();
+            var that = $(this);
+            that.next('.header-menu-item__dropdown').toggleClass('active');
+        }
     });
 });
