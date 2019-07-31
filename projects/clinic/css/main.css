@@ -372,11 +372,13 @@ section.mission {
 }
 
 h2.recovery__title {
-    margin-bottom: 35px;
+    /* vertical-align: middle; */
+    /* display: inline-block; */
 }
 
 p.recovery__desc {
     margin-bottom: 85px;
+    margin-top: 35px;
 }
 
 .recovery-program {
@@ -494,6 +496,7 @@ section.care {
 
 h2.care__title {
     font-size: 36px;
+    margin-bottom: 20px;
 }
 
 p.care__desc {
@@ -644,9 +647,7 @@ a.about__link {
     margin: 36px 0 0 160px;
 }
 
-.certificates__title {
-    margin: 65px 0 35px 0;
-}
+.certificates__title {}
 
 .certificates {
     margin-bottom: 95px;
@@ -1181,6 +1182,7 @@ section.program-full-desc {
 h2.program-steps__title {
     text-align: center;
     margin-bottom: 90px;
+    font-size: 48px;
 }
 
 .program-steps__title span.heading-decor-left {
@@ -1517,10 +1519,6 @@ section.infrastructure {
     margin-bottom: 70px;
 }
 
-.nowrap {
-    white-space: nowrap;
-}
-
 .about-us-wrapper {
     padding-top: 75px;
 }
@@ -1616,7 +1614,7 @@ p.specialist-modal__position {
 }
 
 .specialist-modal__header {
-    border-bottom: 2px solid #d2a56c;
+    border-bottom: 2px solid #d2a56c !important;
     position: relative;
     z-index: 1;
 }
@@ -1634,7 +1632,7 @@ p.specialist-modal__position {
 }
 
 .specialist-modal__body {
-    padding-top: 30px;
+    padding-top: 30px !important;
     font-size: 20px;
     height: 560px;
     overflow-y: scroll;
@@ -1721,6 +1719,49 @@ p.modal-desc {
     margin-bottom: 60px;
 }
 
+#callback-success-modal p.modal-desc {
+    margin-bottom: 0;
+}
+
+.specialist-header-wrapper {
+    padding: 15px 0;
+}
+
+.specialist-header-wrapper button.close {
+    margin: 0;
+}
+
+.specialist-modal__header button.close {
+    margin: 0;
+}
+
+p.certificates__desc {
+    margin-top: 20px;
+}
+
+.heading-line-left:before,
+.heading-line-right:before,
+.heading-line-both:before,
+.heading-line-both:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 66px;
+    height: 16px;
+}
+
+.heading-line-left:before,
+.heading-line-both:before {
+    margin-right: 30px;
+    background: url('../img/icons/decor-left.svg');
+}
+
+.heading-line-right:after,
+.heading-line-both:after {
+    margin-left: 30px;
+    background: url('../img/icons/decor-right.svg');
+}
+
 @keyframes scroll {
     from {
         transform: translate(0, 0);
@@ -1741,6 +1782,14 @@ p.modal-desc {
 @media screen and (max-width: 1629px) {
     img.rules__icon {
         width: 100% !important;
+    }
+    .program-step--left,
+    .about-us-fact--left {
+        padding: 0;
+    }
+    .program-step.program-step--right,
+    .about-us-fact.about-us-fact--right {
+        padding: 0;
     }
     .program-point__num:after {
         width: 250px;
@@ -1803,9 +1852,7 @@ p.modal-desc {
     img.certificate {
         width: 100%;
     }
-    h2.certificates__title {
-        margin: 0 0 20px 0;
-    }
+    h2.certificates__title {}
     body {
         font-size: 18px;
     }
@@ -1832,8 +1879,31 @@ p.modal-desc {
         font-size: 10px;
         margin: 25px 0;
     }
+    button.scroll-btn {
+        bottom: 20px;
+    }
+    .heading-line-both:before,
+    .heading-line-both:after,
+    .heading-line-left:before,
+    .heading-line-right:after {
+        display: none;
+    }
+    p.program-point__additional {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    p.all-inclusive__desc {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    p.program-point__additional {
+        font-size: 14px;
+    }
     .program-desc p {
         margin-bottom: 0;
+    }
+    button.scroll-btn {
+        bottom: 20px;
     }
     section.program-full-desc {
         font-size: 10px;
@@ -1850,6 +1920,7 @@ p.modal-desc {
     }
     h2.program-steps__title {
         margin-bottom: 25px;
+        font-size: 21px;
     }
     img.program-step-image {
         margin-bottom: 25px;
@@ -1919,7 +1990,7 @@ p.modal-desc {
         margin: 0;
     }
     h1.top-screen__title {
-        font-size: 32px;
+        font-size: 21px;
         line-height: 1.2;
         margin-bottom: 15px;
     }
@@ -2271,10 +2342,11 @@ p.modal-desc {
         display: none;
     }
     p.program-point__title {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        font-size: 18px;
     }
     p.program-point__desc {
-        font-size: 16px;
+        font-size: 12px;
     }
     ul.program-point__list.program-point-list {
         font-size: 14px;
@@ -2286,8 +2358,9 @@ p.modal-desc {
         margin-bottom: 25px;
     }
     h2.all-inclusive__title {
-        font-size: 24px;
-        margin-top: 20px;
+        font-size: 21px;
+        margin: 20px auto;
+        display: block;
     }
     ul.all-inclusive__list.all-inclusive-list {
         font-size: 14px;
@@ -2385,7 +2458,7 @@ p.modal-desc {
     #callback-modal .modal-dialog,
     #callback-success-modal .modal-dialog,
     #booking-modal .modal-dialog {
-        width: 100%;
+        width: auto;
     }
     #callback-modal .modal-content,
     #callback-success-modal .modal-content,
@@ -2393,11 +2466,27 @@ p.modal-desc {
         padding: 50px;
     }
     h5.modal-title {
-        font-size: 32px;
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+    p.modal-desc {
+        font-size: 14px;
         margin-bottom: 20px;
     }
-}
-
-#callback-success-modal p.modal-desc {
-    margin-bottom: 0;
+    .modal input {
+        margin-bottom: 30px;
+    }
+    button.btn {
+        max-width: 100%;
+    }
+    .btn:after {
+        max-width: 98%;
+    }
+    .requisites {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    input.contacts-form__input:last-of-type {
+        margin-bottom: 30px;
+    }
 }
