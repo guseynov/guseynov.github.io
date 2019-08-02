@@ -72,4 +72,12 @@ $(document).ready(function() {
         $('.mobile-menu').removeClass('active');
         $(window).scrollTop($('section.map').offset().top);
     });
+
+    $('.learn-more').click(function(e) {
+        $(window).scrollTop($('#programs').offset().top);
+    });
+
+    $('.mobile-menu-links__item a').click(function() {
+        $('.mobile-menu').removeClass('active');
+    });
 });

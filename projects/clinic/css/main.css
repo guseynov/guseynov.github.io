@@ -33,6 +33,11 @@ h3 {
     line-height: 44px;
 }
 
+button,
+input {
+    outline: none !important;
+}
+
 .heading-decor-left {
     display: inline-block;
     vertical-align: middle;
@@ -140,12 +145,14 @@ h3 {
 .dashed {
     font-size: 20px;
     border-bottom: 1px dashed #202020;
-    color: #202020;
+    color: #202020 !important;
+    text-decoration: none !important;
 }
 
 .dashed--sm {
     font-size: 10px;
-    color: #100f0f;
+    color: #100f0f !important;
+    text-decoration: none !important;
     border-bottom: 1px dashed #100f0f;
 }
 
@@ -307,6 +314,9 @@ img.advantage__icon {
     text-align: center;
     padding: 0 40px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .advantage--center:before,
@@ -368,12 +378,11 @@ p.mission__text {
 }
 
 section.mission {
-    margin-bottom: 95px;
+    margin-bottom: 65px;
 }
 
 h2.recovery__title {
-    /* vertical-align: middle; */
-    /* display: inline-block; */
+    white-space: nowrap;
 }
 
 p.recovery__desc {
@@ -418,6 +427,7 @@ p.recovery__desc {
 h2.recovery-program__title {
     position: relative;
     margin-bottom: 15px;
+    font-size: 42px;
 }
 
 p.recovery-program__price {
@@ -485,6 +495,7 @@ p.recovery-program__price {
 
 section.recovery {
     margin-bottom: 90px;
+    padding-top: 30px;
 }
 
 section.care {
@@ -950,6 +961,7 @@ header.header {
 
 .recovery-program-hover {
     position: absolute;
+    color: #fff !important;
     left: 0;
     top: 0;
     height: 100%;
@@ -962,6 +974,8 @@ header.header {
     pointer-events: none;
     transition: all .3s ease;
     z-index: 1;
+    display: block;
+    text-decoration: none !important;
 }
 
 .recovery-program:hover .recovery-program-hover {
@@ -972,6 +986,9 @@ header.header {
 
 .recovery-program {
     overflow: hidden;
+    color: #fff !important;
+    text-decoration: none !important;
+    display: block;
 }
 
 .recovery-program-hover__title {
@@ -1054,12 +1071,14 @@ header.header {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
     background: #fff;
     opacity: 0;
     pointer-events: none;
     transition: all .3s ease;
     transform: scale(.7);
+    z-index: 1000;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.active {
@@ -1545,8 +1564,6 @@ p.contacts__address {
     margin: 20px 0;
 }
 
-h2.contacts__title {}
-
 p.contacts__hours {
     color: #202020;
     font-weight: 300;
@@ -1783,6 +1800,9 @@ p.certificates__desc {
 @media screen and (max-width: 1629px) {
     img.rules__icon {
         width: 100% !important;
+    }
+    h2.recovery-program__title {
+        font-size: 24px;
     }
     .program-step--left,
     .about-us-fact--left {
@@ -2490,4 +2510,10 @@ p.certificates__desc {
     input.contacts-form__input:last-of-type {
         margin-bottom: 30px;
     }
+}
+
+form.modal-body {}
+
+#policy-modal .modal-content {
+    padding: 30px;
 }
