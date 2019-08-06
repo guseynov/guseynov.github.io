@@ -220,14 +220,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-4">
-        <div class="recovery-program" style="background-image: url('img/programs/1.jpg')">
+      <div class="col-xl-4"><a class="recovery-program" href="./one.html" style="background-image: url('img/programs/1.jpg')">
           <div class="square-decor">
             <div class="square-decor__inner square-decor__inner--top"></div>
             <div class="square-decor__inner square-decor__inner--bottom"></div>
           </div>
           <h2 class="recovery-program__title">Однодневные</h2>
-          <p class="recovery-program__price">От 10 тысяч рублей</p><a class="recovery-program-hover" href="./one.html">
+          <p class="recovery-program__price">От 10 тысяч рублей</p>
+          <div class="recovery-program-hover">
             <p class="recovery-program-hover__title">Показания:</p>
             <ul class="recovery-program-hover__list">
               <li class="recovery-program-hover__item">акклиматизация </li>
@@ -238,17 +238,16 @@
             </ul>
             <div class="recovery-program-hover__more-wrapper">
               <div class="recovery-program-hover__more">Подробнее<img src="img/icons/arrow-right-sm.svg" alt=""/></div>
-            </div></a>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="recovery-program" style="background-image: url('img/programs/2.jpg')">
+            </div>
+          </div></a></div>
+      <div class="col-xl-4"><a class="recovery-program" href="./five.html" style="background-image: url('img/programs/2.jpg')">
           <div class="square-decor">
             <div class="square-decor__inner square-decor__inner--top"></div>
             <div class="square-decor__inner square-decor__inner--bottom"></div>
           </div>
           <h2 class="recovery-program__title">Пятидневная</h2>
-          <p class="recovery-program__price">От 50 тысяч рублей</p><a class="recovery-program-hover" href="./five.html">
+          <p class="recovery-program__price">От 50 тысяч рублей</p>
+          <div class="recovery-program-hover">
             <p class="recovery-program-hover__title">Показания:</p>
             <ul class="recovery-program-hover__list">
               <li class="recovery-program-hover__item">акклиматизация </li>
@@ -259,17 +258,16 @@
             </ul>
             <div class="recovery-program-hover__more-wrapper">
               <div class="recovery-program-hover__more">Подробнее<img src="img/icons/arrow-right-sm.svg" alt=""/></div>
-            </div></a>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="recovery-program" style="background-image: url('img/programs/3.jpg')">
+            </div>
+          </div></a></div>
+      <div class="col-xl-4"><a class="recovery-program" href="./ten.html" style="background-image: url('img/programs/3.jpg')">
           <div class="square-decor">
             <div class="square-decor__inner square-decor__inner--top"></div>
             <div class="square-decor__inner square-decor__inner--bottom"></div>
           </div>
           <h2 class="recovery-program__title">Десятидневная</h2>
-          <p class="recovery-program__price">От 125 тысяч рублей</p><a class="recovery-program-hover" href="./ten.html">
+          <p class="recovery-program__price">От 125 тысяч рублей</p>
+          <div class="recovery-program-hover">
             <p class="recovery-program-hover__title">Показания:</p>
             <ul class="recovery-program-hover__list">
               <li class="recovery-program-hover__item">акклиматизация </li>
@@ -280,9 +278,8 @@
             </ul>
             <div class="recovery-program-hover__more-wrapper">
               <div class="recovery-program-hover__more">Подробнее<img src="img/icons/arrow-right-sm.svg" alt=""/></div>
-            </div></a>
-        </div>
-      </div>
+            </div>
+          </div></a></div>
     </div>
   </div>
 </section>
@@ -349,7 +346,7 @@
       </div>
       <div class="d-xl-none col-12">
         <h2 class="certificates__title heading-line-both">Лицензии и сертификаты</h2>
-        <div class="owl-carousel certificates-carousel"><img class="certificate" src="img/certificates/1.jpg" alt=""/><img class="certificate" src="img/certificates/2.jpg" alt=""/><img class="certificate" src="img/certificates/3.jpg" alt=""/></div>
+        <div class="owl-carousel certificates-carousel"><a href="img/certificates/1.jpg" target="_blank"><img class="certificate" src="img/certificates/1.jpg" alt=""/></a><a href="img/certificates/2.jpg" target="_blank"><img class="certificate" src="img/certificates/2.jpg" alt=""/></a><a href="img/certificates/3.jpg" target="_blank"><img class="certificate" src="img/certificates/3.jpg" alt=""/></a></div>
       </div>
     </div>
   </div>
@@ -432,7 +429,7 @@
           <input type="tel" placeholder="+7"/>
         </div>
         <div class="col-xl-2">
-          <button class="btn btn" type="submit">Оставить заявку</button>
+          <button class="btn" type="button" data-toggle="modal" data-target="#callback-success-modal" data-dismiss="modal">Оставить заявку</button>
         </div>
       </div>
     </div>
@@ -590,7 +587,7 @@
         <p class="modal-desc">Заполните форму и мы подберем для вас удобные даты.</p>
         <input type="text" placeholder="Иван Иванович" required="true"/>
         <input type="tel" placeholder="+7" required="true"/>
-        <button class="btn" type="submit">Записаться</button>
+        <button class="btn" type="button" data-toggle="modal" data-target="#callback-success-modal" data-dismiss="modal">Записаться</button>
       </form>
     </div>
   </div>

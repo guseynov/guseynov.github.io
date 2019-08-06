@@ -307,7 +307,6 @@ img.advantage__icon {
     animation-duration: 1s;
     animation-name: scroll;
     animation-iteration-count: infinite;
-    pointer-events: none;
 }
 
 .advantage {
@@ -1901,7 +1900,6 @@ p.certificates__desc {
         margin: 25px 0;
     }
     button.scroll-btn {
-        bottom: 20px;
     }
     .heading-line-both:before,
     .heading-line-both:after,
@@ -1924,7 +1922,9 @@ p.certificates__desc {
         margin-bottom: 0;
     }
     button.scroll-btn {
-        bottom: 20px;
+        bottom: 15px;
+        margin-left: -16px;
+        animation: none;
     }
     section.program-full-desc {
         font-size: 10px;
@@ -2019,7 +2019,7 @@ p.certificates__desc {
         font-size: 10px;
     }
     h2.recovery__title {
-        font-size: 18px;
+        font-size: 15px;
         margin-bottom: 0;
     }
     .heading-decor-left:before {
@@ -2236,7 +2236,7 @@ p.certificates__desc {
         margin-bottom: 35px;
     }
     .certificates-carousel .owl-dots {
-        margin-top: 30px;
+        margin-top: 15px;
     }
     .certificates-carousel .owl-item.active {
         transform: translate3d(0, -15px, 0);
