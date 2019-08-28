@@ -2,8 +2,9 @@
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://guseynov.github.io/react/calculator",
+  "homepage": "http://guseynov.github.io/react/calculator",
   "dependencies": {
+    "big.js": "^5.2.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
@@ -28,5 +29,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/big.js": "^4.0.5"
   }
 }
