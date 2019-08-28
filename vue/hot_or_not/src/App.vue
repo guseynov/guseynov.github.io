@@ -14,10 +14,12 @@ export default {
     Info
   },
   created() {
+    // Set the correct page title
     document.title = "Hot or Not?";
   },
   data() {
     return {
+      // Use lastBlobSize for comparsion with the new blobs and excluding duplicates
       lastBlobSize: undefined
     };
   },
@@ -25,23 +27,34 @@ export default {
     ...mapState(["infoScreenIsActive", "photos"])
   },
   updated: function() {
-    if (this.photos.length <= 2) {
+    // Load new images in the background if we're running out of photos
+    if (this.photos.length <= 3) {
       this.getNewImages(10);
     }
   },
   methods: {
     fetchNewImage() {
       let url;
+      // Use CORSProxy to make requests to another domains
       const CORSProxy = "https://cors-anywhere.herokuapp.com/";
+      // Use thispersondoesnotexist project for generating new images
       const APIUrl = "https://thispersondoesnotexist.com/image";
       return fetch(CORSProxy + APIUrl, { cache: "no-store" })
         .then(response => response.blob())
+        // Make a Blob object from the response
         .then(blob => {
+          // For some reason, thispersondoesnotexist sometimes provides the same images for different requests
+          // Even though I check that the loading of an image has ended before starting a new one, I still encountered duplicate images
+          // This is the reason I resorted to checking if the current blob has the same size as the previous one
+          // This is a strange behavior that shoud not be encountered with a proper API
           if (this.lastBlobSize === blob.size) {
-            // Duplicate response
+            // Duplicate response, stop the execution and make another request
             this.fetchNewImage();
           } else {
+            // The response contains unique image, so we can continue
             this.lastBlobSize = blob.size;
+            // Generate a URL for the new image, use blob address as an unique ID
+            // Add both values to the state
             url = URL.createObjectURL(blob);
             this.$store.dispatch("addPhoto", {
               url: url,
@@ -52,6 +65,7 @@ export default {
     },
     async getNewImages(amount) {
       for (let i = 0; i < amount; i++) {
+        // Wait for the end of the current request before starting a new one
         await this.fetchNewImage();
       }
     },

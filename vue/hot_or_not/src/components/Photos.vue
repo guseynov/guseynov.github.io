@@ -10,6 +10,7 @@ export default {
     ...mapState(["photos", "ready"])
   },
   mounted: function() {
+    // Call parent method and start loading new images in the background
     this.$parent.getNewImages(50);
   }
 };
