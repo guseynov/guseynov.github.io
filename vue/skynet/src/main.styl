@@ -1,0 +1,157 @@
+//Imports
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic')
+
+//Variables
+$groupTitleColor = #8cc63c
+$btnBgColor = #82c12b
+$slowSpeedColor = #70603e
+$mediumSpeedColor = #0075d9
+$fastSpeedColor = #e74807
+$grayTextColor = #535d62
+$lightGrayTextColor = #aaaaaa
+$linkColor = #1183ff
+$bgColor = #efeff4
+$dividerColor = #e8e8ea
+$groupHeaderBgColor = #f7f7f8
+$groupHeaderDividerColor = #bfbfc1
+$font = 'Open Sans',sans-serif
+$desktopContainerWidth = 1024px
+$tabletContainerWidth = 640px
+
+//Styles
+*
+    box-sizing border-box
+
+body
+    margin 0
+    font-family $font
+    color $grayTextColor
+    background $bgColor
+
+.container
+    width $desktopContainerWidth
+    margin 0 auto
+
+.groups-container
+    display flex
+    flex-wrap wrap
+    margin 0 -5px
+
+.group
+    margin-bottom 20px
+    padding-left 10px
+    background #fff
+    border-bottom 1px solid $groupHeaderDividerColor
+    margin 0 5px 10px
+    flex-basis ($desktopContainerWidth / 3) - 6.666
+    &__title
+        font-weight 600
+        color $groupTitleColor
+        padding 7px 0
+        margin 0
+        font-size 20px
+    &__main-block
+        border 1px solid $dividerColor
+        cursor pointer
+        border-width 1px 0
+        padding 5px 0
+        background url('./images/icons/arrow-right.svg') right 10px center / 10px no-repeat
+    &__speed
+        padding 10px
+        margin 0 0 10px -10px
+        display inline-block
+        color #ffffff
+        font-weight bold
+        &--slow
+            background $slowSpeedColor
+        &--medium
+            background $mediumSpeedColor
+        &--fast
+            background $fastSpeedColor
+    &__price
+        font-weight bold
+        margin-bottom 10px
+    &__description
+        margin 10px 0
+        font-size 14px
+    &__link
+        color $linkColor
+        padding 10px 0
+        display inline-block
+        font-size 14px
+        text-decoration none
+
+.group-header, .plan-header
+    background $groupHeaderBgColor url('./images/icons/arrow-left.svg') left 10px center / 15px no-repeat
+    padding 10px 0
+    border-bottom 1px solid $groupHeaderDividerColor
+    margin-bottom 25px
+    cursor pointer
+    &__title
+        text-align center
+        font-weight bold
+        font-size 21px
+        color #000
+
+.plan
+    background #fff
+    border-top 1px solid $dividerColor
+    border-bottom 1px solid $groupHeaderDividerColor
+    padding-left 10px
+    padding-bottom 10px
+    margin-bottom 15px
+    &__title
+        color $groupTitleColor
+        font-size 18px
+        margin 0
+        padding 10px 0
+        border-bottom 1px solid $dividerColor
+    &__prices
+        padding 10px 0
+        cursor pointer
+        background url('./images/icons/arrow-right.svg') right 10px center / 10px no-repeat
+    &__price
+        font-weight bold
+    &__main-info
+        font-weight bold
+        font-size 18px
+        padding 5px 0
+        margin-bottom 10px
+    &__price-details
+        margin-bottom 10px
+    &__dates
+        color $lightGrayTextColor
+        padding-bottom 10px
+        border-bottom 1px solid $dividerColor
+    &__btn-container
+        padding-right 10px
+
+.btn
+    color #ffffff
+    padding 0
+    border none
+    background $btnBgColor
+    font-size 21px
+    font-family $font
+    display block
+    width 100%
+    padding 15px 0
+    margin-top 10px
+
+@media screen and (max-width: 1023px)
+    .container
+        width 640px
+    .groups-container
+        flex-wrap wrap
+        margin 0
+    .group
+        margin 0 5px 10px
+        flex-basis ($tabletContainerWidth / 2) - 10
+
+@media screen and (max-width: 640px)
+    .container
+        width 100%
+        padding 0
+    .group
+        flex-basis 100%
+        margin 0 0 20px

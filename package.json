@@ -41,6 +41,7 @@
   "dependencies": {
     "@glidejs/glide": "^3.3.0",
     "babel-loader": "^8.0.6",
+    "moment": "^2.24.0",
     "normalize.css": "^8.0.1"
   }
 }
