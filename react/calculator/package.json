@@ -1,36 +1,57 @@
 {
-  "name": "calculator",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "http://guseynov.github.io/react/calculator",
-  "dependencies": {
-    "big.js": "^5.2.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/big.js": "^4.0.5"
-  }
+	"name": "calculator",
+	"version": "0.1.0",
+	"private": true,
+	"homepage": "http://guseynov.github.io/react/calculator",
+	"dependencies": {
+		"babel-plugin-wildcard": "^5.0.0",
+		"big.js": "^5.2.2",
+		"dotenv": "^8.2.0",
+		"eslint-plugin-import": "^2.18.2",
+		"module-alias": "^2.2.2",
+		"nice-color-palettes": "^3.0.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.10.2",
+		"react-hotkeys": "^2.0.0",
+		"react-redux": "^7.1.1",
+		"react-scripts": "3.0.1",
+		"redux": "^4.0.4",
+		"redux-devtools-extension": "^2.13.8",
+		"typeface-inter": "^3.10.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"postinstall": "link-module-alias"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@types/big.js": "^4.0.5",
+		"eslint": "^6.5.1",
+		"eslint-config-google": "^0.14.0",
+		"eslint-config-prettier": "^6.4.0",
+		"eslint-plugin-prettier": "^3.1.1",
+		"eslint-plugin-react": "^7.16.0",
+		"import-all.macro": "^2.0.3",
+		"link-module-alias": "^1.2.0",
+		"prettier": "^1.18.2",
+		"prettier-eslint": "^9.0.0",
+		"redux-devtools": "^3.5.0"
+	},
+	"_moduleAliases": {
+		"@": "./node_modules"
+	}
 }
