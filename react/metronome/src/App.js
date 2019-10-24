@@ -17,24 +17,30 @@ class Metronome extends React.Component {
 	}
 	playClick = () => {
 		if (this.state.count % this.state.beatsPerMeasure === 0) {
-			this.setState({
-				beat: 'main'
-			}, () => {
-				this.click2.play();
-			});
+			this.setState(
+				{
+					beat: 'main'
+				},
+				() => {
+					this.click2.play();
+				}
+			);
 		} else {
-			this.setState({
-				beat: 'regular'
-			}, () => {
-				this.click1.play();
-			});
+			this.setState(
+				{
+					beat: 'regular'
+				},
+				() => {
+					this.click1.play();
+				}
+			);
 		}
 
 		this.setState({
 			count: (this.state.count + 1) % this.state.beatsPerMeasure
 		});
 	};
-	handleBpmChange = (event) => {
+	handleBpmChange = event => {
 		const bpm = event.target.value;
 		if (this.state.playing) {
 			clearInterval(this.timer);
@@ -71,24 +77,43 @@ class Metronome extends React.Component {
 	};
 	render() {
 		return (
-			<div className="metronome">
-				<div className="metronome__title">
-					React Metronome
+			<div className='metronome'>
+				<div className='metronome__title'>React Metronome</div>
+				<div className='metronome__screen metronome-screen'>
+					<div className='metronome-screen__value'>
+						{this.state.bpm} BPM
+					</div>
 				</div>
-				<div className="metronome__screen metronome-screen">
-					<div className="metronome-screen__value">{this.state.bpm} BPM</div>
-				</div>
-				<div className="metronome__controls metronome-controls">
-					<input className="metronome-controls__input" type="text" value={this.state.bpm} onChange={this.handleBpmChange} />
-					<span className={"metronome-controls__indicator " + (this.state.playing ? (this.state.beat === 'main' ? 'metronome-controls__indicator--main': '') : '') }></span>
-					<div className="metronome-controls__speaker metronome-speaker">
+				<div className='metronome__controls metronome-controls'>
+					<input
+						className='metronome-controls__input'
+						type='text'
+						value={this.state.bpm}
+						onChange={this.handleBpmChange}
+					/>
+					<span
+						className={
+							'metronome-controls__indicator ' +
+							(this.state.playing
+								? this.state.beat === 'main'
+									? 'metronome-controls__indicator--main'
+									: ''
+								: '')
+						}
+					></span>
+					<div className='metronome-controls__speaker metronome-speaker'>
 						<span></span>
 						<span></span>
 						<span></span>
 					</div>
-					<button className={"metronome-controls__button " + (this.state.playing ? 'active' : '')} onClick={this.startStop}></button>
+					<button
+						className={
+							'metronome-controls__button ' +
+							(this.state.playing ? 'active' : '')
+						}
+						onClick={this.startStop}
+					></button>
 				</div>
-
 			</div>
 		);
 	}
