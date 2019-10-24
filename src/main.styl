@@ -19,7 +19,8 @@ body
     overflow-x hidden
     position relative
     padding-bottom 100px
-
+    &.no-js
+        display none
 .main
     width 1200px
     margin 30px auto
@@ -303,12 +304,12 @@ section
     left 0
     position fixed
     top 0
-    transition opacity .3s linear
     width 100%
     z-index 9999
     opacity 1
-    transform opacity 1s linear
+    transition opacity 1s linear
     &.loaded
+        opacity 0
         pointer-events none
 
 .react-project
@@ -347,7 +348,7 @@ section
         color #231f1c
         opacity 0
         transition all .2s ease
-        font-size: 23px;
+        font-size 23px
         &:hover, &:focus
             opacity 1
 

@@ -6,7 +6,9 @@ html
         link(rel="shortcut icon", src=require('./img/favicon.ico'))
         link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap")
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    body
+    body.no-js
+        .preloader
+            img(src=require('./img/spinner.svg'), alt="spinner")
         .circle.circle--1.circle--outside
         .circle.circle--2.circle--outside
         .circle.circle--3.circle--outside
@@ -184,5 +186,3 @@ html
                         img(src=require('./img/whatsapp.svg'))
                     a.contact-link(href="https://msng.link/sk/ahmed.guseynov.23")
                         img(src=require('./img/skype.svg'))
-            .preloader
-                img(src=require('./img/spinner.svg'), alt="spinner")

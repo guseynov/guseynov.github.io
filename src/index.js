@@ -4,28 +4,14 @@ import '../node_modules/@glidejs/glide/dist/css/glide.theme.min.css';
 import './main.styl';
 import Glide from '@glidejs/glide';
 
+document.querySelector('body').classList.remove('no-js');
 const preloader = document.querySelector('.preloader');
-
-const fadeEffect = setInterval(() => {
-	if (!preloader.style.opacity) {
-		preloader.style.opacity = 1;
-	}
-	if (preloader.style.opacity > 0) {
-		preloader.style.opacity -= 0.1;
-	} else {
-		clearInterval(fadeEffect);
-	}
-}, 100);
 
 const fullyLoaded = () => {
 	preloader.classList.add('loaded');
 };
 
-const loaderCallback = () => {
-	fullyLoaded();
-};
-
-window.addEventListener('load', loaderCallback);
+window.addEventListener('load', fullyLoaded);
 
 new Glide('.portfolio-slider', {
 	startAt: 0,
