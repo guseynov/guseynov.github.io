@@ -194,10 +194,7 @@ class Calculator extends React.Component {
                                         : '')
                                 }
                             >
-                                <img
-                                    src={process.env.PUBLIC_URL + 'divide.svg'}
-                                    alt=""
-                                />
+                                <img src={'divide.svg'} alt="" />
                             </button>
                             <button
                                 style={{
@@ -211,12 +208,7 @@ class Calculator extends React.Component {
                                         : '')
                                 }
                             >
-                                <img
-                                    src={
-                                        process.env.PUBLIC_URL + 'multiply.svg'
-                                    }
-                                    alt=""
-                                />
+                                <img src={'multiply.svg'} alt="" />
                             </button>
                             <button
                                 style={{
@@ -230,12 +222,7 @@ class Calculator extends React.Component {
                                         : '')
                                 }
                             >
-                                <img
-                                    src={
-                                        process.env.PUBLIC_URL + 'substract.svg'
-                                    }
-                                    alt=""
-                                />
+                                <img src={'substract.svg'} alt="" />
                             </button>
                             <button
                                 style={{
@@ -249,10 +236,7 @@ class Calculator extends React.Component {
                                         : '')
                                 }
                             >
-                                <img
-                                    src={process.env.PUBLIC_URL + 'add.svg'}
-                                    alt=""
-                                />
+                                <img src={'add.svg'} alt="" />
                             </button>
                             <button
                                 style={{
@@ -261,10 +245,7 @@ class Calculator extends React.Component {
                                 onClick={() => this.props.equals()}
                                 className="calculator-button calculator-button--action"
                             >
-                                <img
-                                    src={process.env.PUBLIC_URL + 'equal.svg'}
-                                    alt=""
-                                />
+                                <img src={'equal.svg'} alt="" />
                             </button>
                         </div>
                     </div>
