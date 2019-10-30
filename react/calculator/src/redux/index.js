@@ -28,37 +28,37 @@ export default function rootReducer(store = initialStore, action) {
         }
         case 'ADDITION':
             newStore = {
-                action: 'addition'
+                action: 'add'
             };
             return { ...store, ...newStore };
         case 'DIVISION':
             newStore = {
-                action: 'division'
+                action: 'div'
             };
             return { ...store, ...newStore };
         case 'MULTIPLICATION':
             newStore = {
-                action: 'multiplication'
+                action: 'times'
             };
             return { ...store, ...newStore };
         case 'SUBSTRACTION':
             newStore = {
-                action: 'substraction'
+                action: 'minus'
             };
             return { ...store, ...newStore };
         case 'EQUALS':
             switch (store.action) {
-                case 'addition':
+                case 'add':
                     result = addition(store.firstArg, store.secondArg);
                     newStore = {
                         result: result,
                         display: result,
                         action: undefined,
-                        firstArg: undefined,
+                        firstArg: result,
                         secondArg: undefined
                     };
                     return { ...store, ...newStore };
-                case 'division':
+                case 'div':
                     if (store.secondArg === 0) {
                         result = 'Error';
                     } else {
@@ -68,27 +68,27 @@ export default function rootReducer(store = initialStore, action) {
                         result: result,
                         display: result,
                         action: undefined,
-                        firstArg: undefined,
+                        firstArg: result,
                         secondArg: undefined
                     };
                     return { ...store, ...newStore };
-                case 'multiplication':
+                case 'times':
                     result = multiplication(store.firstArg, store.secondArg);
                     newStore = {
                         result: result,
                         display: result,
                         action: undefined,
-                        firstArg: undefined,
+                        firstArg: result,
                         secondArg: undefined
                     };
                     return { ...store, ...newStore };
-                case 'substraction':
+                case 'minus':
                     result = substraction(store.firstArg, store.secondArg);
                     newStore = {
                         result: result,
                         display: result,
                         action: undefined,
-                        firstArg: undefined,
+                        firstArg: result,
                         secondArg: undefined
                     };
                     return { ...store, ...newStore };

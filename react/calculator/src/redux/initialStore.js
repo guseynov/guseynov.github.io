@@ -1,5 +1,5 @@
 import * as palettes from '../palettes/100.json';
-const defaultPalette = palettes.default[0];
+const defaultPalette = palettes.default[2];
 export const initialStore = {
     action: undefined,
     firstArg: undefined,

@@ -8,6 +8,7 @@
 		"big.js": "^5.2.2",
 		"dotenv": "^8.2.0",
 		"eslint-plugin-import": "^2.18.2",
+		"font-color-contrast": "^1.0.3",
 		"module-alias": "^2.2.2",
 		"nice-color-palettes": "^3.0.0",
 		"react": "^16.8.6",

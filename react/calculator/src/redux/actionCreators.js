@@ -1,4 +1,4 @@
-export function addition() {
+export function plus() {
     return {
         type: 'ADDITION'
     };
@@ -17,18 +17,18 @@ export function write(arg) {
     };
 }
 
-export function division() {
+export function div() {
     return {
         type: 'DIVISION'
     };
 }
-export function multiplication() {
+export function times() {
     return {
         type: 'MULTIPLICATION'
     };
 }
 
-export function substraction() {
+export function minus() {
     return {
         type: 'SUBSTRACTION'
     };
