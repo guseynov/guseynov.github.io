@@ -1,21 +1,16 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
+import store from './redux/store';
 import * as actions from './redux/actionCreators';
-import dotenv from 'dotenv';
 import './Calculator.css';
 import Screen from './components/Screen';
 import Buttons from './components/Buttons';
-const fontColorContrast = require('font-color-contrast');
-dotenv.config();
+import fontColorContrast from 'font-color-contrast';
 
-function mapStateToProps(state) {
-    return {
-        action: state.action,
-        colors: state.colors
-    };
-}
+const mapStateToProps = store => ({
+    action: store.action,
+    colors: store.colors
+});
 
 const mapDispatchToProps = actions;
 class Calculator extends React.Component {
