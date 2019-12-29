@@ -1,0 +1,1263 @@
+background_contain(url)
+	background: url('../img/'url) center center /contain no-repeat
+	
+background_cover(url)
+	background: url('../img/'url) center center /cover no-repeat
+	
+body
+	min-width 320px
+
+main
+	position relative
+	font-family 'Roboto'
+	
+h2
+	font-size: 45px
+	text-transform uppercase
+	font-weight: 900
+	text-align center
+	letter-spacing: 1px
+	@media screen and (max-width: 991px)
+			font-size 36px
+	@media screen and (max-width: 570px)
+			font-size 28px
+	@media screen and (max-width: 480px)
+			font-size 21px
+	
+p
+	margin 0
+	
+.container
+	padding 0
+	@media screen and (max-width: 768px)
+			padding 0 15px
+	
+.btn
+	background-color transparent
+	padding 0
+	border none
+	&:focus
+		outline none
+	&--call
+	&--delivery	
+		border 1px solid #f08105
+		padding: 10px 28px
+		border-radius 20px
+		color #f08105
+		text-transform uppercase
+		font-size 12px
+		font-weight 700
+		transition background .2s ease, color .2s ease
+		&:focus
+		&:active
+		&:hover
+			color #f08105
+			outline none
+	&--delivery
+		background-color #f08105
+		color #fff
+	&--call
+		&:hover
+			background #f08105
+			color #fff
+		@media screen and (max-width: 1200px)
+			display none
+		
+
+.header
+.header-scroll
+	background url("../img/header.png") left top/cover no-repeat
+	height 132px
+	padding 12px 0 26px
+	position absolute
+	z-index 1
+	width 100%
+	left 0
+	top 0
+	& .hours
+		display inline-block
+		vertical-align middle
+		color #ababab
+		font-size 14px
+		font-weight 300
+		margin-right 31px
+		@media screen and (max-width: 991px)
+			display none
+		& > span
+			display inline-block
+			vertical-align middle
+			margin-right 15px
+			font-size 30px
+		
+		& > *
+			display inline-block
+			vertical-align middle
+		& .hours-bold
+			font-weight 700
+	
+
+	@media screen and (max-width: 768px)
+		height 100px
+	& p
+		margin-bottom 0
+	& .logo
+		margin-right 90px
+		display inline-block
+		vertical-align middle
+		@media screen and (max-width: 1200px)
+			margin-right 10px
+		@media screen and (max-width: 768px)
+			width 106px
+			height 50px
+.logo
+	width: 148px
+	height: 70px
+	background_contain('logo.png')
+.instagram
+	width 170px
+	height 32px
+	background_contain('instagram.png')
+	display inline-block
+	vertical-align middle
+	margin-right 95px
+	@media screen and (max-width: 1200px)
+			margin-right 40px
+	@media screen and (max-width: 768px)
+			width 150px
+	@media screen and (max-width: 650px)
+			display none
+
+.phones
+	float right
+	color:  #ffffff
+	font-size: 20px
+	font-weight: 900
+	text-align: right
+	display inline-block
+	vertical-align middle
+	white-space nowrap
+	@media screen and (max-width: 768px)
+			font-size 14px
+	& > .wrap
+		display inline-block
+		vertical-align middle
+		white-space normal
+		
+	& span
+		color #f08105
+	&:after
+		content: ''
+		height 70px
+		width 0
+		display inline-block
+		vertical-align middle
+		@media screen and (max-width: 768px)
+			height 50px
+	& a
+		color #fff
+		text-decoration none
+		margin-left 5px
+		&:hover
+		&:focus
+		&:active
+			color #fff
+			text-decoration none
+	
+		
+		
+.header-scroll
+	position fixed
+	opacity 0
+	z-index 3
+	visibility hidden
+	transform translateY(-100%)
+	transition opacity .2s ease, visibility 0s .2s, transform .2s ease
+	& .nav
+		@media screen and (max-width: 1200px)
+			display none
+	& .logo
+		margin-right 45px
+	&.active
+		opacity 1
+		visibility visible
+		transition opacity .2s ease, visibility 0s, transform .2s ease
+		transform translateY(0)
+
+		
+	
+.top-screen
+	background_cover('Cars-Wallpaper.jpg')
+	height 1006px
+	padding-top: 170px
+	position relative
+	@media screen and (max-width: 1200px)
+		height 1156px
+	@media screen and (max-width: 767px)
+		padding-top 120px
+	@media screen and (max-width: 480px)
+		height 935px
+	& h1
+		color #ffffff
+		font-weight 900
+		letter-spacing 1px
+		line-height 64px
+		font-size 62px
+		text-transform uppercase
+		text-align center
+		margin 0
+		white-space nowrap
+		text-shadow 0px 1px 4px rgba(0, 0, 0, 0.33)
+		margin 0
+		@media screen and (max-width: 1200px)
+			font-size 50px
+		@media screen and (max-width: 991px)
+			font-size 40px
+			line-height: 46px
+		@media screen and (max-width: 767px)
+				font-size 38px
+		@media screen and (max-width: 650px)
+				font-size 32px
+				line-height: 38px
+		@media screen and (max-width: 570px)
+				font-size 24px
+				line-height: 30px
+		@media screen and (max-width: 480px)
+				font-size 18px
+				line-height: 25px
+
+		& .title_emphasize
+			font-size 52px
+			white-space normal
+			@media screen and (max-width: 1200px)
+				font-size 48px
+			@media screen and (max-width: 991px)
+				font-size 36px
+			@media screen and (max-width: 767px)
+				font-size 30px
+			@media screen and (max-width: 650px)
+				font-size 24px
+			@media screen and (max-width: 570px)
+				font-size 18px
+			@media screen and (max-width: 480px)
+				font-size 14px
+			
+	& .subtitle
+		text-align center
+		&__vehicle
+			content: ''
+			width 114px
+			height 65px
+			position relative
+			left 35px
+			background_contain('car-30085_640.png')
+			display inline-block
+			vertical-align top
+			text-align left
+			@media screen and (max-width: 570px)
+				left 15px
+			@media screen and (max-width: 480px)
+				display none
+		&__text 
+			margin 0
+			display inline-block
+			background-color #f08105
+			text-transform uppercase
+			color:  #ffffff
+			font-size 21px
+			position relative
+			left: 45px
+			height 55px
+			line-height 55px
+			white-space nowrap
+			text-align center
+			font-weight 600
+			vertical-align top
+			text-shadow 0px 1px 4px rgba(0, 0, 0, 0.33)
+			@media screen and (max-width: 767px)
+				font-size 18px
+			@media screen and (max-width: 650px)
+				font-size 16px
+			@media screen and (max-width: 570px)
+				font-size 14px
+				left 20px
+			@media screen and (max-width: 480px)
+				left 0
+				padding: 0 10px;
+			@media screen and (max-width: 360px)
+				font-size 12px
+				display block
+			& span
+				position relative
+				left 13px
+				z-index 1
+				@media screen and (max-width: 480px)
+					left 0
+				
+.form-container
+	width 570px
+	margin 0 auto
+	position relative
+	background: url("../img/order2.png") center top/cover no-repeat
+	@media screen and (max-width: 650px)
+		width 450px
+		border-radius: 5px
+	@media screen and (max-width: 480px)
+		width 100%
+		display block
+	&--top
+		margin-top 10px
+		height 382px
+		padding-top 14px
+		background: url("../img/order.png") center top/cover no-repeat
+		&:after
+			top 14px !important
+			@media screen and (max-width: 650px)
+				top: 12px !important;
+		&__body
+			padding-bottom 0
+		@media screen and (max-width: 650px)
+			height: 330px;
+			
+	&:after
+		content ''
+		width 59px
+		height 65px
+		position absolute
+		top 0
+		left 0
+		background_contain('corner.png')
+		@media screen and (max-width: 650px)
+				top 0
+				height 50px
+				background: url("../img/corner.png") left center/contain no-repeat;
+	&__body
+		padding 30px 0 35px
+		@media screen and (max-width: 650px)
+			padding 20px 0 25px
+	&__head
+		text-transform uppercase
+		color  #e0e0e0
+		height: 68px
+		line-height: 70px
+		border-bottom 1px solid rgba(255, 255, 255, 0.14)
+		@media screen and (max-width: 650px)
+			font-size 14px
+			text-align center
+			height: 50px
+			line-height 50px
+		& span.fa 
+			color #f08105
+			margin-right 10px
+			@media screen and (max-width: 480px)
+				margin-right 5px
+		& p
+			padding: 0 30px 0 59px
+			font-weight: 600
+			font-size: 20px
+			margin: 0
+			@media screen and (max-width: 650px)
+				font-size: 14px
+				text-align: center
+			@media screen and (max-width: 480px)
+				font-size: 12px
+				padding 0
+			@media screen and (max-width: 360px)
+				font-size: 10px
+		
+.best-price
+	margin-left 50px
+	font-size 19px
+	font-weight 700
+	margin-top 25px
+	height 110px
+	width 288px
+	padding-left 50px
+	position relative
+	line-height 18px
+	z-index 2
+	background url('../img/top-prompt-bottom.png') left bottom / 304px 80px no-repeat
+	@media screen and (max-width: 480px)
+		margin-left 0
+	&__heading
+		color  #f08105
+	&__subheading
+		color #fff
+		font-size 17px
+		font-weight 300
+	& p
+		margin 0
+		
+.best-price-wrap
+.sale
+	display inline-block
+	vertical-align middle
+	
+.sale
+	width 35px
+	height 35px
+	background_contain('sale.png')
+	margin-left 25px
+			
+.top-screen__offer
+	background_cover('top-block-bottom.png')
+	height 288px
+	position absolute
+	z-index 1
+	padding-top 83px
+	left 0
+	bottom 0
+	width 100%
+	
+	@media screen and (max-width: 1200px)
+		height 438px
+		background url('../img/top-block-bottom.png') center bottom /cover no-repeat
+		& .container
+			text-align center
+	@media screen and (max-width: 480px)
+		height 320px
+	& h3
+		color:  #f08105
+		font-size: 43px
+		font-weight: 900
+		line-height: 39px
+		text-transform uppercase
+		margin 0
+		display inline-block
+		vertical-align middle
+		margin-right 35px
+		@media screen and (max-width: 650px)
+			font-size 32px
+			width auto
+			margin-right 15px
+		@media screen and (max-width: 520px)
+			display block
+			margin 0
+		
+.parenthesis
+	background_contain('parenthesis.png')
+	width 28px
+	height 96px
+	display inline-block
+	vertical-align middle
+	margin-right 31px
+	@media screen and (max-width: 650px)
+		margin-right 15px
+	@media screen and (max-width: 520px)
+		display none
+	
+.offer-desc
+	display inline-block
+	vertical-align middle
+	font-size: 27px
+	color #fff
+	font-weight 900
+	text-align left
+	line-height 39px
+	text-transform uppercase
+	@media screen and (max-width: 991px)
+		font-size 24px
+		line-height 30px	
+	@media screen and (max-width: 520px)
+		text-align center
+		display block
+	& span
+		font-size: 23px
+		line-height 33px
+		text-transform none
+		@media screen and (max-width: 991px)
+			font-size 20px
+		@media screen and (max-width: 767px)
+			width 300px
+			display inline-block
+	& em
+		font-style normal
+		background #fff
+		color #281a33
+		padding 0 7px
+		
+
+
+
+.offer-timer
+	float right
+	@media screen and (max-width: 1200px)
+		text-align center
+		display block
+		float none
+		margin-top 30px
+	@media screen and (max-width: 480px)
+		display none
+	&__title
+		color  #ffffff
+		font-size 20px
+		font-weight 700
+		line-height 39px
+		text-transform uppercase
+
+			
+.btn--orange
+	border-radius: 4px
+	background-color:  #f08105
+	box-shadow: 0 5px 0px 0px #c06500
+	padding 15px 50px
+	border none
+	transition box-shadow .1s ease, transform .1s, background-color .2s ease
+	color:  #0b0b0b
+	font-size: 22px
+	font-weight: 700
+	line-height: 37px
+	text-align: center
+	text-transform uppercase
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.31)
+	@media screen and (max-width: 650px)
+		padding 10px 50px
+	@media screen and (max-width: 480px)
+		padding 5px 50px
+		font-size 16px !important
+	&:hover
+	&:focus
+	&:active
+		color:  #0b0b0b
+	&:focus
+		outline none
+	&:hover
+		background-color #CA6E08
+	&:active
+		box-shadow: 0 3px 0px 0px #c06500
+		transform translateY(2px)
+			
+
+.form-wrap
+	width 332px	
+	margin 0 auto
+	@media screen and (max-width: 480px)
+			width 100%
+			padding 0 10px
+	& input
+		border-radius 4px
+		background-color #e0e0e0
+		width 100%
+		height 57px
+		line-height 57px
+		padding 0 27px
+		border 0
+		@media screen and (max-width: 650px)
+			height 45px
+			line-height 45px
+		
+    			
+.form-btn
+		display block
+		width 100%	
+
+.input-tel-wrap
+.input-mail-wrap
+	color rgb(11, 11, 11)
+	font-size 19px
+	font-weight 400
+	position relative
+	line-height 57px
+	width 332px
+	margin 0 auto
+	margin-bottom 5px
+	text-align left
+	border none
+	@media screen and (max-width: 650px)
+			font-size: 16px
+	@media screen and (max-width: 480px)
+			width 100%
+	& p:before
+		font-family 'FontAwesome'
+		content: '\f10b'
+		font-size 19px
+		width 30px
+		display inline-block
+		padding 0 28px
+		vertical-align middle
+		font-size 25px
+		pointer-events none
+	& p
+		position absolute
+		left 0
+		top 0
+		pointer-events none
+		opacity 0.44
+		transition opacity .2s ease
+		& span
+			display inline-block
+			vertical-align middle
+	& input:focus
+	& input[data-filled=true]
+		&~p
+			opacity 0
+			
+.input-mail-wrap
+	margin-bottom 8px
+	& p:before
+		content: '\f003'
+		font-size 18px
+
+.flip-clock-wrapper
+	margin 0
+	@media screen and (max-width: 1200px)
+		width auto
+		display inline-block
+		background url('../img/top-block-bottom.png') center bottom /cover no-repeat
+	& .flip-clock-dot
+		width 7px
+		height 7px
+	& .days
+		width 0 !important
+		& .flip-clock-label
+			right -55px
+	& .hours
+	& .minutes
+		& .flip-clock-label
+			right -60px
+	& .seconds
+		& .flip-clock-label
+			right -62px
+			
+	& .flip-clock-dot
+		background #F3C490
+		left 3px
+	& .flip-clock-divider
+		height 58px
+		width 14px
+		margin-right 0
+		& .flip-clock-label
+			color:  #ffffff;
+			font-size: 11px;
+			font-weight: 300;
+			text-transform uppercase
+			bottom -20px
+			top auto
+	& ul 
+		background-color #f3c490
+		width 10px
+		height 57px
+		line-height 57px
+		margin 0 3px 0 0
+		border-radius 5px
+		&+ul
+			margin 0
+	& ul li a div div.inn
+		font-family Roboto
+		color #231a1c
+		font-size 27px
+		line-height 55px
+		font-weight 900
+		background-color #f3c490
+		text-shadow none
+	& ul li a div.up:after 
+		background-color rgba(40, 26, 51, 0.13)
+		bottom 0
+		height 1px
+		top auto
+	& .flip
+		box-shadow none
+			
+.transfer
+	background: url("../img/transfer.png") center bottom/cover no-repeat
+	padding-top 50px
+	position relative
+	z-index 1
+	height 460px
+	@media screen and (max-width: 1200px)
+		height 700px !important
+	@media screen and (max-width: 991px)
+		height 600px !important
+	@media screen and (max-width: 768px)
+		height: auto !important;
+		padding-bottom: 200px;
+	@media screen and (max-width: 570px)
+		padding-bottom: 150px;
+	&__title
+		text-transform uppercase
+		color:  #272727
+		font-size: 31px
+		font-weight: 900
+		line-height: 39px
+		margin 0 0 50px 0
+		text-align: center
+
+.btn--orange-md
+	padding 15px 30px
+		
+.transfer-img
+	display inline-block
+	vertical-align middle
+	margin-right 24px
+	@media screen and (max-width: 1200px)
+		display block
+		width 100%
+		
+.transfer-desc
+	color #281a33
+	display inline-block
+	vertical-align middle
+	margin 0
+	@media screen and (max-width: 1200px)
+		display block
+		text-align center
+	@media screen and (max-width: 768px)
+		margin-bottom 20px
+	.transfer-desc__heading
+		font-size 22px
+		display block
+		font-weight 900
+		line-height 39px
+
+.advantages
+	padding-top 190px
+	margin-top -170px
+	background-color #eeeeee
+	height 865px
+	@media screen and (max-width: 1200px)
+		height auto
+	@media screen and (max-width: 768px)
+		padding-top 140px
+    
+	&__title
+		color #272727
+		line-height 39px
+		text-align center
+		margin 0 0 54px 0
+
+
+
+.advantage
+	text-align center
+	margin-bottom 63px
+	&__img
+		background_contain('figure.png')
+		width 156px
+		height 156px
+		display inline-block
+		margin-bottom 31px
+		text-align center
+		line-height 156px	
+	p
+		color: #272727
+		font-size: 17px
+		font-weight: 300
+		line-height: 23px
+		margin 0
+		
+.auto-type
+	height 238px
+	position relative
+	&__desc
+		height 58px
+		background_cover('auto-type-desc.png')
+		position absolute
+		width 100%
+		bottom 0
+		text-align center
+		font-size 19px
+		font-weight 700
+		line-height 67px
+		text-transform uppercase
+		left 0
+		color #fff
+		display block
+	&--business
+		background: url("../img/business-main.png") center top /contain no-repeat
+	&--sport
+		background: url("../img/ford-mustang-sports-car1920-x-1080-368-kb-jpeg-x.png") center top /contain no-repeat
+	&--luxury
+		background: url("../img/funn2shhwallpapers-blogspot-com_lux-cars-walls_5.png") center top /contain no-repeat
+	&--armored
+		background: url("../img/banner4.png") center top /contain no-repeat
+	&--exclusive
+		background: url("../img/957211629.png") center top /contain no-repeat
+	@media screen and (max-width: 1200px)
+		background-size cover
+	
+		
+.auto-type-wrap
+	height 302px
+	margin-bottom 30px
+	& .btn--orange
+		font-size 18px
+		padding-left 0
+		padding-right 0
+		width 100%
+	&--delivery
+		background-color #333333
+		height 307px
+		padding 25px 30px
+		& p
+			font-size 18px
+			font-weight 300
+			line-height 23px
+			margin-top 26px
+			text-align center
+			color #fff
+			& em
+				font-weight 700
+				font-style normal
+			& .btn
+				border-radius: 3px
+				border 1px solid #fff
+				width: 224px
+				height: 54px
+				font-size: 17px
+				color #fff
+				margin-top 20px
+				font-weight: 700
+				transition background .1s ease, color .1s ease
+				&:hover
+					background #fff
+					color #333
+		
+	
+.nav
+	color #fff
+	display: inline-block
+	vertical-align: middle
+	ul
+		padding 0
+		margin 0
+		li
+			display inline-block
+			list-style none	
+			font-size 12px
+			font-weight 700
+			margin-right 20px
+			transition color .2s ease box-shadow .2s ease
+			&.active
+				color #e4902e
+				box-shadow 0 2px #e4902e
+			button
+				background-color transparent
+				border none
+				padding 0
+				text-transform uppercase
+				&:focus
+					outline none
+					
+
+.auto-types
+	background_cover('auto_bg.png')
+	padding-bottom: 77px
+	&__title
+		color:  #ffffff
+		line-height: 39px
+		text-align: center
+		margin 35px 0 60px
+		@media screen and (max-width: 768px)
+			margin 0 0 25px
+    		line-height 30px
+	&__top
+		position relative
+		top -33px
+		
+.csstransforms .auto-types__top
+		transform translateY(-50%) !important
+		top 0 !important
+		
+
+.popular-destinations
+	background_cover('map.jpg')
+	padding-bottom 40px
+	&__title
+		background-color #33263d
+		text-align center
+		color  #ffffff
+		margin 0
+		box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.52)
+		height: 96px
+		line-height 96px
+		margin-bottom 86px
+		
+.destination
+	margin-bottom 50px
+	cursor pointer
+	.destination__flag 
+		border-radius: 50%
+		border solid 5px rgba(240, 129, 5, .79)
+		background-color:  #ff9b2d
+		width: 47px
+		height: 47px
+		float left
+		margin-right 15px
+	div
+		margin-left 62px
+	p
+	span
+		color #272727
+		font-size 18px
+		font-weight 700
+		line-height 1
+		margin 0 0 3px 0
+	span
+		border-radius 2px
+		background-color  #f08105
+		width 75px
+		height 23px
+		margin 0
+		padding: 1px 5px
+	p
+		margin-bottom 7px
+		
+
+.gallery
+	padding 83px 0 75px
+	background url('../img/texture.png')
+	@media screen and (max-width: 768px)
+		padding 50px 0 75px
+	&__title
+		color #fff
+		margin 0 0 60px 0
+		@media screen and (max-width: 768px)
+			margin 0 0 30px 0
+	&__slider
+		& .gallery-item
+			height: 264px
+			display inline-block
+			overflow hidden
+			width 100%
+			box-shadow: 1px 2px 6px 0px rgba(0, 0, 0, 0)
+			transition box-shadow .2s ease
+			position relative
+			@media screen and (max-width: 1110px)
+				height 500px
+			@media screen and (max-width: 480px)
+				height 250px
+			& img
+				min-width: 100%
+				min-height: 100%
+			&__caption
+				position absolute
+				bottom 0
+				left 0
+				width 100%
+				line-height 44px
+				text-align center
+				background-color:  rgba(50, 37, 60, 0.69)
+				height: 44px
+				color:  #ffffff
+				font-size: 16px
+				font-weight: 400
+	& li.slick-active
+		button
+			background-color rgba(255, 255, 255, 1)
+	
+	& .slick-dots
+		button
+			background-color rgba(255, 255, 255, 0.7)
+					
+	& .slick-active
+		& .gallery-item
+				box-shadow: 1px 2px 6px 0px rgba(0, 0, 0, 0.34)
+	
+	
+.slick-slide
+	&:focus
+		outline none
+		
+.slick-dots
+	padding 0
+	margin 0
+	text-align center
+	li
+		display inline-block
+		margin 6px
+		button
+			color transparent
+			border-radius 50%
+			border none
+			padding 0
+			transition background-color .2s ease
+			width 19px
+			height 19px
+			&:focus
+				outline none
+			
+			
+.slick-arrow
+	width 21px
+	height 35px
+	color transparent
+	position absolute
+	top 114px
+	background-color transparent
+	border-radius 50%
+	border none
+	padding 0
+	z-index 2
+	@media screen and (max-width: 1110px)
+		height 268px
+	&.slick-prev
+		left -53px
+		background_contain('left.png')
+		@media screen and (max-width: 1300px)
+			left -15px
+		
+	&.slick-next
+		background_contain('right.png')
+		right -53px
+		@media screen and (max-width: 1300px)
+			right -15px
+		
+	&:focus
+		outline none
+		
+.slick-track
+	margin-bottom 30px
+	
+.testimonials
+	padding: 70px 0 65px
+	@media screen and (max-width: 768px)
+		padding 50px 0 65px
+	background_cover('testimonials-word-bubble-background.jpg')
+	&__title
+		color:  #1b1b1b
+		margin 0 0 60px 0
+		@media screen and (max-width: 768px)
+			margin 0 0 30px 0
+	button
+			background-color rgba(27, 27, 27, 0.47) 
+	li.slick-active
+		button
+			background-color rgba(27, 27, 27, 1) 
+			
+	& .slick-track
+		margin-bottom 55px
+
+	& .slick-prev
+		background_contain('left-black.png')
+	& .slick-next
+		background_contain('right-black.png')
+	
+
+.testimonial
+	border-radius: 2px
+	background-color:  #eeeeee
+	box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.14)
+	height: 230px
+	color:  rgba(123, 123, 123, 0.46)
+	font-size: 16px
+	font-weight: 300
+	text-transform uppercase
+	margin 0
+	text-align center
+	position relative
+	p
+		line-height 230px
+		margin 0
+	& a
+		line-height 230px
+		display block
+		position absolute
+		top 0
+		height 100%
+		width 100%
+		text-align center
+		img
+			display inline-block
+		
+	
+.contact
+	padding: 65px 0 280px;
+	position relative
+	@media screen and (max-width: 1200px)
+		padding-bottom 600px
+	background_cover('footer.jpg')
+	&__title
+		margin 0
+	&__title
+	&__subtitle
+		color #fff
+		text-transform uppercase
+	&__subtitle
+		margin 0 0 35px 0
+		text-align center
+		font-weight 300
+		font-size 29px
+		
+	
+.footer
+	position absolute
+	bottom 0
+	height 250px
+	padding-top 115px
+	left 0
+	width 100%
+	@media screen and (max-width: 1200px)
+		& > .container > *
+			display block !important
+			text-align center !important
+			float none !important
+			margin 10px 0 !important
+			width auto !important
+	@media screen and (max-width: 1200px)
+		height 600px
+	background_cover('footer_bg.png')
+	& .logo
+		display inline-block
+		vertical-align middle
+		margin-right 19px
+	&__desc
+		color:  #ffffff
+		font-size: 15px/* Приближение из-за подстановки шрифтов */
+		font-weight: 300
+		display inline-block
+		vertical-align middle
+		text-transform uppercase
+		text-align: left
+		margin 0 48px 0 0
+	em
+		font-weight 700
+		font-style normal
+	&__copyright
+		font-weight 300
+		color #fff
+		display inline-block
+		vertical-align middle
+		margin-right 46px
+		& > a
+			background-image: linear-gradient(to right, black 33%, rgba(255,255,255,1) 0%)
+			background-position: bottom
+			background-size: 4px 1px
+			text-decoration none
+			color #fff
+			background-repeat: repeat-x
+	&__requisites
+		display inline-block
+		vertical-align middle
+		color #fff
+		text-transform uppercase
+		font-size 13px
+		font-weight 300
+		& > em
+			font-weight 700
+			margin-bottom 5px
+			display inline-block
+	& .phones
+		&:after
+			height 100px
+
+.social
+	padding 0
+	margin 19px 0 0 0
+	list-style none
+	li
+		display inline-block
+		vertical-align middle
+		margin-right 4px
+		
+.social__item
+	background: url("../img/social_sprite.png") left bottom /cover no-repeat
+	width 32px
+	height 32px
+	display block
+
+.social__item--vk
+	background-position 0 0
+	
+.social__item--fb
+	background-position -36px 0
+	
+.social__item--youtube
+	background-position -72px 0
+	
+.social__item--twitter
+	background-position -109px 0
+
+.overlay
+	position fixed
+	background-color rgba(40, 26, 51, 0.9)
+	z-index 4
+	top 0
+	right 0
+	bottom 0
+	left 0
+	visibility hidden
+	opacity 0
+	transition visibility 0s .2s, opacity .2s
+	text-align center
+	&:after
+		content ''
+		height 100%
+		width 0
+		display inline-block
+		vertical-align middle
+	&.active
+		visibility visible
+		opacity 1
+		transition visibility 0s, opacity .2s
+.popup
+	display inline-block
+	vertical-align middle
+	display none
+	box-shadow: 1px 2px 49px 0px rgba(0, 0, 0, 0.59)
+	@media screen and (max-width: 480px)
+		width 90%
+	&.active
+		display inline-block
+	&__header
+		padding 36px 0 14px
+		text-align center
+		&:after
+		content ''
+			width 59px
+			height 65px
+			position absolute
+			top 0
+			left 0
+			background_contain('corner.png')
+	& .form-destination
+		font-weight 300
+		text-align center
+	&--delivery
+		& .form-container__head
+			padding: 20px 0 15px
+			height auto
+			line-height: inherit
+	&--terms
+		& .form-wrap
+			width auto
+			padding 0 15px
+			margin 0 auto
+			color #fff
+			text-align left
+			max-height 300px
+			overflow-y scroll
+			
+// .sidemenu
+// 	transform translateX(-100%)
+// 	transition transform .2s ease
+// 	&.active
+// 		transform translateX(0)
+
+.form-result
+	position absolute
+	z-index 2
+	top 0
+	right 0
+	bottom 0
+	left 0
+	opacity 0
+	visibility hidden
+	font-size 36px
+	color #fff
+	transition opacity .2s ease, visibility 0s .2s ease
+	background-color rgba(0, 0, 0, 0.8)
+	text-align center
+	text-align center
+	& span
+		display inline-block
+		vertical-align middle
+		width 90%
+	&:after
+		content ''
+		display inline-block
+		vertical-align middle
+		height 100%
+		width 0
+	&.active
+		opacity 1
+		visibility visible
+		transition opacity .2s ease, visibility 0s ease
