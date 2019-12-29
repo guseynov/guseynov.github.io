@@ -104,15 +104,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-document.querySelector('body').classList.remove('no-js');
-const preloader = document.querySelector('.preloader');
+document.querySelector("body").classList.remove("no-js");
+const preloader = document.querySelector(".preloader");
 
 const fullyLoaded = () => {
-  preloader.classList.add('loaded');
+  preloader.classList.add("loaded");
 };
 
-window.addEventListener('load', fullyLoaded);
-new _glidejs_glide__WEBPACK_IMPORTED_MODULE_4__["default"]('.portfolio-slider', {
+window.addEventListener("load", fullyLoaded);
+new _glidejs_glide__WEBPACK_IMPORTED_MODULE_4__["default"](".portfolio-slider", {
   startAt: 0,
   perView: 2,
   breakpoints: {
@@ -123,33 +123,33 @@ new _glidejs_glide__WEBPACK_IMPORTED_MODULE_4__["default"]('.portfolio-slider', 
 }).mount();
 
 const ready = fn => {
-  if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
     fn();
   } else {
-    document.addEventListener('DOMContentLoaded', fn);
+    document.addEventListener("DOMContentLoaded", fn);
   }
 };
 
 const falling = () => {
-  const mainEl = document.querySelector('body');
+  const mainEl = document.querySelector("body");
   setInterval(() => {
-    if (document.visibilityState === 'visible') {
+    if (document.visibilityState === "visible") {
       let choice = Math.floor(Math.random() * Math.floor(2));
       let position = Math.floor(Math.random() * Math.floor(100));
-      let el = document.createElement('span');
-      el.addEventListener('animationend', () => {
+      let el = document.createElement("span");
+      el.addEventListener("animationend", () => {
         el.remove();
       });
-      el.style.left = position + '%';
+      el.style.left = position + "%";
       mainEl.appendChild(el);
 
       switch (choice) {
         case 0:
-          el.classList.add('box');
+          el.classList.add("box");
           break;
 
         case 1:
-          el.classList.add('sm-circle');
+          el.classList.add("sm-circle");
           break;
       }
     }
@@ -187,9 +187,13 @@ if(false) {}
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
+exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */\n\n/* Document\n   ========================================================================== */\n\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n */\n\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/* Sections\n   ========================================================================== */\n\n/**\n * Remove the margin in all browsers.\n */\n\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\n\nmain {\n  display: block;\n}\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\n\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Remove the gray background on active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\n\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove the border on images inside links in IE 10.\n */\n\nimg {\n  border-style: none;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * 1. Change the font styles in all browsers.\n * 2. Remove the margin in Firefox and Safari.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: 1.15; /* 1 */\n  margin: 0; /* 2 */\n}\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\n\nbutton,\ninput { /* 1 */\n  overflow: visible;\n}\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\n\nbutton,\nselect { /* 1 */\n  text-transform: none;\n}\n\n/**\n * Correct the inability to style clickable types in iOS and Safari.\n */\n\nbutton,\n[type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n}\n\n/**\n * Remove the inner border and padding in Firefox.\n */\n\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\n\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/**\n * Correct the padding in Firefox.\n */\n\nfieldset {\n  padding: 0.35em 0.75em 0.625em;\n}\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\n\nlegend {\n  box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\n\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * 1. Add the correct box sizing in IE 10.\n * 2. Remove the padding in IE 10.\n */\n\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/* Interactive\n   ========================================================================== */\n\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\n\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\n\nsummary {\n  display: list-item;\n}\n\n/* Misc\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 10+.\n */\n\ntemplate {\n  display: none;\n}\n\n/**\n * Add the correct display in IE 10.\n */\n\n[hidden] {\n  display: none;\n}\n", ""]);
+// Exports
+module.exports = exports;
 
 
 /***/ }),
@@ -213,7 +217,7 @@ module.exports = function (useSourceMap) {
       var content = cssWithMappingToString(item, useSourceMap);
 
       if (item[2]) {
-        return "@media ".concat(item[2], "{").concat(content, "}");
+        return "@media ".concat(item[2], " {").concat(content, "}");
       }
 
       return content;
@@ -228,32 +232,18 @@ module.exports = function (useSourceMap) {
       modules = [[null, modules, '']];
     }
 
-    var alreadyImportedModules = {};
+    for (var i = 0; i < modules.length; i++) {
+      var item = [].concat(modules[i]);
 
-    for (var i = 0; i < this.length; i++) {
-      // eslint-disable-next-line prefer-destructuring
-      var id = this[i][0];
-
-      if (id != null) {
-        alreadyImportedModules[id] = true;
-      }
-    }
-
-    for (var _i = 0; _i < modules.length; _i++) {
-      var item = modules[_i]; // skip already imported module
-      // this implementation is not 100% perfect for weird media query combinations
-      // when a module is imported multiple times with different media queries.
-      // I hope this will never occur (Hey this way we have smaller bundles)
-
-      if (item[0] == null || !alreadyImportedModules[item[0]]) {
-        if (mediaQuery && !item[2]) {
+      if (mediaQuery) {
+        if (!item[2]) {
           item[2] = mediaQuery;
-        } else if (mediaQuery) {
-          item[2] = "(".concat(item[2], ") and (").concat(mediaQuery, ")");
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
         }
-
-        list.push(item);
       }
+
+      list.push(item);
     }
   };
 
@@ -816,9 +806,13 @@ if(false) {}
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
+exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, ".glide{position:relative;width:100%;box-sizing:border-box}.glide *{box-sizing:inherit}.glide__track{overflow:hidden}.glide__slides{position:relative;width:100%;list-style:none;backface-visibility:hidden;transform-style:preserve-3d;touch-action:pan-Y;overflow:hidden;padding:0;white-space:nowrap;display:flex;flex-wrap:nowrap;will-change:transform}.glide__slides--dragging{user-select:none}.glide__slide{width:100%;height:100%;flex-shrink:0;white-space:normal;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}.glide__slide a{user-select:none;-webkit-user-drag:none;-moz-user-select:none;-ms-user-select:none}.glide__arrows{-webkit-touch-callout:none;user-select:none}.glide__bullets{-webkit-touch-callout:none;user-select:none}.glide--rtl{direction:rtl}\n", ""]);
+// Exports
+module.exports = exports;
 
 
 /***/ }),
@@ -850,9 +844,13 @@ if(false) {}
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
+exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, ".glide__arrow{position:absolute;display:block;top:50%;z-index:2;color:white;text-transform:uppercase;padding:9px 12px;background-color:transparent;border:2px solid rgba(255,255,255,0.5);border-radius:4px;box-shadow:0 0.25em 0.5em 0 rgba(0,0,0,0.1);text-shadow:0 0.25em 0.5em rgba(0,0,0,0.1);opacity:1;cursor:pointer;transition:opacity 150ms ease, border 300ms ease-in-out;transform:translateY(-50%);line-height:1}.glide__arrow:focus{outline:none}.glide__arrow:hover{border-color:white}.glide__arrow--left{left:2em}.glide__arrow--right{right:2em}.glide__arrow--disabled{opacity:0.33}.glide__bullets{position:absolute;z-index:2;bottom:2em;left:50%;display:inline-flex;list-style:none;transform:translateX(-50%)}.glide__bullet{background-color:rgba(255,255,255,0.5);width:9px;height:9px;padding:0;border-radius:50%;border:2px solid transparent;transition:all 300ms ease-in-out;cursor:pointer;line-height:0;box-shadow:0 0.25em 0.5em 0 rgba(0,0,0,0.1);margin:0 0.25em}.glide__bullet:focus{outline:none}.glide__bullet:hover,.glide__bullet:focus{border:2px solid white;background-color:rgba(255,255,255,0.5)}.glide__bullet--active{background-color:white}.glide--swipeable{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}.glide--dragging{cursor:grabbing;cursor:-moz-grabbing;cursor:-webkit-grabbing}\n", ""]);
+// Exports
+module.exports = exports;
 
 
 /***/ }),
@@ -884,9 +882,13 @@ if(false) {}
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(3);
+exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "* {\n  box-sizing: border-box;\n}\nhtml,\nbody {\n  overflow-x: hidden;\n}\nh1 {\n  position: relative;\n}\nbody {\n  background-color: #231f1c;\n  color: #fff;\n  font-family: 'Open Sans';\n  font-size: 16px;\n  overflow-x: hidden;\n  position: relative;\n  padding-bottom: 100px;\n}\n.main {\n  width: 1200px;\n  margin: 30px auto;\n  box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);\n  background-color: #231f1c;\n  border-radius: 10px;\n  padding: 60px 100px;\n  position: relative;\n  overflow: hidden;\n}\n.main-photo {\n  width: 300px;\n  height: 300px;\n  border-radius: 50%;\n  overflow: hidden;\n  margin-right: 60px;\n}\n.header__nav {\n  margin-bottom: 120px;\n}\n.header-nav-list {\n  list-style-type: none;\n  display: flex;\n  padding: 0;\n  margin: 0;\n}\n.header-nav-list__item {\n  margin-right: 30px;\n}\n.header-nav-list__btn {\n  background: none;\n  border: none;\n  padding: 0;\n  transition: color 0.2s ease;\n  color: #fff;\n  font-weight: 600;\n  cursor: pointer;\n  text-decoration: none !important;\n}\n.header-nav-list__btn:hover {\n  color: #44ed98;\n}\n.home {\n  display: flex;\n  align-items: center;\n}\n.home-info__heading {\n  font-weight: 600;\n  font-size: 42px;\n  line-height: 1.3;\n  margin: 0;\n}\nh2 {\n  font-size: 32px;\n  font-weight: 300;\n  margin: 0;\n  background-color: #44ed98;\n  color: #231f1c;\n  padding: 7px 20px;\n  display: inline-block;\n  border-radius: 7px;\n}\n.about__text {\n  font-size: 21px;\n  font-weight: 300;\n  line-height: 1.9;\n  position: relative;\n}\n.about__text span {\n  background-color: #6553f6;\n  font-weight: 800;\n  padding: 3px 10px;\n  margin: 0 5px;\n  color: #231f1c;\n  border-radius: 30px;\n  white-space: nowrap;\n}\n.workplace {\n  padding-left: 50px;\n  margin-top: 50px;\n  position: relative;\n}\n.workplace:before {\n  content: '';\n  width: 15px;\n  height: 15px;\n  border-radius: 50%;\n  display: inline-block;\n  position: absolute;\n  top: 0;\n  left: -10px;\n  border: 3px solid #44ed98;\n  background-color: #231f1c;\n  overflow: hidden;\n  z-index: 1;\n}\n.workplace:after {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  width: 2px;\n  top: 0;\n  left: 0;\n  bottom: -50px;\n  background-color: #44ed98;\n}\n.workplace__title {\n  font-size: 24px;\n  font-weight: 400;\n  display: inline-block;\n  margin: 0;\n  line-height: 1;\n}\n.workplace__description {\n  font-size: 18px;\n  line-height: 1.5;\n}\n.workplace:last-child:after {\n  bottom: 0;\n}\nsection {\n  margin-bottom: 100px;\n}\nsection:last-child {\n  margin-bottom: 0;\n}\n.circle {\n  position: absolute;\n  border-radius: 50%;\n  z-index: 0;\n}\n.circle--1 {\n  background-color: #44ed98;\n  box-shadow: 0 0 45px 0 #44ed98;\n  top: -150px;\n  left: 50%;\n  width: 500px;\n  height: 500px;\n  transform: translate3d(150px, 0, 0);\n  animation-duration: 5s;\n  animation-name: circle-1-animation;\n  animation-iteration-count: infinite;\n}\n.circle--1.circle--outside {\n  top: -120px;\n}\n.circle--2 {\n  background-color: #6553f6;\n  box-shadow: 0 0 20px 1px #6553f6;\n  width: 300px;\n  height: 300px;\n  top: 800px;\n  right: 50%;\n  transform: translate3d(-400px, 0, 0);\n  animation-duration: 3s;\n  animation-name: circle-2-animation;\n  animation-iteration-count: infinite;\n}\n.circle--2.circle--outside {\n  top: 830px;\n}\n.circle--3 {\n  background-color: #44ed98;\n  box-shadow: 0 0 20px 1px #44ed98;\n  width: 600px;\n  height: 600px;\n  top: 1400px;\n  right: 50%;\n  transform: translate3d(850px, 0, 0);\n  animation-duration: 5s;\n  animation-name: circle-3-animation;\n  animation-iteration-count: infinite;\n}\n.circle--3.circle--outside {\n  top: 1430px;\n}\n.portfolio-inner {\n  margin: 0 -100px;\n}\n.portfolio-slide {\n  display: block;\n  position: relative;\n}\n.portfolio-slide img {\n  width: 100%;\n  position: relative;\n  z-index: 1;\n}\n.portfolio-slide:after {\n  width: 100px;\n  height: 100px;\n  content: '';\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 35px;\n  border-radius: 50%;\n  background-color: #6553f6;\n}\n.education {\n  font-size: 18px;\n}\n.react-projects {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 50px;\n}\n.contact-links {\n  margin-top: 45px;\n  display: flex;\n}\n.contact-link {\n  margin-right: 30px;\n  transition: all 0.2s ease;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n}\n.contact-link:last-child {\n  margin-right: 0;\n}\n.contact-link:hover,\n.contact-link:focus,\n.contact-link:active {\n  text-decoration: none;\n  color: #fff;\n}\n.contact-link img {\n  width: 30px;\n  position: relative;\n  z-index: 1;\n}\n.contact-link:after {\n  content: '';\n  display: inline-block;\n  width: 60px;\n  height: 60px;\n  position: absolute;\n  opacity: 0;\n  top: 50%;\n  left: 50%;\n  margin: -30px 0 0 -30px;\n  border-radius: 50%;\n  background-size: 200% 200%;\n  background-color: #00e4a0;\n  background-position: 100% 7%;\n  transition: all 0.2s ease;\n  background-image: linear-gradient(48deg, #0f98e9 0, #00e4a0 50%, #0f98e9 100%);\n}\n.contact-link:hover:after {\n  opacity: 1;\n}\n.box,\n.sm-circle,\n.triangle {\n  width: 50px;\n  height: 50px;\n  position: absolute;\n  animation-duration: 40s;\n  animation-name: falling-animation;\n  animation-timing-function: linear;\n  transform: translate3d(0, 0, 0) rotate(0);\n  top: -10%;\n}\n.box {\n  border: 5px solid #6553f6;\n  box-shadow: 0 0 50px 0 #6553f6;\n}\n.sm-circle {\n  border-radius: 50%;\n  border: 5px solid #44ed98;\n  box-shadow: 0 0 50px 0 #44ed98;\n}\n.preloader {\n  align-items: center;\n  background: #171616;\n  display: flex;\n  height: 100vh;\n  justify-content: center;\n  left: 0;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 9999;\n  opacity: 1;\n  transition: opacity 1s linear;\n}\n.preloader.loaded {\n  opacity: 0;\n  pointer-events: none;\n}\n.react-project {\n  color: #fff;\n  background: #6553f6;\n  width: 230px;\n  height: 230px;\n  text-align: center;\n  font-size: 32px;\n  font-weight: 300;\n  position: relative;\n  box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);\n}\n.react-project__stack {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0 15px;\n}\n.react-project__stack img {\n  width: 80px;\n  padding: 0 10px;\n}\n.react-project__hover {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n.react-project__link {\n  height: 115px;\n  display: block;\n  line-height: 115px;\n  text-decoration: none;\n  background: #fff;\n  color: #231f1c;\n  opacity: 0;\n  transition: all 0.2s ease;\n  font-size: 23px;\n}\n.react-project__link:hover,\n.react-project__link:focus {\n  opacity: 1;\n}\n.glide__bullets {\n  bottom: 0;\n}\n@media screen and (max-width: 1200px) {\n  .main {\n    width: 100%;\n    margin: 30px 0;\n    border-radius: 0;\n  }\n}\n@media screen and (max-width: 767px) {\n  body {\n    padding-bottom: 0;\n  }\n  .main {\n    padding: 60px 15px;\n  }\n  .home {\n    flex-direction: column;\n  }\n  .header {\n    display: none;\n  }\n  section {\n    margin-bottom: 30px;\n  }\n  .main-photo {\n    margin: 0 0 15px;\n  }\n  .home-info__heading {\n    font-size: 28px;\n    text-align: center;\n  }\n  .about__text {\n    font-size: 16px;\n  }\n  h2 {\n    font-size: 22px;\n  }\n  .workplace {\n    padding-left: 25px;\n  }\n  #react {\n    display: none;\n  }\n  .portfolio-slide img,\n  .portfolio-slide {\n    width: 300px !important;\n    margin: 0 auto;\n  }\n}\n@-moz-keyframes circle-1-animation {\n  0% {\n    transform: translate3d(150px, 0, 0);\n  }\n  50% {\n    transform: translate3d(0, 150px, 0);\n  }\n  100% {\n    transform: translate3d(150px, 0, 0);\n  }\n}\n@-webkit-keyframes circle-1-animation {\n  0% {\n    transform: translate3d(150px, 0, 0);\n  }\n  50% {\n    transform: translate3d(0, 150px, 0);\n  }\n  100% {\n    transform: translate3d(150px, 0, 0);\n  }\n}\n@-o-keyframes circle-1-animation {\n  0% {\n    transform: translate3d(150px, 0, 0);\n  }\n  50% {\n    transform: translate3d(0, 150px, 0);\n  }\n  100% {\n    transform: translate3d(150px, 0, 0);\n  }\n}\n@keyframes circle-1-animation {\n  0% {\n    transform: translate3d(150px, 0, 0);\n  }\n  50% {\n    transform: translate3d(0, 150px, 0);\n  }\n  100% {\n    transform: translate3d(150px, 0, 0);\n  }\n}\n@-moz-keyframes circle-2-animation {\n  0% {\n    transform: translate3d(-400px, 0, 0);\n  }\n  50% {\n    transform: translate3d(-500px, 150px, 0);\n  }\n  100% {\n    transform: translate3d(-400px, 0, 0);\n  }\n}\n@-webkit-keyframes circle-2-animation {\n  0% {\n    transform: translate3d(-400px, 0, 0);\n  }\n  50% {\n    transform: translate3d(-500px, 150px, 0);\n  }\n  100% {\n    transform: translate3d(-400px, 0, 0);\n  }\n}\n@-o-keyframes circle-2-animation {\n  0% {\n    transform: translate3d(-400px, 0, 0);\n  }\n  50% {\n    transform: translate3d(-500px, 150px, 0);\n  }\n  100% {\n    transform: translate3d(-400px, 0, 0);\n  }\n}\n@keyframes circle-2-animation {\n  0% {\n    transform: translate3d(-400px, 0, 0);\n  }\n  50% {\n    transform: translate3d(-500px, 150px, 0);\n  }\n  100% {\n    transform: translate3d(-400px, 0, 0);\n  }\n}\n@-moz-keyframes circle-3-animation {\n  0% {\n    transform: translate3d(850px, 0, 0);\n  }\n  50% {\n    transform: translate3d(1000px, -200px, 0);\n  }\n  100% {\n    transform: translate3d(850px, 0, 0);\n  }\n}\n@-webkit-keyframes circle-3-animation {\n  0% {\n    transform: translate3d(850px, 0, 0);\n  }\n  50% {\n    transform: translate3d(1000px, -200px, 0);\n  }\n  100% {\n    transform: translate3d(850px, 0, 0);\n  }\n}\n@-o-keyframes circle-3-animation {\n  0% {\n    transform: translate3d(850px, 0, 0);\n  }\n  50% {\n    transform: translate3d(1000px, -200px, 0);\n  }\n  100% {\n    transform: translate3d(850px, 0, 0);\n  }\n}\n@keyframes circle-3-animation {\n  0% {\n    transform: translate3d(850px, 0, 0);\n  }\n  50% {\n    transform: translate3d(1000px, -200px, 0);\n  }\n  100% {\n    transform: translate3d(850px, 0, 0);\n  }\n}\n@-moz-keyframes falling-animation {\n  0% {\n    top: -10%;\n  }\n  90% {\n    opacity: 1;\n  }\n  100% {\n    top: 90%;\n    opacity: 0;\n    transform: translate3d(0, 0, 0) rotate(360deg);\n  }\n}\n@-webkit-keyframes falling-animation {\n  0% {\n    top: -10%;\n  }\n  90% {\n    opacity: 1;\n  }\n  100% {\n    top: 90%;\n    opacity: 0;\n    transform: translate3d(0, 0, 0) rotate(360deg);\n  }\n}\n@-o-keyframes falling-animation {\n  0% {\n    top: -10%;\n  }\n  90% {\n    opacity: 1;\n  }\n  100% {\n    top: 90%;\n    opacity: 0;\n    transform: translate3d(0, 0, 0) rotate(360deg);\n  }\n}\n@keyframes falling-animation {\n  0% {\n    top: -10%;\n  }\n  90% {\n    opacity: 1;\n  }\n  100% {\n    top: 90%;\n    opacity: 0;\n    transform: translate3d(0, 0, 0) rotate(360deg);\n  }\n}\n", ""]);
+// Exports
+module.exports = exports;
 
 
 /***/ }),
@@ -896,7 +898,7 @@ exports.push([module.i, "* {\n  box-sizing: border-box;\n}\nhtml,\nbody {\n  ove
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /*!
- * Glide.js v3.3.0
+ * Glide.js v3.4.1
  * (c) 2013-2019 Jędrzej Chałubek <jedrzej.chalubek@gmail.com> (http://jedrzejchalubek.com/)
  * Released under the MIT License.
  */
