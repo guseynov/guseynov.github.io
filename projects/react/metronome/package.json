@@ -1,8 +1,8 @@
 {
   "name": "metronome",
-  "version": "0.1.0",
-  "homepage": "http://guseynov.github.io/react/metronome",
-  "private": true,
+  "version": "1.0.0",
+  "homepage": "http://guseynov.github.io/projects/react/metronome",
+  "private": false,
   "dependencies": {
     "prettier": "^1.19.1",
     "react": "^16.8.6",
