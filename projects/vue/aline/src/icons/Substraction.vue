@@ -1,9 +1,0 @@
-<script>
-export default {};
-</script>
-
-<template>
-  <svg xmlns="http://www.w3.org/2000/svg" width="42" height="2">
-    <path fill="#fff" d="M0 0h42v2H0z" />
-  </svg>
-</template>

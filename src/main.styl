@@ -14,11 +14,15 @@ h1
 body
     background-color $gray
     color #fff
-    font-family 'Open Sans'
     font-size 16px
     overflow-x hidden
     position relative
     padding-bottom 100px
+    font-family 'Open Sans', sans-serif
+
+.header
+    position relative
+    
 .main
     width 1200px
     margin 30px auto
@@ -55,9 +59,11 @@ body
         color #fff
         font-weight 600
         cursor pointer
-        text-decoration none !important
+        text-decoration none
+        font-weight 300
         &:hover
             color $accent
+            text-decoration none
 
 .home
     display flex
@@ -230,7 +236,7 @@ section
 .education
     font-size 18px
 
-.react-projects
+.recent-projects
     display flex
     justify-content space-between
     margin-top 50px
@@ -240,7 +246,7 @@ section
     display flex
 
 .contact-link
-    margin-right 30px
+    margin-right 40px
     transition all .2s ease
     display flex
     align-items center
@@ -310,7 +316,7 @@ section
         opacity 0
         pointer-events none
 
-.react-project
+.recent-project
     color #fff
     background #6553f6
     width 230px
@@ -320,11 +326,19 @@ section
     font-weight 300
     position relative
     box-shadow 0 0 20px 0 rgba(0,0,0,.5)
+    display flex
+    align-items center
+    border-radius 3px
+    box-shadow 0 0 20px 2px rgba(0, 0, 0, 0.5)
+    overflow hidden
+    &__inner
+        width 100%
+    &__title
+        margin 0 0 30px 0
     &__stack
         display flex
         align-items center
         justify-content center
-        padding 0 15px
         img
             width 80px
             padding 0 10px
@@ -392,8 +406,6 @@ section
         font-size 22px
     .workplace
         padding-left 25px
-    #react
-        display none
     .portfolio-slide img, .portfolio-slide
         width 300px !important
         margin 0 auto

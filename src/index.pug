@@ -4,8 +4,8 @@ html
         link(rel="icon", type="image/png", sizes="32x32", src=require('./img/favicon-32x32.png'))
         link(rel="icon", type="image/png", sizes="16x16", src=require('./img/favicon-16x16.png'))
         link(rel="shortcut icon", src=require('./img/favicon.ico'))
-        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap")
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap")
         style.
             .no-js {
                 display: none;
@@ -27,15 +27,15 @@ html
                             li.header-nav-list__item
                                 a(href="#home").header-nav-list__btn Home
                             li.header-nav-list__item
-                                a(href="#about").header-nav-list__btn About me
+                                a(href="#about").header-nav-list__btn About
                             li.header-nav-list__item
                                 a(href="#work").header-nav-list__btn Work
                             li.header-nav-list__item
                                 a(href="#education").header-nav-list__btn Education
                             li.header-nav-list__item
-                                a(href="#react").header-nav-list__btn React
+                                a(href="#recent").header-nav-list__btn Recent
                             li.header-nav-list__item
-                                a(href="#portfolio").header-nav-list__btn Portfolio
+                                a(href="#html-css").header-nav-list__btn HTML/CSS
                             li.header-nav-list__item
                                 a(href="#contact").header-nav-list__btn Contact
             section.home#home
@@ -99,41 +99,45 @@ html
             section.education#education
                 h2 Education
                 p I graduated from Herzen University in 2018 as a Bachelor of Computer Science
-            section.react#react
-                h2 Personal React/Vue projects
-                .react-projects
-                    .react-project
-                        p.react-project__title Hot or Not?
-                        .react-project__stack
-                            img(src=require('./img/vue.svg'))
-                            img(src=require('./img/vuex.svg'))
-                        .react-project__hover
-                            a.react-project__link(href="./projects/vue/hot_or_not/dist", target="_blank") view the project
-                            a.react-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/vue/hot_or_not/src", target="_blank") view the code
-                    .react-project
-                        p.react-project__title Calculator
-                        .react-project__stack
-                            img(src=require('./img/react.svg'))
-                            img(src=require('./img/redux.svg'))
-                        .react-project__hover
-                            a.react-project__link(href="./projects/react/calculator/build", target="_blank") view the project
-                            a.react-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/calculator/src", target="_blank") view the code
-                    .react-project
-                        p.react-project__title Forecast
-                        .react-project__stack
-                            img(src=require('./img/react.svg'))
-                        .react-project__hover
-                            a.react-project__link(href="./projects/react/weather/build", target="_blank") view the project
-                            a.react-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/weather/src", target="_blank") view the code
-                    .react-project
-                        p.react-project__title Metronome
-                        .react-project__stack
-                            img(src=require('./img/react.svg'))
-                        .react-project__hover
-                            a.react-project__link(href="./projects/react/metronome/build", target="_blank") view the project
-                            a.react-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/metronome/src", target="_blank") view the code
-            section.portfolio#portfolio
-                h2 Portfolio
+            section.recent#recent
+                h2 Recent personal projects
+                .recent-projects
+                    .recent-project
+                        .recent-project__inner
+                            p.recent-project__title Hot or Not?
+                            .recent-project__stack
+                                img(src=require('./img/vue.svg'))
+                                img(src=require('./img/vuex.svg'))
+                        .recent-project__hover
+                            a.recent-project__link(href="./projects/vue/hot_or_not/dist", target="_blank") view the project
+                            a.recent-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/vue/hot_or_not/src", target="_blank") view the code
+                    .recent-project
+                        .recent-project__inner
+                            p.recent-project__title Calculator
+                            .recent-project__stack
+                                img(src=require('./img/react.svg'))
+                                img(src=require('./img/redux.svg'))
+                        .recent-project__hover
+                            a.recent-project__link(href="./projects/react/calculator/build", target="_blank") view the project
+                            a.recent-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/calculator/src", target="_blank") view the code
+                    .recent-project
+                        .recent-project__inner
+                            p.recent-project__title Forecast
+                            .recent-project__stack
+                                img(src=require('./img/react.svg'))
+                        .recent-project__hover
+                            a.recent-project__link(href="./projects/react/weather/build", target="_blank") view the project
+                            a.recent-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/weather/src", target="_blank") view the code
+                    .recent-project
+                        .recent-project__inner
+                            p.recent-project__title Metronome
+                            .recent-project__stack
+                                img(src=require('./img/react.svg'))
+                        .recent-project__hover
+                            a.recent-project__link(href="./projects/react/metronome/build", target="_blank") view the project
+                            a.recent-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/metronome/src", target="_blank") view the code
+            section.html-css#html-css
+                h2 HTML/CSS
                 .portfolio-inner
                     .portfolio-slider.glide
                         .glide__track(data-glide-el="track")
