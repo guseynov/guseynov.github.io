@@ -28,6 +28,7 @@ import List from "./components/List.vue";
 import AddTask from "./components/AddTask.vue";
 import Overlay from "./components/Overlay.vue";
 import Tasks from "./components/Tasks.vue";
+import "@fortawesome/fontawesome-free/css/solid.min.css";
 
 export default {
   name: "Todo",

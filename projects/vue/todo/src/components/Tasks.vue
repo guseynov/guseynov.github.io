@@ -71,7 +71,6 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import fireworks from "fireworks";
-import "@fortawesome/fontawesome-free/css/all.css";
 import audioCongratulations from "../assets/sounds/greatjob.wav";
 import visualCongratulations from "../assets/gif/greatjob.gif";
 

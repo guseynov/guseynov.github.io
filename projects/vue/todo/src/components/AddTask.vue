@@ -57,7 +57,6 @@ import Choices from "choices.js";
 import "choices.js/public/assets/styles/base.min.css";
 import "choices.js/public/assets/styles/choices.min.css";
 import "choices.js/public/assets/scripts/choices.min.js";
-import "@fortawesome/fontawesome-free/css/all.css";
 import Swal from "sweetalert2";
 
 export default {
