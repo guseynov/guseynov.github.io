@@ -12,7 +12,7 @@
         type="button"
         class="category-tasks__close"
       >
-        <i class="fas fa-times"></i>
+        <font-awesome-icon icon="times" />
       </button>
     </header>
     <p class="no-tasks" v-if="getTasksCount === 0">
@@ -47,7 +47,8 @@
             "
             type="button"
           >
-            <i class="far fa-check-circle"></i>
+          
+            <font-awesome-icon icon="check" />
           </button>
           <button
             v-on:click="
@@ -59,7 +60,7 @@
             class="category-task__delete"
             type="button"
           >
-            <i class="far fa-trash-alt"></i>
+            <font-awesome-icon icon="trash" />
           </button>
         </div>
       </li>

@@ -7,7 +7,7 @@
         type="button"
         class="add-task__close"
       >
-        <i class="fas fa-times"></i>
+        <font-awesome-icon icon="times" />
       </button>
     </header>
 
@@ -44,7 +44,7 @@
       type="button"
       class="btn btn--blue add-task__submit"
     >
-      <i class="fas fa-save"></i>
+      <font-awesome-icon icon="save" />
       Add new task
     </button>
   </div>
@@ -165,44 +165,72 @@ export default {
             outline none
     &__submit
         width 100%
-        i
+        svg
             margin-right 5px
 
 
 .choices__item
     font-size 21px
     font-weight 300
-    &[data-value]:before
-        display inline-block
-        width 30px
+    &[data-value]
+      svg
         margin-right 10px
+      &:before
+        display inline-block
         vertical-align middle
-        font-family "Font Awesome 5 Free"
+        font-family "Font Awesome\ 5 Free"
         text-align center
         font-weight 900
         padding 0
-    &[data-value="misc"]:before
+        display none
+    &[data-value="misc"]
+      svg
+        path
+          fill #43b3bd
+      &:before
         content "\f249"
-        color #43b3bd
-    &[data-value="work"]:before
+    &[data-value="work"]
+      svg
+        path
+          fill #fcba77
+      &:before
         content "\f0b1"
-        color #fcba77
-    &[data-value="music"]:before
+    &[data-value="music"]
+      svg
+        path
+          fill #f8937e
+      &:before
         content "\f001"
-        color #f8937e
-    &[data-value="travel"]:before
+    &[data-value="travel"]
+      svg
+        path
+          fill #59ca7b
+      &:before
         content "\f072"
-        color #59ca7b
-    &[data-value="study"]:before
+
+    &[data-value="study"]
+      svg
+        path
+          fill #8d85d1
+      &:before
         content "\f19d"
-        color #8d85d1
-    &[data-value="home"]:before
+
+    &[data-value="home"]
+      svg
+        path
+          fill #dc6a5c
+      &:before
         content "\f015"
-        color #dc6a5c
-    &[data-value="art"]:before
-        content "\f53f"
-        color #ad67c6
-    &[data-value="shopping"]:before
-        content "\f07a"
-        color #43b3bd
+    &[data-value="art"]
+        svg
+          path
+            fill #ad67c6
+        &:before
+          content "\f53f"
+    &[data-value="shopping"]
+        svg
+          path
+            fill #43b3bd
+        &:before
+          content "\f07a"
 </style>

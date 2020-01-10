@@ -28,7 +28,6 @@ import List from "./components/List.vue";
 import AddTask from "./components/AddTask.vue";
 import Overlay from "./components/Overlay.vue";
 import Tasks from "./components/Tasks.vue";
-import "@fortawesome/fontawesome-free/css/solid.min.css";
 
 export default {
   name: "Todo",
@@ -47,7 +46,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap");
 
 body
   background #f2f2f2

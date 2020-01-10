@@ -82,37 +82,70 @@ export default {
         font-weight 600
     &__tasks-amount
         color #838383
-    &[data-category-name]:before
-      display block
-      font-family "Font Awesome 5 Free"
-      font-size 32px
-      font-weight 900
-      padding 0
-    &[data-category-name="all"]:before
+    &[data-category-name]
+      svg 
+        width 45px
+        height 60px
+        margin-bottom 15px
+      &:before
+        display block
+        font-family "Font Awesome\ 5 Free"
+        font-size 32px
+        font-weight 900
+        padding 0
+        display none
+    &[data-category-name="all"]
+      svg
+        path
+          fill #5a87fc
+      &:before
         content "\f328"
-        color #5a87fc
-    &[data-category-name="misc"]:before
+    &[data-category-name="misc"]
+      svg
+        path
+          fill #43b3bd
+      &:before
         content "\f249"
-        color #43b3bd
-    &[data-category-name="work"]:before
+    &[data-category-name="work"]
+      svg
+        path
+          fill #fcba77
+      &:before
         content "\f0b1"
-        color #fcba77
-    &[data-category-name="music"]:before
+    &[data-category-name="music"]
+      svg
+        path
+          fill #f8937e
+      &:before
         content "\f001"
-        color #f8937e
-    &[data-category-name="travel"]:before
+    &[data-category-name="travel"]
+      svg
+        path
+          fill #59ca7b
+      &:before
         content "\f072"
-        color #59ca7b
-    &[data-category-name="study"]:before
+    &[data-category-name="study"]
+      svg
+        path
+          fill #8d85d1
+      &:before
         content "\f19d"
-        color #8d85d1
-    &[data-category-name="home"]:before
+    &[data-category-name="home"]
+      svg
+        path
+          fill #dc6a5c
+      &:before
         content "\f015"
-        color #dc6a5c
-    &[data-category-name="art"]:before
+    &[data-category-name="art"]
+      svg
+        path
+          fill #ad67c6
+      &:before
         content "\f53f"
-        color #ad67c6
-    &[data-category-name="shopping"]:before
+    &[data-category-name="shopping"]
+      svg
+        path
+          fill #43b3bd
+      &:before
         content "\f07a"
-        color #43b3bd
 </style>

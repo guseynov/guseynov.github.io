@@ -1,7 +1,7 @@
 <template>
   <blockquote class="quote">
     <button v-on:click="loadQuote" type="button" class="quote__refresh">
-      <i class="fas fa-sync-alt"></i>
+      <font-awesome-icon icon="sync-alt" />
     </button>
     <p class="quote__text">
       {{ getQuote.content || "Fetching.." }}

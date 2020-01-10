@@ -12,7 +12,7 @@
       class="add-task-btn"
       v-on:click="toggleAddTaskVisibility"
     >
-      <i class="fas fa-plus"></i>
+      <font-awesome-icon icon="plus" />
     </button>
   </section>
 </template>
