@@ -177,7 +177,7 @@ class Forecast extends React.Component {
               headers: {
                 "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
                 "x-rapidapi-key":
-                  "1dedf7be31mshb303f15044e564bp16f812jsn338599e4d210",
+                  "f202dd4a8amshb8b0d1941d03711p164c3ejsn9de325b5ae5d",
               },
             }
           ).then((response) => {
