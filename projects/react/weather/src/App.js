@@ -32,7 +32,7 @@ class Forecast extends React.Component {
         let cityEncoded = encodeURIComponent(this.state.city.trim());
         axios
           .get(
-            "https://api.openweathermap.org/data/2.5/forecast?q=" +
+            "http://api.openweathermap.org/data/2.5/forecast?q=" +
               cityEncoded +
               "&mode=json&appid=" +
               APIKey
@@ -144,7 +144,7 @@ class Forecast extends React.Component {
                     className="forecast-card__image"
                     alt=""
                     src={
-                      "https://openweathermap.org/img/w/" +
+                      "http://openweathermap.org/img/w/" +
                       forecastObj[key]["icon"] +
                       ".png"
                     }
