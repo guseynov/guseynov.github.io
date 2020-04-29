@@ -1,0 +1,54 @@
+Sources:
+    Gmail
+    Skype
+    Telegram
+    HeadHunter
+
+Company – Status (reason)
+Wayfair - Testing task
+Honeypot - Decline (no offices)
+Aragon - Decline (not good enough)
+Chili Piper
+hundred5 - Decline (not good enough)
+Booking.com - Decline (not good enough)
+ГК Самолет - Self Decline (not good enough for Lead dev)
+Star-staff (ЖКХ) - No answer
+hh.ru - No answer
+ЦРТ - Decline (not good enough)
+SkyNet - Testing task
+Альфа-банк - Decline (not good enough)
+Alfa Partners - Decline (not good enough)
+Voltaire
+МТС - Decline (Angular is required)
+Рахимова Лидия - Decline (not good enough)
+Фотострана - Testing task
+Happy Monday - Decline (not good enough)
+Axamit - Decline (not good enough)
+EPAM - Decline (not good enough)
+bssys Чайка - Decline (not good enough)
+CSSSR - Testing task
+Cryptophyl - Decline (Didn't complete the test on time)
+Luxoft
+Viewst - Decline (vacancy closed)
+Ultimate guitar
+Штрафы ГИБДД - Self Decline (not good enough for Lead dev)
+Next2U
+Эпикмакс - Decline (not good enough)
+TourRadar - Decline (not good enough)
+Лидер ИТ
+Eatme - Decline (not good enough)
+WaveAccess
+СберТех
+Московская Коллегия Адвокатов "Кворум" - Self Decline (not interested)
+ConsenSys - Decline (not good enough)
+ТекФорс Инжиниринг - Decline (not good enough)
+Lenvendo
+WSM Group
+Арина Лаврентьева
+Нижний Новгород
+Kate Azarova
+gamersbay.com
+Emergn - Decline (not good enough)
+Яна Шапран
+Itransition - Decline (not good enough)
+Human Capital

@@ -1,0 +1,13 @@
+Hello!
+I'm Ahmed, a frontend web developer from St. Petersburg, Russia. I'm searching for a remote position that would allow me to grow as a professional. I found your listing on weworkremotely.com and liked the description of the company and the position. I have 3+ years of working experience. I've been using React and Vue.js for a while now, you can see some of my personal React projects on my website: http://guseynov.github.io/
+
+I'm available for 40 hours a week and can start immediately. My timezone is UTC +3, but I'm absolutely fine with adjusting my daily regimen to meet your requirements.
+
+My salary expectations start from 1800 EUR per month.
+
+Would love to hear back from you!
+
+Best Regards,
+Ahmed Guseynov
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17

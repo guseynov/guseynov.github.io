@@ -73,12 +73,14 @@ html
                     | as style preprocessors,
                     span BEM
                     | methodology as a naming convention,
-                    span React/Redux
+                    span React/MobX/Redux
                     | or
                     span Vue.js/Vuex
                     | as the main JS stack and
                     span Webpack
-                    | for generating the final product.
+                    | for generating the final product. I'm fine with
+                    span TypeScript
+                    | too.
 
             section.work#work
                 h2 Working experience
@@ -94,7 +96,10 @@ html
                         | At Netrika I was dealing with updating and upgrading existing websites, sometimes making some relatively small projects from scratch. It was hard to grow professionally while working there, which is important for me, so I decided to quit.
                 .workplace
                     h3.workplace__title Freelancer
-                    p.workplace__period  November 2018 — now 
+                    p.workplace__period  November 2018 — January 2020 
+                .workplace
+                    h3.workplace__title Quantum Art
+                    p.workplace__period  January 2020  — April 2020 
             
             section.education#education
                 h2 Education
@@ -109,9 +114,15 @@ html
                     .recent-project.recent-project--development
                         .recent-project__inner
                             p.recent-project__title In development
-                    .recent-project.recent-project--development
+                    .recent-project
                         .recent-project__inner
-                            p.recent-project__title In development
+                            p.recent-project__title Breathing bubble
+                            .recent-project__stack
+                                img(src=require('./img/react.svg'))
+                                img(src=require('./img/mobx.svg'))
+                        .recent-project__hover
+                            a.recent-project__link(href="./projects/vue/breathing_bubble/dist", target="_blank") view the project
+                            a.recent-project__link(href="https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/breathing_bubble/src", target="_blank") view the code
                     .recent-project
                         .recent-project__inner
                             p.recent-project__title Todo list with categories

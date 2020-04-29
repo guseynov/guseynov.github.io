@@ -1,0 +1,34 @@
+Hello!
+
+I'm a frontend web developer from St. Petersburg who is looking for a position. I like the job description you posted and I would love to be a part of your team. You can find more info about me, including code examples on my personal website: http://guseynov.github.io/
+
+Any feedback would be greatly appreciated. Thanks!
+
+Best regards,Ahmed Guseynov
+
+
+
+Hello!
+
+My name is Ahmed, I've been working as a frontend engineer for more than three years and now I'm searching for a position that would allow me to grow as a professional, use the latest technologies and techniques.
+
+I write semantic HTML5 markup, use CSS3 techniques for implementing complex responsive designs and animations, build pixel-perfect pages and use JavaScript with popular libraries to create fast, functional and dynamic applications.
+
+In my workflow I use npm modules, git for version control, pug as a template engine, Stylus, SASS or LESS as style preprocessors, BEM methodology as a naming convention, React/Redux or Vue.js/Vuex as the main JS stack and Webpack for generating the final product.
+
+You can find more info about me on my personal webpage: http://guseynov.github.io/
+
+Best regards,
+Ahmed Guseynov
+
+
+Hello!
+
+My name is Ahmed, I've been working as a frontend engineer for more than three years and now I'm searching for a position that would allow me to grow as a professional, use the latest technologies and techniques.
+
+Regarding my last projects: I left the company that only uses jQuery, simple styling and other rather outdated approaches. While being unemployed, I learned about Vue, Vuex, React, Redux and made several small projects for my personal site. You can see them in the React/Vue section, it's also quite easy to jump straight to the code: http://guseynov.github.io/
+
+Skype: ahmed.guseynov.23
+
+Best regards,
+Ahmed Guseynov
