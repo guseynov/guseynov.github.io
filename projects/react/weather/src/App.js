@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 const axios = require("axios");
 const citiesAPIUrl =
-  "https://geodb-free-service.wirefreethought.com/v1/geo/cities?limit=10&offset=0&namePrefix=";
+  "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&offset=0&namePrefix=";
 const APIKey = "12975cb5d84452a454240c06140fbbc9";
 class Forecast extends React.Component {
   constructor(props) {
