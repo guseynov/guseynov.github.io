@@ -169,13 +169,18 @@ class Forecast extends React.Component {
       () => {
         if (this.state.inputValue.length > 3) {
           let that = this;
-          fetch(citiesAPIUrl + this.state.inputValue, {
-            method: "GET",
-            headers: {
-              "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
-              "x-rapidapi-key": CitiesAPIKey,
-            },
-          }).then((response) => {
+          fetch(
+            "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=" +
+              this.state.inputValue,
+            {
+              method: "GET",
+              headers: {
+                "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
+                "x-rapidapi-key":
+                  "1dedf7be31mshb303f15044e564bp16f812jsn338599e4d210",
+              },
+            }
+          ).then((response) => {
             console.log(response);
             if (response.data.data.length > 0) {
               that.setState({
