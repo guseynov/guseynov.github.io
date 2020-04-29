@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 const axios = require("axios");
 const citiesAPIUrl =
-  "http://geodb-free-service.wirefreethought.com/v1/geo/cities?limit=10&offset=0&namePrefix=";
-const APIKey = "12975cb5d84452a454240c06140fbbc9";
+  "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=";
+const CitiesAPIKey = "1dedf7be31mshb303f15044e564bp16f812jsn338599e4d210";
+const WeatherAPIKey = "12975cb5d84452a454240c06140fbbc9";
 class Forecast extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +36,7 @@ class Forecast extends React.Component {
             "http://api.openweathermap.org/data/2.5/forecast?q=" +
               cityEncoded +
               "&mode=json&appid=" +
-              APIKey
+              WeatherAPIKey
           )
           .then(function(response) {
             let forecastObj = {
@@ -168,24 +169,29 @@ class Forecast extends React.Component {
       () => {
         if (this.state.inputValue.length > 3) {
           let that = this;
-          axios
-            .get(citiesAPIUrl + this.state.inputValue)
-            .then(function(response) {
-              if (response.data.data.length > 0) {
-                that.setState({
-                  citiesList: response.data.data.map((city, index) => (
-                    <li
-                      key={index}
-                      onClick={that.chooseCity}
-                      className="weather-app-cities-list__item"
-                    >
-                      {city.name + ", " + city.country}
-                    </li>
-                  )),
-                  citiesListVisible: true,
-                });
-              }
-            });
+          fetch(citiesAPIUrl + this.state.inputValue, {
+            method: "GET",
+            headers: {
+              "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
+              "x-rapidapi-key": CitiesAPIKey,
+            },
+          }).then((response) => {
+            console.log(response);
+            if (response.data.data.length > 0) {
+              that.setState({
+                citiesList: response.data.data.map((city, index) => (
+                  <li
+                    key={index}
+                    onClick={that.chooseCity}
+                    className="weather-app-cities-list__item"
+                  >
+                    {city.name + ", " + city.country}
+                  </li>
+                )),
+                citiesListVisible: true,
+              });
+            }
+          });
         } else {
           this.setState({
             citiesListVisible: false,
