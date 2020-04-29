@@ -142,7 +142,7 @@ class Forecast extends React.Component {
                     className="forecast-card__image"
                     alt=""
                     src={
-                      "http://openweathermap.org/img/w/" +
+                      "https://openweathermap.org/img/w/" +
                       forecastObj[key]["icon"] +
                       ".png"
                     }
