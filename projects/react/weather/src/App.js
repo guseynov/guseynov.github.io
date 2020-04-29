@@ -1,9 +1,6 @@
 import React from "react";
 import "./App.css";
 const axios = require("axios");
-const citiesAPIUrl =
-  "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=";
-const CitiesAPIKey = "1dedf7be31mshb303f15044e564bp16f812jsn338599e4d210";
 const WeatherAPIKey = "12975cb5d84452a454240c06140fbbc9";
 class Forecast extends React.Component {
   constructor(props) {
@@ -180,23 +177,26 @@ class Forecast extends React.Component {
                   "f202dd4a8amshb8b0d1941d03711p164c3ejsn9de325b5ae5d",
               },
             }
-          ).then((response) => {
-            console.log(response.data);
-            if (response.data.data.length > 0) {
-              that.setState({
-                citiesList: response.data.data.map((city, index) => (
-                  <li
-                    key={index}
-                    onClick={that.chooseCity}
-                    className="weather-app-cities-list__item"
-                  >
-                    {city.name + ", " + city.country}
-                  </li>
-                )),
-                citiesListVisible: true,
-              });
-            }
-          });
+          )
+            .then((response) => {
+              return response.json();
+            })
+            .then(function(response) {
+              if (response.data.length > 0) {
+                that.setState({
+                  citiesList: response.data.map((city, index) => (
+                    <li
+                      key={index}
+                      onClick={that.chooseCity}
+                      className="weather-app-cities-list__item"
+                    >
+                      {city.name + ", " + city.country}
+                    </li>
+                  )),
+                  citiesListVisible: true,
+                });
+              }
+            });
         } else {
           this.setState({
             citiesListVisible: false,
