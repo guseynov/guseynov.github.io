@@ -181,7 +181,7 @@ class Forecast extends React.Component {
               },
             }
           ).then((response) => {
-            console.log(response);
+            console.log(response.data);
             if (response.data.data.length > 0) {
               that.setState({
                 citiesList: response.data.data.map((city, index) => (
