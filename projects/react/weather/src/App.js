@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 const axios = require("axios");
 const citiesAPIUrl =
-  "http://geodb-free-service.wirefreethought.com/v1/geo/cities?limit=10&offset=0&namePrefix=";
+  "https://geodb-free-service.wirefreethought.com/v1/geo/cities?limit=10&offset=0&namePrefix=";
 const APIKey = "12975cb5d84452a454240c06140fbbc9";
 class Forecast extends React.Component {
   constructor(props) {
@@ -12,27 +12,27 @@ class Forecast extends React.Component {
       city: "",
       citiesListVisible: false,
       citiesList: [],
-      forecast: []
+      forecast: [],
     };
   }
   removeCity = () => {
     this.setState({
-      city: ""
+      city: "",
     });
   };
-  chooseCity = e => {
+  chooseCity = (e) => {
     this.setState(
       {
         inputValue: e.target.textContent,
         city: e.target.textContent,
-        citiesListVisible: false
+        citiesListVisible: false,
       },
       () => {
         let that = this;
         let cityEncoded = encodeURIComponent(this.state.city.trim());
         axios
           .get(
-            "http://api.openweathermap.org/data/2.5/forecast?q=" +
+            "https://api.openweathermap.org/data/2.5/forecast?q=" +
               cityEncoded +
               "&mode=json&appid=" +
               APIKey
@@ -41,32 +41,32 @@ class Forecast extends React.Component {
             let forecastObj = {
               Sunday: {
                 hours: {},
-                icon: ""
+                icon: "",
               },
               Monday: {
                 hours: {},
-                icon: ""
+                icon: "",
               },
               Tuesday: {
                 hours: {},
-                icon: ""
+                icon: "",
               },
               Wednesday: {
                 hours: {},
-                icon: ""
+                icon: "",
               },
               Thursday: {
                 hours: {},
-                icon: ""
+                icon: "",
               },
               Friday: {
                 hours: {},
-                icon: ""
+                icon: "",
               },
               Saturday: {
                 hours: {},
-                icon: ""
-              }
+                icon: "",
+              },
             };
             for (let i = 0; i < response.data.list.length; i++) {
               let time = new Date(response.data.list[i].dt * 1000);
@@ -76,45 +76,47 @@ class Forecast extends React.Component {
               switch (time.getDay()) {
                 case 0:
                   forecastObj["Sunday"]["hours"][time.getHours()] = {
-                    temp: temp
+                    temp: temp,
                   };
                   forecastObj["Sunday"]["icon"] = icon;
                   break;
                 case 1:
                   forecastObj["Monday"]["hours"][time.getHours()] = {
-                    temp: temp
+                    temp: temp,
                   };
                   forecastObj["Monday"]["icon"] = icon;
                   break;
                 case 2:
                   forecastObj["Tuesday"]["hours"][time.getHours()] = {
-                    temp: temp
+                    temp: temp,
                   };
                   forecastObj["Tuesday"]["icon"] = icon;
                   break;
                 case 3:
                   forecastObj["Wednesday"]["hours"][time.getHours()] = {
-                    temp: temp
+                    temp: temp,
                   };
                   forecastObj["Wednesday"]["icon"] = icon;
                   break;
                 case 4:
                   forecastObj["Thursday"]["hours"][time.getHours()] = {
-                    temp: temp
+                    temp: temp,
                   };
                   forecastObj["Thursday"]["icon"] = icon;
                   break;
                 case 5:
                   forecastObj["Friday"]["hours"][time.getHours()] = {
-                    temp: temp
+                    temp: temp,
                   };
                   forecastObj["Friday"]["icon"] = icon;
                   break;
                 case 6:
                   forecastObj["Saturday"]["hours"][time.getHours()] = {
-                    temp: temp
+                    temp: temp,
                   };
                   forecastObj["Saturday"]["icon"] = icon;
+                  break;
+                default:
                   break;
               }
             }
@@ -142,7 +144,7 @@ class Forecast extends React.Component {
                     className="forecast-card__image"
                     alt=""
                     src={
-                      "http://openweathermap.org/img/w/" +
+                      "https://openweathermap.org/img/w/" +
                       forecastObj[key]["icon"] +
                       ".png"
                     }
@@ -152,16 +154,16 @@ class Forecast extends React.Component {
               );
             }
             that.setState({
-              forecast: forecastArr
+              forecast: forecastArr,
             });
           });
       }
     );
   };
-  updateInputValue = e => {
+  updateInputValue = (e) => {
     this.setState(
       {
-        inputValue: e.target.value
+        inputValue: e.target.value,
       },
       () => {
         if (this.state.inputValue.length > 3) {
@@ -180,13 +182,13 @@ class Forecast extends React.Component {
                       {city.name + ", " + city.country}
                     </li>
                   )),
-                  citiesListVisible: true
+                  citiesListVisible: true,
                 });
               }
             });
         } else {
           this.setState({
-            citiesListVisible: false
+            citiesListVisible: false,
           });
         }
       }
@@ -196,7 +198,7 @@ class Forecast extends React.Component {
   render() {
     return (
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
         }}
         className="weather-app"
@@ -205,12 +207,12 @@ class Forecast extends React.Component {
           <h1 className="weather-app__title">Weather forecast for</h1>
           <input
             value={this.state.city || this.state.inputValue}
-            onKeyDown={e => {
+            onKeyDown={(e) => {
               if (e.key === "Backspace") {
                 this.removeCity();
               }
             }}
-            onChange={e => this.updateInputValue(e, e.key)}
+            onChange={(e) => this.updateInputValue(e, e.key)}
             className="weather-app__input"
             type="text"
             placeholder="enter city name"
