@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/projects/react/metronome/build/static/css/main.14058aac.chunk.css",
-    "main.js": "/projects/react/metronome/build/static/js/main.224ab760.chunk.js",
-    "main.js.map": "/projects/react/metronome/build/static/js/main.224ab760.chunk.js.map",
-    "runtime-main.js": "/projects/react/metronome/build/static/js/runtime-main.bd604c03.js",
-    "runtime-main.js.map": "/projects/react/metronome/build/static/js/runtime-main.bd604c03.js.map",
-    "static/js/2.fd7ea0d1.chunk.js": "/projects/react/metronome/build/static/js/2.fd7ea0d1.chunk.js",
-    "static/js/2.fd7ea0d1.chunk.js.map": "/projects/react/metronome/build/static/js/2.fd7ea0d1.chunk.js.map",
+    "main.css": "/projects/react/metronome/build/static/css/main.5e1b76eb.chunk.css",
+    "main.js": "/projects/react/metronome/build/static/js/main.6718d95f.chunk.js",
+    "main.js.map": "/projects/react/metronome/build/static/js/main.6718d95f.chunk.js.map",
+    "runtime-main.js": "/projects/react/metronome/build/static/js/runtime-main.1694cfe8.js",
+    "runtime-main.js.map": "/projects/react/metronome/build/static/js/runtime-main.1694cfe8.js.map",
+    "static/js/2.b5d67db8.chunk.js": "/projects/react/metronome/build/static/js/2.b5d67db8.chunk.js",
+    "static/js/2.b5d67db8.chunk.js.map": "/projects/react/metronome/build/static/js/2.b5d67db8.chunk.js.map",
     "index.html": "/projects/react/metronome/build/index.html",
-    "precache-manifest.0ba3990f030ec53e54a539127cdc1927.js": "/projects/react/metronome/build/precache-manifest.0ba3990f030ec53e54a539127cdc1927.js",
+    "precache-manifest.fdc9de0372a0b30c97a0f48a337b60bc.js": "/projects/react/metronome/build/precache-manifest.fdc9de0372a0b30c97a0f48a337b60bc.js",
     "service-worker.js": "/projects/react/metronome/build/service-worker.js",
-    "static/css/main.14058aac.chunk.css.map": "/projects/react/metronome/build/static/css/main.14058aac.chunk.css.map",
-    "static/js/2.fd7ea0d1.chunk.js.LICENSE": "/projects/react/metronome/build/static/js/2.fd7ea0d1.chunk.js.LICENSE",
+    "static/css/main.5e1b76eb.chunk.css.map": "/projects/react/metronome/build/static/css/main.5e1b76eb.chunk.css.map",
+    "static/js/2.b5d67db8.chunk.js.LICENSE.txt": "/projects/react/metronome/build/static/js/2.b5d67db8.chunk.js.LICENSE.txt",
     "static/media/click1.wav": "/projects/react/metronome/build/static/media/click1.7a7930a2.wav",
     "static/media/click2.wav": "/projects/react/metronome/build/static/media/click2.fe0ded65.wav",
     "static/media/App.css": "/projects/react/metronome/build/static/media/liquidcrystal-bold-webfont.6c31e944.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.bd604c03.js",
-    "static/js/2.fd7ea0d1.chunk.js",
-    "static/css/main.14058aac.chunk.css",
-    "static/js/main.224ab760.chunk.js"
+    "static/js/runtime-main.1694cfe8.js",
+    "static/js/2.b5d67db8.chunk.js",
+    "static/css/main.5e1b76eb.chunk.css",
+    "static/js/main.6718d95f.chunk.js"
   ]
 }

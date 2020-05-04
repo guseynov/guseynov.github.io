@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/projects/react/metronome/build/precache-manifest.0ba3990f030ec53e54a539127cdc1927.js"
+  "/projects/react/metronome/build/precache-manifest.fdc9de0372a0b30c97a0f48a337b60bc.js"
 );
 
 self.addEventListener('message', (event) => {
