@@ -10,7 +10,7 @@ class Metronome extends React.Component {
       count: 0,
       bpm: 100,
       beatsPerMeasure: 4,
-      beat: undefined
+      beat: undefined,
     };
     this.click1 = new Audio(click1);
     this.click2 = new Audio(click2);
@@ -19,7 +19,7 @@ class Metronome extends React.Component {
     if (this.state.count % this.state.beatsPerMeasure === 0) {
       this.setState(
         {
-          beat: "main"
+          beat: "main",
         },
         () => {
           this.click2.play();
@@ -28,7 +28,7 @@ class Metronome extends React.Component {
     } else {
       this.setState(
         {
-          beat: "regular"
+          beat: "regular",
         },
         () => {
           this.click1.play();
@@ -37,21 +37,21 @@ class Metronome extends React.Component {
     }
 
     this.setState({
-      count: (this.state.count + 1) % this.state.beatsPerMeasure
+      count: (this.state.count + 1) % this.state.beatsPerMeasure,
     });
   }
-  handleBpmChange = event => {
+  handleBpmChange = (event) => {
     const bpm = event.target.value;
     if (this.state.playing) {
       clearInterval(this.timer);
-      this.timer = setInterval(this.playClick, (60 / bpm) * 1000);
+      this.timer = setInterval(this.playClick.bind(this), (60 / bpm) * 1000);
       this.setState({
         count: 0,
-        bpm: bpm
+        bpm: bpm,
       });
     } else {
       this.setState({
-        bpm: bpm
+        bpm: bpm,
       });
     }
   };
@@ -59,16 +59,19 @@ class Metronome extends React.Component {
     if (this.state.playing) {
       clearInterval(this.timer);
       this.setState({
-        playing: false
+        playing: false,
       });
     } else {
-      this.timer = setInterval(this.playClick, (60 / this.state.bpm) * 1000);
+      this.timer = setInterval(
+        this.playClick.bind(this),
+        (60 / this.state.bpm) * 1000
+      );
       this.setState(
         {
           count: 0,
-          playing: true
+          playing: true,
         },
-        this.playClick
+        this.playClick.bind(this)
       );
     }
   };
@@ -82,9 +85,11 @@ class Metronome extends React.Component {
         <div className="metronome__controls metronome-controls">
           <input
             className="metronome-controls__input"
-            type="text"
+            type="range"
             value={this.state.bpm}
-            onChange={this.handleBpmChange}
+            onChange={(e) => this.handleBpmChange(e)}
+            min="50"
+            max="200"
           />
           <span
             className={
@@ -106,7 +111,7 @@ class Metronome extends React.Component {
               "metronome-controls__button " +
               (this.state.playing ? "active" : "")
             }
-            onClick={this.startStop}
+            onClick={this.startStop.bind(this)}
           ></button>
         </div>
       </div>
