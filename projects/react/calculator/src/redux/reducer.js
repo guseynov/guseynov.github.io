@@ -17,7 +17,14 @@ export default function changeColors(state = initialState, action) {
         }
       };
     case "CLEAR":
-      return { ...state, ...initialState };
+      return {
+        ...state,
+        result: undefined,
+        action: undefined,
+        firstArgument: undefined,
+        secondArgument: undefined,
+        display: 0
+      }
     case "EQUALS":
       let result;
       switch (state.action) {
