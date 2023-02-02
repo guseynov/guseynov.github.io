@@ -1,56 +1,28 @@
 {
-  "name": "guseynov.github.io",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "homepage",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/guseynov/guseynov.github.io.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/guseynov/guseynov.github.io/issues"
-  },
-  "homepage": "https://github.com/guseynov/guseynov.github.io#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/node": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "@babel/register": "^7.7.7",
-    "babel-register": "^6.26.0",
-    "css-loader": "^3.4.0",
-    "eslint": "^5.16.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-vue": "^5.2.3",
-    "file-loader": "^4.3.0",
-    "html-webpack-plugin": "^3.2.0",
-    "pug": "^2.0.4",
-    "pug-loader": "^2.4.0",
-    "style-loader": "^0.23.1",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.11.0"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@glidejs/glide": "^3.4.1",
-    "animate.css": "^3.7.2",
-    "babel-loader": "^8.0.6",
-    "font-color-contrast": "^1.0.3",
-    "moment": "^2.24.0",
-    "normalize.css": "^8.0.1",
-    "prettier": "^1.19.1",
-    "velocity-animate": "^1.5.2"
+    "animate.css": "^4.1.1",
+    "autoprefixer": "^10.4.13",
+    "classnames": "^2.3.2",
+    "postcss": "^8.4.20",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.57.1",
+    "tailwindcss": "^3.2.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
   }
 }

@@ -1,0 +1,53 @@
+body,
+button:hover,
+a:hover {
+  cursor: url('/cursor.png') 44 44, auto;
+}
+
+.bg-noise {
+  background: url('/bg_noise.png'), #171717;
+  background-size: 300px 300px;
+  animation: 250ms steps(10, end) 0s infinite alternate-reverse none running
+    noise-animation;
+  @keyframes noise-animation {
+    0% {
+      background-position: 0% 0%;
+    }
+    10% {
+      background-position: -5% -5%;
+    }
+    20% {
+      background-position: -10% 5%;
+    }
+    30% {
+      background-position: 5% -10%;
+    }
+    40% {
+      background-position: -5% 15%;
+    }
+    50% {
+      background-position: -10% 5%;
+    }
+    60% {
+      background-position: 5% 5%;
+    }
+    70% {
+      background-position: 0% 10%;
+    }
+    80% {
+      background-position: -5% -5%;
+    }
+    90% {
+      background-position: 10% 5%;
+    }
+  }
+}
+
+.experience-line {
+  background: repeating-linear-gradient(90deg, #565656 0 11px, #0000 0 22px);
+  height: 2px;
+  top: 15px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+}

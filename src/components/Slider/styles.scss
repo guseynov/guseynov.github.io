@@ -1,0 +1,9 @@
+.slider:hover {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: url('/cursor_drag.png'), auto;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
