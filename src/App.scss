@@ -1,7 +1,14 @@
-body,
+body {
+  cursor: url('/cursor.png') 32 32, auto;
+}
+
 button:hover,
 a:hover {
-  cursor: url('/cursor.png') 44 44, auto;
+  cursor: url('/cursor_hover.png') 40 40, auto;
+}
+
+.name-link:hover {
+  cursor: url('/cursor_msg.png') 64 26, auto;
 }
 
 body {

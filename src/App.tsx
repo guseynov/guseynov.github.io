@@ -45,13 +45,19 @@ function App() {
               </button>
             </div>
             <div className="col-span-11 text-right">
-              <h1 className="uppercase text-8xl mt-10 absolute bottom-0 right-0 font-milligram animate__animated animate__fadeInUp">
-                a<span className="font-dirtyline">l</span>
-                <span className="italic">e</span>x<br></br>g
-                <span className="font-dirtyline">u</span>sey
-                <span className="italic">n</span>o
-                <span className="font-dirtyline">v</span>
-              </h1>
+              <a
+                className="name-link"
+                target="_blank"
+                href="https://t.me/alexguseynov"
+              >
+                <h1 className="name uppercase text-8xl mt-10 absolute bottom-0 right-0 font-milligram animate__animated animate__fadeInUp">
+                  a<span className="font-dirtyline">l</span>
+                  <span className="italic">e</span>x<br></br>g
+                  <span className="font-dirtyline">u</span>sey
+                  <span className="italic">n</span>o
+                  <span className="font-dirtyline">v</span>
+                </h1>
+              </a>
             </div>
           </div>
         </div>
