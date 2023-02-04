@@ -4,7 +4,7 @@ export const Contacts = () => {
       <div className="bg-white uppercase text-dark text-center py-8 text-4xl">
         Hello
       </div>
-      <div className="text-center uppercase color-white text-7xl py-24 font-milligram">
+      <div className="text-center uppercase color-white text-8xl py-24 font-milligram">
         L<span className="font-dirtyline">e</span>t’s w
         <span className="font-dirtyline">o</span>r<i>k</i> t
         <span className="font-dirtyline">o</span>g<i>e</i>t
@@ -56,7 +56,8 @@ export const Contacts = () => {
           </svg>
         </a>
         <a
-          href=""
+          href="https://wa.me/+972535611522/"
+          target="_blank"
           className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
         >
           Whatsapp
