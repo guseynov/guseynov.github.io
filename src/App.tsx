@@ -136,9 +136,10 @@ function App() {
             title="Netrika"
             position="Frontend Developer"
             period="Jun 2017 — Nov 2018"
-            description={`At Netrika, I was working on maintaining and upgrading websites using JS libraries, HTML, and CSS preprocessors. Had experience in doing projects for the government, ensuring they worked on all sorts of devices and browsers.`}
+            description={`At Netrika, I was working on maintaining and upgrading governmental websites using JS libraries, HTML, and CSS preprocessors.`}
             skills={['CSS', 'JAVASCRIPT', 'Gulp', 'Stylus', 'Sass']}
           />
+
           <ExperienceItem
             title="RoyalMark"
             position="Frontend Developer"
