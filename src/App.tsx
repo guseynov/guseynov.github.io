@@ -113,7 +113,7 @@ function App() {
             position="Frontend Developer"
             period="Feb 2021 — Present"
             description={`As a Frontend React Engineer at Sberbank, I am responsible for the development and maintenance of multiple MFE projects within an educational platform. I utilize React with TypeScript, Effector, and GraphQL in my work and am also responsible for creating unit and E2E tests.`}
-            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
+            skills={['React.js', 'JAVASCRIPT', 'TypeScript']}
           />
 
           <ExperienceItem
@@ -121,7 +121,7 @@ function App() {
             position="Frontend Developer"
             period="Apr 2020 — Feb 2021"
             description={`At FutureComes, I was taking part in developing a React game-like project for a leading Russian bank that involved lots of complex frontend solutions for making the app interactive and engaging.`}
-            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
+            skills={['React.js', 'JAVASCRIPT', 'TypeScript']}
           />
 
           <ExperienceItem
@@ -129,7 +129,7 @@ function App() {
             position="Frontend Developer"
             period="Nov 2018 — Apr 2020"
             description={`During these years, I was working for myself, responsible for the entire cycle of frontend development.`}
-            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
+            skills={['React.js', 'JAVASCRIPT']}
           />
 
           <ExperienceItem
@@ -137,14 +137,22 @@ function App() {
             position="Frontend Developer"
             period="Jun 2017 — Nov 2018"
             description={`At Netrika, I was working on maintaining and upgrading websites using JS libraries, HTML, and CSS preprocessors. Had experience in doing projects for the government, ensuring they worked on all sorts of devices and browsers.`}
-            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
+            skills={['CSS', 'JAVASCRIPT', 'Gulp', 'Stylus', 'Sass']}
           />
           <ExperienceItem
             title="RoyalMark"
             position="Frontend Developer"
             period="Mar 2015 — May 2017"
             description={`At RoyalMark, I was responsible for the entire cycle of project creation, including backend development. I completed dozens of various projects of different complexity with stringent deadlines. I was creating web resources from scratch, providing close attention to detail, and making the end product look and work great on all sorts of devices.`}
-            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
+            skills={[
+              'Jquery',
+              'Php',
+              'MySQL',
+              'JAVASCRIPT',
+              'CSS',
+              'SCSS',
+              'Gulp',
+            ]}
           />
         </Slider>
       </div>
