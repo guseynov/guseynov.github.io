@@ -201,19 +201,6 @@ function App() {
               </div>
               <div className="col-span-4">
                 <ProjectItem
-                  title="Hot or not"
-                  skills={['Vue', 'VueX']}
-                  icons={['vue', 'vuex']}
-                  projectLink={'projects/vue/hot_or_not/dist'}
-                  codeLink={
-                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/vue/hot_or_not'
-                  }
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-12 gap-4 mb-4">
-              <div className="col-span-4">
-                <ProjectItem
                   title="Calculator"
                   skills={['React', 'Redux']}
                   icons={['react', 'redux']}
@@ -223,6 +210,8 @@ function App() {
                   }
                 />
               </div>
+            </div>
+            <div className="grid grid-cols-12 gap-4 mb-4">
               <div className="col-span-4">
                 <ProjectItem
                   title="Forecast"
@@ -234,9 +223,7 @@ function App() {
                   }
                 />
               </div>
-            </div>
-            <div className="grid grid-cols-12 gap-4 mb-4">
-              <div className="col-span-4 col-start-5">
+              <div className="col-span-4">
                 <ProjectItem
                   title="Metronome"
                   skills={['React']}
