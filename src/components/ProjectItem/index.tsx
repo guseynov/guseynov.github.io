@@ -38,6 +38,7 @@ export const ProjectItem = ({
         <a
           className="text-2xl py-5 text-white flex justify-center items-center hover:bg-white hover:text-dark group flex-grow text-center border-r border-white"
           href={projectLink}
+          target="_blank"
         >
           Project
           <svg
@@ -59,6 +60,7 @@ export const ProjectItem = ({
         <a
           className="text-2xl py-5 text-white flex justify-center items-center hover:bg-white hover:text-dark group flex-grow text-center"
           href={codeLink}
+          target="_blank"
         >
           Code
           <svg
