@@ -161,7 +161,9 @@ function App() {
                   skills={['React', 'Typescript']}
                   icons={['react', 'typescript']}
                   projectLink={'/projects/react/synthesizer/build'}
-                  codeLink={''}
+                  codeLink={
+                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/synthesizer'
+                  }
                 />
               </div>
               <div className="col-span-4">
@@ -170,7 +172,9 @@ function App() {
                   skills={['Vue', 'VueX']}
                   icons={['vue', 'vuex']}
                   projectLink={'projects/react/breathing_bubble/build'}
-                  codeLink={''}
+                  codeLink={
+                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/breathing_bubble'
+                  }
                 />
               </div>
             </div>
@@ -181,7 +185,9 @@ function App() {
                   skills={['Vue', 'VueX']}
                   icons={['vue', 'vuex']}
                   projectLink={'projects/vue/todo/dist'}
-                  codeLink={''}
+                  codeLink={
+                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/vue/todo'
+                  }
                 />
               </div>
               <div className="col-span-4">
@@ -190,7 +196,9 @@ function App() {
                   skills={['Vue', 'VueX']}
                   icons={['vue', 'vuex']}
                   projectLink={'projects/vue/hot_or_not/dist'}
-                  codeLink={''}
+                  codeLink={
+                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/vue/hot_or_not'
+                  }
                 />
               </div>
             </div>
@@ -201,7 +209,9 @@ function App() {
                   skills={['React', 'Redux']}
                   icons={['react', 'redux']}
                   projectLink={'projects/react/calculator/build'}
-                  codeLink={''}
+                  codeLink={
+                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/calculator'
+                  }
                 />
               </div>
               <div className="col-span-4">
@@ -210,7 +220,9 @@ function App() {
                   skills={['React']}
                   icons={['react']}
                   projectLink={'projects/react/weather/build'}
-                  codeLink={''}
+                  codeLink={
+                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/weather'
+                  }
                 />
               </div>
             </div>
@@ -221,7 +233,9 @@ function App() {
                   skills={['React']}
                   icons={['react']}
                   projectLink={'projects/react/metronome/build'}
-                  codeLink={''}
+                  codeLink={
+                    'https://github.com/guseynov/guseynov.github.io/tree/master/projects/react/metronome'
+                  }
                 />
               </div>
             </div>
