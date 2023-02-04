@@ -169,7 +169,7 @@ function App() {
                   title="Breathing Bubble"
                   skills={['Vue', 'VueX']}
                   icons={['vue', 'vuex']}
-                  projectLink={''}
+                  projectLink={'projects/react/breathing_bubble/build'}
                   codeLink={''}
                 />
               </div>
@@ -180,7 +180,7 @@ function App() {
                   title="To-do list with categories"
                   skills={['Vue', 'VueX']}
                   icons={['vue', 'vuex']}
-                  projectLink={''}
+                  projectLink={'projects/vue/todo/dist'}
                   codeLink={''}
                 />
               </div>
@@ -189,7 +189,7 @@ function App() {
                   title="Hot or not"
                   skills={['Vue', 'VueX']}
                   icons={['vue', 'vuex']}
-                  projectLink={''}
+                  projectLink={'projects/vue/hot_or_not/dist'}
                   codeLink={''}
                 />
               </div>
@@ -200,7 +200,7 @@ function App() {
                   title="Calculator"
                   skills={['React', 'Redux']}
                   icons={['react', 'redux']}
-                  projectLink={''}
+                  projectLink={'projects/react/calculator/build'}
                   codeLink={''}
                 />
               </div>
@@ -209,7 +209,7 @@ function App() {
                   title="Forecast"
                   skills={['React']}
                   icons={['react']}
-                  projectLink={''}
+                  projectLink={'projects/react/weather/build'}
                   codeLink={''}
                 />
               </div>
@@ -220,7 +220,7 @@ function App() {
                   title="Metronome"
                   skills={['React']}
                   icons={['react']}
-                  projectLink={''}
+                  projectLink={'projects/react/metronome/build'}
                   codeLink={''}
                 />
               </div>
