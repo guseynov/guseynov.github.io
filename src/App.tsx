@@ -128,8 +128,8 @@ function App() {
             title="Freelance"
             position="Frontend Developer"
             period="Nov 2018 — Apr 2020"
-            description={`During this time I was working for myself, responsible for the entire cycle of frontend development.`}
-            skills={['React.js', 'JAVASCRIPT']}
+            description={`During these years, I was working for myself, responsible for the entire cycle of frontend development.`}
+            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
 
           <ExperienceItem
@@ -137,23 +137,14 @@ function App() {
             position="Frontend Developer"
             period="Jun 2017 — Nov 2018"
             description={`At Netrika, I was working on maintaining and upgrading websites using JS libraries, HTML, and CSS preprocessors. Had experience in doing projects for the government, ensuring they worked on all sorts of devices and browsers.`}
-            skills={['CSS', 'JAVASCRIPT', ' SASS', 'GULP', 'Stylus']}
+            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
           <ExperienceItem
             title="RoyalMark"
             position="Frontend Developer"
             period="Mar 2015 — May 2017"
             description={`At RoyalMark, I was responsible for the entire cycle of project creation, including backend development. I completed dozens of various projects of different complexity with stringent deadlines. I was creating web resources from scratch, providing close attention to detail, and making the end product look and work great on all sorts of devices.`}
-            skills={[
-              'Javascript',
-              'jQuery',
-              'PHP',
-              'MySQL',
-              'CSS',
-              'SCSS',
-              'SASS',
-              'GULP',
-            ]}
+            skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
         </Slider>
       </div>
