@@ -4,6 +4,10 @@ a:hover {
   cursor: url('/cursor.png') 44 44, auto;
 }
 
+body {
+  min-width: 1200px;
+}
+
 .bg-noise {
   background: url('/bg_noise.png'), #171717;
   background-size: 300px 300px;
