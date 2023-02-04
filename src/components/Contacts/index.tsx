@@ -56,7 +56,8 @@ export const Contacts = () => {
           </svg>
         </a>
         <a
-          href=""
+          href="https://wa.me/+972535611522/"
+          target="_blank"
           className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
         >
           Whatsapp
