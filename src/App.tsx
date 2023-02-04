@@ -15,7 +15,7 @@ function App() {
       <Header />
 
       <div className="w-[1200px] mx-auto">
-        <div className="relative">
+        <div className="relative h-[calc(100vh-88px)] min-h-[720px]">
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-5">
               <h1 className="uppercase text-8xl mt-10 font-milligram animate__animated animate__fadeInDown">
@@ -56,7 +56,7 @@ function App() {
           </div>
         </div>
 
-        <div className="h-[1px] bg-white my-10"></div>
+        <div className="h-[1px] bg-white my-6"></div>
         <div className="grid grid-cols-12 gap-4" id="about">
           <div className="col-span-2">About</div>
           <div className="col-span-10 text-4xl leading-tight">
@@ -65,14 +65,14 @@ function App() {
             <p>Education: Bachelor of Computer Science</p>
             <br></br>
 
-            <p className="mb-12">
+            <p className="mb-32">
               I am a React web developer with over 7 years of professional
               experience. Armed with proficient knowledge in all the parts of a
               modern React application: from pixel-perfect markup to complex app
-              architecture. Have experience in creating and maintaining projects
-              of any scale, including large scaled projects for the country's
-              leading companies. Passionate about creating quality code that
-              delivers excellent user experience.
+              architecture and testing. Have experience in creating and
+              maintaining projects of any scale, including large scaled projects
+              for the country's leading companies. Passionate about creating
+              quality code that delivers excellent user experience.
             </p>
           </div>
         </div>
@@ -99,32 +99,35 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="h-[1px] bg-white my-10"></div>
+        <div className="h-[1px] bg-white mt-24 mb-6"></div>
+        <div className="grid grid-cols-12 gap-4" id="experience">
+          <div className="col-span-2">Experience</div>
+        </div>
       </div>
 
-      <div className="relative" id="experience">
+      <div className="relative mt-20">
         <div className="experience-line"></div>
         <Slider>
           <ExperienceItem
             title="SBERBANK"
             position="Frontend Developer"
-            period="Aug 2020 — Present"
-            description={`As a Frontend React Engineer at Sberbank, I am responsible for the development and maintenance of a complex app for an educational project. I utilize React with TypeScript, Effector, and GraphQL in my work and am also responsible for creating unit and E2E tests.`}
+            period="Feb 2021 — Present"
+            description={`As a Frontend React Engineer at Sberbank, I am responsible for the development and maintenance of multiple MFE projects within an educational platform. I utilize React with TypeScript, Effector, and GraphQL in my work and am also responsible for creating unit and E2E tests.`}
             skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
 
           <ExperienceItem
             title="FutureComes"
             position="Frontend Developer"
-            period="Aug 2020 — Present"
-            description={`At FutureComes, I was taking part in developing a game-like project for a leading Russian bank that involved lots of complex frontend solutions for making the app interactive and engaging.`}
+            period="Apr 2020 — Feb 2021"
+            description={`At FutureComes, I was taking part in developing a React game-like project for a leading Russian bank that involved lots of complex frontend solutions for making the app interactive and engaging.`}
             skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
 
           <ExperienceItem
             title="Freelance"
             position="Frontend Developer"
-            period="Aug 2020 — Present"
+            period="Nov 2018 — Apr 2020"
             description={`During these years, I was working for myself, responsible for the entire cycle of frontend development.`}
             skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
@@ -132,21 +135,21 @@ function App() {
           <ExperienceItem
             title="Netrika"
             position="Frontend Developer"
-            period="Aug 2020 — Present"
+            period="Jun 2017 — Nov 2018"
             description={`At Netrika, I was working on maintaining and upgrading websites using JS libraries, HTML, and CSS preprocessors. Had experience in doing projects for the government, ensuring they worked on all sorts of devices and browsers.`}
             skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
           <ExperienceItem
             title="RoyalMark"
             position="Frontend Developer"
-            period="Aug 2020 — Present"
+            period="Mar 2015 — May 2017"
             description={`At RoyalMark, I was responsible for the entire cycle of project creation, including backend development. I completed dozens of various projects of different complexity with stringent deadlines. I was creating web resources from scratch, providing close attention to detail, and making the end product look and work great on all sorts of devices.`}
             skills={['React.js', 'JAVASCRIPT', ' TypeScript']}
           />
         </Slider>
       </div>
       <div className="w-[1200px] mx-auto">
-        <div className="h-[1px] bg-white my-10"></div>
+        <div className="h-[1px] bg-white my-6"></div>
 
         <div className="grid grid-cols-12 gap-4" id="work">
           <div className="col-span-2">Recent work</div>
@@ -157,7 +160,7 @@ function App() {
                   title="Synthesizer"
                   skills={['React', 'Typescript']}
                   icons={['react', 'typescript']}
-                  projectLink={'/projects/synthesizer'}
+                  projectLink={'/projects/react/synthesizer/build'}
                   codeLink={''}
                 />
               </div>
@@ -224,10 +227,10 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="h-[1px] bg-white my-10"></div>
+        <div className="h-[1px] bg-white mt-32 mb-6"></div>
         <div className="grid grid-cols-12 gap-4" id="contacts">
-          <div className="col-span-2">Contacts</div>
-          <div className="col-span-10">
+          <div className="col-span-2 mb-20">Contacts</div>
+          <div className="col-span-12">
             <Contacts />
           </div>
         </div>

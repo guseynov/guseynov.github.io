@@ -1,7 +1,7 @@
-.slider:hover {
+.slider {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  cursor: url('/cursor_drag.png'), auto;
+  cursor: url('/cursor_drag.png') 64 26, auto;
 }
 
 .slider::-webkit-scrollbar {

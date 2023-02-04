@@ -14,7 +14,7 @@ export const Contacts = () => {
         <a
           target="_blank"
           href="https://t.me/ahmedguseynov"
-          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group"
+          className="flex-grow uppercase py-8 text-center flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
         >
           Telegram
           <svg
@@ -36,7 +36,7 @@ export const Contacts = () => {
         <a
           target="_blank"
           href="https://www.linkedin.com/in/aguseynov/"
-          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group"
+          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
         >
           LinkedIn
           <svg
@@ -57,7 +57,7 @@ export const Contacts = () => {
         </a>
         <a
           href=""
-          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group"
+          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
         >
           Whatsapp
           <svg

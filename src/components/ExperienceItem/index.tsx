@@ -10,7 +10,7 @@ export const ExperienceItem = ({
   skills,
 }: ExperienceItemProps) => {
   return (
-    <div className="flex flex-col w-[700px] mr-9 last:mr-0 flex-shrink-0 experience-item-container relative">
+    <div className="flex flex-col w-[700px] mr-9 last:mr-0 flex-shrink-0 experience-item-container relative mb-20">
       <p className="uppercase text-4xl font-medium text-white">{title}</p>
       <p className="text-3xl text-white">{position}</p>
       <p className="text-3xl text-gray mb-6">{period}</p>
