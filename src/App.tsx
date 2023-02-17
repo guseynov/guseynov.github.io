@@ -48,7 +48,7 @@ function App() {
               <a
                 className="name-link"
                 target="_blank"
-                href="https://t.me/alexguseynov"
+                href="https://api.whatsapp.com/send?phone=972535611522"
               >
                 <h1 className="name uppercase text-8xl mt-10 absolute bottom-0 right-0 font-milligram animate__animated animate__fadeInUp">
                   a<span className="font-dirtyline">l</span>

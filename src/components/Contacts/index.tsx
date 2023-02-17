@@ -13,10 +13,10 @@ export const Contacts = () => {
       <div className="flex border-t border-white text-2xl">
         <a
           target="_blank"
-          href="https://t.me/alexguseynov"
+          href="https://api.whatsapp.com/send?phone=972535611522"
           className="flex-grow uppercase py-8 text-center flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
         >
-          Telegram
+          Whatsapp
           <svg
             className="ml-2.5"
             width="17"
