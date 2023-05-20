@@ -6,7 +6,7 @@ export const ExperienceItem = ({
   title,
   position,
   period,
-  description,
+  points,
   skills,
 }: ExperienceItemProps) => {
   return (
@@ -14,9 +14,13 @@ export const ExperienceItem = ({
       <p className="uppercase text-4xl font-medium text-white">{title}</p>
       <p className="text-3xl text-white">{position}</p>
       <p className="text-3xl text-gray mb-6">{period}</p>
-      <p className="text-3xl text-white mb-8">{description}</p>
+      <ul className="text-3xl text-white mb-8 list-disc list-inside">
+        {points.map((point: string) => {
+          return <li>{point}</li>;
+        })}
+      </ul>
       <div className="flex flex-wrap">
-        {skills.map((title) => (
+        {skills.map((title: string) => (
           <Skill key={title} title={title} />
         ))}
       </div>

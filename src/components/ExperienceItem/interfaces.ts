@@ -2,6 +2,6 @@ export interface ExperienceItemProps {
   title: string;
   position: string;
   period: string;
-  description: string;
+  points: string[];
   skills: string[];
 }

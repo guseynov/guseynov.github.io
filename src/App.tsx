@@ -66,19 +66,23 @@ function App() {
         <div className="grid grid-cols-12 gap-4" id="about">
           <div className="col-span-2">About</div>
           <div className="col-span-10 text-4xl leading-tight">
-            <p>Experience: 7+ years</p>
-            <br></br>
-            <p>Education: Bachelor of Computer Science</p>
-            <br></br>
-
             <p className="mb-32">
-              I am a React web developer with over 7 years of professional
-              experience. Armed with proficient knowledge in all the parts of a
-              modern React application: from pixel-perfect markup to complex app
-              architecture and testing. Have experience in creating and
-              maintaining projects of any scale, including large scaled projects
-              for the country's leading companies. Passionate about creating
-              quality code that delivers excellent user experience.
+              React Frontend Developer with a Bachelor's degree in Computer
+              Science and 8 years of comprehensive experience specializing in
+              crafting interactive, efficient, and user-focused solutions.
+              <br></br>
+              <br></br>
+              Have experience leveraging HTML5, CSS3, JavaScript, React, Redux,
+              and TypeScript to create and maintain various projects ranging
+              from educational platforms to commercial websites.
+              <br></br>
+              <br></br>
+              Equipped with a strong understanding of the full project life
+              cycle and a proven track record of delivering projects on time
+              without compromising quality. Skilled in navigating large
+              codebases, including working with legacy code, showcasing a strong
+              grasp of front-end development from simple landing pages to
+              complex, interactive SPAs.
             </p>
           </div>
         </div>
@@ -89,19 +93,12 @@ function App() {
               <Skill title="HTML5" />
               <Skill title="CSS3" />
               <Skill title="JAVASCRIPT" />
-              <Skill title="REACT.JS" />
+              <Skill title="REACT" />
+              <Skill title="REDUX" />
+              <Skill title="TYPESCRIPT" />
+              <Skill title="TAILWIND" />
               <Skill title="UNIT TESTING" />
               <Skill title="E2E TESTING" />
-              <Skill title="CI/CD" />
-              <Skill title="VUE" />
-              <Skill title="MOBX" />
-              <Skill title="REDUX" />
-              <Skill title="VUEX" />
-              <Skill title="SASS" />
-              <Skill title="WEBPACK" />
-              <Skill title="EFFECTOR" />
-              <Skill title="TYPESCRIPT" />
-              <Skill title="GraphQL" />
             </div>
           </div>
         </div>
@@ -115,10 +112,29 @@ function App() {
         <div className="experience-line"></div>
         <Slider>
           <ExperienceItem
+            title="BYLITH"
+            position="Frontend Developer"
+            period="Mar 2023 — Present"
+            points={[
+              `Development of a custom UI kit tailored to suit the specific needs of our
+            projects. This involved implementation of various types of user inputs to
+            facilitate diverse user interactions. The UI kit is comprehensive, featuring
+            components like text fields, drop down menus, checkboxes, radio buttons,
+            and sliders, among others`,
+            ]}
+            skills={['Vue']}
+          />
+          <ExperienceItem
             title="SBERBANK"
             position="Frontend Developer"
-            period="Feb 2021 — Present"
-            description={`As a Frontend React Engineer at Sberbank, I am responsible for the development and maintenance of multiple MFE projects within an educational platform. I utilize React with TypeScript, Effector, and GraphQL in my work and am also responsible for creating unit and E2E tests.`}
+            period="Feb 2021 — Mar 2023"
+            points={[
+              `Developed and maintained educational MFE projects utilizing React,
+            TypeScript, Tailwind, and Effector`,
+              `Managed a large, legacy codebase and performed unit and E2E testing
+            using Jest and Puppeteer`,
+              `Collaborated with cross-functional teams and led peer code reviews`,
+            ]}
             skills={['React.js', 'JAVASCRIPT', 'TypeScript']}
           />
 
@@ -126,7 +142,12 @@ function App() {
             title="FutureComes"
             position="Frontend Developer"
             period="Apr 2020 — Feb 2021"
-            description={`At FutureComes, I was taking part in developing a React game-like project for a leading Russian bank that involved lots of complex frontend solutions for making the app interactive and engaging.`}
+            points={[
+              `Worked in a team to develop an interactive SPA for a leading bank,
+              employing React and Redux`,
+              `Delivered a user-centric project with complex animations and minigames on schedule`,
+              `Collaborated with cross-functional teams and led peer code reviews`,
+            ]}
             skills={['React.js', 'JAVASCRIPT', 'TypeScript']}
           />
 
@@ -134,7 +155,11 @@ function App() {
             title="Freelance"
             position="Frontend Developer"
             period="Nov 2018 — Apr 2020"
-            description={`During these years, I was working for myself, responsible for the entire cycle of frontend development.`}
+            points={[
+              `Managed full cycle frontend development for various client projects`,
+              `Partnered with designers and integrated React and Redux into the
+                workflow`,
+            ]}
             skills={['React.js', 'JAVASCRIPT']}
           />
 
@@ -142,7 +167,12 @@ function App() {
             title="Netrika"
             position="Frontend Developer"
             period="Jun 2017 — Nov 2018"
-            description={`At Netrika, I was working on maintaining and upgrading governmental websites using JS libraries, HTML, and CSS preprocessors.`}
+            points={[
+              `Crafted commercial and promo websites using JS libraries, HTML, and
+              CSS preprocessors, improving performance and user experience`,
+              `Delivered accessible, responsive websites for government institutes
+              supporting older browsers and low resolutions`,
+            ]}
             skills={['CSS', 'JAVASCRIPT', 'Gulp', 'Stylus', 'Sass']}
           />
 
@@ -150,7 +180,14 @@ function App() {
             title="RoyalMark"
             position="Frontend Developer"
             period="Mar 2015 — May 2017"
-            description={`At RoyalMark, I was responsible for the entire cycle of project creation, including backend development. I completed dozens of various projects of different complexity with stringent deadlines. I was creating web resources from scratch, providing close attention to detail, and making the end product look and work great on all sorts of devices.`}
+            points={[
+              `Directed end-to-end project development, delivering over 30 projects
+              using HTML, CSS, JavaScript, and PHP`,
+              ` Developed responsive websites with user-friendly architectures and
+              integrated analytics`,
+              `Created a social network for athletes and a custom CMS for
+              competition content management`,
+            ]}
             skills={[
               'Jquery',
               'Php',
