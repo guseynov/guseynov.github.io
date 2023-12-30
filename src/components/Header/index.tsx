@@ -1,10 +1,10 @@
 export const Header = () => {
   return (
-    <header className="text-white py-5 sticky top-0 bg-noise z-10">
+    <header className="text-white py-5 sticky top-0 z-10 frosted-glass">
       <div className="grid grid-cols-12 gap-4 w-[1200px] mx-auto">
         <div className="col-span-1">Alex Guseynov</div>
         <div className="col-span-1 col-start-3">Based in Israel</div>
-        <div className="col-span-1 col-start-5">React Developer</div>
+        <div className="col-span-1 col-start-5">Frontend Developer</div>
         <div className="col-span-7 text-right">
           <a
             href="#about"

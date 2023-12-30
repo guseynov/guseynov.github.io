@@ -14,7 +14,7 @@ export const ExperienceItem = ({
       <p className="uppercase text-4xl font-medium text-white">{title}</p>
       <p className="text-3xl text-white">{position}</p>
       <p className="text-3xl text-gray mb-6">{period}</p>
-      <ul className="text-3xl text-white mb-8 list-disc list-inside">
+      <ul className="text-xl font-light text-white mb-8 list-disc list-inside">
         {points.map((point: string) => {
           return <li>{point}</li>;
         })}
