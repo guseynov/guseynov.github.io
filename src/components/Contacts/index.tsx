@@ -14,7 +14,7 @@ export const Contacts = () => {
         <a
           target="_blank"
           href="https://api.whatsapp.com/send?phone=972535611522"
-          className="flex-grow uppercase py-8 text-center flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
+          className="flex-grow uppercase py-8 text-center flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white basis-1/3"
         >
           Whatsapp
           <svg
@@ -36,7 +36,7 @@ export const Contacts = () => {
         <a
           target="_blank"
           href="https://www.linkedin.com/in/aguseynov/"
-          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
+          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white basis-1/3"
         >
           LinkedIn
           <svg
@@ -58,7 +58,7 @@ export const Contacts = () => {
         <a
           href="mailto:alex.guseynov.23@gmail.com"
           target="_blank"
-          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white"
+          className="flex-grow uppercase py-8 text-center  flex justify-center items-center hover:bg-white hover:text-dark group border-r border-white basis-1/3"
         >
           Email
           <svg
