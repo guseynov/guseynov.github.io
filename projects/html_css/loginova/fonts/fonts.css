@@ -1,0 +1,125 @@
+@font-face {
+    font-family: 'Coco Gothic';
+    src: url('coco_gothic_fat_italic-trial-webfont.eot');
+    src: url('coco_gothic_fat_italic-trial-webfont.eot?#iefix') format('embedded-opentype'), url('coco_gothic_fat_italic-trial-webfont.woff2') format('woff2'), url('coco_gothic_fat_italic-trial-webfont.woff') format('woff'), url('coco_gothic_fat_italic-trial-webfont.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Coco Gothic';
+    src: url('coco_gothic_fat-trial-webfont.eot');
+    src: url('coco_gothic_fat-trial-webfont.eot?#iefix') format('embedded-opentype'), url('coco_gothic_fat-trial-webfont.woff2') format('woff2'), url('coco_gothic_fat-trial-webfont.woff') format('woff'), url('coco_gothic_fat-trial-webfont.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Coco Gothic';
+    src: url('coco_gothic_ultralight_italic-trial-webfont.eot');
+    src: url('coco_gothic_ultralight_italic-trial-webfont.eot?#iefix') format('embedded-opentype'), url('coco_gothic_ultralight_italic-trial-webfont.woff2') format('woff2'), url('coco_gothic_ultralight_italic-trial-webfont.woff') format('woff'), url('coco_gothic_ultralight_italic-trial-webfont.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Coco Gothic';
+    src: url('coco_gothic_ultralight-trial-webfont.eot');
+    src: url('coco_gothic_ultralight-trial-webfont.eot?#iefix') format('embedded-opentype'), url('coco_gothic_ultralight-trial-webfont.woff2') format('woff2'), url('coco_gothic_ultralight-trial-webfont.woff') format('woff'), url('coco_gothic_ultralight-trial-webfont.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lifehack';
+    src: url('deartype_-_lifehack_bold-webfont.eot');
+    src: url('deartype_-_lifehack_bold-webfont.eot?#iefix') format('embedded-opentype'), url('deartype_-_lifehack_bold-webfont.woff2') format('woff2'), url('deartype_-_lifehack_bold-webfont.woff') format('woff'), url('deartype_-_lifehack_bold-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lifehack';
+    src: url('deartype_-_lifehack_italic_bold-webfont.eot');
+    src: url('deartype_-_lifehack_italic_bold-webfont.eot?#iefix') format('embedded-opentype'), url('deartype_-_lifehack_italic_bold-webfont.woff2') format('woff2'), url('deartype_-_lifehack_italic_bold-webfont.woff') format('woff'), url('deartype_-_lifehack_italic_bold-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lifehack';
+    src: url('deartype_-_lifehack_italic-webfont.eot');
+    src: url('deartype_-_lifehack_italic-webfont.eot?#iefix') format('embedded-opentype'), url('deartype_-_lifehack_italic-webfont.woff2') format('woff2'), url('deartype_-_lifehack_italic-webfont.woff') format('woff'), url('deartype_-_lifehack_italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lifehack';
+    src: url('deartype_-_lifehack-webfont.eot');
+    src: url('deartype_-_lifehack-webfont.eot?#iefix') format('embedded-opentype'), url('deartype_-_lifehack-webfont.woff2') format('woff2'), url('deartype_-_lifehack-webfont.woff') format('woff'), url('deartype_-_lifehack-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('museosanscyrl_100_italic-webfont.eot');
+    src: url('museosanscyrl_100_italic-webfont.eot?#iefix') format('embedded-opentype'), url('museosanscyrl_100_italic-webfont.woff2') format('woff2'), url('museosanscyrl_100_italic-webfont.woff') format('woff'), url('museosanscyrl_100_italic-webfont.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('museosanscyrl_100-webfont.eot');
+    src: url('museosanscyrl_100-webfont.eot?#iefix') format('embedded-opentype'), url('museosanscyrl_100-webfont.woff2') format('woff2'), url('museosanscyrl_100-webfont.woff') format('woff'), url('museosanscyrl_100-webfont.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('museosanscyrl_300_italic-webfont.eot');
+    src: url('museosanscyrl_300_italic-webfont.eot?#iefix') format('embedded-opentype'), url('museosanscyrl_300_italic-webfont.woff2') format('woff2'), url('museosanscyrl_300_italic-webfont.woff') format('woff'), url('museosanscyrl_300_italic-webfont.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('museosanscyrl_300-webfont.eot');
+    src: url('museosanscyrl_300-webfont.eot?#iefix') format('embedded-opentype'), url('museosanscyrl_300-webfont.woff2') format('woff2'), url('museosanscyrl_300-webfont.woff') format('woff'), url('museosanscyrl_300-webfont.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('museosanscyrl_900-webfont.eot');
+    src: url('museosanscyrl_900-webfont.eot?#iefix') format('embedded-opentype'), url('museosanscyrl_900-webfont.woff2') format('woff2'), url('museosanscyrl_900-webfont.woff') format('woff'), url('museosanscyrl_900-webfont.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('museosanscyrl_900_italic-webfont.eot');
+    src: url('museosanscyrl_900_italic-webfont.eot?#iefix') format('embedded-opentype'), url('museosanscyrl_900_italic-webfont.woff2') format('woff2'), url('museosanscyrl_900_italic-webfont.woff') format('woff'), url('museosanscyrl_900_italic-webfont.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Minion Pro';
+    src: url('MinionPro-Regular.eot?#iefix') format('embedded-opentype'), url('MinionPro-Regular.otf') format('opentype'), url('MinionPro-Regular.woff') format('woff'), url('MinionPro-Regular.ttf') format('truetype'), url('MinionPro-Regular.svg#MinionPro-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Minion Pro';
+    src: url('MinionPro-It.eot?#iefix') format('embedded-opentype'), url('MinionPro-It.otf') format('opentype'), url('MinionPro-It.woff') format('woff'), url('MinionPro-It.ttf') format('truetype'), url('MinionPro-It.svg#MinionPro-It') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}

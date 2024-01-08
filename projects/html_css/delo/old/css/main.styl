@@ -1,0 +1,965 @@
+body 
+	color #000
+	font-size 17px
+	font-family 'Roboto'
+	font-weight 300
+	color #0c1b21
+	
+ul
+button
+	margin 0
+	padding 0
+	border 0
+	font-size 100%
+	font inherit
+	vertical-align baseline
+ul 
+	list-style none
+p
+h1
+h2
+h3
+h4
+h5
+h6
+	margin 0
+	
+.container  
+	width 1230px
+	padding 0 30px
+
+h1
+	font-size 49px;
+	font-weight 800
+	letter-spacing -3px
+	line-height: 45px;
+	
+h2
+	font-size 36px
+	line-height 1
+	font-weight 800
+	font-family 'Roboto Condensed'
+	text-align center
+	text-transform uppercase
+	margin-bottom 25px
+	
+h3
+	letter-spacing -1px
+	font-weight 600
+	
+	
+.header
+	height 52px
+	position absolute
+	top 0
+	left 0
+	width 100%
+	z-index 4
+	background #fff
+	box-shadow 1px 1px 10px 0 rgba(0, 0, 0, 0.3)
+	&__btn
+		float right
+		height 52px
+		margin-right 50px
+		&:after
+			content ''
+			vertical-align middle
+			display inline-block
+			height 100%
+			width 0
+		.btn
+			padding 6px 20px
+			font-size 14px
+			font-weight bold
+			display inline-block
+			vertical-align middle
+			letter-spacing 0.035em
+			border-radius 5px
+			
+	&__logo
+		height 91px
+		width 91px
+		display inline-block
+		vertical-align top
+		background #fff url(../img/header_logo.jpg) center center/65px 69px no-repeat
+		margin-right 20px
+		border-radius 50%
+		box-shadow 0 5px 10px -3px rgba(0, 0, 0, 0.3)
+	&__nav
+		font-weight 900
+		display inline-block
+		vertical-align top
+		font-size 13px
+		text-transform uppercase
+		color #000
+		line-height 52px
+		li
+			padding 0 17px
+			display inline-block
+			letter-spacing 0.162em
+			cursor pointer
+			transition background .2s ease, color .2s ease
+			&:hover
+			&.active
+				background #68b85f
+				color #fff
+	&__desc
+		float right
+		font-weight 300
+		font-size 11px
+		color #070707
+		height 52px
+		white-space nowrap
+		p
+			white-space normal
+			text-align right
+			letter-spacing 0.05em
+			line-height 12px
+		&:after
+			content ''
+			vertical-align middle
+			display inline-block
+			height 100%
+			width 0
+			
+	&--scroll
+		transition transform .2s ease, margin .2s ease, visibility 0s .2s
+		margin-top -52px
+		position fixed
+		visibility hidden
+		&.active
+			visibility visible
+			margin-top 0
+			transition transform .2s ease, margin .2s ease, visibility 0s
+	
+.csstransforms .header--scroll
+	transform translateY(-100%)
+	margin-top 0 !important
+	&.active
+		transform translateY(0)
+
+			
+.showcase
+	height 100vh
+	position relative
+	overflow hidden
+	background url(../img/showcase_bg.jpg) center center /cover no-repeat
+	&__map
+		position absolute
+		top 205px
+		right 15px
+	&__heading
+		position absolute
+		top 21px
+		right 50px
+		text-align right	
+		font-family 'Roboto Condensed'
+		text-transform uppercase
+	&:after
+		content ''
+		vertical-align middle
+		display inline-block
+		height 100%
+		width 0
+	&__video
+		background rgba(0, 0, 0, 0.9)
+		position absolute
+		top 0
+		right 0
+		bottom 0
+		opacity 0
+		visibility hidden
+		left 0
+		z-index 2
+		transition opacity .2s ease, visibility 0s .2s
+		video
+			position absolute
+			top 50%
+			width 100%
+			transform translateY(-50%)
+		&.active
+			visibility visible
+			opacity 1
+			transition opacity .2s ease, visibility 0s
+	&__logo
+	&__map
+	.play
+		animation-duration 1.5s
+	 	
+		
+.showcase-logo-container
+	position absolute
+	top 18px
+	left 33px
+	z-index 1
+	.play
+		position absolute
+		top 340px
+		right -40px
+	
+.showcase-subheading
+	color rgba(16, 16, 16, 0.75)
+	font-size 15px
+	font-weight 500
+	margin-top 20px
+	line-height 24px
+	letter-spacing 0.03em
+	
+.ghost
+	display inline-block
+	vertical-align middle
+	
+.showcase-wrapper
+	top 50%
+	position relative
+	
+span
+	&.red
+		color #d41334
+	&.green
+		color #68b85f
+		
+.play
+	background none
+	&:focus
+		outline none
+	
+.welcome
+	text-align center
+	margin 72px 0 78px
+	&__btns
+		margin-top 35px
+		button
+			margin 0 2px
+	&__description
+		button
+			color #68b85f
+			background none
+			&:focus
+				outline none
+				
+.btn
+	color #fff
+	border-radius 4px
+	letter-spacing 0.05em
+	padding 14px 44px
+	font-weight bold
+	font-size 17px
+	transition background .2s ease
+	&:focus
+	&:active
+	&:hover
+		color #fff
+
+.btn--green
+	background #68b85f
+	&:hover
+		background darken(#68b85f, 20%)
+
+.btn--red
+	background #d20a2d
+	&:hover
+		background darken(#d20a2d, 20%)
+		
+.delimiter
+	position relative
+	line-height 0
+	margin 38px 0 44px
+	.stripe
+		width 100%
+		left 0
+		height 1px
+		background-color black
+		background linear-gradient(90deg, #68b85f 4px, #fff 2px)
+		background-size 6px 100%
+		background-repeat repeat-x
+		top 50%
+		position absolute
+	span
+		position relative
+		width 33px
+		height 33px
+		background #68b85f
+		border-radius 50%
+		display inline-block
+		i
+			color #fff
+			line-height 33px
+			font-size 16px
+			
+.heroes
+	background url('../img/pattern.jpg') center center /cover no-repeat
+	
+	&__bg
+		opacity 0
+		visibility hidden
+		position absolute
+		top 0
+		right 0
+		bottom -20px
+		left 0
+		background rgba(0, 164, 227, .88)
+		transition opacity .2s ease, visibility 0s .2s
+		z-index 2
+		&.active
+			opacity 1
+			visibility visible
+			transition opacity .2s ease, visibility 0s
+	&__images
+		height 575px
+		position relative
+		margin-bottom -102px
+		text-align center
+		#north_people_img
+			position relative
+			z-index 1
+			bottom 10px
+			right 13px
+	&__btns
+		text-align center
+		padding 38px 0
+	&__names
+		height 85px
+		background url(../img/waves.png) 0 0 /cover repeat-x
+		position relative
+		z-index 3
+		overflow hidden
+		color #fff
+		font-weight 700
+		text-transform uppercase
+		font-family 'Roboto Condensed'
+		ul
+			text-align center
+			line-height 89px
+		li
+			display inline-block
+			&:nth-child(1)
+				margin-right 77px
+			&:nth-child(2)
+				margin-right 274px
+			&:nth-child(4)
+				float right
+			cursor pointer
+	&__description
+		z-index 5
+		position relative
+		color #fff
+		transition opacity .2s ease, visibility 0s .2s
+		opacity 0
+		visibility hidden
+		width 450px
+		position absolute
+		top 200px
+		&.active
+			opacity 1
+			visibility visible
+			transition opacity .2s ease, visibility 0s
+		
+.hero-name
+	font-family 'Times New Roman'
+	font-size 28px
+	text-transform uppercase
+	
+.hero-position
+	text-transform uppercase
+	
+.hero-text
+	font-weight 400
+	font-size 16px
+	margin-top 40px
+	
+.heroes-images-container
+	position relative
+	
+.heroes__images--description
+	position absolute !important
+	z-index 3
+	top 0
+	left 0
+	width 100%
+	opacity 0
+	visibility hidden
+	transition opacity .2s ease, visibility 0s .2s
+	&.active
+		transition opacity 0s ease, visibility 0s
+		opacity 1
+		visibility visible
+		.hero-image
+			opacity 0
+			visibility hidden
+			transition opacity .2s ease, visibility 0s .2s
+			&.active
+				opacity 1
+				visibility visible
+				transition opacity .2s ease, visibility 0s
+	
+
+.hero-video
+	font-family 'Roboto Condensed'
+	font-weight bold
+	background transparent
+	margin-top 25px
+	font-size 19px
+	span
+		margin-right 10px
+		width 42px
+		height 42px
+		line-height 42px
+		text-align center
+		position relative
+		&:after
+			top 0
+			left 0
+			background url(../img/circle.png) center center /contain no-repeat
+			content ''
+			display block
+			position absolute
+			width 100%
+			height 100%
+	&:focus
+		outline none
+			
+.overlay
+	background rgba(0, 0, 0, 0.8)
+	position fixed
+	top 0
+	right 0
+	bottom 0
+	left 0
+	opacity 0
+	visibility hidden
+	text-align center
+	z-index 5
+	transition opacity .2s ease, visibility 0s .2s
+	&.active
+		visibility visible
+		opacity 1
+		transition opacity .2s ease, visibility 0s
+	&:after
+		content ''
+		display inline-block
+		height 100%
+		vertical-align middle
+	
+.btn--popup
+	background transparent
+	transition color .2s ease, background .2s ease
+	color #088454
+	border 1px solid #088454
+	font-weight bold
+	padding 10px 25px
+	&:hover
+		background #088454
+		color #fff
+	&:focus
+		outline none
+	
+[data-popup]:focus
+	outline none
+.popup
+	vertical-align middle
+	width 580px
+	background #fff
+	padding 45px 110px 55px
+	display none
+	border-radius 5px
+	&.active
+		display inline-block
+	&__heading
+		font-size 21px
+		font-family 'Roboto Condensed'
+		margin-bottom 30px
+		font-weight bold
+		text-transform uppercase
+	&[data-popup=video]
+		width 80%
+		background transparent
+		padding 0
+		height 45%
+		iframe
+			width 100%
+			height 100%
+	&[data-popup=materials]
+		padding 45px 55px
+		.btn
+			display inline-block 
+			margin-right 5px
+			&:last-of-type
+				margin-right 0
+			
+	&__form
+		button[type=submit]
+			font-size 21px
+			display block
+			width 100%
+			padding 0
+			height 60px
+		.input
+			height 55px
+			line-height 53px
+			border 1px solid #b2b2b2
+			border-radius 3px
+			padding 0 30px
+
+		.textarea
+			height 140px
+			padding 15px 30px
+			background #fff
+			
+		.input
+		.textarea
+			display block
+			width 100%
+			margin-bottom 9px
+			color #686868
+			&:focus
+				outline none
+
+.hero-image
+	position absolute
+	bottom 0
+	transition opacity .2s ease
+	&[data-hero=dobrofeev]
+		background url(../img/TIM.png) 
+		width 400px
+		height 448px
+		left -66px
+		bottom 24px
+		z-index 1
+	&[data-hero=bronsky]
+		background url(../img/BRONSKY.png) 
+		width 360px
+		height 456px
+		left 143px
+		bottom 56px
+	&[data-hero=polikina]
+		background url(../img/POLIKINA.png) 
+		width 350px
+		height 443px
+		left 621px
+		bottom 56px
+	&[data-hero=starodubtsevy]
+		background url(../img/STRD_W.png)
+		width 473px
+		height 371px
+		left 739px
+		bottom 79px
+	&--darkened
+		opacity 0.7
+		
+.heroes-description-container
+	position relative
+	padding-top 75px
+		
+.experts
+	padding 75px 0 112px
+	background url(../img/experts_bg.jpg) center center /cover no-repeat
+	color #fff
+	text-align center
+	img
+		display inline-block
+	&__slider
+		width 670px
+		display inline-block
+		margin-top 35px
+		
+		
+.expert-slide
+	&__text
+		font-weight 300
+		font-size 14px
+		text-align left
+		margin-top 25px
+		line-height 26px
+	&__credentials
+		float left
+		text-align left
+	&__quote
+		float right
+		width 465px
+		text-align left
+		font-size 21px
+		height 120px
+		font-style italic
+		font-family 'Times New Roman'
+		letter-spacing 0.055em
+		padding-left 40px
+		line-height 23px
+		position relative
+		&:before
+			content ''
+			display block
+			position absolute
+			top 45px
+			left -10px
+			width 28px
+			height 30px
+			background url(../img/quotes.png) center center /contain no-repeat
+		&:after
+			content ''
+			display inline-block
+			vertical-align middle
+			height 100%
+			width 0
+		p
+			display inline-block
+			vertical-align middle
+	&__img
+		margin-bottom 13px
+
+.slick-slide
+	&:focus
+	&:active
+		outline none
+			
+.expert-name
+	font-family 'Roboto Condensed'
+	font-weight bold
+	font-size 23px
+	line-height 36px
+	text-transform uppercase
+	
+.expert-position
+	font-weight 300
+	letter-spacing 4px
+	font-size 12px
+	text-transform uppercase
+
+.slider-button
+	width 52px !important
+	height 52px !important
+	position absolute !important
+	top 150px
+	background transparent
+	z-index 1
+	&:focus
+	&:active
+		outline none
+	&:hover
+		img
+			opacity 0
+		.hover-img
+			opacity 1
+	img
+		transition opacity .2s ease
+		position absolute
+		top 0
+		left 0
+	.hover-img
+		opacity 0
+	
+
+.prev-arrow
+	left -135px
+	
+.next-arrow
+	right -135px
+	
+.slick-dots
+	position absolute
+	left 0
+	bottom -34px
+	li
+		display inline-block
+		line-height 0
+		&.slick-active
+			button
+				background #fff
+		button
+			width 17px
+			height 17px
+			border-radius 50%
+			color transparent
+			background transparent
+			border 2px solid #fff
+			transition background .3s ease
+			margin-right 18px
+			&:focus
+			&:active
+				outline none
+	
+.watch-an-episode
+	background url('../img/watch-an-episode_bg.jpg') center center /cover no-repeat
+	padding 16px 0
+	& .play
+		display inline-block
+		vertical-align middle
+		margin 0 45px 0 39px
+	&__heading
+		display inline-block
+		vertical-align middle
+		text-transform uppercase
+		font-family 'Roboto Condensed'
+		position relative
+		bottom 4px
+	& .vertical-centering
+		line-height 183px
+		
+.watch-an-episode-title
+	font-size 20px
+	font-weight bold
+	line-height 32px
+	margin-bottom 10px
+	
+.watch-an-episode-subtitle
+	font-size 14px
+	letter-spacing 0.013em
+
+
+.partners
+	padding 76px 0 83px
+	h2
+		margin-bottom 65px
+
+.partner
+	&__body
+		&:before
+			content ''
+			display block
+			background url(../img/line.png) left center /contain no-repeat
+			height 21px
+			margin 16px 0 37px
+		img
+			margin-right 26px
+		.btn
+			margin-top 12px
+			
+.join
+	padding 67px 0 60px
+	color #fff
+	background #68b85f url(../img/join.png) center bottom /contain no-repeat
+	h2
+		margin-bottom 18px
+	&__list
+		margin-top 72px
+		font-size 16px
+	&__em
+		color #68b85f
+		font-weight 900
+		background #fff
+		padding 2px
+		font-size 43px
+		text-align center
+		text-transform uppercase
+		letter-spacing 8px
+		margin-top 20px
+		letter-spacing 0.2em
+	&__em-2
+		text-align center
+		text-transform uppercase
+		font-weight 900
+		font-size 32px
+		letter-spacing 0.131em
+		padding 0 30px
+		margin-top 14px
+		span
+			font-size 28px
+			letter-spacing 0.1em
+	&__btn
+		text-align center
+		font-size 18px
+		font-weight 900
+		margin-top 38px
+		button
+			border-color #fff
+			transition background .2s ease, color .2s ease
+			letter-spacing 1px
+			padding 19px 36px
+			letter-spacing 0.185em
+			&:hover
+				background #fff
+				color #61af58
+	
+.join-accent
+	text-align center
+	line-height 52px
+	padding-left 48px
+	span
+		font-size 12px
+		margin-left 15px
+		transform rotate(-2deg)
+		display inline-block
+		vertical-align top
+		letter-spacing 1px
+		position relative
+		bottom 7px
+	.plate
+		width 317px
+		height 52px
+		display inline-block
+		font-family 'Roboto Condensed'
+		font-size 20px
+		text-align center
+		text-transform uppercase
+		color #68b85f
+		font-weight bold
+		letter-spacing 1px
+		background url('../img/motto.png') center center /contain no-repeat
+		p
+			transform rotate(-2deg)
+			
+.join-item
+	display inline-block
+	vertical-align top
+	margin-right 40px
+	line-height 25px
+	letter-spacing 1px
+	&:nth-child(1)
+		width 343px
+	&:nth-child(2)
+		margin -53px 50px 0 0
+		
+	&:last-of-type
+		margin-right 0
+		width 250px
+		padding-right 25px
+	p
+		margin-bottom 11px
+	span
+		font-weight bold
+		font-size 21px
+		text-transform uppercase
+		
+.btn--transparent
+	background transparent
+	border 1px solid
+	border-radius 5px
+	
+.team
+	padding 54px 0 22px
+	background #f2f2f2
+	color rgba(0, 0, 0, 0.5)
+	border-bottom 1px solid #e1e1e1
+	&__delimiter
+		margin-bottom 22px
+		position relative
+		line-height 0
+		bottom 7px
+	&__group
+		.download
+			font-size 15px
+			font-weight bold
+			color inherit
+			background-image linear-gradient(to right, rgba(0, 0, 0, 0.5) 33%, rgba(255,255,255,0) 0%)
+			background-position bottom
+			background-size 3px 1px
+			background-repeat repeat-x
+			text-decoration none !important
+			margin-left 26px
+			letter-spacing 0.05em
+			
+.to-top
+	background-image linear-gradient(to right, rgba(0, 0, 0, 0.5) 33%, rgba(255,255,255,0) 0%)
+	background-position bottom
+	background-size 3px 1px
+	background-repeat repeat-x
+	background-color transparent
+	
+h4
+	font-size 16px
+	text-transform uppercase
+	font-weight 900
+	letter-spacing 0.14em
+	margin-bottom 42px
+	display inline-block
+	span
+		font-size 17px
+		margin-right 7px
+h5
+	font-weight 900
+	font-size 12px
+	text-transform uppercase
+	letter-spacing 0.14em
+	margin-bottom 5px
+	
+.team-group-list
+	font-size 12px
+	margin-bottom 13px
+	p
+		letter-spacing 0.14em
+		line-height 20px
+	&:last-of-type
+		margin-bottom 0
+		
+.footer
+	padding 32px 0
+	font-size 13px
+	color #191919
+	&__social
+		color #00a4e3
+		a
+			display inline-block
+			font-size 21px
+			width 31px
+			height 31px
+			line-height 31px
+			text-align center
+			vertical-align middle
+			text-decoration none
+			border-radius 50%
+			transition background .1s ease, color .1s ease
+			&:hover
+				background #00a4e3
+				color #fff
+	&__authors
+		span
+			text-transform uppercase
+			vertical-align middle
+			display inline-block
+			margin-right 19px
+			letter-spacing 0.04em
+		img
+			display inline-block
+			vertical-align middle
+	.gray
+		color rgba(25, 25, 25, 0.64)
+	&__share
+		p
+			letter-spacing 0.06em
+			text-transform uppercase
+			margin-bottom 15px
+		span
+			color #d20a2d
+			margin 0 3px
+		a
+			padding 5px 12px
+			margin-right 6px
+			font-size 13px
+			border-radius 5px
+			border 1px solid #d20a2d
+			color #d20a2d
+			font-weight bold
+			transition background .2s ease, color .2s ease
+			span
+				transition color .2s ease
+			&:hover
+			&:focus
+				color #fff
+				background #d20a2d
+				span
+					color #fff
+	.vertical-align
+		display inline-block
+		vertical-align middle
+		float none
+		
+.no-js
+	.loader
+		display none !important
+.loader
+	background #2e3842
+	position fixed
+	top 0
+	right 0
+	bottom 0
+	left 0
+	z-index 999
+
+.download
+	background transparent
+	&:focus
+		outline none
+		
+.share 
+	display inline-block
+	vertical-align middle
