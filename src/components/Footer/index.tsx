@@ -21,7 +21,7 @@ export const Footer = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_202_662)">
+            <g clipPath="url(#clip0_202_662)">
               <path d="M15 12L8 5L1 12" stroke="#565656" />
             </g>
             <defs>

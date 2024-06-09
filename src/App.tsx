@@ -8,6 +8,113 @@ import { ProjectItem } from './components/ProjectItem';
 import { Skill } from './components/Skill';
 import Slider from './components/Slider';
 
+const SKILLS = [
+  'HTML5',
+  'CSS3',
+  'JAVASCRIPT',
+  'REACT',
+  'VUE',
+  'REDUX',
+  'TYPESCRIPT',
+  'TAILWIND',
+  'UNIT TESTING',
+  'E2E TESTING',
+];
+
+const EXPERIENCE = [
+  {
+    title: 'BYLITH',
+    position: 'Frontend Developer',
+    period: 'Mar 2023 — Present',
+    points: [
+      `Leading the development and maintenance of a custom UI kit,
+      comprising over 40 components using Vue 3, for use across
+      company projects.`,
+      `Directing quality assurance, including unit testing with Vitest
+      and end-to-end testing with Playwright.`,
+    ],
+    skills: ['Vue', 'Playwright', 'Vitest'],
+  },
+  {
+    title: 'SBERBANK',
+    position: 'Frontend Developer',
+    period: 'Feb 2021 — Mar 2023',
+    points: [
+      `Developed and maintained an EdTech Microfrontend (MFE)
+      project, utilizing React, TypeScript, Tailwind CSS, and
+      Effector.`,
+      `Successfully migrated a legacy monolith project to a
+      microfrontend architecture, enhancing scalability and
+      performance.`,
+      `Conducted comprehensive unit and end-to-end testing using
+      Jest and Puppeteer to maintain high code quality.`,
+    ],
+    skills: ['React.js', 'JAVASCRIPT', 'TypeScript'],
+  },
+  {
+    title: 'FutureComes',
+    position: 'Frontend Developer',
+    period: 'Apr 2020 — Feb 2021',
+    points: [
+      `Developed a SPA for an educational project of one of the
+      largest banks in the country, effectively blending learning
+      with gamified experiences.`,
+      `Conducted peer code reviews, contributing to team
+      knowledge and maintaining coding best practices.`,
+    ],
+    skills: ['React.js', 'JAVASCRIPT', 'TypeScript'],
+  },
+  {
+    title: 'Freelance',
+    position: 'Frontend Developer',
+    period: 'Nov 2018 — Apr 2020',
+    points: [
+      `Managed the full cycle of frontend development for various
+      client projects, showcasing independence and project
+      management expertise.`,
+      `Collaborated with designers to turn creative concepts into
+      functional web designs, ensuring both client satisfaction and
+      visual quality.`,
+      `Actively pursued learning and integrating React and Redux
+      into projects, demonstrating dedication to staying current
+      with evolving industry technologies.`,
+    ],
+    skills: ['React.js', 'JAVASCRIPT'],
+  },
+  {
+    title: 'Netrika',
+    position: 'Frontend Developer',
+    period: 'Jun 2017 — Nov 2018',
+    points: [
+      `Crafted high-performance commercial and promotional
+      websites using JavaScript libraries, HTML, and CSS
+      preprocessors, significantly enhancing user experience and
+      interaction.`,
+      `Delivered accessible and responsive websites for government
+      institutions, ensuring compatibility with older browsers and
+      support for lower resolutions, thereby extending outreach
+      and usability.`,
+    ],
+    skills: ['CSS', 'JAVASCRIPT', 'Gulp', 'Stylus', 'Sass'],
+  },
+  {
+    title: 'RoyalMark',
+    position: 'Frontend Developer',
+    period: 'Mar 2015 — May 2017',
+    points: [
+      `Directed end-to-end development of over 30 projects,
+      utilizing HTML, CSS, JavaScript, and PHP, demonstrating
+      strong project management and technical skills.`,
+      `Developed responsive websites with user-centric
+      architectures, integrating analytics to enhance user
+      engagement and performance tracking.`,
+      `Engineered a custom CMS, streamlining content updates and
+      administration processes.`,
+    ],
+    skills: ['Jquery', 'Php', 'MySQL', 'JAVASCRIPT', 'CSS', 'SCSS', 'Gulp'],
+  },
+];
+
 function App() {
   return (
     <div className="bg-noise font-inter text-white">
@@ -68,13 +175,16 @@ function App() {
           <div className="col-span-2">About</div>
           <div className="col-span-10 text-xl font-light">
             <p className="mb-8">
-              I am a Frontend Engineer with over 8 years of experience,
-              dedicated to transforming beautiful designs into scalable and
-              maintainable code. Proficient in React, TypeScript, and Tailwind,
-              I have adapted to various work environments, from dynamic startups
-              to some of the country's largest corporations. My commitment lies
-              in writing clean code, embracing advanced technologies, and
-              contributing to impactful projects.
+              Hi! <br /> I'm Alex, a frontend engineer based in Israel{' '}
+              <span className="text-3xl">👨🏼‍💻</span>
+              <br />
+              <br />
+              With 9 years of experience in the field, I enjoy working with
+              React / Vue, TypeScript and Tailwind. I've worked in both startups
+              and big companies, turning designs into clean, scalable code. My
+              passion is to create visually appealing and user-friendly
+              interfaces. I'm looking for new opportunities to grow and
+              contribute to exciting projects.
             </p>
           </div>
         </div>
@@ -82,16 +192,9 @@ function App() {
           <div className="col-span-2">Skillset</div>
           <div className="col-span-10">
             <div className="flex flex-wrap">
-              <Skill title="HTML5" />
-              <Skill title="CSS3" />
-              <Skill title="JAVASCRIPT" />
-              <Skill title="REACT" />
-              <Skill title="VUE" />
-              <Skill title="REDUX" />
-              <Skill title="TYPESCRIPT" />
-              <Skill title="TAILWIND" />
-              <Skill title="UNIT TESTING" />
-              <Skill title="E2E TESTING" />
+              {SKILLS.map((skill, index) => (
+                <Skill key={`skill-${index}`} title={skill} />
+              ))}
             </div>
           </div>
         </div>
@@ -104,109 +207,9 @@ function App() {
       <div className="relative mt-20">
         <div className="experience-line"></div>
         <Slider>
-          <ExperienceItem
-            title="BYLITH"
-            position="Frontend Developer"
-            period="Mar 2023 — Present"
-            points={[
-              `Leading the development and maintenance of a custom UI kit,
-              comprising over 40 components using Vue 3, for use across
-              company projects.`,
-              `Directing quality assurance, including unit testing with Vitest
-              and end-to-end testing with Playwright.`,
-            ]}
-            skills={['Vue', 'Playwright', 'Vitest']}
-          />
-          <ExperienceItem
-            title="SBERBANK"
-            position="Frontend Developer"
-            period="Feb 2021 — Mar 2023"
-            points={[
-              `Developed and maintained an EdTech Microfrontend (MFE)
-              project, utilizing React, TypeScript, Tailwind CSS, and
-              Effector.`,
-              `Successfully migrated a legacy monolith project to a
-              microfrontend architecture, enhancing scalability and
-              performance.`,
-              `Conducted comprehensive unit and end-to-end testing using
-              Jest and Puppeteer to maintain high code quality.`,
-            ]}
-            skills={['React.js', 'JAVASCRIPT', 'TypeScript']}
-          />
-
-          <ExperienceItem
-            title="FutureComes"
-            position="Frontend Developer"
-            period="Apr 2020 — Feb 2021"
-            points={[
-              `Developed a SPA for an educational project of one of the
-              largest banks in the country, effectively blending learning
-              with gamified experiences.`,
-              `Conducted peer code reviews, contributing to team
-              knowledge and maintaining coding best practices.`,
-            ]}
-            skills={['React.js', 'JAVASCRIPT', 'TypeScript']}
-          />
-
-          <ExperienceItem
-            title="Freelance"
-            position="Frontend Developer"
-            period="Nov 2018 — Apr 2020"
-            points={[
-              `Managed the full cycle of frontend development for various
-              client projects, showcasing independence and project
-              management expertise.`,
-              `Collaborated with designers to turn creative concepts into
-              functional web designs, ensuring both client satisfaction and
-              visual quality.`,
-              `Actively pursued learning and integrating React and Redux
-              into projects, demonstrating dedication to staying current
-              with evolving industry technologies.`,
-            ]}
-            skills={['React.js', 'JAVASCRIPT']}
-          />
-
-          <ExperienceItem
-            title="Netrika"
-            position="Frontend Developer"
-            period="Jun 2017 — Nov 2018"
-            points={[
-              `Crafted high-performance commercial and promotional
-              websites using JavaScript libraries, HTML, and CSS
-              preprocessors, significantly enhancing user experience and
-              interaction.`,
-              `Delivered accessible and responsive websites for government
-              institutions, ensuring compatibility with older browsers and
-              support for lower resolutions, thereby extending outreach
-              and usability.`,
-            ]}
-            skills={['CSS', 'JAVASCRIPT', 'Gulp', 'Stylus', 'Sass']}
-          />
-
-          <ExperienceItem
-            title="RoyalMark"
-            position="Frontend Developer"
-            period="Mar 2015 — May 2017"
-            points={[
-              `Directed end-to-end development of over 30 projects,
-              utilizing HTML, CSS, JavaScript, and PHP, demonstrating
-              strong project management and technical skills.`,
-              `Developed responsive websites with user-centric
-              architectures, integrating analytics to enhance user
-              engagement and performance tracking.`,
-              `Engineered a custom CMS, streamlining content updates and
-              administration processes.`,
-            ]}
-            skills={[
-              'Jquery',
-              'Php',
-              'MySQL',
-              'JAVASCRIPT',
-              'CSS',
-              'SCSS',
-              'Gulp',
-            ]}
-          />
+          {EXPERIENCE.map((experience, index) => (
+            <ExperienceItem key={`experience-${index}`} {...experience} />
+          ))}
         </Slider>
       </div>
       <div className="w-[1200px] mx-auto">

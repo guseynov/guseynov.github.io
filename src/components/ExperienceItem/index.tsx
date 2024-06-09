@@ -15,8 +15,8 @@ export const ExperienceItem = ({
       <p className="text-3xl text-white">{position}</p>
       <p className="text-3xl text-gray mb-6">{period}</p>
       <ul className="text-xl font-light text-white mb-8 list-disc list-inside">
-        {points.map((point: string) => {
-          return <li>{point}</li>;
+        {points.map((point: string, index) => {
+          return <li key={`point-${index}`}>{point}</li>;
         })}
       </ul>
       <div className="flex flex-wrap">
