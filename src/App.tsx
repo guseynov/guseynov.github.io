@@ -184,7 +184,7 @@ function App() {
             <div className="lg:col-span-2 col-span-12">About</div>
             <div className="lg:col-span-10 col-span-12 xl:text-lg font-light">
               <p className="mb-8">
-                Hi! <br /> I'm Alex, a frontend engineer based in Israel{' '}
+                Hi! I'm Alex, a frontend engineer based in Israel{' '}
                 <span className="text-3xl">👨🏼‍💻</span>
                 <br />
                 <br />
