@@ -9,7 +9,7 @@ export const ProjectItem = ({
 }: ProjectItemProps) => {
   return (
     <div className="rounded-2xl border border-white pt-7 overflow-hidden">
-      <div className="min-h-[280px]">
+      <div className="lg:min-h-[280px]">
         <div className="flex mb-4 px-6">
           {icons.map((icon, index) => (
             <img
@@ -20,23 +20,25 @@ export const ProjectItem = ({
             />
           ))}
         </div>
-        <p className="text-4xl text-white mb-4 px-6">{title}</p>
+        <p className="lg:text-4xl text-2xl text-white mb-4 px-6">{title}</p>
         <div className="flex mb-2 px-6">
           {skills.map((skill, index) => (
             <div className="flex" key={`skill-${skill}`}>
-              <p className="text-2xl text-gray">{skill}</p>
+              <p className="lg:text-2xl text-lg text-gray">{skill}</p>
               <span>
                 {index !== skills.length - 1 && (
-                  <span className="text-2xl text-gray mx-3">•</span>
+                  <span className="lg:text-2xl text-lg text-gray lg:mx-3 mx-1">
+                    •
+                  </span>
                 )}
               </span>
             </div>
           ))}
         </div>
       </div>
-      <div className="flex border-t border-white">
+      <div className="flex border-t border-white mt-10 lg:mt-0">
         <a
-          className="text-2xl py-5 text-white flex justify-center items-center hover:bg-white hover:text-dark group flex-grow text-center border-r border-white"
+          className="lg:text-2xl text-lg py-5 text-white flex justify-center items-center hover:bg-white hover:text-dark group flex-grow text-center border-r border-white"
           href={projectLink}
           target="_blank"
         >
