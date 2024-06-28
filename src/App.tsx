@@ -213,7 +213,13 @@ function App() {
           </div>
         </div>
 
-        <div className="relative lg:mt-20 mt-10">
+        <div className="justify-center mt-5 flex lg:hidden">
+          <div className="items-center px-4 py-2 gap-3 border border-white rounded-full text-xs font-extralight border-opacity-25 uppercase inline-flex">
+            <span>Swipe to see more</span>
+            <img className="w-4" src="/swipe.svg" alt="Swipe to see more" />
+          </div>
+        </div>
+        <div className="relative">
           <div className="experience-line"></div>
           <Slider>
             {EXPERIENCE.map((experience, index) => (
