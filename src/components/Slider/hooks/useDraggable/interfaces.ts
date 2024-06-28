@@ -5,5 +5,5 @@ export interface DraggableOptions {
 }
 
 export interface DraggableRef {
-  current: HTMLDivElement | null;
+  current: HTMLElement | null;
 }

@@ -12,7 +12,7 @@ const Experience = ({ children }: Props) => {
     enabled: true,
     direction: 'horizontal',
     inertia: true,
-  });
+  }) as React.MutableRefObject<HTMLDivElement | null>;
 
   const updateSliderPaddings = () => {
     if (!sliderRef.current) return;
