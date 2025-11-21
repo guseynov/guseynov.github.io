@@ -37,14 +37,18 @@
 
 .liquid-glass {
   /* Fallback for browsers that don't support SVG backdrop-filter */
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
 }
 
 @supports (backdrop-filter: url('#liquid-glass')) {
   .liquid-glass {
-    backdrop-filter: url('#liquid-glass');
-    /* Optional: Add a subtle background to make the glass visible */
-    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: url('#liquid-glass') saturate(180%);
+    /* iOS style dark glass */
+    background: rgba(20, 20, 20, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
   }
 }

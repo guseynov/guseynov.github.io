@@ -8,50 +8,39 @@ export const Header = ({ openMenu }: { openMenu: () => void }) => {
       <LiquidGlass id="liquid-glass" intensity={20} />
       <header className="text-white xl:p-6 py-2 sticky top-4 z-10 liquid-glass font-light text-sm border border-black border-opacity-10 shadow-sm rounded-full mx-4 xl:w-[1200px] xl:mx-auto">
         <div className="grid grid-cols-12 gap-4 xl:mx-auto xl:px-0 px-4 items-center">
-          <div className="xl:col-span-2 lg:col-span-3 col-span-9">
+          <div className="xl:col-span-3 lg:col-span-3 col-span-9">
             <div className="flex gap-2 items-center">
               <Logo />
               <span>Alex Guseynov</span>
             </div>
           </div>
-          <div className="xl:col-span-2 xl:col-start-3 col-span-3 col-start-4 hidden lg:block">
-            <div className="flex align-middle gap-2">
-              <img className="w-4" src="/code.svg" alt="pin" />
-              <span>Frontend Developer</span>
-            </div>
-          </div>
-          <div className="xl:col-span-2 xl:col-start-5 col-start-7 col-span-3 hidden lg:block">
-            <div className="flex align-middle gap-2">
-              <img className="w-4" src="/pin.svg" alt="pin" />
-              <span>Netanya, Israel</span>
-            </div>
-          </div>
-          <div className="col-span-6 text-right hidden xl:block">
+        
+          <div className="xl:col-span-9 lg:col-span-9 col-span-9 text-right hidden xl:flex justify-end gap-1">
             <a
               onClick={scrollToAnchor}
               href="#about"
-              className="inline-block text-center w-32 font-milligram border-white py-2 rounded-full border uppercase hover:text-neutral-900 hover:bg-white"
+              className="inline-block text-center px-6 py-2 font-sans text-sm font-medium rounded-full hover:bg-white/10 transition-colors duration-200"
             >
               About
             </a>
             <a
               onClick={scrollToAnchor}
               href="#experience"
-              className="inline-block text-center w-32 font-milligram border-white py-2 rounded-full border uppercase hover:text-neutral-900 hover:bg-white"
+              className="inline-block text-center px-6 py-2 font-sans text-sm font-medium rounded-full hover:bg-white/10 transition-colors duration-200"
             >
               Experience
             </a>
             <a
               onClick={scrollToAnchor}
               href="#work"
-              className="inline-block text-center w-32 font-milligram border-white py-2 rounded-full border uppercase hover:text-neutral-900 hover:bg-white"
+              className="inline-block text-center px-6 py-2 font-sans text-sm font-medium rounded-full hover:bg-white/10 transition-colors duration-200"
             >
               Work
             </a>
             <a
               onClick={scrollToAnchor}
               href="#contacts"
-              className="inline-block text-center w-32 font-milligram border-white py-2 rounded-full border uppercase hover:text-neutral-900 hover:bg-white"
+              className="inline-block text-center px-6 py-2 font-sans text-sm font-medium rounded-full hover:bg-white/10 transition-colors duration-200"
             >
               Contact
             </a>
