@@ -34,3 +34,17 @@
   font-weight: normal;
   font-style: normal;
 }
+
+.liquid-glass {
+  /* Fallback for browsers that don't support SVG backdrop-filter */
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@supports (backdrop-filter: url('#liquid-glass')) {
+  .liquid-glass {
+    backdrop-filter: url('#liquid-glass');
+    /* Optional: Add a subtle background to make the glass visible */
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
