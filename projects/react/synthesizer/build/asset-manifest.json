@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/projects/react/synthesizer/build/static/css/main.d78ee5ad.css",
+    "main.js": "/projects/react/synthesizer/build/static/js/main.abae31b3.js",
+    "index.html": "/projects/react/synthesizer/build/index.html",
+    "main.d78ee5ad.css.map": "/projects/react/synthesizer/build/static/css/main.d78ee5ad.css.map",
+    "main.abae31b3.js.map": "/projects/react/synthesizer/build/static/js/main.abae31b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d78ee5ad.css",
+    "static/js/main.abae31b3.js"
+  ]
+}
