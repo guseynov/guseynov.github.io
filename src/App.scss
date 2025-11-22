@@ -1,34 +1,12 @@
 body {
-  cursor: url('/cursor.png') 32 32, auto;
-}
-
-button:hover,
-a:hover {
-  cursor: url('/cursor_hover.png') 40 40, auto;
-}
-
-.name-link:hover {
-  cursor: url('/cursor_msg.png') 64 26, auto;
-}
-
-body {
-  background: #171717;
-}
-
-.grid-bg {
-  position: relative;
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
-    pointer-events: none;
-    background: url('/grid.svg');
-    mask-image: linear-gradient(to right, transparent, black);
-  }
+  background-color: #050505;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(124, 58, 237, 0.25), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(217, 70, 239, 0.15), transparent 40%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 
 // .bg-noise {

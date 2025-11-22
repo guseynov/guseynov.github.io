@@ -6,7 +6,7 @@ export const Header = ({ openMenu }: { openMenu: () => void }) => {
   return (
     <>
       <LiquidGlass id="liquid-glass" intensity={20} />
-      <header className="text-white xl:p-6 py-2 sticky top-4 z-10 liquid-glass font-light text-sm border border-black border-opacity-10 shadow-sm rounded-full mx-4 xl:w-[1200px] xl:mx-auto">
+      <header className="text-white xl:p-6 py-2 sticky top-8 z-10 liquid-glass font-light text-sm border border-black border-opacity-10 shadow-sm rounded-full mx-4 xl:w-[1200px] xl:mx-auto">
         <div className="grid grid-cols-12 gap-4 xl:mx-auto xl:px-0 px-4 items-center">
           <div className="xl:col-span-3 lg:col-span-3 col-span-9">
             <div className="flex gap-2 items-center">
@@ -14,7 +14,7 @@ export const Header = ({ openMenu }: { openMenu: () => void }) => {
               <span>Alex Guseynov</span>
             </div>
           </div>
-        
+
           <div className="xl:col-span-9 lg:col-span-9 col-span-9 text-right hidden xl:flex justify-end gap-1">
             <a
               onClick={scrollToAnchor}

@@ -8,45 +8,42 @@ export const ProjectItem = ({
   codeLink,
 }: ProjectItemProps) => {
   return (
-    <div className="rounded-2xl border border-white pt-7 overflow-hidden">
-      <div className="lg:min-h-[280px]">
-        <div className="flex mb-4 px-6">
+    <div className="simple-glass rounded-3xl p-8 h-full flex flex-col justify-between hover:bg-white/5 transition-colors duration-300">
+      <div>
+        <div className="flex mb-6">
           {icons.map((icon, index) => (
             <img
               key={`icon-${index}`}
-              className="mr-2"
+              className="mr-3 w-8 h-8 opacity-80"
               src={`/${icon}.svg`}
               alt=""
             />
           ))}
         </div>
-        <p className="lg:text-4xl text-2xl text-white mb-4 px-6">{title}</p>
-        <div className="flex mb-2 px-6">
-          {skills.map((skill, index) => (
-            <div className="flex" key={`skill-${skill}`}>
-              <p className="lg:text-2xl text-lg text-gray">{skill}</p>
-              <span>
-                {index !== skills.length - 1 && (
-                  <span className="lg:text-2xl text-lg text-gray lg:mx-3 mx-1">
-                    •
-                  </span>
-                )}
-              </span>
+        <p className="text-2xl font-outfit font-bold text-white mb-4 leading-tight">
+          {title}
+        </p>
+        <div className="flex flex-wrap gap-2 mb-8">
+          {skills.map((skill) => (
+            <div
+              key={`skill-${skill}`}
+              className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-outfit text-xs font-medium"
+            >
+              {skill}
             </div>
           ))}
         </div>
       </div>
-      <div className="flex border-t border-white mt-10 lg:mt-0">
+      <div className="flex gap-4 mt-auto">
         <a
-          className="lg:text-2xl text-lg py-5 text-white flex justify-center items-center hover:bg-white hover:text-dark group flex-grow text-center border-r border-white"
+          className="flex-1 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-outfit text-sm font-medium flex justify-center items-center transition-all duration-300"
           href={projectLink}
           target="_blank"
+          rel="noreferrer"
         >
           Project
           <svg
-            className="ml-2.5"
-            width="17"
-            height="16"
+            className="ml-2 w-3 h-3"
             viewBox="0 0 17 16"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -54,21 +51,19 @@ export const ProjectItem = ({
               fillRule="evenodd"
               clipRule="evenodd"
               d="M13.1649 1.80718H0.888936V0H16.25V15.3611H14.4428V3.08506L1.52787 16L0.25 14.7221L13.1649 1.80718Z"
-              fill="white"
-              className="group-hover:fill-dark"
+              fill="currentColor"
             />
           </svg>
         </a>
         <a
-          className="text-2xl py-5 text-white flex justify-center items-center hover:bg-white hover:text-dark group flex-grow text-center"
+          className="flex-1 py-3 rounded-xl border border-white/10 hover:bg-white/5 text-white/80 font-outfit text-sm font-medium flex justify-center items-center transition-all duration-300"
           href={codeLink}
           target="_blank"
+          rel="noreferrer"
         >
           Code
           <svg
-            className="ml-2.5"
-            width="17"
-            height="16"
+            className="ml-2 w-3 h-3"
             viewBox="0 0 17 16"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -76,8 +71,7 @@ export const ProjectItem = ({
               fillRule="evenodd"
               clipRule="evenodd"
               d="M13.1649 1.80718H0.888936V0H16.25V15.3611H14.4428V3.08506L1.52787 16L0.25 14.7221L13.1649 1.80718Z"
-              fill="white"
-              className="group-hover:fill-dark"
+              fill="currentColor"
             />
           </svg>
         </a>
