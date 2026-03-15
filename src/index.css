@@ -1,66 +1,265 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
-.font-outfit {
-  font-family: 'Outfit', sans-serif;
+@theme {
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
+  --color-canvas: #ecece8;
+  --color-surface: #f7f7f4;
+  --color-surface-elevated: #fbfbf9;
+  --color-border: #cdcdc7;
+  --color-border-contrast-soft: #0000001f;
+  --color-border-white-soft: #ffffff73;
+  --color-text-strong: #111111;
+  --color-text-strong-hover: #101010;
+  --color-text-muted: #575757;
+  --color-text-inverse: #f5f5f3;
+  --color-icon-strong: #121923;
+  --color-dot-muted: #8c8c87;
+  --color-dot-active: #6f6f6a;
+  --color-handle-surface-start: #ffffff;
+  --color-handle-surface-end: #f1f1ec;
+  --color-range-thumb-end: #f2f2ee;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer base {
+  :root {
+    color: var(--color-text-strong);
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color-scheme: light;
+  }
 
-@font-face {
-  font-family: 'milligram';
-  src: url('/fonts/milligram-regular-trial-webfont.woff2') format('woff2'),
-    url('/fonts/milligram-regular-trial-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-@font-face {
-  font-family: 'milligram';
-  src: url('/fonts/milligram-medium-trial-webfont.woff2') format('woff2'),
-    url('/fonts/milligram-medium-trial-webfont.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-@font-face {
-  font-family: 'milligram';
-  src: url('/fonts/milligram-italic-trial-webfont.woff2') format('woff2'),
-    url('/fonts/milligram-italic-trial-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-}
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--color-canvas);
+    color: var(--color-text-strong);
+  }
 
-@font-face {
-  font-family: 'dirtyline';
-  src: url('/fonts/dirtyline.woff2') format('woff2'),
-    url('/fonts/dirtyline.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+  @media (min-width: 1024px) {
+    html,
+    body {
+      overflow: hidden;
+    }
+  }
 
-.liquid-glass {
-  /* Fallback for browsers that don't support SVG backdrop-filter */
-  backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(20, 20, 20, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
-}
+  ::selection {
+    background: rgba(17, 17, 17, 0.16);
+  }
 
-@supports (backdrop-filter: url('#liquid-glass')) {
-  .liquid-glass {
-    backdrop-filter: url('#liquid-glass') saturate(180%);
-    /* iOS style dark glass */
-    background: rgba(20, 20, 20, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(17, 17, 17, 0.8);
+    outline-offset: 3px;
   }
 }
 
-.simple-glass {
-  backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(20, 20, 20, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+@layer utilities {
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  .elevation-header {
+    box-shadow: 0 12px 32px rgba(15, 15, 15, 0.08);
+  }
+
+  .elevation-mobile-progress {
+    box-shadow: 0 16px 32px rgba(15, 15, 15, 0.12);
+  }
+
+  .elevation-surface {
+    box-shadow:
+      0 18px 38px rgba(15, 15, 15, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  .elevation-subtle {
+    box-shadow:
+      0 16px 34px rgba(15, 15, 15, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  }
+
+  .elevation-metric {
+    box-shadow:
+      0 14px 30px rgba(15, 15, 15, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  }
+
+  .elevation-card {
+    box-shadow:
+      0 28px 60px rgba(14, 14, 14, 0.12),
+      0 8px 18px rgba(14, 14, 14, 0.06);
+  }
+
+  .elevation-slider-shell {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  }
+
+  .elevation-slider-handle {
+    box-shadow:
+      0 14px 34px rgba(15, 15, 15, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.84);
+  }
+
+  .elevation-slider-handle-active {
+    box-shadow:
+      0 16px 38px rgba(15, 15, 15, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.84);
+  }
+
+  .elevation-slider-dot {
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.section-scroll {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(17, 17, 17, 0.28) transparent;
+}
+
+.tilt-panel {
+  transform-style: preserve-3d;
+  transform:
+    perspective(1400px)
+    rotateX(var(--panel-rotate-x, 0deg))
+    rotateY(var(--panel-rotate-y, 0deg));
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.tilt-panel[data-tilt-active="true"] {
+  transition-duration: 48ms;
+}
+
+.tilt-panel__glow {
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at var(--panel-glow-x, 50%) var(--panel-glow-y, 50%),
+      rgba(255, 255, 255, 0.42),
+      transparent 34%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 38%);
+  transition: opacity 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tilt-panel:hover {
+    box-shadow:
+      0 34px 74px rgba(14, 14, 14, 0.14),
+      0 10px 24px rgba(14, 14, 14, 0.08);
+  }
+
+  .tilt-panel:hover .tilt-panel__glow,
+  .tilt-panel[data-tilt-active="true"] .tilt-panel__glow {
+    opacity: 1;
+  }
+}
+
+.section-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.section-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.section-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.24);
+  background-clip: padding-box;
+}
+
+.section-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(17, 17, 17, 0.36);
+  background-clip: padding-box;
+}
+
+.section-range {
+  appearance: none;
+  height: 1rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(17, 17, 17, 0.88), rgba(17, 17, 17, 0.88))
+      0 / calc((var(--value, 0) / max(var(--max, 1), 1)) * 100%) 100% no-repeat,
+    linear-gradient(180deg, rgba(17, 17, 17, 0.14), rgba(17, 17, 17, 0.1));
+}
+
+.section-range::-webkit-slider-runnable-track {
+  height: 1rem;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.section-range::-moz-range-track {
+  height: 1rem;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.section-range::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -0.85rem;
+  height: 2.7rem;
+  width: 4.75rem;
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(17, 17, 17, 0.12) 0 10%, transparent 10% 17%, rgba(17, 17, 17, 0.12) 17% 27%, transparent 27% 34%, rgba(17, 17, 17, 0.12) 34% 44%, transparent 44%),
+    linear-gradient(180deg, var(--color-handle-surface-start), var(--color-range-thumb-end));
+  box-shadow:
+    0 10px 26px rgba(15, 15, 15, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.section-range::-moz-range-thumb {
+  height: 2.7rem;
+  width: 4.75rem;
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(17, 17, 17, 0.12) 0 10%, transparent 10% 17%, rgba(17, 17, 17, 0.12) 17% 27%, transparent 27% 34%, rgba(17, 17, 17, 0.12) 34% 44%, transparent 44%),
+    linear-gradient(180deg, var(--color-handle-surface-start), var(--color-range-thumb-end));
+  box-shadow:
+    0 10px 26px rgba(15, 15, 15, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }

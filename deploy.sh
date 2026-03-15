@@ -9,6 +9,12 @@ npm run build
 # navigate into the build output directory
 cd dist
 
+# copy public files so root-level static assets are always deployed
+if [ -d ../public ]; then
+  cp -R ../public/. .
+fi
+
+
 # copy the "projects" folder
 cp -r ../projects .
 

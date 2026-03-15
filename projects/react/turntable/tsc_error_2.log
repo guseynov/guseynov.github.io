@@ -1,0 +1,2 @@
+src/components/Turntable/Platter.tsx(2,32): error TS1484: 'PanInfo' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/Turntable/Platter.tsx(3,1): error TS6133: 'cn' is declared but its value is never read.
