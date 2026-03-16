@@ -10,6 +10,7 @@ import {
 } from "@/components/SanityIcons";
 import { ButtonLink, iconCircleClassName, panelVariants } from "@/components/ui";
 import { siteContent } from "@/content/site";
+import { trackCtaClick, trackEvent } from "@/lib/analytics";
 
 const CONTACT_REASONS = [
   "Sharper component systems and stronger UI consistency.",
@@ -63,6 +64,9 @@ export function ContactContent({ cvHref }: ContactContentProps) {
     try {
       await copyTextToClipboard(siteContent.profile.email);
       setIsCopied(true);
+      trackEvent("email_copied", {
+        placement: "contact_section",
+      });
 
       if (resetCopyTimeoutRef.current !== null) {
         window.clearTimeout(resetCopyTimeoutRef.current);
@@ -91,6 +95,13 @@ export function ContactContent({ cvHref }: ContactContentProps) {
           <div className="mt-6 flex min-w-0 items-center gap-3">
             <a
               href={`mailto:${siteContent.profile.email}`}
+              onClick={() =>
+                trackCtaClick({
+                  label: "Email Address",
+                  href: `mailto:${siteContent.profile.email}`,
+                  placement: "contact_section_address",
+                })
+              }
               className="block min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-semibold tracking-[-0.05em] text-text-strong sm:overflow-visible sm:whitespace-normal sm:text-4xl"
               title={siteContent.profile.email}
             >
@@ -126,6 +137,13 @@ export function ContactContent({ cvHref }: ContactContentProps) {
             href={`mailto:${siteContent.profile.email}`}
             tone="primary"
             icon={<EnvelopeIcon aria-hidden="true" className="h-5 w-5 shrink-0" />}
+            onClick={() =>
+              trackCtaClick({
+                label: siteContent.contact.primaryCtaLabel,
+                href: `mailto:${siteContent.profile.email}`,
+                placement: "contact_section_primary",
+              })
+            }
           >
             {siteContent.contact.primaryCtaLabel}
           </ButtonLink>
@@ -134,6 +152,13 @@ export function ContactContent({ cvHref }: ContactContentProps) {
             target="_blank"
             rel="noreferrer"
             icon={<LaunchIcon aria-hidden="true" className="h-5 w-5 shrink-0" />}
+            onClick={() =>
+              trackCtaClick({
+                label: siteContent.contact.secondaryCtaLabel,
+                href: siteContent.profile.githubUrl,
+                placement: "contact_section_secondary",
+              })
+            }
           >
             {siteContent.contact.secondaryCtaLabel}
           </ButtonLink>
@@ -141,6 +166,13 @@ export function ContactContent({ cvHref }: ContactContentProps) {
             href={cvHref}
             download
             icon={<DownloadIcon aria-hidden="true" className="h-5 w-5 shrink-0" />}
+            onClick={() =>
+              trackCtaClick({
+                label: siteContent.contact.tertiaryCtaLabel,
+                href: cvHref,
+                placement: "contact_section_tertiary",
+              })
+            }
           >
             {siteContent.contact.tertiaryCtaLabel}
           </ButtonLink>
@@ -166,6 +198,13 @@ export function ContactContent({ cvHref }: ContactContentProps) {
               href={siteContent.profile.githubUrl}
               target="_blank"
               rel="noreferrer"
+              onClick={() =>
+                trackCtaClick({
+                  label: "GitHub Public Link",
+                  href: siteContent.profile.githubUrl,
+                  placement: "contact_section_public_links",
+                })
+              }
               className={panelVariants({ tone: "link" })}
             >
               <div className="min-w-0">
@@ -180,7 +219,18 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                 <LaunchIcon aria-hidden="true" className="h-5 w-5 text-text-strong" />
               </span>
             </a>
-            <a href={cvHref} download className={panelVariants({ tone: "link" })}>
+            <a
+              href={cvHref}
+              download
+              onClick={() =>
+                trackCtaClick({
+                  label: "CV Public Link",
+                  href: cvHref,
+                  placement: "contact_section_public_links",
+                })
+              }
+              className={panelVariants({ tone: "link" })}
+            >
               <div className="min-w-0">
                 <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-text-muted">
                   CV

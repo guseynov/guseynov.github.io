@@ -1,6 +1,13 @@
 import { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
-import { useEffect, useEffectEvent, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+  type MouseEventHandler,
+  type ReactNode,
+} from "react";
 import { BottomSlider } from "@/components/BottomSlider";
 import { MobileProgress } from "@/components/MobileProgress";
 import { DownloadIcon, EnvelopeIcon, LaunchIcon } from "@/components/SanityIcons";
@@ -17,6 +24,7 @@ import {
   siteContent,
   type SectionId as SectionIdValue,
 } from "@/content/site";
+import { trackCtaClick, trackSectionView } from "@/lib/analytics";
 
 const DESKTOP_CARD_CLASS =
   "lg:flex lg:min-h-0 lg:flex-none lg:basis-[min(1200px,calc(100vw-10rem))]";
@@ -52,6 +60,7 @@ interface ActionLinkConfig {
   target?: string;
   rel?: string;
   download?: boolean;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 function clampIndex(index: number, total: number) {
@@ -243,6 +252,12 @@ function App() {
       label: "Email Alex",
       tone: "primary" as const,
       icon: <EnvelopeIcon aria-hidden="true" className="h-5 w-5 shrink-0" />,
+      onClick: () =>
+        trackCtaClick({
+          label: "Email Alex",
+          href: `mailto:${siteContent.profile.email}`,
+          placement: "header",
+        }),
     },
     {
       href: siteContent.profile.githubUrl,
@@ -251,6 +266,12 @@ function App() {
       target: "_blank",
       rel: "noreferrer",
       icon: <LaunchIcon aria-hidden="true" className="h-5 w-5 shrink-0" />,
+      onClick: () =>
+        trackCtaClick({
+          label: "GitHub",
+          href: siteContent.profile.githubUrl,
+          placement: "header",
+        }),
     },
     {
       href: cvHref,
@@ -258,12 +279,34 @@ function App() {
       tone: "secondary" as const,
       icon: <DownloadIcon aria-hidden="true" className="h-5 w-5 shrink-0" />,
       download: true,
+      onClick: () =>
+        trackCtaClick({
+          label: "Download CV",
+          href: cvHref,
+          placement: "header",
+        }),
     },
   ];
   const sectionConfigs = siteContent.sections.map((section) => ({
     ...section,
     ...getSectionConfig(section.id, cvHref),
   }));
+
+  useEffect(() => {
+    const activeSection = siteContent.sections[activeIndex];
+
+    if (!activeSection) {
+      return;
+    }
+
+    trackSectionView({
+      sectionId: activeSection.id,
+      sectionLabel: activeSection.label,
+      sectionTitle: activeSection.title,
+      sectionIndex: activeSection.index,
+    });
+  }, [activeIndex]);
+
   const handleSliderDragProgress = useEffectEvent((progress: number) => {
     const nextProgress = clampProgress(progress);
 
@@ -309,6 +352,7 @@ function App() {
                   target={link.target}
                   rel={link.rel}
                   download={link.download}
+                  onClick={link.onClick}
                 >
                   {link.icon}
                   {link.label}

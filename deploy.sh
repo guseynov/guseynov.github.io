@@ -6,23 +6,35 @@ set -e
 # build
 npm run build
 
-# navigate into the build output directory
-cd dist
+# create an isolated deploy workspace so dist stays a plain build folder
+DEPLOY_DIR="$(mktemp -d)"
+
+cleanup() {
+  rm -rf "$DEPLOY_DIR"
+}
+
+trap cleanup EXIT
+
+# copy the build output into the deploy workspace
+cp -R dist/. "$DEPLOY_DIR"
 
 # copy public files so root-level static assets are always deployed
-if [ -d ../public ]; then
-  cp -R ../public/. .
+if [ -d public ]; then
+  cp -R public/. "$DEPLOY_DIR"
 fi
 
-
 # copy the "projects" folder
-cp -r ../projects .
+if [ -d projects ]; then
+  cp -R projects "$DEPLOY_DIR/projects"
+fi
 
 # place .nojekyll to bypass Jekyll processing
-echo > .nojekyll
+: > "$DEPLOY_DIR/.nojekyll"
 
 # if you are deploying to a custom domain
-echo 'guseynov.github.io' > CNAME
+echo 'guseynov.github.io' > "$DEPLOY_DIR/CNAME"
+
+cd "$DEPLOY_DIR"
 
 git init
 git checkout -B main
@@ -34,5 +46,3 @@ git push -f git@github.com:guseynov/guseynov.github.io.git main
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
-
-cd -
