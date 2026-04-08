@@ -92,7 +92,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
             Contact
           </p>
-          <div className="mt-6 flex min-w-0 flex-wrap items-start gap-3">
+          <div className="mt-6 flex min-w-0 items-center gap-3">
             <a
               href={`mailto:${siteContent.profile.email}`}
               onClick={() =>
@@ -102,7 +102,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                   placement: "contact_section_address",
                 })
               }
-              className="block min-w-0 flex-1 break-all text-[1.3rem] leading-[0.96] font-medium tracking-[-0.05em] text-text-strong sm:text-[clamp(1.7rem,3vw,2.5rem)]"
+              className="block min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[1.3rem] leading-[0.96] font-medium tracking-[-0.05em] text-text-strong sm:text-[clamp(1.7rem,3vw,2.5rem)]"
               title={siteContent.profile.email}
             >
               {siteContent.profile.email}

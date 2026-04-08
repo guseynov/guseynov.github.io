@@ -20,14 +20,14 @@ export function MobileProgress({
     <div className="sticky top-4 z-20 rounded-[1.1rem] border border-white/10 bg-black/78 p-4 backdrop-blur-xl lg:hidden">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-ghost">
             Now viewing
           </p>
-          <p className="mt-1 min-h-[1.25rem] text-sm font-semibold text-text-strong">
+          <p className="mt-1 min-h-[1.25rem] text-[0.98rem] font-semibold leading-5 text-text-strong">
             {currentSection?.label}
           </p>
         </div>
-        <p className="font-mono text-sm text-text-ghost">{positionLabel}</p>
+        <p className="font-mono text-[0.92rem] text-text-ghost">{positionLabel}</p>
       </div>
       <div className="mt-4 flex gap-2">
         {sections.map((section, index) => (

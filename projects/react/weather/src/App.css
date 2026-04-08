@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:wght@500;700&display=swap");
 
 :root {
   color-scheme: dark;
@@ -96,7 +96,7 @@ button {
 .weather-app__title {
   margin: 0;
   max-width: 9ch;
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: "Mona Sans", "Inter", sans-serif;
   font-size: clamp(2.35rem, 4.6vw, 4.2rem);
   line-height: 0.88;
   letter-spacing: -0.06em;
@@ -479,7 +479,7 @@ button {
 }
 
 .forecast-card__day {
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: "Mona Sans", "Inter", sans-serif;
   font-size: 1.35rem;
   letter-spacing: -0.05em;
 }
@@ -590,7 +590,7 @@ button {
 
 .forecast-card__high {
   display: block;
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: "Mona Sans", "Inter", sans-serif;
   font-size: 2.4rem;
   font-weight: 700;
   letter-spacing: -0.08em;
@@ -695,7 +695,7 @@ button {
 }
 
 .forecast-empty__title {
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: "Mona Sans", "Inter", sans-serif;
   max-width: 18ch;
   font-size: 1.8rem;
   letter-spacing: -0.05em;

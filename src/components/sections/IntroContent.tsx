@@ -19,8 +19,8 @@ interface IntroContentProps {
 export function IntroContent({ cvHref }: IntroContentProps) {
   return (
     <div className="grid min-h-0 gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(19rem,0.95fr)]">
-      <div className="flex min-h-0 flex-col justify-between gap-8">
-        <div className="space-y-6">
+      <div className="flex min-h-0 flex-col justify-between gap-7 sm:gap-8">
+        <div className="space-y-5 sm:space-y-6">
           <div className="grid gap-4 sm:grid-cols-3">
             {INTRO_METRICS.map((item) => (
               <div
@@ -36,13 +36,13 @@ export function IntroContent({ cvHref }: IntroContentProps) {
               </div>
             ))}
           </div>
-          <p className="font-ui max-w-3xl text-lg leading-8 text-text-strong sm:text-xl">
+          <p className="font-ui max-w-3xl text-[1.03rem] leading-7 text-text-strong sm:text-xl sm:leading-8">
             I focus on frontend work that affects how a product feels in use:
             interface clarity, system consistency, implementation quality, and
             the details people notice when they cannot name them.
           </p>
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2.5 sm:gap-3">
           <ButtonLink
             href={`mailto:${siteContent.profile.email}`}
             tone="primary"

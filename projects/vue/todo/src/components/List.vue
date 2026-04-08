@@ -55,7 +55,7 @@ export default {
     margin-bottom 14px
   &__heading
     margin 0
-    font-family "Space Grotesk", sans-serif
+    font-family "Mona Sans", sans-serif
     font-size clamp(1.35rem, 3.5vw, 1.9rem)
     letter-spacing -0.04em
   &__copy

@@ -315,7 +315,7 @@ export const siteContent: SiteContent = {
       stack: "React",
       description:
         "A metronome app with tempo controls, visual beat feedback, and a minimal practice-focused interface.",
-      href: "projects/react/metronome/dist/index.html",
+      href: "projects/react/metronome/build/index.html",
     },
     {
       title: "Weather",

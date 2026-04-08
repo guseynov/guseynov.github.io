@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mona+Sans:wght@500;700&display=swap");
 
 :root {
   --bg: #000;
@@ -148,7 +148,7 @@ img {
 
 .title {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Mona Sans", sans-serif;
   font-size: clamp(2rem, 9vw, 3.3rem);
   line-height: 0.94;
   letter-spacing: -0.06em;
@@ -194,7 +194,7 @@ img {
 
 .stats__item dd {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Mona Sans", sans-serif;
   font-size: 1.2rem;
   line-height: 1;
 }
@@ -381,7 +381,7 @@ img {
 }
 
 .btn__text {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Mona Sans", sans-serif;
   font-size: 1.6rem;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -420,7 +420,7 @@ img {
 
 .loading-screen__title {
   margin: 0 0 10px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Mona Sans", sans-serif;
   font-size: clamp(1.7rem, 5vw, 2.4rem);
   line-height: 1;
   letter-spacing: -0.05em;
@@ -455,7 +455,7 @@ img {
 }
 
 .info-screen__panel h2 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Mona Sans", sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 0.95;
   letter-spacing: -0.05em;

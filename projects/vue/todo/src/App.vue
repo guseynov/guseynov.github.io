@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:wght@500;700&display=swap");
 
 html
 body
@@ -148,7 +148,7 @@ button
 
 .main-heading
   margin 0
-  font-family "Space Grotesk", sans-serif
+  font-family "Mona Sans", sans-serif
   font-size clamp(2rem, 5vw, 3.9rem)
   font-weight 700
   letter-spacing -0.06em

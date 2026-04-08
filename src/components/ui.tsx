@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 
 export const buttonLinkVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition duration-200",
+  "inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-5 py-3.5 text-[0.98rem] font-medium leading-none transition duration-200 sm:min-h-12 sm:gap-2 sm:py-3 sm:text-sm",
   {
     variants: {
       tone: {

@@ -431,16 +431,16 @@ function App() {
                 {siteContent.profile.name}
               </p>
               <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between xl:gap-6">
-                <h1 className="text-display-hero min-w-0 flex-1 whitespace-nowrap text-text-strong">
+                <h1 className="text-display-hero min-w-0 max-w-[11ch] flex-1 text-balance text-text-strong xl:max-w-none xl:text-left">
                   {siteContent.profile.role}
                 </h1>
-                <div className="flex flex-wrap gap-3 xl:flex-none xl:justify-end">
+                <div className="flex flex-wrap gap-2.5 sm:gap-3 xl:flex-none xl:justify-end">
                   {actionLinks.map((link) => (
                     <ButtonLink
                       key={link.label}
                       href={link.href}
                       tone={link.tone}
-                      className={link.className}
+                      className={`px-5 ${link.className ?? ""}`}
                       target={link.target}
                       rel={link.rel}
                       download={link.download}

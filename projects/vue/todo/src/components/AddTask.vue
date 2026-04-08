@@ -174,7 +174,7 @@ export default {
 
 .dialog-title
   margin 0
-  font-family "Space Grotesk", sans-serif
+  font-family "Mona Sans", sans-serif
   font-size clamp(1.6rem, 4vw, 2.2rem)
   letter-spacing -0.05em
 
