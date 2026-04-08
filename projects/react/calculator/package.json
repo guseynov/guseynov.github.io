@@ -2,7 +2,7 @@
     "name": "calculator",
     "version": "1.0.0",
     "private": false,
-    "homepage": "https://guseynov.github.io/projects/react/calculator/build/",
+    "homepage": "https://guseynov.github.io/projects/calculator/",
     "dependencies": {
         "babel-plugin-wildcard": "^5.0.0",
         "big.js": "^5.2.2",

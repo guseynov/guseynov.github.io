@@ -2,10 +2,21 @@
 
 set -e
 
+PROJECT_SPECS='
+projects/react/synthesizer|build|projects/synthesizer
+projects/react/breathing_bubble|build|projects/breathing-bubble
+projects/react/calculator|build|projects/calculator
+projects/react/metronome|build|projects/metronome
+projects/react/weather|build|projects/weather
+projects/vue/todo|dist|projects/todo
+'
+
 npm run build
 
-for project_dir in projects/react/* projects/vue/*; do
+printf '%s\n' "$PROJECT_SPECS" | while IFS='|' read -r project_dir build_dir deploy_path; do
+  [ -n "$project_dir" ] || continue
   [ -f "$project_dir/package.json" ] || continue
+
   (
     cd "$project_dir"
     npm run build
@@ -26,9 +37,15 @@ if [ -d public ]; then
   cp -R public/. "$DEPLOY_DIR"
 fi
 
-if [ -d projects ]; then
-  tar --exclude='node_modules' --exclude='bower_components' --exclude='.git' -cf - projects | tar -xf - -C "$DEPLOY_DIR"
-fi
+mkdir -p "$DEPLOY_DIR/projects"
+
+printf '%s\n' "$PROJECT_SPECS" | while IFS='|' read -r project_dir build_dir deploy_path; do
+  [ -n "$project_dir" ] || continue
+  [ -d "$project_dir/$build_dir" ] || continue
+
+  mkdir -p "$DEPLOY_DIR/$deploy_path"
+  cp -R "$project_dir/$build_dir"/. "$DEPLOY_DIR/$deploy_path"
+done
 
 : > "$DEPLOY_DIR/.nojekyll"
 echo 'guseynov.github.io' > "$DEPLOY_DIR/CNAME"

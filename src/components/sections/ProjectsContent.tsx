@@ -16,15 +16,12 @@ const PROJECT_GROUPS = [
   },
 ] as const;
 
-const HIDDEN_PROJECT_HREFS = new Set(["projects/vue/hot_or_not/dist/index.html"]);
-
 export function ProjectsContent({ baseUrl }: ProjectsContentProps) {
   return (
     <div className="space-y-8">
       {PROJECT_GROUPS.map((group) => {
         const projects = siteContent.projects.filter((project) =>
-          group.categories.has(project.category) &&
-          !HIDDEN_PROJECT_HREFS.has(project.href),
+          group.categories.has(project.category),
         );
 
         if (projects.length === 0) {

@@ -8,6 +8,6 @@ module.exports = {
   },
   publicPath:
     process.env.NODE_ENV === "production"
-      ? "/projects/vue/todo/dist/"
+      ? "/projects/todo/"
       : "/"
 };
