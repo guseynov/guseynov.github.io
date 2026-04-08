@@ -6,10 +6,10 @@ export function ProofContent() {
     <div className="grid gap-4 lg:grid-cols-2">
       {siteContent.strengths.map((item) => (
         <article key={item.title} className={panelVariants({ tone: "surface" })}>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-muted">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost">
             Strength
           </p>
-          <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-text-strong">
+          <h3 className="mt-4 text-display-title text-[1.75rem] text-text-strong">
             {item.title}
           </h3>
           <p className="mt-4 text-base leading-7 text-text-muted">{item.body}</p>

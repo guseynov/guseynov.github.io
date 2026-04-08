@@ -1,117 +1,96 @@
 <template>
-  <div class="category-tasks">
-    <header class="category-tasks__header">
-      {{
-        getActiveCategory === "all"
-          ? "All tasks"
-          : "Tasks from the " + getActiveCategory + " category"
-      }}
+  <section
+    class="dialog-shell"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tasks-title"
+  >
+    <div class="dialog-card category-tasks">
+      <header class="dialog-header category-tasks__header">
+        <div>
+          <p class="dialog-kicker">Review</p>
+          <h2 id="tasks-title" class="dialog-title">
+            {{ activeCategoryLabel }}
+          </h2>
+          <p class="category-tasks__copy">
+            {{ getTasks.length }} {{ getTasks.length === 1 ? "task" : "tasks" }}
+          </p>
+        </div>
+        <button
+          @click="closeDialog"
+          type="button"
+          class="dialog-close"
+          aria-label="Close tasks dialog"
+        >
+          <font-awesome-icon icon="times" />
+        </button>
+      </header>
 
-      <button
-        v-on:click="toggleTasksVisibility"
-        type="button"
-        class="category-tasks__close"
-      >
-        <font-awesome-icon icon="times" />
-      </button>
-    </header>
-    <p class="no-tasks" v-if="getTasksCount === 0">
-      You have no tasks in this category yet
-    </p>
-    <ul class="category-tasks-list">
-      <li
-        v-for="(task, index) in getTasks"
-        v-bind:key="index"
-        class="category-tasks-list__task category-task"
-      >
-        <div class="category-task__content">
-          <p class="category-task__title">
-            {{ task.title }}
-          </p>
-          <p class="category-task__description">
-            {{ task.description }}
-          </p>
-        </div>
-        <div class="category-task__buttons">
-          <button
-            v-on:click="
-              toggleTaskStatusForceUpdate({
-                category: task.category,
-                index: task.index
-              })
-            "
-            :class="
-              task.done === true
-                ? 'category-task__status category-task__status--done'
-                : 'category-task__status'
-            "
-            type="button"
-          >
-          
-            <font-awesome-icon icon="check" />
-          </button>
-          <button
-            v-on:click="
-              deleteTask({
-                category: task.category,
-                index: task.index
-              })
-            "
-            class="category-task__delete"
-            type="button"
-          >
-            <font-awesome-icon icon="trash" />
-          </button>
-        </div>
-      </li>
-    </ul>
-    <img class="great-job" :src="visualCongratulationsPath" alt="Great Job!" />
-  </div>
+      <p class="category-tasks__empty" v-if="getTasks.length === 0">
+        Nothing here yet.
+      </p>
+
+      <ul v-else class="category-tasks-list">
+        <li
+          v-for="task in getTasks"
+          :key="task.id"
+          class="category-task"
+          :class="{ 'category-task--done': task.done }"
+        >
+          <div class="category-task__content">
+            <div class="category-task__title-row">
+              <p class="category-task__title">
+                {{ task.title }}
+              </p>
+              <span v-if="task.done" class="category-task__badge">
+                Done
+              </span>
+            </div>
+            <p v-if="task.description" class="category-task__description">
+              {{ task.description }}
+            </p>
+          </div>
+          <div class="category-task__buttons">
+            <button
+              @click="toggleTaskStatusForTask(task)"
+              class="category-task__action category-task__action--status"
+              type="button"
+              :aria-pressed="task.done ? 'true' : 'false'"
+              :aria-label="task.done ? 'Mark task as incomplete' : 'Mark task as complete'"
+            >
+              <font-awesome-icon icon="check" />
+            </button>
+            <button
+              @click="deleteTask(task)"
+              class="category-task__action category-task__action--delete"
+              type="button"
+              aria-label="Delete task"
+            >
+              <font-awesome-icon icon="trash" />
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import fireworks from "fireworks";
-import audioCongratulations from "../assets/sounds/greatjob.wav";
-import visualCongratulations from "../assets/gif/greatjob.gif";
+import { categoryMeta } from "../categoryMeta";
 
 export default {
   name: "Tasks",
-  data: function() {
-    return {
-      visualCongratulationsPath: ""
-    };
-  },
   computed: {
-    ...mapGetters([
-      "getTasks",
-      "getActiveCategory",
-      "getTaskStatus",
-      "getTasksCount"
-    ])
+    ...mapGetters(["getTasks", "getActiveCategory"]),
+    activeCategoryLabel() {
+      return categoryMeta[this.getActiveCategory].label;
+    }
   },
   methods: {
-    ...mapActions(["deleteTask", "toggleTaskStatus", "toggleTasksVisibility"]),
-    toggleTaskStatusForceUpdate: function(task) {
-      // eslint-disable-next-line no-console
-      console.log(task);
+    ...mapActions(["deleteTask", "toggleTaskStatus", "closeDialog"]),
+    toggleTaskStatusForTask(task) {
       this.toggleTaskStatus(task);
-      const status = this.getTaskStatus(task);
-      if (status === true) {
-        this.visualCongratulationsPath = visualCongratulations;
-        setTimeout(() => {
-          this.visualCongratulationsPath = "";
-        }, 3000);
-        new Audio(audioCongratulations).play();
-        for (let index = 0; index < 10; index++) {
-          fireworks({
-            x: Math.random(window.innerWidth) * 1000,
-            y: Math.random(window.innerWidth) * 1000,
-            colors: ["#cc3333", "#4CAF50", "#81C784"]
-          });
-        }
-      }
-      this.$forceUpdate();
     }
   }
 };
@@ -119,71 +98,114 @@ export default {
 
 <style lang="stylus">
 .category-tasks
-    position fixed
-    z-index 3
-    padding 30px 0
-    width 960px
-    background #f9f9f9
-    top 50px
-    left 50%
-    margin-left -480px
-    border-radius 3px
-    &__header
-        text-align center
-        font-size 21px
-        margin-bottom 30px
-        padding 0 30px
-    &__close
-        float right
-        font-size 26px
-        line-height 0
-.category-tasks-list
+  width min(100%, 860px)
+  max-height min(78vh, 860px)
+  display flex
+  flex-direction column
+  &__header
+    margin-bottom 16px
+  &__copy
+    margin 8px 0 0
+    color rgba(255, 255, 255, 0.64)
+  &__empty
     margin 0
-    padding 0
+    color rgba(255, 255, 255, 0.64)
+
+.category-tasks-list
+  margin 0
+  padding 0
+  list-style none
+  overflow auto
 
 .category-task
-    list-style-type none
-    border 1px solid #ebebeb
-    border-width 1px 0
-    padding 10px 30px
-    width 100%
+  display flex
+  align-items flex-start
+  gap 16px
+  padding 18px 0
+  border-top 1px solid rgba(255, 255, 255, 0.08)
+  &:first-child
+    border-top none
+  &--done
+    background rgba(127, 227, 162, 0.05)
+    border-top-color transparent
+    border-radius 16px
+    margin 4px 0
+    padding 16px
+    .category-task__title,
+    .category-task__description
+      opacity 0.72
+    .category-task__title
+      text-decoration line-through
+      text-decoration-thickness 1.5px
+      text-decoration-color rgba(127, 227, 162, 0.48)
+  &__content
+    flex 1 1 auto
+    min-width 0
+  &__title-row
     display flex
     align-items center
-    &__content
-        max-width 700px
-        overflow hidden
-        white-space pre-line
-    &__title
-        font-size 24px
-        margin 0
-        font-weight 600
-    &__description
-        font-size 18px
-        margin 0
-        font-weight 300
-    &__buttons
-        margin-left auto
-    &__status
-    &__delete
-        opacity .5
-        transition opacity .2s ease
-        font-size 42px
-        line-height 0
-        &:hover
-            opacity .7
-        &:active
-        &--done
-            opacity 1
-    &__status
-        color #63cc83
-        margin-right 30px
-    &__delete
-        color #da6f62
+    gap 10px
+    flex-wrap wrap
+  &__title
+    margin 0
+    font-size 1.08rem
+    font-weight 600
+    line-height 1.4
+    word-break break-word
+  &__badge
+    display inline-flex
+    align-items center
+    min-height 22px
+    padding 0 9px
+    border-radius 999px
+    background rgba(127, 227, 162, 0.14)
+    color #9bf0b5
+    font-size 0.72rem
+    font-weight 700
+    letter-spacing 0.05em
+    text-transform uppercase
+  &__description
+    margin 8px 0 0
+    color rgba(255, 255, 255, 0.68)
+    line-height 1.55
+    white-space pre-line
+    word-break break-word
+  &__buttons
+    display flex
+    gap 10px
+  &__action
+    width 44px
+    height 44px
+    border-radius 999px
+    color #fff
+    background rgba(255, 255, 255, 0.08)
+    box-shadow rgba(0, 153, 255, 0.15) 0 0 0 1px
+    transition background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease
+    &:hover
+      transform translateY(-1px)
+    &--status
+      color #7fe3a2
+    &[aria-pressed="true"]
+      background rgba(127, 227, 162, 0.18)
+      color #b8f7c9
+      box-shadow rgba(127, 227, 162, 0.26) 0 0 0 1px
+    &:focus
+      outline none
+    &:focus-visible
+      outline 2px solid rgba(0, 153, 255, 0.85)
+      outline-offset 3px
+    &--delete
+      color #ff9f9f
 
-.great-job
-    position fixed
-    bottom 30px
-    right 30px
-    &[src=""]
-        display none
+@media (max-width: 809px)
+  .category-tasks
+    width 100%
+    max-height calc(100vh - 24px)
+
+  .category-task
+    flex-direction column
+
+  .category-task__buttons
+    width 100%
+    justify-content flex-end
 </style>

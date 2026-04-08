@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "node --openssl-legacy-provider ./node_modules/@vue/cli-service/bin/vue-cli-service.js serve",
+    "build": "node --openssl-legacy-provider ./node_modules/@vue/cli-service/bin/vue-cli-service.js build",
+    "lint": "node --openssl-legacy-provider ./node_modules/@vue/cli-service/bin/vue-cli-service.js lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",

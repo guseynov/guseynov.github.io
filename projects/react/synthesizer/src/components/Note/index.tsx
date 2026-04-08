@@ -8,17 +8,29 @@ import './styles.scss';
 const NoteComponent: FC<NoteProps> = ({
   noteName,
   isSharp,
+  isActive,
+  style,
   playNoteCallback,
   stopNoteCallback,
-}): JSX.Element => {
+}) => {
   return (
     <button
       type="button"
-      key={noteName}
-      className={classNames('note', { 'note--sharp': isSharp })}
-      onMouseDown={() => playNoteCallback(noteName as Note)}
-      onMouseUp={stopNoteCallback}
-    ></button>
+      className={classNames('note', {
+        'note--sharp': isSharp,
+        'note--active': isActive,
+      })}
+      style={style}
+      aria-label={`Play ${noteName}`}
+      onPointerDown={() => {
+        void playNoteCallback(noteName as Note);
+      }}
+      onPointerUp={stopNoteCallback}
+      onPointerCancel={stopNoteCallback}
+      onPointerLeave={stopNoteCallback}
+    >
+      {!isSharp ? <span className="note__label">{noteName}</span> : null}
+    </button>
   );
 };
 

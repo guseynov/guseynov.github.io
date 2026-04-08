@@ -1,17 +1,34 @@
+.select-field {
+  display: grid;
+  gap: 8px;
+}
+
+.select-field__label {
+  font-size: 0.88rem;
+  color: #d7d7d7;
+}
+
 .select {
-  color: white;
-  background-color: #555b61;
-  border-radius: 20px;
-  font-size: 16px;
-  padding: 8px 20px;
-  border: none;
+  width: 100%;
+  min-height: 52px;
+  padding: 0 18px;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  font-size: 1rem;
+  border: 0;
   outline: none;
   appearance: none;
-  height: fit-content;
-  width: 240px;
-  margin: 0 15px;
-  font-family: 'ROBOTO CONDENSED';
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+
   &:focus {
-    box-shadow: 0 0 0 2px #00b8d4;
+    box-shadow: 0 0 0 2px rgba(0, 153, 255, 0.85);
   }
+}
+
+.select option {
+  color: #ffffff;
+  background: #111111;
 }

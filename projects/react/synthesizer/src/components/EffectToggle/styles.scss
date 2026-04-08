@@ -1,66 +1,78 @@
-.toggle {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  input {
-    display: none;
+.effect-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 72px;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
   }
 
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.3s;
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 153, 255, 0.85);
   }
 
-  .slider:before {
-    position: absolute;
-    content: '';
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.3s;
+  &.is-active {
+    background: rgba(0, 153, 255, 0.1);
+    box-shadow: rgba(0, 153, 255, 0.2) 0 0 0 1px inset;
   }
+}
 
-  input:checked + .slider {
-    background-color: #555b61;
-  }
+.effect-toggle__text {
+  display: grid;
+  gap: 3px;
+  justify-items: start;
+  text-align: left;
+}
 
-  input:focus + .slider {
-    box-shadow: 0 0 1px #555b61;
-  }
+.effect-toggle__switch {
+  width: 54px;
+  height: 30px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  transition: background-color 150ms ease;
+}
 
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
+.effect-toggle__thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 150ms ease;
+}
 
-  .slider.round {
-    border-radius: 34px;
-  }
+.effect-toggle.is-active .effect-toggle__switch {
+  background: rgba(0, 153, 255, 0.7);
+}
 
-  .slider.round:before {
-    border-radius: 50%;
-  }
+.effect-toggle.is-active .effect-toggle__thumb {
+  transform: translateX(24px);
+}
 
-  .toggle-names {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-    .name-on {
-      display: inline-block;
-      width: 50%;
-    }
-  }
+.effect-toggle__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0f3f7;
+}
+
+.effect-toggle__state {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.52);
 }

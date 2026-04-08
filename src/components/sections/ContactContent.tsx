@@ -89,10 +89,10 @@ export function ContactContent({ cvHref }: ContactContentProps) {
         )}
       >
         <div>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-muted">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
             Contact
           </p>
-          <div className="mt-6 flex min-w-0 items-center gap-3">
+          <div className="mt-6 flex min-w-0 flex-wrap items-start gap-3">
             <a
               href={`mailto:${siteContent.profile.email}`}
               onClick={() =>
@@ -102,7 +102,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                   placement: "contact_section_address",
                 })
               }
-              className="block min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-semibold tracking-[-0.05em] text-text-strong sm:overflow-visible sm:whitespace-normal sm:text-4xl"
+              className="block min-w-0 flex-1 break-all text-[1.3rem] leading-[0.96] font-medium tracking-[-0.05em] text-text-strong sm:text-[clamp(1.7rem,3vw,2.5rem)]"
               title={siteContent.profile.email}
             >
               {siteContent.profile.email}
@@ -111,10 +111,10 @@ export function ContactContent({ cvHref }: ContactContentProps) {
               type="button"
               onClick={handleCopyEmail}
               className={clsx(
-                "inline-flex shrink-0 items-center justify-center rounded-full border p-2.5 text-sm font-semibold uppercase tracking-[0.18em] transition sm:px-5 sm:py-2",
+                "inline-flex shrink-0 items-center justify-center rounded-full border px-4 py-2.5 text-sm font-medium tracking-[0.04em] transition sm:px-5",
                 isCopied
-                  ? "border-text-strong bg-text-strong text-text-inverse"
-                  : "border-border bg-canvas/80 text-text-strong hover:-translate-y-0.5 hover:border-text-strong",
+                  ? "border-accent bg-accent text-white"
+                  : "border-white/10 bg-white/10 text-text-strong hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/16",
               )}
               aria-label={isCopied ? "Email copied" : "Copy email address"}
             >
@@ -180,17 +180,17 @@ export function ContactContent({ cvHref }: ContactContentProps) {
       </div>
       <div className="grid min-w-0 gap-4">
         <div className={panelVariants({ tone: "subtle" })}>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-muted">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
             Why teams bring me in
           </p>
-          <ul className="mt-5 space-y-3 text-base leading-7 text-text-strong">
+          <ul className="mt-5 space-y-3 text-base leading-7 text-text-muted">
             {CONTACT_REASONS.map((reason) => (
               <li key={reason}>{reason}</li>
             ))}
           </ul>
         </div>
         <div className={panelVariants({ tone: "subtle" })}>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-muted">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
             Public links
           </p>
           <div className="mt-5 space-y-3">
@@ -208,7 +208,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
               className={panelVariants({ tone: "link" })}
             >
               <div className="min-w-0">
-                <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-text-muted">
+                <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-text-ghost">
                   GitHub
                 </p>
                 <p className="mt-2 truncate text-base text-text-strong sm:text-[1.05rem]">
@@ -216,7 +216,32 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                 </p>
               </div>
               <span className={iconCircleClassName}>
-                <LaunchIcon aria-hidden="true" className="h-5 w-5 text-text-strong" />
+                <LaunchIcon aria-hidden="true" className="h-5 w-5 text-accent" />
+              </span>
+            </a>
+            <a
+              href={siteContent.profile.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() =>
+                trackCtaClick({
+                  label: "LinkedIn Public Link",
+                  href: siteContent.profile.linkedinUrl,
+                  placement: "contact_section_public_links",
+                })
+              }
+              className={panelVariants({ tone: "link" })}
+            >
+              <div className="min-w-0">
+                <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-text-ghost">
+                  LinkedIn
+                </p>
+                <p className="mt-2 truncate text-base text-text-strong sm:text-[1.05rem]">
+                  {siteContent.profile.linkedinUrl.replace(/^https?:\/\/(www\.)?/, "")}
+                </p>
+              </div>
+              <span className={iconCircleClassName}>
+                <LaunchIcon aria-hidden="true" className="h-5 w-5 text-accent" />
               </span>
             </a>
             <a
@@ -232,13 +257,13 @@ export function ContactContent({ cvHref }: ContactContentProps) {
               className={panelVariants({ tone: "link" })}
             >
               <div className="min-w-0">
-                <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-text-muted">
+                <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-text-ghost">
                   CV
                 </p>
                 <p className="mt-2 text-lg text-text-strong">Download the latest CV</p>
               </div>
               <span className={iconCircleClassName}>
-                <ChevronRightIcon aria-hidden="true" className="h-5 w-5 text-text-strong" />
+                <ChevronRightIcon aria-hidden="true" className="h-5 w-5 text-accent" />
               </span>
             </a>
           </div>

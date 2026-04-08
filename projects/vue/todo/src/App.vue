@@ -1,15 +1,30 @@
 <template>
   <div id="app">
     <vue-headful
-      title="Vue Todo App"
-      description="A simple todo app powered by Vue/Vuex"
+      title="Todo"
+      description="A minimal category-based todo app built with Vue"
     />
-    <h1 class="main-heading" v-if="getUsernameSaved">
-      Hello, {{ getUsername }}!
-    </h1>
-    <NewUser v-if="!getUsernameSaved" />
-    <Quote v-if="getUsernameSaved" />
-    <List v-if="getUsernameSaved" />
+    <main class="app-shell">
+      <section class="app-panel">
+        <template v-if="getUsernameSaved">
+          <header class="app-header">
+            <p class="eyebrow">Simple planning</p>
+            <div class="app-header__row">
+              <div>
+                <h1 class="main-heading">Hello, {{ getUsername }}.</h1>
+                <p class="app-copy">
+                  Capture tasks quickly, keep categories tidy, and finish work
+                  without noise.
+                </p>
+              </div>
+            </div>
+          </header>
+          <Quote />
+          <List />
+        </template>
+        <NewUser v-else />
+      </section>
+    </main>
     <transition name="fade">
       <AddTask v-show="getAddTaskVisible" />
     </transition>
@@ -32,7 +47,25 @@ import Tasks from "./components/Tasks.vue";
 export default {
   name: "Todo",
   computed: {
-    ...mapGetters(["getUsername", "getUsernameSaved", "getAddTaskVisible", "getTasksVisible"])
+    ...mapGetters([
+      "getUsername",
+      "getUsernameSaved",
+      "getAddTaskVisible",
+      "getTasksVisible"
+    ])
+  },
+  methods: {
+    handleEscapeKey(event) {
+      if (event.key === "Escape" && (this.getAddTaskVisible || this.getTasksVisible)) {
+        this.$store.dispatch("closeDialog");
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener("keydown", this.handleEscapeKey);
+  },
+  beforeDestroy() {
+    window.removeEventListener("keydown", this.handleEscapeKey);
   },
   components: {
     NewUser,
@@ -46,59 +79,132 @@ export default {
 </script>
 
 <style lang="stylus">
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap");
 
+html
 body
-  background #f2f2f2
-  color #333
+  min-height 100%
+
+*
+*:before
+*:after
   box-sizing border-box
 
 body
+  margin 0
+  overflow-x hidden
+  background radial-gradient(circle at top, rgba(0, 153, 255, 0.16), transparent 28%), #000
+  color #fff
+
+body
 input
 button
 textarea
-  font-family "Open Sans", sans-serif
+select
+  font-family "Inter", sans-serif
 
 button
 input
 textarea
+select
   padding 0
   border none
   background none
   box-sizing border-box
-  outline none
-  &:focus
-  &:active
-    outline none
 
 button
   cursor pointer
 
 #app
-  width 960px
-  margin 30px auto
-  background #fdfdfd
-  box-shadow 0 0 20px 0 rgba(0, 0, 0, 0.3)
-  padding 30px
-  border-radius 10px
-  overflow hidden
+  min-height 100vh
+
+.app-shell
+  width 100%
+  max-width 1040px
+  margin 0 auto
+  padding 20px 16px 28px
+
+.app-panel
+  background linear-gradient(180deg, rgba(9, 9, 9, 0.96), rgba(4, 4, 4, 0.98))
+  border-radius 24px
+  padding 22px
+  box-shadow rgba(0, 153, 255, 0.15) 0 0 0 1px, rgba(0, 0, 0, 0.45) 0 24px 80px
+
+.app-header
+  margin-bottom 18px
+  &__row
+    display flex
+    align-items flex-end
+    justify-content space-between
+    gap 16px
+
+.eyebrow
+  margin 0 0 8px
+  color rgba(255, 255, 255, 0.64)
+  font-size 11px
+  font-weight 600
+  letter-spacing 0.18em
+  text-transform uppercase
 
 .main-heading
-  margin 0 0 20px
-  font-weight 300
+  margin 0
+  font-family "Space Grotesk", sans-serif
+  font-size clamp(2rem, 5vw, 3.9rem)
+  font-weight 700
+  letter-spacing -0.06em
+  line-height 0.92
+
+.app-copy
+  margin 10px 0 0
+  max-width 560px
+  color rgba(255, 255, 255, 0.72)
+  font-size 0.96rem
+  line-height 1.5
 
 .btn
-  padding 15px 20px
-  border-radius 3px
+  min-height 44px
+  padding 10px 16px
+  border-radius 999px
   color #fff
-  font-size 28px
+  font-size 0.95rem
+  font-weight 600
+  transition transform .2s ease, background-color .2s ease, box-shadow .2s ease
   &--blue
-    background #5886ff
+    background #0099ff
+    box-shadow rgba(0, 153, 255, 0.35) 0 12px 32px
+  &--ghost
+    background rgba(255, 255, 255, 0.08)
+    color #fff
+    box-shadow rgba(0, 153, 255, 0.15) 0 0 0 1px
+  &:hover
+    transform translateY(-1px)
+  &:focus-visible
+    outline 2px solid #0099ff
+    outline-offset 3px
 
 .fade-enter-active, .fade-leave-active
-  transition opacity 0.3s ease
-
+  transition opacity 0.25s ease, transform 0.25s ease
 
 .fade-enter, .fade-leave-to
   opacity 0
+  transform translateY(8px)
+
+::selection
+  background rgba(0, 153, 255, 0.3)
+
+@media (max-width: 809px)
+  .app-shell
+    padding 12px 10px 20px
+
+  .app-panel
+    padding 16px
+    border-radius 20px
+
+  .app-header
+    margin-bottom 16px
+
+@media (prefers-reduced-motion: reduce)
+  *, *:before, *:after
+    animation none !important
+    transition none !important
 </style>

@@ -1,63 +1,56 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import * as actions from "../redux/actionCreators";
-import DigitButton from "./DigitButton";
+import React from "react";
+import { useSelector } from "react-redux";
+import { DIGIT_ROWS } from "../calculatorConfig";
 import ActionButton from "./ActionButton";
-function mapStateToProps(state) {
-  return {
-    action: state.action,
-    colors: state.colors
-  };
-}
-const mapDispatchToProps = actions;
-class Buttons extends Component {
-  render() {
-    return (
-      <div
-        style={{
-          borderColor: this.props.colors.borders
-        }}
-        className="calculator-buttons"
-      >
-        <div className="calculator-buttons__digits">
-          <div className="calculator-buttons__row">
-            <ActionButton
-              additionalClass="calculator-button--clear"
-              actionName="clear"
-              displayName="C"
-            />
-          </div>
+import DigitButton from "./DigitButton";
 
-          <div className="calculator-buttons__row">
-            <DigitButton value="7" />
-            <DigitButton value="8" />
-            <DigitButton value="9" />
-          </div>
+const ACTIONS = ["division", "multiplication", "substraction", "addition", "equals"];
 
-          <div className="calculator-buttons__row">
-            <DigitButton value="4" />
-            <DigitButton value="5" />
-            <DigitButton value="6" />
-          </div>
-          <div className="calculator-buttons__row">
-            <DigitButton value="1" />
-            <DigitButton value="2" />
-            <DigitButton value="3" />
-          </div>
-          <div className="calculator-buttons__row">
-            <DigitButton additionalClass="calculator-button--zero" value="0" />
-            <DigitButton value="." />
-          </div>
+function Buttons() {
+  const borderColor = useSelector(state => state.colors.borders);
+
+  return (
+    <div
+      style={{
+        borderColor
+      }}
+      className="calculator-buttons"
+      role="group"
+      aria-label="Calculator keypad"
+    >
+      <div className="calculator-buttons__digits">
+        <div className="calculator-buttons__row">
+          <ActionButton
+            additionalClass="calculator-button--clear"
+            actionName="clear"
+            displayName="Clear"
+          />
+          <ActionButton
+            additionalClass="calculator-button--backspace"
+            actionName="backspace"
+            displayName="Del"
+          />
         </div>
-        <div className="calculator-buttons__actions">
-          <ActionButton actionName="division" />
-          <ActionButton actionName="multiplication" />
-          <ActionButton actionName="substraction" />
-          <ActionButton actionName="addition" />
-          <ActionButton actionName="equals" />
-        </div>
+
+        {DIGIT_ROWS.map(row => (
+          <div className="calculator-buttons__row" key={row.join("-")}>
+            {row.map(value => (
+              <DigitButton
+                key={value}
+                additionalClass={value === "0" ? "calculator-button--zero" : ""}
+                value={value}
+              />
+            ))}
+          </div>
+        ))}
       </div>
-    );
-  }
+      <div className="calculator-buttons__actions">
+        {ACTIONS.map(actionName => (
+          <ActionButton key={actionName} actionName={actionName} />
+        ))}
+      </div>
+    </div>
+  );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Buttons);
+
+export default Buttons;

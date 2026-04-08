@@ -1,25 +1,31 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import fontColorContrast from "font-color-contrast";
-function mapStateToProps(state) {
-  return {
+import { useSelector } from "react-redux";
+
+function Screen() {
+  const { borderColor, displayColor, expression, display, error } = useSelector(state => ({
+    borderColor: state.colors.borders,
+    displayColor: fontColorContrast(state.colors.wrapper),
+    expression: state.expression,
     display: state.display,
-    colors: state.colors
-  };
+    error: state.error
+  }));
+
+  return (
+    <section
+      style={{
+        borderColor,
+        color: displayColor
+      }}
+      className={`calculator-screen ${error ? "calculator-screen--error" : ""}`}
+      aria-live="polite"
+      aria-atomic="true"
+      aria-label="Calculator display"
+    >
+      <div className="calculator-screen__history">{expression || "Ready"}</div>
+      <output className="calculator-screen__value">{display}</output>
+    </section>
+  );
 }
-class Screen extends Component {
-  render() {
-    return (
-      <div
-        style={{
-          borderColor: this.props.colors.borders,
-          color: fontColorContrast(this.props.colors.wrapper)
-        }}
-        className="calculator-screen"
-      >
-        {this.props.display}
-      </div>
-    );
-  }
-}
-export default connect(mapStateToProps)(Screen);
+
+export default Screen;

@@ -24,6 +24,12 @@ export function equals() {
   };
 }
 
+export function backspace() {
+  return {
+    type: "BACKSPACE"
+  };
+}
+
 export function changeColors() {
   return {
     type: "CHANGE_COLORS"

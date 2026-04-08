@@ -1,9 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&display=swap");
 
-html {
-    background: #36303e;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: #fff;
+:root {
+  color-scheme: dark;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  background: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 1.5rem;
+  margin: 0;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(0, 153, 255, 0.2), transparent 24%),
+    radial-gradient(circle at 82% 72%, rgba(0, 153, 255, 0.14), transparent 22%),
+    linear-gradient(135deg, #02070c 0%, #020304 48%, #010203 100%);
+}
+
+#root {
+  width: 100%;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.38;
+}
+
+body::before {
+  top: -10rem;
+  left: -8rem;
+  background: rgba(0, 153, 255, 0.22);
+}
+
+body::after {
+  right: -8rem;
+  bottom: -10rem;
+  background: rgba(0, 153, 255, 0.18);
+}
+
+.main {
+  width: min(100%, 76rem);
+  min-height: min(100vh - 3rem, 54rem);
+  display: grid;
+  place-items: stretch;
+  margin: 0 auto;
+  padding: 1.4rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 2rem;
+  backdrop-filter: blur(28px) saturate(135%);
+  -webkit-backdrop-filter: blur(28px) saturate(135%);
+}
+
+.main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 36%, rgba(1, 4, 7, 0.62) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 30px 80px rgba(0, 0, 0, 0.45);
+  z-index: -1;
+}
+
+.main::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(2rem - 1px);
+  background:
+    radial-gradient(circle at top left, rgba(125, 214, 255, 0.11), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(0, 153, 255, 0.12), transparent 26%),
+    rgba(2, 7, 12, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: -1;
+}
+
+@media (max-width: 640px) {
+  .main {
+    min-height: auto;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 1.1rem;
+  }
+
+  .main::before {
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .main::after {
+    border-radius: calc(1.1rem - 1px);
+  }
 }

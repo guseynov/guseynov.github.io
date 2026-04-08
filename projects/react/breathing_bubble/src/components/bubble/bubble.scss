@@ -1,95 +1,584 @@
-.bubble {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  border-radius: 50%;
+.bubble-shell {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  display: grid;
+  align-items: stretch;
+}
+
+.bubble-shell__layout {
+  display: grid;
+  grid-template-columns: minmax(18rem, 24rem) minmax(22rem, 1fr);
+  gap: 1.25rem;
+  min-height: 100%;
+}
+
+.bubble-shell__panel {
+  position: relative;
+  border-radius: 1.45rem;
+  overflow: hidden;
+}
+
+.bubble-shell__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02) 28%, rgba(1, 6, 10, 0.5) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 40px rgba(255, 255, 255, 0.015);
+  z-index: -1;
+}
+
+.bubble-shell__panel--copy {
+  display: grid;
+  align-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 1.8rem;
+  background:
+    radial-gradient(circle at top left, rgba(0, 153, 255, 0.12), transparent 34%),
+    rgba(255, 255, 255, 0.02);
+}
+
+.bubble-shell__panel--experience {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 1.4rem;
+  padding: 2rem 1.8rem;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(0, 153, 255, 0.09), transparent 34%),
+    rgba(255, 255, 255, 0.015);
+}
+
+.bubble-shell__intro {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 22rem;
+  justify-items: start;
+  text-align: left;
+}
+
+.bubble-shell__presets {
   display: flex;
-  width: 500px;
-  height: 500px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.bubble-shell__preset {
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #a6a6a6;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  min-height: 3.6rem;
+  min-width: 9.5rem;
+  padding: 0.95rem 1.6rem;
+  cursor: pointer;
+  box-shadow: rgba(0, 153, 255, 0.15) 0 0 0 1px;
+  transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.bubble-shell__preset:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.bubble-shell__preset--active {
+  background: #ffffff;
+  color: #000000;
+  box-shadow:
+    rgba(0, 153, 255, 0.3) 0 0 0 1px,
+    rgba(255, 255, 255, 0.1) 0 0.5px 0 0.5px;
+}
+
+.bubble-shell__preset--active:hover {
+  color: #000000;
+  background: #ffffff;
+}
+
+.bubble-shell__preset:focus-visible {
+  outline: 2px solid #0099ff;
+  outline-offset: 4px;
+}
+
+.bubble-shell__eyebrow,
+.bubble-shell__metric-label,
+.bubble__eyebrow {
+  margin: 0;
+  color: #a6a6a6;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.bubble-shell__title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  max-width: 14rem;
+  font-size: clamp(3.2rem, 5.2vw, 4.7rem);
+  font-weight: 500;
+  line-height: 0.84;
+  letter-spacing: -0.08em;
+  text-wrap: pretty;
+}
+
+.bubble-shell__lede {
+  margin: 0;
+  max-width: 19rem;
+  color: #a6a6a6;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.bubble-shell__lede--desktop {
+  display: block;
+}
+
+.bubble-shell__technique {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+  justify-items: start;
+  text-align: left;
+  max-width: 18rem;
+  padding: 1rem 1.05rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.bubble-shell__technique-label {
+  color: #0099ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bubble-shell__technique-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  stroke-width: 2;
+}
+
+.bubble-shell__technique-name {
+  color: #ffffff;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.bubble-shell__technique-description {
+  max-width: 16rem;
+  color: #a6a6a6;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.bubble-shell__stage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-block: 0;
+}
+
+.bubble-shell__controls {
+  width: min(100%, 32rem);
+  display: grid;
+  gap: 0.9rem;
+  justify-items: center;
+}
+
+.bubble-shell__toggle {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 3333ms ease, opacity 0.5s ease;
-  &--inactive {
-    opacity: 0.3;
+  gap: 0.65rem;
+  min-height: 3.75rem;
+  min-width: 12rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.075);
+  color: #ffffff;
+  font-family: "Mona Sans", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 1rem 1.8rem;
+  cursor: pointer;
+  box-shadow: rgba(0, 153, 255, 0.15) 0 0 0 1px;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.bubble-shell__toggle-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  stroke-width: 2.2;
+}
+
+.bubble-shell__toggle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+  box-shadow: rgba(0, 153, 255, 0.3) 0 0 0 1px;
+}
+
+.bubble-shell__toggle:focus-visible {
+  outline: 2px solid #0099ff;
+  outline-offset: 4px;
+}
+
+.bubble {
+  --bubble-size: min(56vw, 25rem, 28rem);
+  --inner-size: calc(var(--bubble-size) - 3.25rem);
+  --bubble-scale: 0.86;
+  --bubble-rotation-angle: 0deg;
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  align-items: center;
+  justify-content: center;
+  transform: scale(var(--bubble-scale));
+  transition: filter 300ms ease, opacity 300ms ease;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+
+  &--paused {
+    opacity: 0.82;
   }
-  &--expanding {
-    transform: translate3d(-50%, -50%, 0) scale(1.3);
-  }
-  &--shrinking {
-    transform: translate3d(-50%, -50%, 0) scale(0.7);
-  }
-  &--static {
-    transform: translate3d(-50%, -50%, 0) scale(1);
-  }
+
   &__box {
-    animation: rotation 10s infinite linear;
-    animation-delay: 1000ms;
     display: block;
     left: 50%;
     top: 0;
     bottom: 0;
     position: absolute;
     z-index: 1;
+    transform: rotate(var(--bubble-rotation-angle));
   }
+
+  &__marker {
+    position: absolute;
+    inset: 0;
+    transform: rotate(var(--marker-angle));
+  }
+
   &__outer {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 5px solid #3278e0;
+    inset: 0;
+    border: 4px solid #0099ff;
     border-radius: 50%;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background:
+      radial-gradient(circle at center, rgba(0, 153, 255, 0.16), transparent 56%),
+      rgba(3, 10, 16, 0.78);
+    box-shadow:
+      rgba(0, 153, 255, 0.15) 0 0 0 1px,
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   }
+
   &__point {
-    width: 20px;
-    height: 20px;
+    width: clamp(0.8rem, 2vw, 1.25rem);
+    height: clamp(0.8rem, 2vw, 1.25rem);
     border-radius: 50%;
     display: block;
-    background: #fff;
+    background: #ffffff;
     position: absolute;
+    box-shadow: 0 0 1rem rgba(0, 153, 255, 0.35);
+
     &--current {
-      background: #3378da;
-      top: -10px;
-      left: -10px;
+      background: #0099ff;
+      top: calc(clamp(0.8rem, 2vw, 1.25rem) * -0.5);
+      left: calc(clamp(0.8rem, 2vw, 1.25rem) * -0.5);
     }
-    &--top {
+
+    &--marker,
+    &--marker-start {
       left: 50%;
-      top: -10px;
-      margin-left: -10px;
+      top: calc(clamp(0.8rem, 2vw, 1.25rem) * -0.5);
+      margin-left: calc(clamp(0.8rem, 2vw, 1.25rem) * -0.5);
     }
-    &--right {
-      margin-top: -10px;
-      top: 75%;
-      right: 23px;
+
+    &--marker-start {
+      background: rgba(255, 255, 255, 0.96);
     }
-    &--left {
-      margin-top: -10px;
-      top: 75%;
-      left: 23px;
+
+    &--marker {
+      background: rgba(255, 255, 255, 0.92);
     }
   }
+
   &__inner {
-    width: 450px;
-    height: 450px;
+    width: var(--inner-size);
+    height: var(--inner-size);
     border-radius: 50%;
-    background: linear-gradient(#82a7de, #7753e7);
+    background:
+      radial-gradient(circle at center, rgba(0, 153, 255, 0.22), transparent 58%),
+      rgba(6, 12, 17, 0.82);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    text-align: center;
+    padding: 2rem;
+    box-shadow:
+      rgba(0, 153, 255, 0.15) 0 0 0 1px,
+      rgba(255, 255, 255, 0.1) 0 0.5px 0 0.5px,
+      rgba(0, 0, 0, 0.25) 0 10px 30px;
+  }
+
+  &__copy {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  &__eyebrow {
+    color: #0099ff;
+  }
+
+  &__text {
+    margin: 0;
+    color: #ffffff;
+    font-family: "Mona Sans", "Segoe UI", sans-serif;
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-weight: 500;
+    line-height: 0.94;
+    letter-spacing: -0.06em;
+    text-transform: lowercase;
   }
 }
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
+@media (prefers-reduced-motion: reduce) {
+  .bubble,
+  .bubble-shell__toggle {
+    transition: none;
   }
-  100% {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 900px) {
+  .bubble-shell__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .bubble-shell__panel--copy,
+  .bubble-shell__panel--experience {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .bubble-shell__intro {
+    max-width: 28rem;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .bubble-shell__title {
+    max-width: 20rem;
+  }
+
+  .bubble-shell__lede {
+    max-width: 24rem;
+  }
+
+  .bubble-shell__technique {
+    justify-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .bubble-shell__technique-description {
+    max-width: 22rem;
+  }
+
+  .bubble {
+    --bubble-size: min(68vw, 24rem, 27rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .bubble-shell {
+    min-height: auto;
+  }
+
+  .bubble-shell__intro {
+    gap: 0.45rem;
+  }
+
+  .bubble-shell__eyebrow,
+  .bubble-shell__technique-label,
+  .bubble__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.11em;
+  }
+
+  .bubble-shell__presets {
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .bubble-shell__preset {
+    flex: 1 1 100%;
+    width: 100%;
+    text-align: center;
+    min-height: 3.25rem;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .bubble-shell__title {
+    font-size: clamp(2.25rem, 12vw, 3.5rem);
+    line-height: 0.9;
+    max-width: 18rem;
+  }
+
+  .bubble-shell__lede {
+    max-width: 20rem;
+    font-size: 0.94rem;
+    line-height: 1.35;
+  }
+
+  .bubble-shell__technique {
+    gap: 0.15rem;
+    padding: 0.9rem 0.85rem;
+  }
+
+  .bubble-shell__technique-name {
+    font-size: 1.05rem;
+  }
+
+  .bubble-shell__technique-description {
+    max-width: 18rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .bubble-shell__stage {
+    padding-block: 0.15rem 0.35rem;
+  }
+
+  .bubble-shell__controls {
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .bubble-shell__toggle {
+    width: 100%;
+    min-height: 3.35rem;
+    min-width: 0;
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .bubble {
+    --bubble-size: min(78vw, 20.5rem, 36vh);
+    --inner-size: calc(var(--bubble-size) - 2.2rem);
+  }
+
+  .bubble__inner {
+    padding: 1.2rem;
+  }
+
+  .bubble__copy {
+    gap: 0.4rem;
+  }
+
+  .bubble__text {
+    font-size: clamp(1.25rem, 8vw, 2.1rem);
+  }
+}
+
+@media (max-height: 760px) {
+  .bubble-shell {
+    min-height: auto;
+  }
+
+  .bubble-shell__intro {
+    gap: 0.3rem;
+  }
+
+  .bubble-shell__eyebrow {
+    font-size: 0.68rem;
+  }
+
+  .bubble-shell__title {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    max-width: 16rem;
+  }
+
+  .bubble-shell__lede--desktop,
+  .bubble-shell__technique-description {
+    display: none;
+  }
+
+  .bubble-shell__technique {
+    gap: 0.1rem;
+  }
+
+  .bubble-shell__technique-name {
+    font-size: 1rem;
+  }
+
+  .bubble-shell__stage {
+    padding-block: 0;
+  }
+
+  .bubble-shell__controls {
+    gap: 0.65rem;
+  }
+
+  .bubble-shell__presets {
+    gap: 0.55rem;
+  }
+
+  .bubble-shell__preset,
+  .bubble-shell__toggle {
+    min-height: 3rem;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .bubble-shell__toggle {
+    min-width: 10.5rem;
+  }
+
+  .bubble {
+    --bubble-size: min(54vw, 11.5rem, 24vh);
+    --inner-size: calc(var(--bubble-size) - 1.4rem);
+  }
+
+  .bubble__inner {
+    padding: 0.65rem;
+  }
+
+  .bubble__eyebrow {
+    font-size: 0.64rem;
+  }
+
+  .bubble__text {
+    font-size: clamp(0.92rem, 5vw, 1.45rem);
+    line-height: 0.96;
   }
 }

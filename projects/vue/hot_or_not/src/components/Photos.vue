@@ -1,5 +1,5 @@
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import Photo from "./Photo.vue";
 
 export default {
@@ -8,11 +8,8 @@ export default {
     Photo
   },
   computed: {
-    ...mapState(["photos", "ready"])
-  },
-  mounted() {
-    // Call parent method and start loading new images in the background
-    this.$parent.getNewImages(50);
+    ...mapState(["ready"]),
+    ...mapGetters(["currentPhoto"])
   }
 };
 </script>
@@ -21,13 +18,15 @@ export default {
   <div class="photos-container">
     <transition appear name="fade">
       <div v-if="!ready" class="loading-screen">
-        <span class="loading-screen__text">
-          Loading new photos from the API, it may take some time
-          <br />
-          <b>{{ photos.length }} / 5 new photos downloaded</b>
-        </span>
+        <div class="loading-screen__inner">
+          <span class="loading-screen__eyebrow">Preparing the deck</span>
+          <h2 class="loading-screen__title">Loading portraits</h2>
+          <p class="loading-screen__text">
+            Bundled images are being decoded so the first swipe feels instant.
+          </p>
+        </div>
       </div>
     </transition>
-    <Photo />
+    <Photo v-if="currentPhoto" />
   </div>
 </template>

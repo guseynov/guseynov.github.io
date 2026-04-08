@@ -6,24 +6,33 @@ import './styles.scss';
 const OctaveControls: FC<OctaveControlsProps> = ({
   octave,
   octaveChangeCallback,
-}): JSX.Element => {
+  minOctave,
+  maxOctave,
+}) => {
   return (
-    <div className="octaves">
+    <div className="octaves" aria-label="Octave controls">
       <button
         type="button"
         onClick={() => octaveChangeCallback(-1)}
         className={classNames('octave-btn', {
-          isDisabled: octave === 0,
+          isDisabled: octave === minOctave,
         })}
+        disabled={octave === minOctave}
+        aria-label="Decrease octave"
       >
         Oct -
       </button>
+      <output className="octave-readout" aria-live="polite">
+        {octave}
+      </output>
       <button
         type="button"
         onClick={() => octaveChangeCallback(1)}
         className={classNames('octave-btn', {
-          isDisabled: octave === 5,
+          isDisabled: octave === maxOctave,
         })}
+        disabled={octave === maxOctave}
+        aria-label="Increase octave"
       >
         Oct +
       </button>

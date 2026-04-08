@@ -1,32 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import * as actions from "../redux/actionCreators";
+import React from "react";
 import fontColorContrast from "font-color-contrast";
-function mapStateToProps(state) {
-  return {
-    action: state.action,
-    colors: state.colors
-  };
+import { useDispatch, useSelector } from "react-redux";
+import { write } from "../redux/actionCreators";
+
+function DigitButton({ value, additionalClass = "" }) {
+  const dispatch = useDispatch();
+  const digitColor = useSelector(state => state.colors.digits);
+
+  return (
+    <button
+      type="button"
+      style={{
+        backgroundColor: digitColor,
+        color: fontColorContrast(digitColor)
+      }}
+      onClick={() => dispatch(write(value))}
+      className={`calculator-button calculator-button--digit ${additionalClass}`}
+      aria-label={value === "." ? "Decimal point" : `Digit ${value}`}
+    >
+      {value}
+    </button>
+  );
 }
-const mapDispatchToProps = actions;
-class DigitButton extends Component {
-  render() {
-    return (
-      <button
-        style={{
-          backgroundColor: this.props.colors.digits,
-          color: fontColorContrast(this.props.colors.digits)
-        }}
-        onClick={() => this.props.write(this.props.value)}
-        className={`
-                    calculator-button
-                    calculator-button--digit
-                    ${this.props.additionalClass}
-                `}
-      >
-        {this.props.value}
-      </button>
-    );
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(DigitButton);
+
+export default DigitButton;

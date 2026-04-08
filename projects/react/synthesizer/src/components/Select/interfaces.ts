@@ -5,6 +5,7 @@ export interface Option {
 
 export interface SelectProps {
   options: Option[];
+  label: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

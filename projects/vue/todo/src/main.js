@@ -4,7 +4,6 @@ import store from "./store";
 import App from "./App.vue";
 import { dom, library, config } from "@fortawesome/fontawesome-svg-core";
 import {
-  faSave,
   faTimes,
   faStickyNote,
   faBriefcase,
@@ -24,7 +23,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
-  faSave,
   faTimes,
   faStickyNote,
   faBriefcase,

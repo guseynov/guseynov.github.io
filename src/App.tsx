@@ -19,6 +19,7 @@ import { ExperienceContent } from "@/components/sections/ExperienceContent";
 import { IntroAside } from "@/components/sections/IntroAside";
 import { IntroContent } from "@/components/sections/IntroContent";
 import { ProofContent } from "@/components/sections/ProofContent";
+import { ProjectsContent } from "@/components/sections/ProjectsContent";
 import {
   SectionId,
   siteContent,
@@ -39,8 +40,9 @@ const SECTION_INDEX_LABELS: Record<SectionIdValue, string> = {
   [SectionId.Intro]: "01 / INTRO",
   [SectionId.Capabilities]: "02 / SKILLS",
   [SectionId.Experience]: "03 / EXPERIENCE",
-  [SectionId.Proof]: "04 / PROOF",
-  [SectionId.Contact]: "05 / CONTACT",
+  [SectionId.Projects]: "04 / PROJECTS",
+  [SectionId.Proof]: "05 / PROOF",
+  [SectionId.Contact]: "06 / CONTACT",
 };
 
 interface SectionContentConfig {
@@ -134,6 +136,14 @@ function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionCon
         indexLabel: SECTION_INDEX_LABELS[SectionId.Proof],
         content: <ProofContent />,
       };
+    case SectionId.Projects:
+      return {
+        title: "A browsable archive of static concepts and small frontend builds.",
+        summary:
+          "Selected concepts and smaller builds that show how I think through interface quality, visual execution, and frontend implementation beyond the constraints of day-to-day product work.",
+        indexLabel: SECTION_INDEX_LABELS[SectionId.Projects],
+        content: <ProjectsContent baseUrl={import.meta.env.BASE_URL} />,
+      };
     case SectionId.Contact:
       return {
         title: siteContent.contact.title,
@@ -146,6 +156,10 @@ function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionCon
 
 function App() {
   const sectionRefs = useRef<Array<HTMLElement | null>>([]);
+  const mobileProgressRef = useRef<HTMLDivElement | null>(null);
+  const mobileTargetIndexRef = useRef<number | null>(null);
+  const mobileTargetScrollTopRef = useRef<number | null>(null);
+  const mobileTargetReleaseTimerRef = useRef<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [sliderProgress, setSliderProgress] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel(DESKTOP_CAROUSEL_OPTIONS);
@@ -168,14 +182,33 @@ function App() {
 
   const scrollToMobileIndex = useEffectEvent((index: number) => {
     const nextIndex = clampIndex(index, siteContent.sections.length);
-
     const target = sectionRefs.current[nextIndex];
 
     if (!target) {
       return;
     }
 
-    target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    const progressHeight = mobileProgressRef.current?.getBoundingClientRect().height ?? 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    const topOffset = progressHeight + 24;
+    const targetScrollTop = Math.max(targetTop - topOffset, 0);
+
+    if (mobileTargetReleaseTimerRef.current !== null) {
+      window.clearTimeout(mobileTargetReleaseTimerRef.current);
+      mobileTargetReleaseTimerRef.current = null;
+    }
+
+    mobileTargetIndexRef.current = nextIndex;
+    mobileTargetScrollTopRef.current = targetScrollTop;
+    setActiveIndex(nextIndex);
+    setSliderProgress(
+      siteContent.sections.length > 1 ? nextIndex / (siteContent.sections.length - 1) : 0,
+    );
+
+    window.scrollTo({
+      top: targetScrollTop,
+      behavior: "smooth",
+    });
   });
 
   const syncDesktopActiveIndex = useEffectEvent((api: EmblaCarouselType) => {
@@ -185,6 +218,14 @@ function App() {
   const syncDesktopProgress = useEffectEvent((api: EmblaCarouselType) => {
     setSliderProgress(clampProgress(api.scrollProgress()));
   });
+
+  useEffect(() => {
+    return () => {
+      if (mobileTargetReleaseTimerRef.current !== null) {
+        window.clearTimeout(mobileTargetReleaseTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!emblaApi) {
@@ -215,34 +256,90 @@ function App() {
       return undefined;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+    const mobileQuery = window.matchMedia("(max-width: 1023px)");
 
-        if (!visibleEntry) {
-          return;
+    const syncMobileActiveIndex = () => {
+      if (!mobileQuery.matches) {
+        mobileTargetIndexRef.current = null;
+        mobileTargetScrollTopRef.current = null;
+        return;
+      }
+
+      const progressHeight = mobileProgressRef.current?.getBoundingClientRect().height ?? 0;
+      const topOffset = progressHeight + 32;
+      const pendingTargetIndex = mobileTargetIndexRef.current;
+      const pendingTargetScrollTop = mobileTargetScrollTopRef.current;
+
+      if (pendingTargetIndex !== null && pendingTargetScrollTop !== null) {
+        const hasReachedTarget = Math.abs(window.scrollY - pendingTargetScrollTop) <= 8;
+
+        setActiveIndex(pendingTargetIndex);
+        setSliderProgress(
+          siteContent.sections.length > 1
+            ? pendingTargetIndex / (siteContent.sections.length - 1)
+            : 0,
+        );
+
+        if (hasReachedTarget) {
+          if (mobileTargetReleaseTimerRef.current !== null) {
+            window.clearTimeout(mobileTargetReleaseTimerRef.current);
+          }
+
+          mobileTargetReleaseTimerRef.current = window.setTimeout(() => {
+            mobileTargetIndexRef.current = null;
+            mobileTargetScrollTopRef.current = null;
+            mobileTargetReleaseTimerRef.current = null;
+          }, 140);
+        } else if (mobileTargetReleaseTimerRef.current !== null) {
+          window.clearTimeout(mobileTargetReleaseTimerRef.current);
+          mobileTargetReleaseTimerRef.current = null;
         }
 
-        const index = targets.findIndex((target) => target === visibleEntry.target);
+        return;
+      }
 
-        if (index >= 0) {
-          setActiveIndex(index);
-          setSliderProgress(
-            siteContent.sections.length > 1 ? index / (siteContent.sections.length - 1) : 0,
-          );
+      if (pendingTargetIndex !== null && pendingTargetScrollTop === null) {
+        const pendingTarget = targets[pendingTargetIndex];
+
+        if (!pendingTarget) {
+          mobileTargetIndexRef.current = null;
+          mobileTargetScrollTopRef.current = null;
         }
-      },
-      {
-        root: null,
-        threshold: [0.35, 0.5, 0.7],
-      },
-    );
+      }
 
-    targets.forEach((target) => observer.observe(target));
+      let nextIndex = 0;
 
-    return () => observer.disconnect();
+      for (let index = 0; index < targets.length; index += 1) {
+        const top = targets[index].getBoundingClientRect().top;
+
+        if (top <= topOffset) {
+          nextIndex = index;
+          continue;
+        }
+
+        break;
+      }
+
+      setActiveIndex(nextIndex);
+      setSliderProgress(
+        siteContent.sections.length > 1 ? nextIndex / (siteContent.sections.length - 1) : 0,
+      );
+    };
+
+    syncMobileActiveIndex();
+    window.addEventListener("scroll", syncMobileActiveIndex, { passive: true });
+    window.addEventListener("resize", syncMobileActiveIndex);
+    mobileQuery.addEventListener("change", syncMobileActiveIndex);
+
+    return () => {
+      if (mobileTargetReleaseTimerRef.current !== null) {
+        window.clearTimeout(mobileTargetReleaseTimerRef.current);
+      }
+
+      window.removeEventListener("scroll", syncMobileActiveIndex);
+      window.removeEventListener("resize", syncMobileActiveIndex);
+      mobileQuery.removeEventListener("change", syncMobileActiveIndex);
+    };
   }, []);
 
   const cvHref = `${import.meta.env.BASE_URL}${siteContent.profile.cvPath}`;
@@ -328,36 +425,38 @@ function App() {
     <div className="min-h-screen bg-canvas text-text-strong antialiased">
       <div className="flex min-h-screen flex-col px-4 pt-4 pb-5 sm:px-6 sm:pb-6 lg:h-screen lg:px-6 lg:pb-6">
         <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-4">
-          <header className="elevation-header grid w-full shrink-0 gap-4 rounded-[1.5rem] border border-border/70 bg-surface-elevated/70 px-5 py-4 backdrop-blur-xl sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:px-8">
-            <div className="space-y-2">
-              <p className="text-sm text-text-muted sm:text-[1rem]">
+          <header className="surface-floating blue-ring w-full shrink-0 rounded-[1.4rem] border border-white/8 bg-black/74 px-5 py-5 backdrop-blur-xl sm:px-6 lg:px-8">
+            <div className="space-y-4">
+              <p className="font-ui text-sm text-text-ghost sm:text-[1rem]">
                 {siteContent.profile.name}
               </p>
-              <div className="space-y-1.5">
-                <h1 className="max-w-none text-4xl font-semibold tracking-[-0.06em] sm:text-5xl lg:text-[clamp(2.8rem,4vw,4.5rem)] lg:leading-[0.94] xl:whitespace-nowrap">
+              <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between xl:gap-6">
+                <h1 className="text-display-hero min-w-0 flex-1 whitespace-nowrap text-text-strong">
                   {siteContent.profile.role}
                 </h1>
-                <p className="max-w-3xl text-sm leading-6 text-text-muted sm:text-base">
+                <div className="flex flex-wrap gap-3 xl:flex-none xl:justify-end">
+                  {actionLinks.map((link) => (
+                    <ButtonLink
+                      key={link.label}
+                      href={link.href}
+                      tone={link.tone}
+                      className={link.className}
+                      target={link.target}
+                      rel={link.rel}
+                      download={link.download}
+                      onClick={link.onClick}
+                    >
+                      {link.icon}
+                      {link.label}
+                    </ButtonLink>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="font-ui max-w-3xl text-sm leading-6 text-text-muted sm:text-base">
                   {siteContent.profile.experienceLabel}
                 </p>
               </div>
-            </div>
-            <div className="flex flex-wrap gap-3 lg:justify-end">
-              {actionLinks.map((link) => (
-                <ButtonLink
-                  key={link.label}
-                  href={link.href}
-                  tone={link.tone}
-                  className={link.className}
-                  target={link.target}
-                  rel={link.rel}
-                  download={link.download}
-                  onClick={link.onClick}
-                >
-                  {link.icon}
-                  {link.label}
-                </ButtonLink>
-              ))}
             </div>
           </header>
 
@@ -390,11 +489,13 @@ function App() {
             </div>
           </div>
           <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-5 overflow-visible pt-4 lg:hidden">
-            <MobileProgress
-              sections={siteContent.sections}
-              activeIndex={activeIndex}
-              onSelect={scrollToMobileIndex}
-            />
+            <div ref={mobileProgressRef} className="sticky top-4 z-20">
+              <MobileProgress
+                sections={siteContent.sections}
+                activeIndex={activeIndex}
+                onSelect={scrollToMobileIndex}
+              />
+            </div>
             {sectionConfigs.map((section, index) => (
               <div key={section.id} ref={registerSection(index)}>
                 <SectionCard

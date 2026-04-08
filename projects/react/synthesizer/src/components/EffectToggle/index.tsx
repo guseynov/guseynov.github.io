@@ -6,21 +6,22 @@ const EffectToggle: FC<EffectToggleProps> = ({
   name,
   effect,
   setEffect,
-}): JSX.Element => {
+}) => {
   return (
-    <div className="toggle-container">
-      <label className="toggle">
-        <input
-          type="checkbox"
-          checked={effect}
-          onChange={() => setEffect(!effect)}
-        />
-        <span className="slider round"></span>
-        <div className="toggle-names">
-          <span className="name">{name}</span>
-        </div>
-      </label>
-    </div>
+    <button
+      type="button"
+      className={`effect-toggle${effect ? ' is-active' : ''}`}
+      onClick={setEffect}
+      aria-pressed={effect}
+    >
+      <span className="effect-toggle__text">
+        <span className="effect-toggle__name">{name}</span>
+        <span className="effect-toggle__state">{effect ? 'On' : 'Off'}</span>
+      </span>
+      <span className="effect-toggle__switch" aria-hidden="true">
+        <span className="effect-toggle__thumb" />
+      </span>
+    </button>
   );
 };
 

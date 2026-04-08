@@ -1,6 +1,30 @@
+.keyboard-wrap {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
 .keyboard {
-  height: 200px;
-  display: flex;
+  min-width: 760px;
+  height: clamp(230px, 34vw, 300px);
   position: relative;
-  justify-self: flex-end;
+  padding: 12px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 12%),
+    linear-gradient(180deg, #13181f 0%, #090c10 100%);
+  box-shadow:
+    rgba(0, 153, 255, 0.12) 0 0 0 1px,
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.keyboard__white {
+  height: 100%;
+  display: flex;
+}
+
+.keyboard__black {
+  position: absolute;
+  inset: 12px 12px auto 12px;
+  height: 70%;
+  pointer-events: none;
 }

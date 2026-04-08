@@ -3,6 +3,7 @@ export enum SectionId {
   Capabilities = "capabilities",
   Experience = "experience",
   Proof = "proof",
+  Projects = "projects",
   Contact = "contact",
 }
 
@@ -17,7 +18,7 @@ export interface SectionNavItem {
 export interface SkillGroup {
   title: string;
   summary: string;
-  items: string[];
+  items: Array<string | { label: string; icon?: "terminal" | "spark" | "nodes" | "chip" }>;
 }
 
 export interface ExperienceEntry {
@@ -32,6 +33,14 @@ export interface StrengthItem {
   body: string;
 }
 
+export interface ProjectEntry {
+  title: string;
+  category: string;
+  stack: string;
+  description: string;
+  href: string;
+}
+
 export interface SiteContent {
   profile: {
     name: string;
@@ -39,6 +48,7 @@ export interface SiteContent {
     experienceLabel: string;
     email: string;
     githubUrl: string;
+    linkedinUrl: string;
     cvPath: string;
   };
   intro: {
@@ -50,6 +60,7 @@ export interface SiteContent {
   skills: SkillGroup[];
   experience: ExperienceEntry[];
   strengths: StrengthItem[];
+  projects: ProjectEntry[];
   contact: {
     title: string;
     body: string;
@@ -73,6 +84,7 @@ export const siteContent: SiteContent = {
     experienceLabel: "10 years building production interfaces",
     email: "alex.guseynov.23@gmail.com",
     githubUrl: "https://github.com/guseynov",
+    linkedinUrl: "https://www.linkedin.com/in/aguseynov/",
     cvPath: "alex-guseynov-cv.pdf",
   },
   intro: {
@@ -101,6 +113,19 @@ export const siteContent: SiteContent = {
         "CSS3",
         "Tailwind",
         "Redux",
+      ],
+    },
+    {
+      title: "AI",
+      summary:
+        "Comfortable using modern AI tooling in practical product and engineering workflows, from coding agents to integrated application features.",
+      items: [
+        "AI coding workflows",
+        "Prompt iteration",
+        "LLM API integration",
+        "Agentic prototyping",
+        "Workflow automation",
+        "Evaluation-minded implementation",
       ],
     },
     {
@@ -195,6 +220,128 @@ export const siteContent: SiteContent = {
       body: "I have worked in startups and larger organizations, which makes it easier to balance speed, clarity, and maintainability under different constraints.",
     },
   ],
+  projects: [
+    {
+      title: "Antigololed",
+      category: "HTML/CSS mockup",
+      stack: "Static marketing site",
+      description:
+        "A footwear brand landing page built around product storytelling, promotional highlights, and a campaign-style sales flow.",
+      href: "projects/html_css/ag/index.html",
+    },
+    {
+      title: "Clinic",
+      category: "HTML/CSS mockup",
+      stack: "Static multi-page site",
+      description:
+        "A healthcare website with service pages, doctor-focused information blocks, and a clear appointment-oriented structure.",
+      href: "projects/html_css/clinic/index.html",
+    },
+    {
+      title: "Delivery",
+      category: "HTML/CSS mockup",
+      stack: "Static landing page",
+      description:
+        "A logistics landing page for car import services, structured around offers, trust signals, and enquiry capture.",
+      href: "projects/html_css/delivery/index.html",
+    },
+    {
+      title: "Delo Zhizni",
+      category: "HTML/CSS mockup",
+      stack: "Editorial static site",
+      description:
+        "An editorial-style website for a social entrepreneurship project, combining narrative sections, media, and campaign messaging.",
+      href: "projects/html_css/delo/index.html",
+    },
+    {
+      title: "FF Championship",
+      category: "HTML/CSS mockup",
+      stack: "Event promo site",
+      description:
+        "A sports event website focused on schedule visibility, competition branding, and high-energy promotional presentation.",
+      href: "projects/html_css/ff/index.html",
+    },
+    {
+      title: "Landing Studio",
+      category: "HTML/CSS mockup",
+      stack: "Agency landing page",
+      description:
+        "A landing page for a design and marketing studio built around service positioning, offer clarity, and lead generation.",
+      href: "projects/html_css/landing/index.html",
+    },
+    {
+      title: "Loginova",
+      category: "HTML/CSS mockup",
+      stack: "Personal brand site",
+      description:
+        "A personal brand website with an editorial visual direction, profile storytelling, and a strong identity-led layout.",
+      href: "projects/html_css/loginova/index.html",
+    },
+    {
+      title: "Silnye Znaniya",
+      category: "HTML/CSS mockup",
+      stack: "Educational promo site",
+      description:
+        "An education-focused landing page centered on speakers, event framing, and audience sign-up flow.",
+      href: "projects/html_css/sz/index.html",
+    },
+    {
+      title: "Synthesizer",
+      category: "React project",
+      stack: "React, TypeScript, Tone.js",
+      description:
+        "A browser-based synthesizer with custom controls, playable audio interaction, and a compact instrument-style interface.",
+      href: "projects/react/synthesizer/build/index.html",
+    },
+    {
+      title: "Breathing Bubble",
+      category: "React project",
+      stack: "React, TypeScript, MobX",
+      description:
+        "A guided breathing app built around calm pacing, minimal controls, and a focused visual rhythm.",
+      href: "projects/react/breathing_bubble/build/index.html",
+    },
+    {
+      title: "Calculator",
+      category: "React project",
+      stack: "React, Redux",
+      description:
+        "A browser calculator with keyboard support, responsive controls, and a clean app-style interface.",
+      href: "projects/react/calculator/build/index.html",
+    },
+    {
+      title: "Metronome",
+      category: "React project",
+      stack: "React",
+      description:
+        "A metronome app with tempo controls, visual beat feedback, and a minimal practice-focused interface.",
+      href: "projects/react/metronome/dist/index.html",
+    },
+    {
+      title: "Weather",
+      category: "React project",
+      stack: "React, API integration",
+      description:
+        "A weather app with city search, five-day forecast cards, and a compact data-first layout.",
+      href: "projects/react/weather/build/index.html",
+    },
+    {
+      title: "Hot or Not",
+      category: "Vue project",
+      stack: "Vue 2, Vuex",
+      description:
+        "A swipe-based voting app with mobile-first interactions, quick decisions, and playful match-style feedback.",
+      href: "projects/vue/hot_or_not/dist/index.html",
+    },
+    {
+      title: "Todo",
+      category: "Vue project",
+      stack: "Vue 2, Vuex",
+      description:
+        "A task management app with category-based organization, playful UI details, and a bold everyday productivity flow.",
+      href: "projects/vue/todo/dist/index.html",
+    },
+  ],
   contact: {
     title: "Open to frontend roles where quality is visible in the product.",
     body: "If you need someone who can shape the interface layer, improve consistency, and ship production-ready UI with care, I am available for conversations about permanent roles and strong product teams.",
@@ -233,16 +380,23 @@ export const siteContent: SiteContent = {
       shortDescription: "Selected roles and delivery outcomes.",
     },
     {
+      id: SectionId.Projects,
+      label: "Projects",
+      index: 3,
+      title: "Selected Projects",
+      shortDescription: "Archived builds and static concepts collected in one place.",
+    },
+    {
       id: SectionId.Proof,
       label: "Proof",
-      index: 3,
+      index: 4,
       title: "Working Style",
       shortDescription: "How Alex adds value in real teams.",
     },
     {
       id: SectionId.Contact,
       label: "Contact",
-      index: 4,
+      index: 5,
       title: "Hire Me",
       shortDescription: "Direct outreach and CV access.",
     },

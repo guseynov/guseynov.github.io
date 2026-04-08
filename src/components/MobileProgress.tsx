@@ -17,17 +17,17 @@ export function MobileProgress({
   ).padStart(2, "0")}`;
 
   return (
-    <div className="elevation-mobile-progress sticky top-4 z-20 rounded-[1.4rem] border border-border/80 bg-surface-elevated/88 p-4 backdrop-blur-xl lg:hidden">
+    <div className="sticky top-4 z-20 rounded-[1.1rem] border border-white/10 bg-black/78 p-4 backdrop-blur-xl lg:hidden">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-muted">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
             Now viewing
           </p>
-          <p className="mt-1 text-sm font-semibold text-text-strong">
-            {currentSection?.title}
+          <p className="mt-1 min-h-[1.25rem] text-sm font-semibold text-text-strong">
+            {currentSection?.label}
           </p>
         </div>
-        <p className="font-mono text-sm text-text-muted">{positionLabel}</p>
+        <p className="font-mono text-sm text-text-ghost">{positionLabel}</p>
       </div>
       <div className="mt-4 flex gap-2">
         {sections.map((section, index) => (
@@ -36,7 +36,7 @@ export function MobileProgress({
             type="button"
             onClick={() => onSelect(index)}
             className={`h-2 flex-1 rounded-full transition duration-200 ${
-              index === activeIndex ? "bg-text-strong" : "bg-border"
+              index === activeIndex ? "bg-accent" : "bg-white/10"
             }`}
             aria-label={`Jump to ${section.title}`}
           />

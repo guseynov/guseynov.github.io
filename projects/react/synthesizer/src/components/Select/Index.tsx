@@ -2,15 +2,18 @@ import React from 'react';
 import { SelectProps } from './interfaces';
 import './styles.scss';
 
-const Select = ({ options, value, onChange }: SelectProps) => {
+const Select = ({ options, label, value, onChange }: SelectProps) => {
   return (
-    <select className="select" value={value} onChange={onChange}>
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
+    <label className="select-field">
+      <span className="select-field__label">{label}</span>
+      <select className="select" value={value} onChange={onChange}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 };
 

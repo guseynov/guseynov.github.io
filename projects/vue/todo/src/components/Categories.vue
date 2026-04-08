@@ -1,151 +1,100 @@
 <template>
-  <section class="categories-container">
-    <div
-      v-on:click="updateStoreData('all')"
+  <section class="categories-container" aria-label="Task categories">
+    <button
+      @click="openTasksForCategory('all')"
       class="category"
-      data-category-name="all"
+      type="button"
     >
-      <p class="category__title">
-        All
-      </p>
-      <span class="category__tasks-amount">{{ getTasksCount }} tasks</span>
-    </div>
-    <div
-      v-for="(value, categoryName, index) in filledCategories"
-      v-bind:key="index"
+      <font-awesome-icon class="category__icon" :icon="categoryMeta.all.icon" />
+      <p class="category__title">{{ categoryMeta.all.label }}</p>
+      <span class="category__tasks-amount">{{ getTasksCount }} tasks total</span>
+    </button>
+
+    <button
+      v-for="category in filledCategories"
+      :key="category.categoryName"
       class="category"
-      :data-category-name="value.categoryName"
-      v-on:click="updateStoreData(value.categoryName)"
+      type="button"
+      @click="openTasksForCategory(category.categoryName)"
     >
+      <font-awesome-icon
+        class="category__icon"
+        :icon="categoryMeta[category.categoryName].icon"
+      />
       <p class="category__title">
-        {{ value.categoryName.replace(/^\w/, c => c.toUpperCase()) }}
+        {{ categoryMeta[category.categoryName].label }}
       </p>
-      <span class="category__tasks-amount">{{ value.tasks.length }} tasks</span>
-    </div>
+      <span class="category__tasks-amount">{{ category.tasks.length }} tasks</span>
+    </button>
   </section>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import { categoryMeta } from "../categoryMeta";
+
 export default {
   name: "Categories",
-  methods: {
-    ...mapActions(["toggleTasksVisibility", "setActiveCategory"]),
-    updateStoreData: function(category) {
-      this.toggleTasksVisibility();
-      this.setActiveCategory(category);
-    }
+  data() {
+    return {
+      categoryMeta
+    };
   },
   computed: {
     ...mapGetters(["getCategories", "getTasksCount"]),
-    filledCategories: function() {
-      let filledCategoriesArr = [];
-      for (const category in this.getCategories) {
-        if (this.getCategories[category].length > 0) {
-          filledCategoriesArr.push({
-            categoryName: category,
-            tasks: this.getCategories[category]
-          });
-        }
-      }
-      return filledCategoriesArr;
+    filledCategories() {
+      return Object.keys(this.getCategories)
+        .filter(category => this.getCategories[category].length > 0)
+        .map(category => ({
+          categoryName: category,
+          tasks: this.getCategories[category]
+        }));
     }
+  },
+  methods: {
+    ...mapActions(["openTasksForCategory"])
   }
 };
 </script>
 
 <style lang="stylus">
 .categories-container
-    display flex
-    flex-wrap wrap
-    justify-content space-evenly
-    width 100%
+  display grid
+  grid-template-columns repeat(3, minmax(0, 1fr))
+  gap 16px
+  width 100%
 
 .category
-    background #fff
-    box-shadow 0 0 20px 0 rgba(0,0,0,0.3)
-    padding 20px 30px
-    border-radius 10px
-    display flex
-    flex-direction column
-    margin 0 0 30px
-    cursor pointer
-    transition all .2s ease
-    flex 0 0 18%
-    &:hover
-    &:active
-      box-shadow 0 0 20px 0 rgba(0,0,0,0.2)
-      transform translateY(-10px)
-    &__title
-        font-size 21px
-        margin-bottom 0
-        font-weight 600
-    &__tasks-amount
-        color #838383
-    &[data-category-name]
-      svg 
-        width 45px
-        height 60px
-        margin-bottom 15px
-      &:before
-        display block
-        font-family "Font Awesome\ 5 Free"
-        font-size 32px
-        font-weight 900
-        padding 0
-        display none
-    &[data-category-name="all"]
-      svg
-        path
-          fill #5a87fc
-      &:before
-        content "\f328"
-    &[data-category-name="misc"]
-      svg
-        path
-          fill #43b3bd
-      &:before
-        content "\f249"
-    &[data-category-name="work"]
-      svg
-        path
-          fill #fcba77
-      &:before
-        content "\f0b1"
-    &[data-category-name="music"]
-      svg
-        path
-          fill #f8937e
-      &:before
-        content "\f001"
-    &[data-category-name="travel"]
-      svg
-        path
-          fill #59ca7b
-      &:before
-        content "\f072"
-    &[data-category-name="study"]
-      svg
-        path
-          fill #8d85d1
-      &:before
-        content "\f19d"
-    &[data-category-name="home"]
-      svg
-        path
-          fill #dc6a5c
-      &:before
-        content "\f015"
-    &[data-category-name="art"]
-      svg
-        path
-          fill #ad67c6
-      &:before
-        content "\f53f"
-    &[data-category-name="shopping"]
-      svg
-        path
-          fill #43b3bd
-      &:before
-        content "\f07a"
+  text-align left
+  background linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03))
+  color #fff
+  border-radius 20px
+  padding 20px
+  box-shadow rgba(0, 153, 255, 0.15) 0 0 0 1px
+  transition transform .2s ease, box-shadow .2s ease, background-color .2s ease
+  &:hover
+    transform translateY(-2px)
+    box-shadow rgba(0, 153, 255, 0.28) 0 0 0 1px
+  &:focus-visible
+    outline 2px solid #0099ff
+    outline-offset 3px
+  &__icon
+    width 20px
+    height 20px
+    color #0099ff
+  &__title
+    margin 18px 0 8px
+    font-size 1.15rem
+    font-weight 600
+  &__tasks-amount
+    color rgba(255, 255, 255, 0.64)
+    font-size 0.95rem
+
+@media (max-width: 980px)
+  .categories-container
+    grid-template-columns repeat(2, minmax(0, 1fr))
+
+@media (max-width: 809px)
+  .categories-container
+    grid-template-columns 1fr
 </style>

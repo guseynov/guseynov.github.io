@@ -1,5 +1,7 @@
 <script>
 import { mapState } from "vuex";
+import flameIcon from "../icons/flame.svg";
+import thumbDownIcon from "../icons/thumb-down.svg";
 
 export default {
   name: "Controls",
@@ -9,25 +11,44 @@ export default {
     }
   },
   computed: {
-    ...mapState(["ready"])
+    ...mapState(["ready", "isTransitioning"]),
+    controlsDisabled() {
+      return !this.ready || this.isTransitioning;
+    },
+    flameIcon() {
+      return flameIcon;
+    },
+    thumbDownIcon() {
+      return thumbDownIcon;
+    }
   }
 };
 </script>
 
 <template>
   <div v-if="ready" class="controls-container">
-    <button v-on:click="makeVerdict(true)" class="btn hot-btn">
-      <span class="btn__text">Hot</span>
-      <img :src="require('../icons/flame.svg')" alt="Hot" class="btn__icon" />
-    </button>
-    <div class="controls-separator">OR</div>
-    <button v-on:click="makeVerdict(false)" class="btn not-hot-btn">
+    <button
+      type="button"
+      :disabled="controlsDisabled"
+      @click="makeVerdict(false)"
+      class="btn btn--secondary"
+      aria-keyshortcuts="ArrowLeft"
+    >
+      <span class="btn__eyebrow">Arrow left</span>
       <span class="btn__text">Not</span>
-      <img
-        :src="require('../icons/thumb-down.svg')"
-        alt="Not Hot"
-        class="btn__icon"
-      />
+      <img :src="thumbDownIcon" alt="" aria-hidden="true" class="btn__icon" />
+    </button>
+    <div class="controls-separator" aria-hidden="true">or</div>
+    <button
+      type="button"
+      :disabled="controlsDisabled"
+      @click="makeVerdict(true)"
+      class="btn btn--primary"
+      aria-keyshortcuts="ArrowRight"
+    >
+      <span class="btn__eyebrow">Arrow right</span>
+      <span class="btn__text">Hot</span>
+      <img :src="flameIcon" alt="" aria-hidden="true" class="btn__icon" />
     </button>
   </div>
 </template>

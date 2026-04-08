@@ -110,34 +110,39 @@ export function BottomSlider({
   };
 
   const handleClassName = clsx(
-    "elevation-slider-handle absolute top-1/2 z-10 h-14 w-28 -translate-x-1/2 -translate-y-1/2 cursor-grab rounded-full border border-border-contrast-soft bg-[linear-gradient(180deg,var(--color-handle-surface-start),var(--color-handle-surface-end))] transition",
+    "absolute top-1/2 z-10 flex h-14 w-28 -translate-x-1/2 -translate-y-1/2 cursor-grab items-center justify-center rounded-full border border-white/12 bg-white text-text-inverse shadow-[0_0_0_1px_rgba(0,153,255,0.18),0_18px_38px_rgba(0,0,0,0.34)] transition",
     "flex items-center justify-center",
-    isDragging && "elevation-slider-handle-active scale-[1.02] cursor-grabbing",
+    isDragging && "scale-[1.02] cursor-grabbing shadow-[0_0_0_1px_rgba(0,153,255,0.32),0_20px_42px_rgba(0,0,0,0.42)]",
   );
 
   return (
     <div
       data-bottom-slider="true"
-      className="elevation-slider-shell pointer-events-auto rounded-full border border-border/70 bg-canvas/82 px-5 py-4"
+      className="pointer-events-auto rounded-full border border-white/10 bg-white/6 px-5 py-4 backdrop-blur-xl"
     >
-      <div
-        ref={trackRef}
-        className="relative h-14 touch-none select-none"
-      >
-        <div className="absolute inset-x-0 top-1/2 h-3 -translate-y-1/2 rounded-full bg-[linear-gradient(180deg,rgba(17,17,17,0.14),rgba(17,17,17,0.1))]" />
+      <div ref={trackRef} className="relative h-14 touch-none select-none">
+        <div className="absolute inset-x-0 top-1/2 h-3 -translate-y-1/2 rounded-full bg-white/10" />
         <div
-          className="absolute left-0 top-1/2 h-3 -translate-y-1/2 rounded-full bg-text-strong"
+          className="absolute left-0 top-1/2 h-3 -translate-y-1/2 rounded-full bg-accent"
           style={{ width: `${positionPercent}%` }}
         />
-        <div className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-2">
+        <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-2">
           {sections.map((section, index) => (
-            <span
+            <button
               key={section.id}
+              type="button"
+              onClick={() => onSelect(index)}
+              aria-label={`Jump to ${section.title}`}
+              aria-pressed={index === activeIndex}
+              className="flex h-6 w-6 items-center justify-center rounded-full"
+            >
+              <span
               className={clsx(
-                "elevation-slider-dot h-2 w-2 rounded-full bg-dot-muted",
+                "h-2 w-2 rounded-full bg-dot-muted",
                 index === activeIndex && "bg-dot-active",
               )}
-            />
+              />
+            </button>
           ))}
         </div>
         <button
