@@ -17,7 +17,7 @@ export function MobileProgress({
   ).padStart(2, "0")}`;
 
   return (
-    <div className="sticky top-4 z-20 rounded-[1.1rem] border border-white/10 bg-black/78 p-4 backdrop-blur-xl lg:hidden">
+    <div className="sticky top-4 z-20 rounded-[1.1rem] border border-white/10 bg-[color:oklch(0.21_0.014_248_/_0.84)] p-4 backdrop-blur-xl lg:hidden">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-ghost">
@@ -35,11 +35,16 @@ export function MobileProgress({
             key={section.id}
             type="button"
             onClick={() => onSelect(index)}
-            className={`h-2 flex-1 rounded-full transition duration-200 ${
-              index === activeIndex ? "bg-accent" : "bg-white/10"
-            }`}
+            className="control-tap-target flex flex-1 items-center rounded-full transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             aria-label={`Jump to ${section.title}`}
-          />
+            aria-pressed={index === activeIndex}
+          >
+            <span
+              className={`h-2 w-full rounded-full transition duration-200 ease-out ${
+                index === activeIndex ? "bg-accent" : "bg-white/10"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>

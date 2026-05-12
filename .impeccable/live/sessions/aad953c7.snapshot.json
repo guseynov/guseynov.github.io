@@ -1,0 +1,68 @@
+{
+  "id": "aad953c7",
+  "phase": "generate_requested",
+  "pageUrl": "/",
+  "sourceFile": null,
+  "expectedVariants": 3,
+  "arrivedVariants": 0,
+  "visibleVariant": 0,
+  "paramValues": {},
+  "pendingEventSeq": 2,
+  "pendingEvent": {
+    "type": "generate",
+    "id": "aad953c7",
+    "action": "impeccable",
+    "freeformPrompt": "Can we change the font?",
+    "count": 3,
+    "pageUrl": "/",
+    "element": {
+      "tagName": "div",
+      "id": null,
+      "classes": [
+        "flex",
+        "min-h-screen",
+        "flex-col",
+        "px-4",
+        "pt-4",
+        "pb-5",
+        "sm:px-6",
+        "sm:pb-6",
+        "lg:h-screen",
+        "lg:px-6",
+        "lg:pb-6"
+      ],
+      "textContent": "Alex GuseynovFrontend EngineerEmail AlexGitHubDownload CV10 years building production interfaces01 / INTROPolished product surfaces, strong frontend systems, and delivery you can trust.I build interfaces that stay clean under scale, from new product surfaces to legacy modernization. My work centers on React, TypeScript, Vue, and design-system minded UI architecture, with testing and implementation discipline treated as part of the product quality bar rather than cleanup work.01 / INTROReact, Typ",
+      "outerHTML": "<div class=\"flex min-h-screen flex-col px-4 pt-4 pb-5 sm:px-6 sm:pb-6 lg:h-screen lg:px-6 lg:pb-6\"><div class=\"mx-auto flex w-full max-w-[1200px] flex-col gap-4\"><header class=\"surface-floating blue-ring w-full shrink-0 rounded-[1.4rem] border border-white/8 bg-black/74 px-5 py-5 backdrop-blur-xl sm:px-6 lg:px-8\"><div class=\"space-y-4\"><p class=\"font-ui text-sm text-text-ghost sm:text-[1rem]\">Alex Guseynov</p><div class=\"flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between xl:gap-6\"><h1 class=\"text-display-hero min-w-0 max-w-[11ch] flex-1 text-balance text-text-strong xl:max-w-none xl:text-left\">Frontend Engineer</h1><div class=\"flex flex-wrap gap-2.5 sm:gap-3 xl:flex-none xl:justify-end\"><a class=\"control-tap-target inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-5 py-3.5 text-[0.98rem] font-medium leading-none transition duration-200 ease-out focus-visible:outline-none sm:min-h-12 sm:gap-2 sm:py-3 sm:text-sm border border-white/80 bg-white text-text-inverse shadow-[0_0_0_1px_rgba(0,153,255,0.18)] hover:-translate-y-0.5 hover:bg-white/92 active:translate-y-0 active:bg-white/88 focus-visible:shadow-[0_0_0_1px_rgba(0,153,255,0.34),0_0_0_4px_rgba(0,153,255,0.12)] px-5 \" href=\"mailto:me@alex23.com\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 25 25\" aria-hidden=\"true\" class=\"h-5 w-5 shrink-0\"><path d=\"M20.5 18.5H4.5V6.5H20.5V18.5Z\" stroke=\"currentColor\" stroke-width=\"1.2\"></path><path d=\"M20.5 18.5L17.75 15.5L15 12.5M4.5 18.5L10 12.5M20.5 6.5L12.5 15L4.5 6.5\" stroke=\"currentColor\" stroke-width=\"1.2\"></path></svg>Email Alex</a><a class=\"control-tap-target inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-5 py-3.5 text-[0.98rem] font-medium leading-none transition duration-200 ease-out focus-visible:outline-none sm:min-h-12 sm:gap-2 sm:py-3 sm:text-sm border border-white/10 bg-white/10 text-text-strong backdrop-blur-sm hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/16 active:translate-y-0 active:border-white/18 active:bg-white/12 focus-visible:border-white/24 focus-visible:shadow-[0_0_0_1px_rgba(0,153,255,0.34),0_0_0_4px_rgba(0,153,255,0.12)] px-5 \" href=\"https://github.com/guseynov\" target=\"_blank\" rel=\"noreferrer\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 25 25\" aria-hidden=\"true\" class=\"h-5 w-5 shrink-0\"><path d=\"M14 6.5H5.5V19.5H18.5V11M20.5 4.5L10.5 14.5\" stroke=\"currentColor\" stroke-width=\"1.2\"></path><path d=\"M16 4.5H20.5V9\" stroke=\"currentColor\" stroke-width=\"1.2\"></path></svg>GitHub</a><a class=\"control-tap-target inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-5 py-3.5 text-[0.98rem] font-medium leading-none transition duration-200 ease-out focus-visible:outline-none sm:min-h-12 sm:gap-2 sm:py-3 sm:text-sm border border-white/10 bg-white/10 text-text-strong backdrop-blur-sm hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/16 active:translate-y-0 active:border-white/18 active:bg-white/12 focus-visible:border-white/24 focus-visible:shadow-[0_0_0_1px_rgba(0,153,255,0.34),0_0_0_4px_rgba(0,153,255,0.12)] px-5 \" href=\"/alex-guseynov-cv.pdf\" download=\"\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 25 25\" aria-hidden=\"true\" class=\"h-5 w-5 shrink-0\"><path d=\"M12.5 5.5V15M8.5 11L12.5 15L16.5 11M6 18.5H19\" stroke=\"currentColor\" stroke-width=\"1.2\"></path></svg>Download CV</a></div></div><div><p class=\"font-ui max-w-3xl text-sm leading-6 text-text-muted sm:text-base\">10 years building production interfaces</p></div></div></header></div><main id=\"main-content\" class=\"flex w-full flex-col overflow-visible lg:min-h-0 lg:flex-1\" aria-labelledby=\"intro-title\"><div class=\"hidden overflow-visible lg:block lg:min-h-0 lg:flex-1 lg:cursor-grab active:lg:cursor-grabbing\"><div class=\"flex h-full items-stretch gap-5 px-6 py-8 lg:px-8 xl:gap-6 xl:px-10\" style=\"transform: translate3d(616px, 0px, 0px);\"><div class=\"lg:flex lg:min-h-0 lg:flex-none lg:basis-[min(1200px,calc(100vw-10rem))]\"><section id=\"intro\" aria-labelledby=\"intro-title\" class=\"overflow-visible rounded-[1.35rem] scroll-mt-28 lg:min-h-0 lg:rounded-[1.6rem] h-full w-full\"><div class=\"surface-hero blue-glow flex flex-col rounded-[inherit] border border-white/8 bg-surface/92 lg:h-full lg:min-h-0 lg:overflow-hidden\"><div class=\"section-scroll flex flex-col gap-5 p-4 sm:gap-8 sm:p-6 lg:h-full lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pr-3 xl:p-7\"><header class=\"flex flex-col gap-4 border-b border-white/8 pb-4 sm:gap-5 sm:pb-5 md:flex-row md:items-start md:justify-between\"><div class=\"max-w-2xl space-y-3\"><span class=\"mb-2 block font-mono text-[0.7rem] uppercase tracking-[0.22em] text-text-ghost md:hidden\">01 / INTRO</span><h2 id=\"intro-title\" class=\"text-display-title max-w-3xl text-text-strong\">Polished product surfaces, strong frontend systems, and delivery you can trust.</h2><p class=\"font-ui max-w-2xl text-[0.95rem] leading-6 text-text-muted sm:text-[0.98rem] sm:leading-7\">I build interfaces that stay clean under scale, from new product surfaces to legacy modernization. My work centers on React, TypeScript, Vue, and design-system minded UI architecture, with testing and implementation discipline treated as part of the product quality bar rather than cleanup work.</p></div><div class=\"flex flex-col gap-5 md:items-end\"><span class=\"hidden font-mono text-[0.7rem] uppercase tracking-[0.22em] text-text-ghost md:inline\">01 / INTRO</span><div class=\"flex flex-wrap gap-2 md:justify-end\"><span class=\"rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-sm text-text-muted backdrop-blur-sm\">React, TypeScript, Vue, Tailwind</span><span class=\"rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-sm text-text-muted backdrop-blur-sm\">UI kits, microfrontends, legacy modernization</span><span class=\"rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-sm text-text-muted backdrop-blur-sm\">Startup speed and large-company delivery discipline</span></div></div></header><div><div class=\"grid min-h-0 gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(19rem,0.95fr)]\"><div class=\"flex min-h-0 flex-col justify-between gap-7 sm:gap-8\"><div class=\"space-y-5 sm:space-y-6\"><div class=\"min-w-0 border border-border/80 rounded-[1rem] border border-white/10 bg-white/5 p-5 space-y-4\"><div class=\"flex flex-wrap items-center justify-between gap-3\"><p class=\"font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost\">At a glance</p><p class=\"font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost\">Shipping profile</p></div><div class=\"grid gap-3 sm:grid-cols-3\"><div class=\"space-y-2 rounded-[0.9rem] border border-white/8 bg-white/[0.03] px-4 py-3.5 sm:border-r-white/12\"><p class=\"font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost\">Focus</p><p class=\"text-[1rem] font-semibold tracking-[-0.03em] text-text-strong sm:text-[1.05rem]\">UI architecture</p></div><div class=\"space-y-2 rounded-[0.9rem] border border-white/8 bg-white/[0.03] px-4 py-3.5 sm:border-r-white/12\"><p class=\"font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost\">Stack</p><p class=\"text-[1rem] font-semibold tracking-[-0.03em] text-text-strong sm:text-[1.05rem]\">React and Vue</p></div><div class=\"space-y-2 rounded-[0.9rem] border border-white/8 bg-white/[0.03] px-4 py-3.5\"><p class=\"font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost\">Strength</p><p class=\"text-[1rem] font-semibold tracking-[-0.03em] text-text-strong sm:text-[1.05rem]\">Quality at speed</p></div></div></div><p class=\"font-ui max-w-3xl text-[1.03rem] leading-7 text-text-strong sm:text-xl sm:leading-8\">I focus on frontend work that affects how a product feels in use: interface clarity, system consistency, implementation quality, and the details people notice when they cannot name them.</p></div><div class=\"flex flex-wrap gap-2.5 sm:gap-3\"><a class=\"control-tap-target inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-5 py-3.5 text-[0.98rem] font-medium leading-none transition duration-200 ease-out focus-visible:outline-none sm:min-h-12 sm:gap-2 sm:py-3 sm:text-sm border border-white/80 bg-white text-text-inverse shadow-[0_0_0_1px_rgba(0,153,255,0.18)] hover:-translate-y-0.5 hover:bg-white/92 active:translate-y-0 active:bg-white/88 focus-visible:shadow-[0_0_0_1px_rgba(0,153,255,0.34),0_0_0_4px_rgba(0,153,255,0.12)]\" href=\"mailto:me@alex23.com\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 25 25\" aria-hidden=\"true\" class=\"h-5 w-5 shrink-0\"><path d=\"M20.5 18.5H4.5V6.5H20.5V18.5Z\" stroke=\"currentColor\" stroke-width=\"1.2\"></path><path d=\"M20.5 18.5L17.75 15.5L15 12.5M4.5 18.5L10 12.5M20.5 6.5L12.5 15L4.5 6.5\" stroke=\"currentColor\" stroke-width=\"1.2\"></path></svg>Start a conversation</a><a class=\"control-tap-target inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-5 py-3.5 text-[0.98rem] font-medium leading-none transition duration-200 ease-out focus-visible:outline-none sm:min-h-12 sm:gap-2 sm:py-3 sm:text-sm border border-white/10 bg-white/10 text-text-strong backdrop-blur-sm hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/16 active:translate-y-0 active:border-white/18 active:bg-white/12 focus-visible:border-white/24 focus-visible:shadow-[0_0_0_1px_rgba(0,153,255,0.34),0_0_0_4px_rgba(0,153,255,0.12)]\" href=\"/alex-guseynov-cv.pdf\" download=\"\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 25 25\" aria-hidden=\"true\" class=\"h-5 w-5 shrink-0\"><path d=\"M12.5 5.5V15M8.5 11L12.5 15L16.5 11M6 18.5H19\" stroke=\"currentColor\" stroke-width=\"1.2\"></path></svg>Download CV</a></div></div><div class=\"min-w-0 border border-border/80 surface-floating blue-ring rounded-[1.1rem] bg-surface/92 p-5 sm:p-6 xl:p-7 flex min-h-0 flex-col justify-between gap-6 overflow-hidden\"><div class=\"space-y-6\"><div><p class=\"font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost\">Public links</p><ul class=\"mt-5 space-y-4 text-sm text-te",
+      "computedStyles": {
+        "font-family": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "line-height": "24px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "padding": "16px 24px 24px",
+        "margin": "0px",
+        "display": "flex",
+        "position": "static",
+        "gap": "normal",
+        "border-radius": "0px",
+        "box-shadow": "none"
+      },
+      "cssCustomProperties": {},
+      "parentContext": "<div class=\"min-h-screen bg-canvas text-text-strong antialiased\">",
+      "boundingRect": {
+        "width": 2560,
+        "height": 1271
+      }
+    }
+  },
+  "deliveryLease": null,
+  "checkpointRevision": 1,
+  "activeOwner": "af540c22",
+  "sourceMarkers": {},
+  "fallbackMode": null,
+  "annotationArtifacts": [],
+  "diagnostics": [],
+  "updatedAt": "2026-05-11T10:18:49.611Z"
+}

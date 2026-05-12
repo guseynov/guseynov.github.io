@@ -18,7 +18,9 @@ export interface SectionNavItem {
 export interface SkillGroup {
   title: string;
   summary: string;
-  items: Array<string | { label: string; icon?: "terminal" | "spark" | "nodes" | "chip" }>;
+  items: Array<
+    string | { label: string; icon?: "terminal" | "spark" | "nodes" | "chip" }
+  >;
 }
 
 export interface ExperienceEntry {
@@ -81,18 +83,18 @@ export const siteContent: SiteContent = {
   profile: {
     name: "Alex Guseynov",
     role: "Frontend Engineer",
-    experienceLabel: "10 years building production interfaces",
-    email: "alex.guseynov.23@gmail.com",
+    experienceLabel: "10 years shipping production frontend work",
+    email: "me@alex23.com",
     githubUrl: "https://github.com/guseynov",
-    linkedinUrl: "https://www.linkedin.com/in/aguseynov/",
+    linkedinUrl: "https://linkedin.com/in/aguseynov/",
     cvPath: "alex-guseynov-cv.pdf",
   },
   intro: {
     eyebrow: "Frontend Engineer",
     headline:
-      "Polished product surfaces, strong frontend systems, and delivery you can trust.",
+      "Frontend systems, product polish, and delivery that holds up in production.",
     summary:
-      "I build interfaces that stay clean under scale, from new product surfaces to legacy modernization. My work centers on React, TypeScript, Vue, and design-system minded UI architecture, with testing and implementation discipline treated as part of the product quality bar rather than cleanup work.",
+      "I build interfaces that stay clear as products grow, from new surfaces to legacy modernization. My work centers on React, TypeScript, Vue, and UI systems, with testing and implementation discipline treated as part of the product itself.",
     quickFacts: [
       "React, TypeScript, Vue, Tailwind",
       "UI kits, microfrontends, legacy modernization",
@@ -103,7 +105,7 @@ export const siteContent: SiteContent = {
     {
       title: "Core frontend systems",
       summary:
-        "Hands-on with modern component architecture and day-to-day product delivery.",
+        "The stack I use to build and maintain production interfaces day to day.",
       items: [
         "React.js",
         "Vue.js",
@@ -118,7 +120,7 @@ export const siteContent: SiteContent = {
     {
       title: "AI",
       summary:
-        "Comfortable using modern AI tooling in practical product and engineering workflows, from coding agents to integrated application features.",
+        "Practical use of modern AI tools in engineering workflows and product features.",
       items: [
         "AI coding workflows",
         "Prompt iteration",
@@ -131,7 +133,7 @@ export const siteContent: SiteContent = {
     {
       title: "Quality and maintainability",
       summary:
-        "I work toward interfaces that remain easy to extend after the first launch.",
+        "The habits and systems I rely on to keep a frontend healthy after launch.",
       items: [
         "Unit testing",
         "End-to-end testing",
@@ -143,7 +145,7 @@ export const siteContent: SiteContent = {
     {
       title: "Delivery strengths",
       summary:
-        "The work I tend to be trusted with when the frontend needs structure.",
+        "The kind of work teams usually hand me when the frontend needs structure.",
       items: [
         "UI kit ownership",
         "Microfrontend migration",
@@ -271,10 +273,10 @@ export const siteContent: SiteContent = {
     },
   ],
   contact: {
-    title: "Open to frontend roles where quality is visible in the product.",
-    body: "If you need someone who can shape the interface layer, improve consistency, and ship production-ready UI with care, I am available for conversations about permanent roles and strong product teams.",
+    title: "Available for frontend roles where product quality is visible in the interface.",
+    body: "If you need someone who can strengthen the interface layer, improve consistency, and ship production-ready UI with care, I am available for permanent roles and strong product teams.",
     availability:
-      "Best contact channel: email. CV download is available below.",
+      "Best first step: send an email. GitHub, LinkedIn, and the CV are here if you want more detail first.",
     primaryCtaLabel: "Email Alex",
     secondaryCtaLabel: "Open GitHub",
     tertiaryCtaLabel: "Download CV",
@@ -288,17 +290,17 @@ export const siteContent: SiteContent = {
   sections: [
     {
       id: SectionId.Intro,
-      label: "Intro",
+      label: "Overview",
       index: 0,
-      title: "Introduction",
-      shortDescription: "Positioning, links, and hiring context.",
+      title: "Overview",
+      shortDescription: "Frontend focus, fit, and hiring context.",
     },
     {
       id: SectionId.Capabilities,
-      label: "Skills",
+      label: "Capabilities",
       index: 1,
       title: "Capabilities",
-      shortDescription: "Technical strengths and frontend focus areas.",
+      shortDescription: "Tools, systems, and engineering strengths.",
     },
     {
       id: SectionId.Experience,
@@ -308,25 +310,18 @@ export const siteContent: SiteContent = {
       shortDescription: "Selected roles and delivery outcomes.",
     },
     {
-      id: SectionId.Projects,
-      label: "Projects",
-      index: 3,
-      title: "Selected Projects",
-      shortDescription: "Archived builds and static concepts collected in one place.",
-    },
-    {
       id: SectionId.Proof,
-      label: "Proof",
-      index: 4,
-      title: "Working Style",
-      shortDescription: "How Alex adds value in real teams.",
+      label: "Strengths",
+      index: 3,
+      title: "Strengths",
+      shortDescription: "Where Alex adds the most value in real teams.",
     },
     {
       id: SectionId.Contact,
-      label: "Contact",
-      index: 5,
-      title: "Hire Me",
-      shortDescription: "Direct outreach and CV access.",
+      label: "Get In Touch",
+      index: 4,
+      title: "Get In Touch",
+      shortDescription: "Direct outreach and supporting links.",
     },
   ],
 };

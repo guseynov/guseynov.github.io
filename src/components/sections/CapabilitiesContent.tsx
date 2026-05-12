@@ -1,33 +1,37 @@
 import clsx from "clsx";
 import {
-  ChipIcon,
-  NodesIcon,
-  SparkIcon,
-  TerminalIcon,
-} from "@/components/SanityIcons";
-import { chipVariants, panelVariants } from "@/components/ui";
+  Cpu,
+  Sparkles,
+  Terminal,
+  Workflow,
+} from "lucide-react";
+import { chipVariants } from "@/components/ui";
 import { siteContent } from "@/content/site";
 
 const SKILL_ITEM_ICONS = {
-  terminal: TerminalIcon,
-  spark: SparkIcon,
-  nodes: NodesIcon,
-  chip: ChipIcon,
+  terminal: Terminal,
+  spark: Sparkles,
+  nodes: Workflow,
+  chip: Cpu,
 } as const;
 
 export function CapabilitiesContent() {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid gap-5">
       {siteContent.skills.map((group) => (
         <article
           key={group.title}
-          className={clsx(panelVariants({ tone: "surface" }), "flex h-full flex-col")}
+          className={clsx(
+            "flex flex-col gap-4 border-b border-white/8 pb-5 last:border-b-0 last:pb-0",
+          )}
         >
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost">
-            {group.title}
-          </p>
-          <p className="mt-4 text-base leading-7 text-text-muted">{group.summary}</p>
-          <ul className="mt-6 flex flex-wrap gap-2">
+          <div className="space-y-2">
+            <h3 className="text-[1.2rem] font-semibold tracking-[-0.02em] text-text-strong">
+              {group.title}
+            </h3>
+            <p className="max-w-[62ch] text-base leading-7 text-text-muted">{group.summary}</p>
+          </div>
+          <ul className="flex flex-wrap gap-2">
             {group.items.map((item) => {
               const label = typeof item === "string" ? item : item.label;
               const Icon =
@@ -35,7 +39,7 @@ export function CapabilitiesContent() {
 
               return (
                 <li key={label} className={clsx(chipVariants(), "inline-flex items-center gap-2")}>
-                  {Icon ? <Icon aria-hidden="true" className="h-4 w-4 text-[#8fd0ff]" /> : null}
+                  {Icon ? <Icon aria-hidden="true" className="h-4 w-4 text-text-muted" /> : null}
                   <span>{label}</span>
                 </li>
               );

@@ -9,6 +9,8 @@ interface SectionCardProps extends PropsWithChildren {
   className?: string;
   aside?: ReactNode;
   contentRef?: Ref<HTMLDivElement>;
+  headerless?: boolean;
+  tone?: "dark" | "light";
 }
 
 export function SectionCard({
@@ -19,44 +21,80 @@ export function SectionCard({
   className = "",
   aside,
   contentRef,
+  headerless = false,
+  tone = "dark",
   children,
 }: SectionCardProps) {
+  const isLight = tone === "light";
+
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
       className={clsx(
-        "overflow-visible rounded-[1.35rem] scroll-mt-28 lg:min-h-0 lg:rounded-[1.6rem]",
+        "overflow-visible rounded-[1.35rem] scroll-mt-28 lg:rounded-[1.6rem]",
         className,
       )}
     >
-      <div className="surface-hero blue-glow flex flex-col rounded-[inherit] border border-white/8 bg-surface/92 lg:h-full lg:min-h-0 lg:overflow-hidden">
+      <div
+        className={clsx(
+          "flex flex-col rounded-[inherit] border",
+          isLight
+            ? "section-card-light border-black/8 bg-white text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)]"
+            : "surface-hero border-white/8 bg-surface/92",
+        )}
+      >
         <div
           ref={contentRef}
-          className="section-scroll flex flex-col gap-5 p-4 sm:gap-8 sm:p-6 lg:h-full lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pr-3 xl:p-7"
+          className="section-scroll flex flex-col gap-5 p-4 sm:gap-8 sm:p-6 xl:p-7"
         >
-          <header className="flex flex-col gap-4 border-b border-white/8 pb-4 sm:gap-5 sm:pb-5 md:flex-row md:items-start md:justify-between">
-            <div className="max-w-2xl space-y-3">
-              <span className="mb-2 block font-mono text-[0.7rem] uppercase tracking-[0.22em] text-text-ghost md:hidden">
-                {indexLabel}
-              </span>
-              <h2
-                id={`${id}-title`}
-                className="text-display-title max-w-3xl text-text-strong"
-              >
-                {title}
-              </h2>
-              <p className="font-ui max-w-2xl text-[0.95rem] leading-6 text-text-muted sm:text-[0.98rem] sm:leading-7">
-                {summary}
-              </p>
-            </div>
-            <div className="flex flex-col gap-5 md:items-end">
-              <span className="hidden font-mono text-[0.7rem] uppercase tracking-[0.22em] text-text-ghost md:inline">
-                {indexLabel}
-              </span>
-              {aside}
-            </div>
-          </header>
+          {headerless ? null : (
+            <header
+              className={clsx(
+                "flex flex-col gap-4 border-b pb-4 sm:gap-5 sm:pb-5 md:flex-row md:items-start md:justify-between",
+                isLight ? "border-black/8" : "border-white/8",
+              )}
+            >
+              <div className="max-w-[58ch] space-y-3">
+                <span
+                  className={clsx(
+                    "mb-2 block font-mono text-[0.7rem] uppercase tracking-[0.22em] md:hidden",
+                    isLight ? "text-text-inverse/44" : "text-text-ghost",
+                  )}
+                >
+                  {indexLabel}
+                </span>
+                <h2
+                  id={`${id}-title`}
+                  className={clsx(
+                    "text-display-title max-w-[14ch] sm:max-w-[16ch] md:max-w-[18ch]",
+                    isLight ? "text-text-inverse" : "text-text-strong",
+                  )}
+                >
+                  {title}
+                </h2>
+                <p
+                  className={clsx(
+                    "max-w-[62ch] text-[1rem] leading-7 sm:text-[1.02rem] sm:leading-8",
+                    isLight ? "text-text-inverse/72" : "text-text-muted",
+                  )}
+                >
+                  {summary}
+                </p>
+              </div>
+              <div className="flex flex-col gap-5 md:items-end">
+                <span
+                  className={clsx(
+                    "hidden font-mono text-[0.7rem] uppercase tracking-[0.22em] md:inline",
+                    isLight ? "text-text-inverse/44" : "text-text-ghost",
+                  )}
+                >
+                  {indexLabel}
+                </span>
+                {aside}
+              </div>
+            </header>
+          )}
           <div>{children}</div>
         </div>
       </div>

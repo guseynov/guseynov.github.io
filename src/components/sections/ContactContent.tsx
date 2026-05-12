@@ -1,21 +1,14 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
-import {
-  CheckIcon,
-  ChevronRightIcon,
-  CopyIcon,
-  DownloadIcon,
-  EnvelopeIcon,
-  LaunchIcon,
-} from "@/components/SanityIcons";
-import { ButtonLink, iconCircleClassName, panelVariants } from "@/components/ui";
+import { Check, Copy, ExternalLink } from "lucide-react";
+import { iconCircleClassName, panelVariants } from "@/components/ui";
 import { siteContent } from "@/content/site";
 import { trackCtaClick, trackEvent } from "@/lib/analytics";
 
 const CONTACT_REASONS = [
-  "Sharper component systems and stronger UI consistency.",
-  "Reliable frontend delivery backed by testing and structure.",
-  "Practical modernization without unnecessary disruption.",
+  "Sharper component systems and more consistent UI.",
+  "Frontend delivery backed by testing and structure.",
+  "Practical modernization without unnecessary churn.",
 ];
 
 interface ContactContentProps {
@@ -81,18 +74,10 @@ export function ContactContent({ cvHref }: ContactContentProps) {
   };
 
   return (
-    <div className="grid min-h-0 min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_25rem]">
-      <div
-        className={clsx(
-          panelVariants({ tone: "surface" }),
-          "flex min-h-0 min-w-0 flex-col justify-between gap-6",
-        )}
-      >
+    <div className="grid min-h-0 min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_23rem]">
+      <div className="flex min-h-0 min-w-0 flex-col justify-between gap-6">
         <div>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
-            Contact
-          </p>
-          <div className="mt-6 flex min-w-0 items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3">
             <a
               href={`mailto:${siteContent.profile.email}`}
               onClick={() =>
@@ -102,7 +87,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                   placement: "contact_section_address",
                 })
               }
-              className="block min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[1.3rem] leading-[0.96] font-medium tracking-[-0.05em] text-text-strong sm:text-[clamp(1.7rem,3vw,2.5rem)]"
+              className="block min-w-0 flex-1 break-all text-[1.3rem] leading-[0.96] font-medium tracking-[-0.05em] text-text-strong sm:truncate sm:break-normal sm:whitespace-nowrap sm:text-[clamp(1.7rem,3vw,2.5rem)]"
               title={siteContent.profile.email}
             >
               {siteContent.profile.email}
@@ -111,18 +96,18 @@ export function ContactContent({ cvHref }: ContactContentProps) {
               type="button"
               onClick={handleCopyEmail}
               className={clsx(
-                "inline-flex shrink-0 items-center justify-center rounded-full border px-4 py-2.5 text-sm font-medium tracking-[0.04em] transition sm:px-5",
+                "control-tap-target inline-flex shrink-0 items-center justify-center rounded-[3px] border px-4 py-2.5 text-sm font-medium tracking-[0.04em] transition-colors duration-200 ease-out focus-visible:outline-none sm:px-5",
                 isCopied
-                  ? "border-accent bg-accent text-white"
-                  : "border-white/10 bg-white/10 text-text-strong hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/16",
+                  ? "border-accent bg-accent text-white shadow-[0_0_0_1px_rgba(255,255,255,0.22)]"
+                  : "border-white/10 bg-white/10 text-text-strong hover:bg-white/16 active:bg-white/12 focus-visible:border-white/24 focus-visible:shadow-[0_0_0_1px_rgba(255,255,255,0.34),0_0_0_4px_rgba(255,255,255,0.1)]",
               )}
               aria-label={isCopied ? "Email copied" : "Copy email address"}
             >
               <span className="inline-flex items-center gap-2">
                 {isCopied ? (
-                  <CheckIcon aria-hidden="true" className="h-5 w-5" />
+                  <Check aria-hidden="true" className="h-5 w-5" />
                 ) : (
-                  <CopyIcon aria-hidden="true" className="h-5 w-5" />
+                  <Copy aria-hidden="true" className="h-5 w-5" />
                 )}
                 <span className="hidden sm:inline">Copy</span>
               </span>
@@ -131,65 +116,15 @@ export function ContactContent({ cvHref }: ContactContentProps) {
           <p className="mt-6 max-w-xl text-base leading-7 text-text-muted">
             {siteContent.contact.availability}
           </p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <ButtonLink
-            href={`mailto:${siteContent.profile.email}`}
-            tone="primary"
-            icon={<EnvelopeIcon aria-hidden="true" className="h-5 w-5 shrink-0" />}
-            onClick={() =>
-              trackCtaClick({
-                label: siteContent.contact.primaryCtaLabel,
-                href: `mailto:${siteContent.profile.email}`,
-                placement: "contact_section_primary",
-              })
-            }
-          >
-            {siteContent.contact.primaryCtaLabel}
-          </ButtonLink>
-          <ButtonLink
-            href={siteContent.profile.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            icon={<LaunchIcon aria-hidden="true" className="h-5 w-5 shrink-0" />}
-            onClick={() =>
-              trackCtaClick({
-                label: siteContent.contact.secondaryCtaLabel,
-                href: siteContent.profile.githubUrl,
-                placement: "contact_section_secondary",
-              })
-            }
-          >
-            {siteContent.contact.secondaryCtaLabel}
-          </ButtonLink>
-          <ButtonLink
-            href={cvHref}
-            download
-            icon={<DownloadIcon aria-hidden="true" className="h-5 w-5 shrink-0" />}
-            onClick={() =>
-              trackCtaClick({
-                label: siteContent.contact.tertiaryCtaLabel,
-                href: cvHref,
-                placement: "contact_section_tertiary",
-              })
-            }
-          >
-            {siteContent.contact.tertiaryCtaLabel}
-          </ButtonLink>
-        </div>
-      </div>
-      <div className="grid min-w-0 gap-4">
-        <div className={panelVariants({ tone: "subtle" })}>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
-            Why teams bring me in
-          </p>
-          <ul className="mt-5 space-y-3 text-base leading-7 text-text-muted">
+          <ul className="mt-6 space-y-3 border-t border-white/8 pt-5 text-base leading-7 text-text-muted">
             {CONTACT_REASONS.map((reason) => (
               <li key={reason}>{reason}</li>
             ))}
           </ul>
         </div>
-        <div className={panelVariants({ tone: "subtle" })}>
+      </div>
+      <div className={panelVariants({ tone: "subtle" })}>
+        <div>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-text-ghost">
             Public links
           </p>
@@ -216,7 +151,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                 </p>
               </div>
               <span className={iconCircleClassName}>
-                <LaunchIcon aria-hidden="true" className="h-5 w-5 text-accent" />
+                <ExternalLink aria-hidden="true" className="h-5 w-5 text-text-muted" />
               </span>
             </a>
             <a
@@ -241,7 +176,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                 </p>
               </div>
               <span className={iconCircleClassName}>
-                <LaunchIcon aria-hidden="true" className="h-5 w-5 text-accent" />
+                <ExternalLink aria-hidden="true" className="h-5 w-5 text-text-muted" />
               </span>
             </a>
             <a
@@ -260,10 +195,10 @@ export function ContactContent({ cvHref }: ContactContentProps) {
                 <p className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-text-ghost">
                   CV
                 </p>
-                <p className="mt-2 text-lg text-text-strong">Download the latest CV</p>
+                <p className="mt-2 text-lg text-text-strong">Download CV</p>
               </div>
               <span className={iconCircleClassName}>
-                <ChevronRightIcon aria-hidden="true" className="h-5 w-5 text-accent" />
+                <ExternalLink aria-hidden="true" className="h-5 w-5 text-text-muted" />
               </span>
             </a>
           </div>

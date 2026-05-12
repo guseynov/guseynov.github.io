@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import { GripVertical } from "lucide-react";
 import type { SectionNavItem } from "@/content/site";
-import { DragHandleIcon } from "@/components/SanityIcons";
 
 interface BottomSliderProps {
   sections: SectionNavItem[];
@@ -134,13 +134,13 @@ export function BottomSlider({
               onClick={() => onSelect(index)}
               aria-label={`Jump to ${section.title}`}
               aria-pressed={index === activeIndex}
-              className="flex h-6 w-6 items-center justify-center rounded-full"
+              className="control-tap-target flex w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
               <span
-              className={clsx(
-                "h-2 w-2 rounded-full bg-dot-muted",
-                index === activeIndex && "bg-dot-active",
-              )}
+                className={clsx(
+                  "h-2 w-2 rounded-full bg-dot-muted transition duration-200 ease-out",
+                  index === activeIndex && "bg-dot-active",
+                )}
               />
             </button>
           ))}
@@ -162,7 +162,7 @@ export function BottomSlider({
           onPointerCancel={finishDrag}
         >
           <span aria-hidden="true" className="shrink-0 text-icon-strong">
-            <DragHandleIcon aria-hidden="true" className="h-6 w-6" />
+            <GripVertical aria-hidden="true" className="h-6 w-6" />
           </span>
         </button>
       </div>

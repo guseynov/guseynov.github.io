@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/SanityIcons";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { iconButtonVariants, panelVariants, tabButtonVariants } from "@/components/ui";
 import { siteContent } from "@/content/site";
 
@@ -29,7 +29,7 @@ export function ExperienceContent() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost">
-            Role spotlight
+            Selected role
           </p>
           <p className="mt-2 text-sm text-text-muted">
             {String(selectedIndex + 1).padStart(2, "0")} /{" "}
@@ -49,7 +49,7 @@ export function ExperienceContent() {
             })}
           >
             <span aria-hidden="true" className="text-icon-strong">
-              <ChevronLeftIcon aria-hidden="true" className="h-6 w-6" />
+              <ChevronLeft aria-hidden="true" className="h-6 w-6" />
             </span>
           </button>
           <button
@@ -64,7 +64,7 @@ export function ExperienceContent() {
             })}
           >
             <span aria-hidden="true" className="text-icon-strong">
-              <ChevronRightIcon aria-hidden="true" className="h-6 w-6" />
+              <ChevronRight aria-hidden="true" className="h-6 w-6" />
             </span>
           </button>
         </div>
