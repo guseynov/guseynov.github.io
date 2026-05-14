@@ -18,9 +18,11 @@ export interface SectionNavItem {
 export interface SkillGroup {
   title: string;
   summary: string;
-  items: Array<
-    string | { label: string; icon?: "terminal" | "spark" | "nodes" | "chip" }
-  >;
+  items: Array<{
+    label: string;
+    icon: string;
+    href?: string;
+  }>;
 }
 
 export interface ExperienceEntry {
@@ -49,7 +51,6 @@ export interface SiteContent {
     role: string;
     experienceLabel: string;
     email: string;
-    githubUrl: string;
     linkedinUrl: string;
     cvPath: string;
   };
@@ -85,7 +86,7 @@ export const siteContent: SiteContent = {
     role: "Frontend Engineer",
     experienceLabel: "10 years shipping production frontend work",
     email: "me@alex23.com",
-    githubUrl: "https://github.com/guseynov",
+    githubUrl: "https://github.com/guseynov/",
     linkedinUrl: "https://linkedin.com/in/aguseynov/",
     cvPath: "alex-guseynov-cv.pdf",
   },
@@ -103,55 +104,93 @@ export const siteContent: SiteContent = {
   },
   skills: [
     {
-      title: "Core frontend systems",
+      title: "Core frontend",
       summary:
-        "The stack I use to build and maintain production interfaces day to day.",
+        "The languages and frameworks I use to build production interfaces.",
       items: [
-        "React.js",
-        "Vue.js",
-        "TypeScript",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Tailwind",
-        "Redux",
+        { label: "React", icon: "react" },
+        { label: "TypeScript", icon: "typescript" },
+        { label: "JavaScript", icon: "javascript" },
+        { label: "HTML", icon: "html" },
+        { label: "CSS", icon: "css" },
+        { label: "Next.js", icon: "next" },
+        { label: "Vue", icon: "vue" },
+        { label: "Nuxt", icon: "nuxt" },
       ],
     },
     {
-      title: "AI",
+      title: "UI engineering",
       summary:
-        "Practical use of modern AI tools in engineering workflows and product features.",
+        "Interface systems, product surfaces, and the details that keep them usable.",
       items: [
-        "AI coding workflows",
-        "Prompt iteration",
-        "LLM API integration",
-        "Agentic prototyping",
-        "Workflow automation",
-        "Evaluation-minded implementation",
+        { label: "Design Systems", icon: "design-systems" },
+        { label: "Component Libraries", icon: "component-libraries" },
+        { label: "Responsive UI", icon: "responsive-ui" },
+        { label: "Accessibility", icon: "accessibility" },
+        { label: "Performance Optimization", icon: "performance" },
+        { label: "Complex Product UI", icon: "product-ui" },
+        { label: "Interactive Interfaces", icon: "interactive" },
       ],
     },
     {
-      title: "Quality and maintainability",
+      title: "State & data",
       summary:
-        "The habits and systems I rely on to keep a frontend healthy after launch.",
+        "Client state, server data, transport patterns, and form architecture.",
       items: [
-        "Unit testing",
-        "End-to-end testing",
-        "SCSS architecture",
-        "Reusable component design",
-        "UI consistency systems",
+        { label: "Redux", icon: "redux" },
+        { label: "Zustand", icon: "zustand" },
+        { label: "TanStack Query / React Query", icon: "react-query" },
+        { label: "REST APIs", icon: "rest" },
+        { label: "WebSockets", icon: "websockets" },
+        { label: "Form Architecture", icon: "forms" },
       ],
     },
     {
-      title: "Delivery strengths",
+      title: "Styling",
       summary:
-        "The kind of work teams usually hand me when the frontend needs structure.",
+        "The styling layer, from utility CSS to maintainable design tokens.",
       items: [
-        "UI kit ownership",
-        "Microfrontend migration",
-        "Legacy modernization",
-        "Design-to-code translation",
-        "Cross-functional implementation",
+        { label: "Tailwind CSS", icon: "tailwind" },
+        { label: "CSS Modules", icon: "css-modules" },
+        { label: "Styled Components", icon: "styled-components" },
+        { label: "SCSS", icon: "scss" },
+        { label: "Design Tokens", icon: "design-tokens" },
+      ],
+    },
+    {
+      title: "Tooling",
+      summary:
+        "Build tools, delivery infrastructure, diagnostics, and AI-assisted execution.",
+      items: [
+        { label: "Vite", icon: "vite" },
+        { label: "Webpack", icon: "webpack" },
+        { label: "CI/CD", icon: "ci-cd" },
+        { label: "Sentry", icon: "sentry" },
+        { label: "Git", icon: "git" },
+        { label: "AI-assisted Development", icon: "ai-development" },
+      ],
+    },
+    {
+      title: "Testing",
+      summary:
+        "The test tools I use to keep interactions and regressions visible.",
+      items: [
+        { label: "Jest", icon: "jest" },
+        { label: "React Testing Library", icon: "testing-library" },
+        { label: "Cypress", icon: "cypress" },
+        { label: "Playwright", icon: "playwright" },
+      ],
+    },
+    {
+      title: "Backend-adjacent",
+      summary:
+        "Server-side technologies I can work around when the frontend crosses boundaries.",
+      items: [
+        { label: "Node.js", icon: "node" },
+        { label: "C#", icon: "csharp" },
+        { label: "ASP.NET", icon: "aspnet", href: "http://asp.net/" },
+        { label: "PHP", icon: "php" },
+        { label: "CodeIgniter", icon: "codeigniter" },
       ],
     },
   ],
@@ -161,9 +200,11 @@ export const siteContent: SiteContent = {
       period: "Aug 2024 - Present",
       role: "Frontend Developer",
       impact: [
-        "Built scalable React components for an AI-powered educational product.",
-        "Introduced a structured SCSS architecture to improve UI consistency and maintainability.",
-        "Contributed MVC components in ASP.NET/C# to support backend integration flows.",
+        "Built AI-powered ESL tools for teachers and students.",
+        "Worked on lesson-generation flows with AI, TTS, images, and editable materials.",
+        "Rebuilt scattered styles into a reusable SCSS and UI kit foundation.",
+        "Built admin screens for analytics, Stripe, and internal operations.",
+        "Maintained Storybook examples for shared UI components.",
       ],
     },
     {
@@ -171,8 +212,11 @@ export const siteContent: SiteContent = {
       period: "Mar 2023 - Aug 2024",
       role: "Frontend Developer",
       impact: [
-        "Led the creation of a feature-rich Vue 3 UI kit used across company projects.",
-        "Focused on high-performing, thoroughly tested components that reduced duplication.",
+        "Built a Vue UI kit from scratch.",
+        "Used JSON design tokens for themes, colors, and component variants.",
+        "Created inputs, dropdowns, modals, sliders, date/time pickers, and color pickers.",
+        "Designed detailed mobile interactions like calendars and spinning time wheels.",
+        "Documented component states, themes, sizes, and usage examples.",
       ],
     },
     {
@@ -180,9 +224,11 @@ export const siteContent: SiteContent = {
       period: "Feb 2021 - Mar 2023",
       role: "Frontend Developer",
       impact: [
-        "Developed and maintained an EdTech microfrontend using React, TypeScript, and Tailwind CSS.",
-        "Migrated a legacy monolith toward microfrontend architecture for better scalability.",
-        "Expanded unit and end-to-end test coverage to keep quality predictable at scale.",
+        "Built EdTech task-constructor flows for teachers and students.",
+        "Implemented widgets with editing and learning modes.",
+        "Used React, TypeScript, GraphQL, and Effector for task sync.",
+        "Worked on answer storage, scoring, and review flows.",
+        "Helped standardize reusable task-building patterns.",
       ],
     },
     {
@@ -190,36 +236,36 @@ export const siteContent: SiteContent = {
       period: "Apr 2020 - Feb 2021",
       role: "Frontend Developer",
       impact: [
-        "Built a React SPA for a large EdTech engagement with game-like learning experiences.",
-        "Contributed peer reviews and coding standards that improved team consistency.",
+        "Built an interactive EdTech product from scratch.",
+        "Used React and Redux for stateful learning flows.",
+        "Created browser-based experiences closer to a game than a static course.",
+        "Built reusable frontend structure for interactive screens.",
       ],
     },
     {
-      company: "Earlier roles",
+      company: "Older roles",
       period: "Mar 2015 - Apr 2020",
       role: "Frontend Developer",
       impact: [
-        "Freelance, Netrika, and RoyalMark: shipped production interfaces across different business contexts.",
-        "Built a broad foundation in frontend execution, collaboration, and product delivery.",
+        "Delivered 20+ frontend and backend web projects.",
+        "Built websites, CMS projects, public-sector interfaces, and PHP apps.",
+        "Worked with JavaScript, HTML, CSS, PHP, and CodeIgniter.",
+        "Handled requirements, implementation, fixes, releases, and support.",
       ],
     },
   ],
   strengths: [
     {
-      title: "Design systems without design drift",
-      body: "I am often at my best when building the components and conventions that keep interfaces coherent across teams and releases.",
+      title: "Complex product UI",
+      body: "I do best on interfaces that have to support real workflows, not just present information. The work usually has moving parts, state, and enough edge cases that clarity matters more than decoration.",
     },
     {
-      title: "Modernization with product sensitivity",
-      body: "I can improve an aging frontend without treating it like a greenfield fantasy. The goal is cleaner systems with lower risk, not needless churn.",
+      title: "Reusable frontend foundations",
+      body: "I like turning scattered frontend decisions into a system the rest of the team can keep using. That usually means fewer one-offs, cleaner patterns, and a codebase that is easier to extend.",
     },
     {
-      title: "Testing as part of implementation",
-      body: "High-quality delivery means adding coverage where it protects the product, not leaving QA as a separate cleanup phase.",
-    },
-    {
-      title: "Comfort in different operating environments",
-      body: "I have worked in startups and larger organizations, which makes it easier to balance speed, clarity, and maintainability under different constraints.",
+      title: "Details that survive production",
+      body: "I pay attention to the details that make interfaces feel finished after launch, including behavior, states, accessibility, and the implementation choices that other engineers inherit.",
     },
   ],
   projects: [
@@ -273,13 +319,13 @@ export const siteContent: SiteContent = {
     },
   ],
   contact: {
-    title: "Available for frontend roles where product quality is visible in the interface.",
-    body: "If you need someone who can strengthen the interface layer, improve consistency, and ship production-ready UI with care, I am available for permanent roles and strong product teams.",
+    title: "Available for frontend roles where interface quality matters.",
+    body: "If the role needs stronger frontend systems, sharper product judgment, and production-ready interface work that holds up after launch, email is the fastest way to start the conversation.",
     availability:
-      "Best first step: send an email. GitHub, LinkedIn, and the CV are here if you want more detail first.",
+      "Best first step: send an email. LinkedIn and the CV are here if you want more detail first.",
     primaryCtaLabel: "Email Alex",
-    secondaryCtaLabel: "Open GitHub",
-    tertiaryCtaLabel: "Download CV",
+    secondaryCtaLabel: "Copy Email",
+    tertiaryCtaLabel: "View CV",
   },
   seo: {
     title: "Alex Guseynov | Frontend Engineer",
@@ -297,10 +343,10 @@ export const siteContent: SiteContent = {
     },
     {
       id: SectionId.Capabilities,
-      label: "Capabilities",
+      label: "Skills",
       index: 1,
-      title: "Capabilities",
-      shortDescription: "Tools, systems, and engineering strengths.",
+      title: "Skills",
+      shortDescription: "Frontend stack, UI systems, tooling, testing, and backend-adjacent work.",
     },
     {
       id: SectionId.Experience,

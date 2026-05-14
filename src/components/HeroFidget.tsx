@@ -1,22 +1,42 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import type { PointerEvent } from "react";
+import { AudioLines, Volume2, VolumeX } from "lucide-react";
 import * as THREE from "three";
 
-interface FidgetAudio {
+interface StringAudio {
   context: AudioContext;
-  play: (kind: "tick" | "snap", intensity: number, pan: number) => void;
+  play: (frequency: number, intensity: number, pan: number) => void;
   dispose: () => void;
 }
 
-interface FidgetState {
-  targetX: number;
-  targetY: number;
-  currentX: number;
-  currentY: number;
-  velocity: number;
-  pointerActive: boolean;
+interface SoundPreset {
+  decay: number;
+  filterBase: number;
+  filterSweep: number;
+  master: number;
+  primary: OscillatorType;
+  secondary: OscillatorType;
+  scale: number[];
+}
+
+interface SonicString {
+  mesh: THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>;
+  material: THREE.MeshBasicMaterial;
+  points: THREE.Vector2[];
+  frequency: number;
+  width: number;
+  baseOpacity: number;
+  armed: boolean;
+  pulse: number;
+  proximity: number;
+  lastHitAt: number;
+  phase: number;
+}
+
+interface InstrumentState {
+  pointer: THREE.Vector2;
+  target: THREE.Vector2;
   soundEnabled: boolean;
-  lastSoundAt: number;
   visible: boolean;
 }
 
@@ -25,9 +45,167 @@ type AudioWindow = Window &
     webkitAudioContext?: typeof AudioContext;
   };
 
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+type HeroWindow = Window &
+  typeof globalThis & {
+    __heroLineHits?: number;
+  };
 
-function createFidgetAudio(): FidgetAudio | null {
+const STRING_COUNT = 12;
+const STRING_POINTS = 72;
+const HIT_DISTANCE = 0.062;
+const REARM_DISTANCE = 0.15;
+const STRING_SPAN_X = 4.4;
+const STRING_SEQUENCE = [
+  246.94, // B
+  293.66, // D
+  329.63, // E
+  440, // A
+  440, // A
+  392, // G
+  369.99, // F#
+  293.66, // D
+  293.66, // D
+  440, // A
+  277.18, // C#
+  293.66, // D
+];
+const SOUND_PRESETS: SoundPreset[] = [
+  {
+    decay: 0.72,
+    filterBase: 2100,
+    filterSweep: 1200,
+    master: 0.18,
+    primary: "sine",
+    secondary: "triangle",
+    scale: STRING_SEQUENCE,
+  },
+  {
+    decay: 0.48,
+    filterBase: 2800,
+    filterSweep: 1700,
+    master: 0.14,
+    primary: "triangle",
+    secondary: "sine",
+    scale: STRING_SEQUENCE,
+  },
+  {
+    decay: 0.9,
+    filterBase: 1700,
+    filterSweep: 900,
+    master: 0.2,
+    primary: "sine",
+    secondary: "sawtooth",
+    scale: STRING_SEQUENCE,
+  },
+  {
+    decay: 0.62,
+    filterBase: 2400,
+    filterSweep: 1450,
+    master: 0.16,
+    primary: "square",
+    secondary: "sine",
+    scale: STRING_SEQUENCE,
+  },
+];
+
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+const mix = (from: number, to: number, amount: number) => from + (to - from) * amount;
+
+function distanceToSegment(point: THREE.Vector2, start: THREE.Vector2, end: THREE.Vector2) {
+  const segmentX = end.x - start.x;
+  const segmentY = end.y - start.y;
+  const lengthSquared = segmentX * segmentX + segmentY * segmentY;
+
+  if (lengthSquared === 0) {
+    return point.distanceTo(start);
+  }
+
+  const t = clamp(
+    ((point.x - start.x) * segmentX + (point.y - start.y) * segmentY) / lengthSquared,
+    0,
+    1,
+  );
+
+  return Math.hypot(point.x - (start.x + t * segmentX), point.y - (start.y + t * segmentY));
+}
+
+function distanceToPolyline(point: THREE.Vector2, points: THREE.Vector2[]) {
+  let closest = Number.POSITIVE_INFINITY;
+
+  for (let index = 0; index < points.length - 1; index += 1) {
+    closest = Math.min(closest, distanceToSegment(point, points[index], points[index + 1]));
+  }
+
+  return closest;
+}
+
+function createRibbonGeometry(points: THREE.Vector2[], width: number) {
+  const positions = new Float32Array(points.length * 2 * 3);
+  const indices: number[] = [];
+
+  for (let index = 0; index < points.length - 1; index += 1) {
+    const leftA = index * 2;
+    const rightA = leftA + 1;
+    const leftB = leftA + 2;
+    const rightB = leftA + 3;
+
+    indices.push(leftA, rightA, leftB, rightA, rightB, leftB);
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geometry.setIndex(indices);
+  updateRibbonGeometry(geometry, points, width, 0, 0, 0, 0);
+  return geometry;
+}
+
+function updateRibbonGeometry(
+  geometry: THREE.BufferGeometry,
+  points: THREE.Vector2[],
+  width: number,
+  pulse: number,
+  proximity: number,
+  time: number,
+  phase: number,
+) {
+  const position = geometry.getAttribute("position") as THREE.BufferAttribute;
+  const values = position.array as Float32Array;
+  const amplitude = pulse * 0.052 + proximity * 0.026;
+
+  for (let index = 0; index < points.length; index += 1) {
+    const previous = points[Math.max(0, index - 1)];
+    const current = points[index];
+    const next = points[Math.min(points.length - 1, index + 1)];
+    const tangentX = next.x - previous.x;
+    const tangentY = next.y - previous.y;
+    const length = Math.hypot(tangentX, tangentY) || 1;
+    const normalX = -tangentY / length;
+    const normalY = tangentX / length;
+    const travel = index / (points.length - 1);
+    const wave = Math.sin(travel * Math.PI * 5.4 + time * 0.006 + phase) * amplitude;
+    const stringWidth = width * (1 + pulse * 1.8 + proximity * 0.8);
+    const x = current.x + normalX * wave;
+    const y = current.y + normalY * wave;
+    const leftOffset = index * 6;
+    const rightOffset = leftOffset + 3;
+
+    values[leftOffset] = x + normalX * stringWidth;
+    values[leftOffset + 1] = y + normalY * stringWidth;
+    values[leftOffset + 2] = 0;
+    values[rightOffset] = x - normalX * stringWidth;
+    values[rightOffset + 1] = y - normalY * stringWidth;
+    values[rightOffset + 2] = 0;
+  }
+
+  position.needsUpdate = true;
+  geometry.computeBoundingSphere();
+}
+
+function pickSoundPreset() {
+  return SOUND_PRESETS[Math.floor(Math.random() * SOUND_PRESETS.length)];
+}
+
+function createStringAudio(preset: SoundPreset): StringAudio | null {
   const AudioContextConstructor =
     window.AudioContext ?? (window as AudioWindow).webkitAudioContext;
 
@@ -37,81 +215,52 @@ function createFidgetAudio(): FidgetAudio | null {
 
   const context = new AudioContextConstructor();
   const master = context.createGain();
-  master.gain.value = 0.24;
+  master.gain.value = preset.master;
   master.connect(context.destination);
 
-  const noiseBuffer = context.createBuffer(1, Math.floor(context.sampleRate * 0.18), context.sampleRate);
-  const noiseData = noiseBuffer.getChannelData(0);
-
-  for (let index = 0; index < noiseData.length; index += 1) {
-    noiseData[index] = (Math.random() * 2 - 1) * (1 - index / noiseData.length);
-  }
-
-  const connectOutput = (gain: GainNode, pan: number) => {
-    if ("createStereoPanner" in context) {
-      const panner = context.createStereoPanner();
-      panner.pan.value = clamp(pan, -0.72, 0.72);
-      gain.connect(panner);
-      panner.connect(master);
-      return;
-    }
-
-    gain.connect(master);
-  };
-
-  const play = (kind: "tick" | "snap", intensity: number, pan: number) => {
+  const play = (frequency: number, intensity: number, pan: number) => {
     if (context.state === "suspended") {
       void context.resume();
     }
 
     const now = context.currentTime;
-    const amount = clamp(intensity, 0.12, 1);
+    const amount = clamp(intensity, 0.16, 1);
     const output = context.createGain();
-    output.gain.setValueAtTime(0.0001, now);
-    connectOutput(output, pan);
-
-    const click = context.createBufferSource();
+    const tone = context.createOscillator();
+    const overtone = context.createOscillator();
     const filter = context.createBiquadFilter();
-    filter.type = "bandpass";
-    filter.frequency.value = kind === "snap" ? 1900 + amount * 1100 : 2600 + amount * 1600;
-    filter.Q.value = kind === "snap" ? 3.4 : 5.2;
-    click.buffer = noiseBuffer;
-    click.connect(filter);
-    filter.connect(output);
 
-    if (kind === "snap") {
-      const low = context.createOscillator();
-      const lowGain = context.createGain();
-      low.type = "triangle";
-      low.frequency.setValueAtTime(128 + amount * 80, now);
-      low.frequency.exponentialRampToValueAtTime(72 + amount * 24, now + 0.12);
-      lowGain.gain.setValueAtTime(0.0001, now);
-      lowGain.gain.exponentialRampToValueAtTime(0.22 * amount, now + 0.01);
-      lowGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
-      low.connect(lowGain);
-      lowGain.connect(output);
-      low.start(now);
-      low.stop(now + 0.2);
+    output.gain.setValueAtTime(0.0001, now);
+    output.gain.exponentialRampToValueAtTime(0.24 * amount, now + 0.012);
+    output.gain.exponentialRampToValueAtTime(0.0001, now + preset.decay);
 
-      output.gain.exponentialRampToValueAtTime(0.34 * amount, now + 0.006);
-      output.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
-      click.start(now);
-      click.stop(now + 0.12);
-      return;
+    if ("createStereoPanner" in context) {
+      const panner = context.createStereoPanner();
+      panner.pan.value = clamp(pan, -0.8, 0.8);
+      output.connect(panner);
+      panner.connect(master);
+    } else {
+      output.connect(master);
     }
 
-    const ping = context.createOscillator();
-    ping.type = "square";
-    ping.frequency.setValueAtTime(620 + amount * 720, now);
-    ping.frequency.exponentialRampToValueAtTime(440 + amount * 280, now + 0.045);
-    ping.connect(output);
+    filter.type = "lowpass";
+    filter.frequency.setValueAtTime(preset.filterBase + amount * preset.filterSweep, now);
+    filter.Q.value = 0.62;
 
-    output.gain.exponentialRampToValueAtTime(0.11 * amount, now + 0.004);
-    output.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
-    ping.start(now);
-    ping.stop(now + 0.07);
-    click.start(now);
-    click.stop(now + 0.045);
+    tone.type = preset.primary;
+    tone.frequency.setValueAtTime(frequency * (1 + amount * 0.012), now);
+    tone.frequency.exponentialRampToValueAtTime(frequency * 0.985, now + 0.32);
+
+    overtone.type = preset.secondary;
+    overtone.frequency.setValueAtTime(frequency * 2.006, now);
+
+    tone.connect(filter);
+    overtone.connect(filter);
+    filter.connect(output);
+    tone.start(now);
+    overtone.start(now);
+    tone.stop(now + preset.decay + 0.04);
+    overtone.stop(now + Math.min(0.42, preset.decay * 0.62));
   };
 
   return {
@@ -123,59 +272,95 @@ function createFidgetAudio(): FidgetAudio | null {
   };
 }
 
-function makePin(angle: number, radius: number, length: number) {
+function createStringPoints(index: number) {
+  const points: THREE.Vector2[] = [];
+  const lane = index / (STRING_COUNT - 1);
+  const baseY = mix(0.66, -0.66, lane);
+  const slope = Math.sin(index * 1.17) * 0.34;
+  const bow = (index % 2 === 0 ? 1 : -1) * mix(0.05, 0.2, Math.abs(lane - 0.5) * 2);
+
+  for (let pointIndex = 0; pointIndex < STRING_POINTS; pointIndex += 1) {
+    const t = pointIndex / (STRING_POINTS - 1);
+    const x = mix(-STRING_SPAN_X, STRING_SPAN_X, t);
+    const y =
+      baseY +
+      (t - 0.5) * slope +
+      Math.sin(t * Math.PI) * bow +
+      Math.sin((t * Math.PI * 2) + index * 0.9) * 0.018;
+
+    points.push(new THREE.Vector2(x, y));
+  }
+
+  return points;
+}
+
+function createSonicStrings(scale: number[]) {
   const group = new THREE.Group();
-  const pinMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0xd9d9d4,
-    metalness: 0.82,
-    roughness: 0.26,
-    clearcoat: 0.42,
-  });
-  const pin = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.022, length, 18), pinMaterial);
-  const cap = new THREE.Mesh(new THREE.SphereGeometry(0.07, 24, 16), pinMaterial);
-  pin.rotation.z = Math.PI / 2;
-  pin.position.x = radius + length * 0.5;
-  cap.position.x = radius + length;
-  group.add(pin, cap);
-  group.rotation.z = angle;
-  return group;
+  const strings: SonicString[] = [];
+  for (let index = 0; index < STRING_COUNT; index += 1) {
+    const points = createStringPoints(index);
+    const width = index === 4 || index === 6 ? 0.0072 : 0.0056;
+    const geometry = createRibbonGeometry(points, width);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xf4f4ef,
+      transparent: true,
+      opacity: 0.145 + (index % 3) * 0.018,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.z = -index * 0.002;
+    group.add(mesh);
+    strings.push({
+      mesh,
+      material,
+      points,
+      frequency: scale[index],
+      width,
+      baseOpacity: material.opacity,
+      armed: true,
+      pulse: 0,
+      proximity: 0,
+      lastHitAt: 0,
+      phase: index * 0.72,
+    });
+  }
+
+  return { group, strings };
 }
 
 export function HeroFidget() {
+  const presetRef = useRef<SoundPreset>(pickSoundPreset());
+  const rootRef = useRef<HTMLDivElement | null>(null);
   const mountRef = useRef<HTMLDivElement | null>(null);
-  const audioRef = useRef<FidgetAudio | null>(null);
-  const stateRef = useRef<FidgetState>({
-    targetX: 0,
-    targetY: 0,
-    currentX: 0,
-    currentY: 0,
-    velocity: 0,
-    pointerActive: false,
+  const audioRef = useRef<StringAudio | null>(null);
+  const stringsRef = useRef<SonicString[]>([]);
+  const stateRef = useRef<InstrumentState>({
+    pointer: new THREE.Vector2(0.72, 0),
+    target: new THREE.Vector2(0.72, 0),
     soundEnabled: false,
-    lastSoundAt: 0,
     visible: true,
   });
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [webglReady, setWebglReady] = useState(true);
 
-  const playFeedback = useCallback((kind: "tick" | "snap", intensity: number, pan: number) => {
+  const playString = useCallback((frequency: number, intensity: number, pan: number) => {
     if (!stateRef.current.soundEnabled) {
       return;
     }
 
-    audioRef.current?.play(kind, intensity, pan);
+    audioRef.current?.play(frequency, intensity, pan);
   }, []);
 
   const toggleSound = useCallback(async () => {
     if (soundEnabled) {
       stateRef.current.soundEnabled = false;
       setSoundEnabled(false);
-      audioRef.current?.play("tick", 0.22, 0);
       return;
     }
 
     if (!audioRef.current) {
-      audioRef.current = createFidgetAudio();
+      audioRef.current = createStringAudio(presetRef.current);
     }
 
     if (!audioRef.current) {
@@ -185,7 +370,6 @@ export function HeroFidget() {
     await audioRef.current.context.resume();
     stateRef.current.soundEnabled = true;
     setSoundEnabled(true);
-    audioRef.current.play("snap", 0.86, 0);
   }, [soundEnabled]);
 
   useEffect(() => {
@@ -197,8 +381,8 @@ export function HeroFidget() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
-    camera.position.set(0, 0.16, 5.2);
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
+    camera.position.z = 2;
 
     let renderer: THREE.WebGLRenderer;
 
@@ -215,93 +399,27 @@ export function HeroFidget() {
 
     setWebglReady(true);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+    renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     mount.appendChild(renderer.domElement);
 
     const root = new THREE.Group();
-    const rotor = new THREE.Group();
-    const beadOrbit = new THREE.Group();
+    const { group: stringGroup, strings } = createSonicStrings(presetRef.current.scale);
+    root.add(stringGroup);
     scene.add(root);
-    root.add(rotor, beadOrbit);
-
-    const metal = new THREE.MeshPhysicalMaterial({
-      color: 0xeeeeea,
-      metalness: 0.74,
-      roughness: 0.2,
-      clearcoat: 0.7,
-      clearcoatRoughness: 0.18,
-    });
-    const darkMetal = new THREE.MeshPhysicalMaterial({
-      color: 0x151515,
-      metalness: 0.68,
-      roughness: 0.32,
-      clearcoat: 0.44,
-    });
-    const ghost = new THREE.MeshBasicMaterial({
-      color: 0xf5f5f0,
-      transparent: true,
-      opacity: 0.16,
-      wireframe: true,
-    });
-
-    const ringGeometry = new THREE.TorusGeometry(1.02, 0.034, 18, 156);
-    const thickRingGeometry = new THREE.TorusGeometry(0.58, 0.058, 22, 132);
-    const haloGeometry = new THREE.TorusGeometry(1.34, 0.006, 8, 180);
-
-    const outerRing = new THREE.Mesh(ringGeometry, metal);
-    const innerRing = new THREE.Mesh(thickRingGeometry, darkMetal);
-    const crossRing = new THREE.Mesh(ringGeometry, metal);
-    const haloA = new THREE.Mesh(haloGeometry, ghost);
-    const haloB = new THREE.Mesh(haloGeometry, ghost);
-
-    outerRing.rotation.x = Math.PI / 2;
-    crossRing.rotation.y = Math.PI / 2;
-    innerRing.rotation.x = Math.PI / 2;
-    haloA.rotation.x = Math.PI / 2.55;
-    haloB.rotation.y = Math.PI / 2.35;
-    rotor.add(outerRing, crossRing, innerRing, haloA, haloB);
-
-    const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.34, 2), metal);
-    const coreWire = new THREE.Mesh(new THREE.IcosahedronGeometry(0.355, 1), ghost);
-    rotor.add(core, coreWire);
-
-    for (let index = 0; index < 12; index += 1) {
-      rotor.add(makePin((index / 12) * Math.PI * 2, 0.42, index % 2 === 0 ? 0.9 : 0.66));
-    }
-
-    const beadMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xf7f7f2,
-      metalness: 0.45,
-      roughness: 0.16,
-      transmission: 0.12,
-      clearcoat: 0.84,
-    });
-
-    for (let index = 0; index < 18; index += 1) {
-      const bead = new THREE.Mesh(new THREE.SphereGeometry(index % 3 === 0 ? 0.052 : 0.037, 22, 14), beadMaterial);
-      const angle = (index / 18) * Math.PI * 2;
-      bead.position.set(Math.cos(angle) * 1.58, Math.sin(angle) * 1.58, (index % 2 === 0 ? 1 : -1) * 0.1);
-      beadOrbit.add(bead);
-    }
-
-    const grid = new THREE.GridHelper(4.4, 22, 0x777777, 0x252525);
-    grid.position.y = -1.62;
-    grid.rotation.x = Math.PI / 2;
-    root.add(grid);
-
-    const key = new THREE.DirectionalLight(0xffffff, 3.2);
-    key.position.set(3.6, 2.8, 4.2);
-    const rim = new THREE.PointLight(0xffffff, 7.5, 8);
-    rim.position.set(-2.6, -1.2, 2.2);
-    const ambient = new THREE.AmbientLight(0xffffff, 0.42);
-    scene.add(key, rim, ambient);
+    stringsRef.current = strings;
 
     const resize = () => {
       const { width, height } = mount.getBoundingClientRect();
       const nextWidth = Math.max(1, Math.floor(width));
       const nextHeight = Math.max(1, Math.floor(height));
       renderer.setSize(nextWidth, nextHeight, false);
-      camera.aspect = nextWidth / nextHeight;
+
+      const aspect = nextWidth / nextHeight;
+      camera.left = -aspect;
+      camera.right = aspect;
+      camera.top = 1;
+      camera.bottom = -1;
       camera.updateProjectionMatrix();
     };
 
@@ -322,26 +440,22 @@ export function HeroFidget() {
 
     const animate = (now: number) => {
       const state = stateRef.current;
-      const delta = Math.min(0.033, (now - then) / 1000);
+      const delta = Math.min(0.034, (now - then) / 1000);
       then = now;
 
-      state.currentX += (state.targetX - state.currentX) * 0.08;
-      state.currentY += (state.targetY - state.currentY) * 0.08;
-      state.velocity *= 0.93;
+      state.pointer.lerp(state.target, reducedMotion ? 0.08 : 0.16);
 
       if (state.visible) {
-        const idleSpeed = reducedMotion ? 0.04 : 0.32;
-        const push = reducedMotion ? 0.08 : 0.32;
-        rotor.rotation.x = state.currentY * 0.44;
-        rotor.rotation.y += delta * (idleSpeed + state.velocity * 0.012);
-        rotor.rotation.z = state.currentX * -0.28;
-        beadOrbit.rotation.z -= delta * (0.22 + state.velocity * 0.006);
-        beadOrbit.rotation.x = state.currentY * 0.18;
-        core.rotation.x += delta * (0.24 + state.velocity * 0.01);
-        core.rotation.y += delta * (0.34 + push);
-        root.rotation.y = state.currentX * 0.24;
-        root.position.x = state.currentX * 0.22;
-        root.position.y = state.currentY * -0.16;
+        stringGroup.position.set(0, 0, 0);
+
+        strings.forEach((item) => {
+          const proximityDistance = distanceToPolyline(state.pointer, item.points);
+          item.proximity = mix(item.proximity, clamp(1 - proximityDistance / 0.2, 0, 1), 0.12);
+          item.pulse = Math.max(0, item.pulse - delta * 2.2);
+          item.material.opacity = clamp(item.baseOpacity + item.proximity * 0.16 + item.pulse * 0.48, 0.1, 0.72);
+          updateRibbonGeometry(item.mesh.geometry, item.points, item.width, item.pulse, item.proximity, now, item.phase);
+        });
+
         renderer.render(scene, camera);
       }
 
@@ -356,13 +470,11 @@ export function HeroFidget() {
       resizeObserver.disconnect();
       mount.removeChild(renderer.domElement);
       renderer.dispose();
-      ringGeometry.dispose();
-      thickRingGeometry.dispose();
-      haloGeometry.dispose();
-      metal.dispose();
-      darkMetal.dispose();
-      ghost.dispose();
-      beadMaterial.dispose();
+      strings.forEach((item) => {
+        item.mesh.geometry.dispose();
+        item.material.dispose();
+      });
+      stringsRef.current = [];
     };
   }, []);
 
@@ -377,73 +489,69 @@ export function HeroFidget() {
     [],
   );
 
-  const handlePointerMove = useCallback(
-    (event: React.PointerEvent<HTMLDivElement>) => {
-      const bounds = event.currentTarget.getBoundingClientRect();
-      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-      const state = stateRef.current;
-      const previousX = state.targetX;
-      const previousY = state.targetY;
-      const speed = Math.hypot(x - previousX, y - previousY);
-      state.targetX = clamp(x, -1, 1);
-      state.targetY = clamp(y, -1, 1);
-      state.velocity = clamp(state.velocity + speed * 22, 0, 48);
+  const updatePointer = useCallback(
+    (event: PointerEvent<HTMLDivElement>) => {
+      const root = rootRef.current;
 
-      if (state.soundEnabled && speed > 0.035 && event.timeStamp - state.lastSoundAt > 76) {
-        state.lastSoundAt = event.timeStamp;
-        playFeedback("tick", clamp(speed * 4.5, 0.12, 0.78), state.targetX);
+      if (!root) {
+        return;
       }
+
+      const bounds = root.getBoundingClientRect();
+      const aspect = bounds.width / bounds.height;
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2 * aspect;
+      const y = -(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
+      const state = stateRef.current;
+      const speed = Math.hypot(x - state.target.x, y - state.target.y);
+      const now = event.timeStamp;
+
+      state.target.set(x, y);
+
+      stringsRef.current.forEach((item) => {
+        const distance = distanceToPolyline(state.target, item.points);
+
+        if (distance > REARM_DISTANCE) {
+          item.armed = true;
+        }
+
+        if (!item.armed || distance > HIT_DISTANCE || now - item.lastHitAt < 125) {
+          return;
+        }
+
+        item.lastHitAt = now;
+        item.armed = false;
+        item.pulse = 1;
+        (window as HeroWindow).__heroLineHits = ((window as HeroWindow).__heroLineHits ?? 0) + 1;
+        playString(item.frequency, clamp(0.26 + speed * 3.2, 0.22, 1), x / aspect);
+      });
     },
-    [playFeedback],
+    [playString],
   );
 
   const handlePointerLeave = useCallback(() => {
-    const state = stateRef.current;
-    state.pointerActive = false;
-    state.targetX = 0;
-    state.targetY = 0;
-  }, []);
-
-  const handlePointerDown = useCallback(
-    (event: React.PointerEvent<HTMLDivElement>) => {
-      stateRef.current.pointerActive = true;
-      stateRef.current.velocity = clamp(stateRef.current.velocity + 18, 0, 64);
-      playFeedback("snap", 0.88, stateRef.current.targetX);
-      event.currentTarget.setPointerCapture(event.pointerId);
-    },
-    [playFeedback],
-  );
-
-  const handlePointerUp = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
-    stateRef.current.pointerActive = false;
-    event.currentTarget.releasePointerCapture(event.pointerId);
+    stateRef.current.target.set(0.72, 0);
   }, []);
 
   return (
-    <div
-      className="hero-fidget"
-      aria-label="Interactive WebGL kinetic fidget"
-      onPointerDown={handlePointerDown}
-      onPointerLeave={handlePointerLeave}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-    >
+    <div ref={rootRef} className="hero-fidget" aria-label="Interactive sound geometry">
       <div ref={mountRef} className="hero-fidget__canvas" aria-hidden="true" />
       {!webglReady ? (
         <div className="hero-fidget__fallback" aria-hidden="true">
-          <span />
-          <span />
-          <span />
+          {Array.from({ length: STRING_COUNT }, (_, index) => (
+            <span key={index} />
+          ))}
         </div>
       ) : null}
-      <div className="hero-fidget__hud" aria-hidden="true">
-        <span>WEBGL FIDGET</span>
-        <span>POINTER-DRIVEN</span>
-      </div>
+      <div
+        className="hero-fidget__interaction"
+        aria-label="Pointer sound field"
+        onPointerLeave={handlePointerLeave}
+        onPointerMove={updatePointer}
+      />
       <button
         type="button"
         className="hero-fidget__sound control-tap-target"
+        aria-label={soundEnabled ? "Sound on" : "Enable sound"}
         aria-pressed={soundEnabled}
         onClick={(event) => {
           event.stopPropagation();
@@ -455,7 +563,8 @@ export function HeroFidget() {
         ) : (
           <VolumeX aria-hidden="true" className="h-4 w-4" />
         )}
-        <span>{soundEnabled ? "Sound on" : "Enable sound"}</span>
+        <AudioLines aria-hidden="true" className="h-4 w-4" />
+        <span>{soundEnabled ? "Sound on" : "Sound"}</span>
       </button>
     </div>
   );

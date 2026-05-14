@@ -1,4 +1,3 @@
-import { ExternalLink } from "lucide-react";
 import { panelVariants } from "@/components/ui";
 import { siteContent } from "@/content/site";
 
@@ -52,12 +51,10 @@ export function IntroContent({ cvHref: _cvHref }: IntroContentProps) {
           </ul>
           <div className="space-y-3 border-t border-white/8 pt-5">
             <div className="flex items-center justify-between gap-4 text-base text-text-muted">
-              <span>github.com/guseynov</span>
-              <ExternalLink aria-hidden="true" className="h-4 w-4 shrink-0 text-text-ghost" />
+              <span>linkedin.com/in/aguseynov</span>
             </div>
             <div className="flex items-center justify-between gap-4 text-base text-text-muted">
-              <span>linkedin.com/in/aguseynov</span>
-              <ExternalLink aria-hidden="true" className="h-4 w-4 shrink-0 text-text-ghost" />
+              <span>{siteContent.profile.email}</span>
             </div>
           </div>
         </div>

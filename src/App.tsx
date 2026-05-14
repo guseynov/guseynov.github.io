@@ -6,7 +6,10 @@ import { CapabilitiesContent } from "@/components/sections/CapabilitiesContent";
 import { ContactContent } from "@/components/sections/ContactContent";
 import { ExperienceContent } from "@/components/sections/ExperienceContent";
 import { IntroContent } from "@/components/sections/IntroContent";
-import { ProofContent } from "@/components/sections/ProofContent";
+import {
+  ProofContent,
+  ProofProjectionPlaceholder,
+} from "@/components/sections/ProofContent";
 import {
   SectionId,
   siteContent,
@@ -17,8 +20,8 @@ import { trackCtaClick, trackSectionView } from "@/lib/analytics";
 const SECTION_INDEX_LABELS: Record<SectionIdValue, string> = {
   [SectionId.Intro]: "01 / OVERVIEW",
   [SectionId.Proof]: "02 / STRENGTHS",
-  [SectionId.Experience]: "03 / EXPERIENCE",
-  [SectionId.Capabilities]: "04 / CAPABILITIES",
+  [SectionId.Capabilities]: "03 / SKILLS",
+  [SectionId.Experience]: "04 / EXPERIENCE",
   [SectionId.Projects]: "05 / WORK",
   [SectionId.Contact]: "05 / GET IN TOUCH",
 };
@@ -26,16 +29,16 @@ const SECTION_INDEX_LABELS: Record<SectionIdValue, string> = {
 const SECTION_RENDER_ORDER: SectionIdValue[] = [
   SectionId.Intro,
   SectionId.Proof,
-  SectionId.Experience,
   SectionId.Capabilities,
+  SectionId.Experience,
   SectionId.Contact,
 ];
 
 const SECTION_LAYOUT_CLASSNAMES: Record<SectionIdValue, string> = {
   [SectionId.Intro]: "xl:col-span-12",
   [SectionId.Proof]: "xl:col-span-12 xl:-mt-18",
+  [SectionId.Capabilities]: "xl:col-span-12",
   [SectionId.Experience]: "xl:col-span-8",
-  [SectionId.Capabilities]: "xl:col-span-5",
   [SectionId.Projects]: "xl:col-span-7",
   [SectionId.Contact]: "xl:col-span-12",
 };
@@ -45,6 +48,7 @@ interface SectionContentConfig {
   title: string;
   summary: string;
   indexLabel: string;
+  titleClassName?: string;
   aside?: ReactNode;
   content: ReactNode;
 }
@@ -74,36 +78,39 @@ function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionCon
     case SectionId.Proof:
       return {
         id: SectionId.Proof,
-        title: "What I’m strongest at when a frontend needs sharper judgment.",
-        summary:
-          "This is the first bright section after the hero: concise proof of fit, not a second landing page. It should feel easier to read, faster to scan, and clearly connected to the darker opening stage above.",
-        indexLabel: SECTION_INDEX_LABELS[SectionId.Proof],
+        title:
+          "I build production interfaces that stay usable, reusable, and reliable as products scale.",
+        summary: "",
+        indexLabel: "",
+        titleClassName: "max-w-[30ch] sm:max-w-[38ch] md:max-w-[48ch]",
+        aside: <ProofProjectionPlaceholder />,
         content: <ProofContent />,
       };
     case SectionId.Experience:
       return {
         id: SectionId.Experience,
-        title: "Experience.",
+        title: "Experience",
         summary:
           "Recent work across startups and larger teams, with a focus on component systems, modernization, and dependable delivery.",
-        indexLabel: SECTION_INDEX_LABELS[SectionId.Experience],
+        indexLabel: "",
         content: <ExperienceContent />,
       };
     case SectionId.Capabilities:
       return {
         id: SectionId.Capabilities,
-        title: "Capabilities.",
+        title: "Skills",
         summary:
-          "The stack matters, but the real value comes from keeping a frontend coherent as it grows.",
-        indexLabel: SECTION_INDEX_LABELS[SectionId.Capabilities],
+          "A working map of the technologies and interface practices I use across product frontend work.",
+        indexLabel: "",
         content: <CapabilitiesContent />,
       };
     case SectionId.Contact:
       return {
         id: SectionId.Contact,
-        title: "Contact.",
+        title: siteContent.contact.title,
         summary: siteContent.contact.body,
-        indexLabel: SECTION_INDEX_LABELS[SectionId.Contact],
+        titleClassName: "max-w-[15ch] sm:max-w-[18ch] md:max-w-[20ch] lg:max-w-[19ch]",
+        indexLabel: "",
         content: <ContactContent cvHref={cvHref} />,
       };
   }
@@ -170,21 +177,25 @@ function App() {
 
   return (
     <div className="min-h-screen bg-canvas text-text-strong antialiased">
-      <div className="px-4 pt-4 pb-10 sm:px-6 sm:pb-12 lg:px-6 lg:pb-16">
+      <div className="px-4 pt-4 sm:px-6 lg:px-6">
         <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 lg:gap-8">
           <HeroHeader
             cvHref={cvHref}
-            onPrimaryClick={() =>
+            onCvClick={() =>
               trackCtaClick({
-                label: "Email Alex",
-                href: `mailto:${siteContent.profile.email}`,
+                label: "Download CV",
+                href: cvHref,
                 placement: "hero",
               })
             }
-            onGithubClick={() =>
+          />
+          <HeroSection
+            id={SectionId.Intro}
+            cvHref={cvHref}
+            onEmailClick={() =>
               trackCtaClick({
-                label: "GitHub",
-                href: siteContent.profile.githubUrl,
+                label: "Email me",
+                href: `mailto:${siteContent.profile.email}`,
                 placement: "hero",
               })
             }
@@ -198,50 +209,26 @@ function App() {
           />
           <main
             id="main-content"
-            className="grid w-full grid-cols-1 gap-5 lg:gap-6 xl:grid-cols-12"
+            className="grid w-full grid-cols-1 gap-5 pb-20 lg:gap-6 xl:grid-cols-12"
             aria-labelledby={`${SectionId.Intro}-title`}
           >
-            {sectionConfigs.map((section) => (
-              <div
-                key={section.id}
-                ref={(element) => {
-                  sectionRefs.current[section.id] = element;
-                }}
-                data-section-id={section.id}
-                className={SECTION_LAYOUT_CLASSNAMES[section.id]}
-              >
-                {section.id === SectionId.Intro ? (
-                  <HeroSection
-                    id={section.id}
-                    cvHref={cvHref}
-                    onPrimaryClick={() =>
-                      trackCtaClick({
-                        label: "Email Alex",
-                        href: `mailto:${siteContent.profile.email}`,
-                        placement: "hero",
-                      })
-                    }
-                    onGithubClick={() =>
-                      trackCtaClick({
-                        label: "GitHub",
-                        href: siteContent.profile.githubUrl,
-                        placement: "hero",
-                      })
-                    }
-                    onCvClick={() =>
-                      trackCtaClick({
-                        label: "Download CV",
-                        href: cvHref,
-                        placement: "hero",
-                      })
-                    }
-                  />
-                ) : (
+            {sectionConfigs
+              .filter((section) => section.id !== SectionId.Intro)
+              .map((section) => (
+                <div
+                  key={section.id}
+                  ref={(element) => {
+                    sectionRefs.current[section.id] = element;
+                  }}
+                  data-section-id={section.id}
+                  className={SECTION_LAYOUT_CLASSNAMES[section.id]}
+                >
                   <SectionCard
                     id={section.id}
                     title={section.title}
                     summary={section.summary}
                     indexLabel={section.indexLabel}
+                    titleClassName={section.titleClassName}
                     aside={section.aside}
                     headerless={section.id === SectionId.Intro}
                     className={
@@ -249,13 +236,20 @@ function App() {
                         ? "relative z-20 h-full w-full -mt-8 sm:-mt-10 lg:-mt-12 xl:-mt-14"
                         : "h-full w-full"
                     }
-                    tone={section.id === SectionId.Proof ? "light" : "dark"}
+                    tone={
+                      section.id === SectionId.Proof
+                        ? "light"
+                        : section.id === SectionId.Capabilities
+                          ? "black"
+                          : section.id === SectionId.Contact
+                            ? "paper"
+                          : "dark"
+                    }
                   >
                     {section.content}
                   </SectionCard>
-                )}
-              </div>
-            ))}
+                </div>
+              ))}
           </main>
         </div>
       </div>
