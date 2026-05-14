@@ -51,6 +51,7 @@ export interface SiteContent {
     role: string;
     experienceLabel: string;
     email: string;
+    githubUrl: string;
     linkedinUrl: string;
     cvPath: string;
   };
@@ -188,7 +189,7 @@ export const siteContent: SiteContent = {
       items: [
         { label: "Node.js", icon: "node" },
         { label: "C#", icon: "csharp" },
-        { label: "ASP.NET", icon: "aspnet", href: "http://asp.net/" },
+        { label: "ASP.NET", icon: "aspnet" },
         { label: "PHP", icon: "php" },
         { label: "CodeIgniter", icon: "codeigniter" },
       ],
@@ -200,11 +201,10 @@ export const siteContent: SiteContent = {
       period: "Aug 2024 - Present",
       role: "Frontend Developer",
       impact: [
-        "Built AI-powered ESL tools for teachers and students.",
-        "Worked on lesson-generation flows with AI, TTS, images, and editable materials.",
-        "Rebuilt scattered styles into a reusable SCSS and UI kit foundation.",
-        "Built admin screens for analytics, Stripe, and internal operations.",
-        "Maintained Storybook examples for shared UI components.",
+        "Built interactive lesson and classroom tools in React/TypeScript for mobile and desktop flows.",
+        "Worked across React/TypeScript frontend and ASP.NET/C# backend code for product features.",
+        "Shipped AI, admin, analytics, and Stripe flows across the product.",
+        "Kept shared components documented so the team could reuse them safely.",
       ],
     },
     {
@@ -212,11 +212,10 @@ export const siteContent: SiteContent = {
       period: "Mar 2023 - Aug 2024",
       role: "Frontend Developer",
       impact: [
-        "Built a Vue UI kit from scratch.",
-        "Used JSON design tokens for themes, colors, and component variants.",
-        "Created inputs, dropdowns, modals, sliders, date/time pickers, and color pickers.",
-        "Designed detailed mobile interactions like calendars and spinning time wheels.",
-        "Documented component states, themes, sizes, and usage examples.",
+        "Built shared UI-kit foundations and reusable patterns for product teams.",
+        "Shipped reusable UI components with consistent states, variants, and responsive behavior.",
+        "Improved accessibility, mobile behavior, and edge-case handling across the component library.",
+        "Documented patterns and usage so teams could avoid duplicated UI work.",
       ],
     },
     {
@@ -224,11 +223,10 @@ export const siteContent: SiteContent = {
       period: "Feb 2021 - Mar 2023",
       role: "Frontend Developer",
       impact: [
-        "Built EdTech task-constructor flows for teachers and students.",
-        "Implemented widgets with editing and learning modes.",
-        "Used React, TypeScript, GraphQL, and Effector for task sync.",
-        "Worked on answer storage, scoring, and review flows.",
-        "Helped standardize reusable task-building patterns.",
+        "Built teacher task constructors and student learning modes for widget-based EdTech exercises.",
+        "Worked on migration from a monorepo setup toward microfrontend architecture.",
+        "Supported answer storage, scoring, and review flows for completed student tasks.",
+        "Reused widget patterns across flows used by thousands of teachers and students.",
       ],
     },
     {
@@ -236,10 +234,9 @@ export const siteContent: SiteContent = {
       period: "Apr 2020 - Feb 2021",
       role: "Frontend Developer",
       impact: [
-        "Built an interactive EdTech product from scratch.",
-        "Used React and Redux for stateful learning flows.",
-        "Created browser-based experiences closer to a game than a static course.",
-        "Built reusable frontend structure for interactive screens.",
+        "Built a React/Redux EdTech SPA from scratch with game-like interactive flows.",
+        "Implemented stateful exercises, API-driven screens, and responsive UI.",
+        "Set reusable frontend structure for new learning activities.",
       ],
     },
     {
@@ -247,10 +244,9 @@ export const siteContent: SiteContent = {
       period: "Mar 2015 - Apr 2020",
       role: "Frontend Developer",
       impact: [
-        "Delivered 20+ frontend and backend web projects.",
-        "Built websites, CMS projects, public-sector interfaces, and PHP apps.",
-        "Worked with JavaScript, HTML, CSS, PHP, and CodeIgniter.",
-        "Handled requirements, implementation, fixes, releases, and support.",
+        "Delivered 20+ frontend and full-stack projects, including CMS and PHP/CodeIgniter work.",
+        "Built responsive UI, API integrations, and production fixes/releases.",
+        "Worked directly with clients and teams from first draft to launch.",
       ],
     },
   ],
@@ -319,10 +315,10 @@ export const siteContent: SiteContent = {
     },
   ],
   contact: {
-    title: "Available for frontend roles where interface quality matters.",
-    body: "If the role needs stronger frontend systems, sharper product judgment, and production-ready interface work that holds up after launch, email is the fastest way to start the conversation.",
+    title: "Contact",
+    body: "If you need someone who can shape the interface layer, improve consistency, and ship production-ready UI with care, I am available for conversations about permanent roles and strong product teams.",
     availability:
-      "Best first step: send an email. LinkedIn and the CV are here if you want more detail first.",
+      "Send the role, product surface, and the problems the frontend needs to solve. I can usually tell quickly whether there is a useful fit.",
     primaryCtaLabel: "Email Alex",
     secondaryCtaLabel: "Copy Email",
     tertiaryCtaLabel: "View CV",
@@ -364,9 +360,9 @@ export const siteContent: SiteContent = {
     },
     {
       id: SectionId.Contact,
-      label: "Get In Touch",
+      label: "Contact",
       index: 4,
-      title: "Get In Touch",
+      title: "Contact",
       shortDescription: "Direct outreach and supporting links.",
     },
   ],

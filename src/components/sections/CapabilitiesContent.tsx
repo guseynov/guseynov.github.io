@@ -207,7 +207,7 @@ export function CapabilitiesContent() {
               aria-controls={panelId}
               aria-selected={isSelected}
               className={[
-                "group flex min-w-[13rem] items-center justify-between gap-4 rounded-[1rem] border px-4 py-3 text-left transition duration-200 ease-out focus-visible:outline-none lg:min-w-0",
+                "group flex min-w-[13rem] items-center rounded-[1rem] border px-4 py-3 text-left transition duration-200 ease-out focus-visible:outline-none lg:min-w-0",
                 isSelected
                   ? "border-white/28 bg-white text-text-inverse"
                   : "border-white/10 bg-white/[0.035] text-text-muted hover:border-white/20 hover:bg-white/[0.065] hover:text-text-strong",
@@ -217,13 +217,8 @@ export function CapabilitiesContent() {
               role="tab"
               type="button"
             >
-              <span className="min-w-0">
-                <span className="block font-mono text-[0.66rem] uppercase tracking-[0.2em] opacity-60">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="mt-1 block truncate text-[0.98rem] font-semibold">
-                  {group.title}
-                </span>
+              <span className="min-w-0 truncate text-[0.98rem] font-semibold">
+                {group.title}
               </span>
             </button>
           );

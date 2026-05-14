@@ -23,7 +23,7 @@ const SECTION_INDEX_LABELS: Record<SectionIdValue, string> = {
   [SectionId.Capabilities]: "03 / SKILLS",
   [SectionId.Experience]: "04 / EXPERIENCE",
   [SectionId.Projects]: "05 / WORK",
-  [SectionId.Contact]: "05 / GET IN TOUCH",
+  [SectionId.Contact]: "05 / CONTACT",
 };
 
 const SECTION_RENDER_ORDER: SectionIdValue[] = [
@@ -38,7 +38,7 @@ const SECTION_LAYOUT_CLASSNAMES: Record<SectionIdValue, string> = {
   [SectionId.Intro]: "xl:col-span-12",
   [SectionId.Proof]: "xl:col-span-12 xl:-mt-18",
   [SectionId.Capabilities]: "xl:col-span-12",
-  [SectionId.Experience]: "xl:col-span-8",
+  [SectionId.Experience]: "xl:col-span-12",
   [SectionId.Projects]: "xl:col-span-7",
   [SectionId.Contact]: "xl:col-span-12",
 };
@@ -78,9 +78,9 @@ function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionCon
     case SectionId.Proof:
       return {
         id: SectionId.Proof,
-        title:
-          "I build production interfaces that stay usable, reusable, and reliable as products scale.",
-        summary: "",
+        title: "Strengths",
+        summary:
+          "I build interfaces that stay clean under scale, from new product surfaces to legacy modernization. My work centers on React, TypeScript, Vue, and design-system minded UI architecture, with testing and implementation discipline treated as part of the product quality bar rather than cleanup work.",
         indexLabel: "",
         titleClassName: "max-w-[30ch] sm:max-w-[38ch] md:max-w-[48ch]",
         aside: <ProofProjectionPlaceholder />,
@@ -91,7 +91,7 @@ function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionCon
         id: SectionId.Experience,
         title: "Experience",
         summary:
-          "Recent work across startups and larger teams, with a focus on component systems, modernization, and dependable delivery.",
+          "My recent work has concentrated on scalable component systems, product modernization, and disciplined frontend delivery across different team sizes.",
         indexLabel: "",
         content: <ExperienceContent />,
       };
@@ -100,16 +100,15 @@ function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionCon
         id: SectionId.Capabilities,
         title: "Skills",
         summary:
-          "A working map of the technologies and interface practices I use across product frontend work.",
+          "The stack matters, but the real value comes from how the frontend stays coherent as it grows. These are the areas I usually strengthen first.",
         indexLabel: "",
         content: <CapabilitiesContent />,
       };
     case SectionId.Contact:
       return {
         id: SectionId.Contact,
-        title: siteContent.contact.title,
+        title: "Contact",
         summary: siteContent.contact.body,
-        titleClassName: "max-w-[15ch] sm:max-w-[18ch] md:max-w-[20ch] lg:max-w-[19ch]",
         indexLabel: "",
         content: <ContactContent cvHref={cvHref} />,
       };

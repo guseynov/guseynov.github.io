@@ -232,9 +232,9 @@
   border: 0;
   border-radius: 0.48rem;
   background:
-    radial-gradient(circle at 42% 28%, oklch(0.98 0 0 / 0.92), transparent 30%),
-    linear-gradient(180deg, oklch(0.975 0 0), oklch(0.9 0 0) 72%),
-    oklch(0.96 0 0);
+    radial-gradient(circle at 46% 30%, oklch(0.16 0 0 / 0.42), transparent 32%),
+    linear-gradient(180deg, oklch(0.035 0 0), oklch(0.012 0 0) 78%),
+    oklch(0.018 0 0);
   box-shadow: none;
   isolation: isolate;
 }
@@ -250,21 +250,7 @@
 }
 
 .proof-ascii-field::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(90deg, transparent, oklch(0.06 0 0 / 0.075), transparent),
-    repeating-linear-gradient(
-      180deg,
-      oklch(0.12 0 0 / 0.055) 0,
-      oklch(0.12 0 0 / 0.055) 1px,
-      transparent 1px,
-      transparent 8px
-    );
-  mix-blend-mode: multiply;
-  opacity: 0.44;
+  content: none;
 }
 
 .proof-ascii-field__canvas,
@@ -281,9 +267,7 @@
 
 .proof-ascii-field__vignette {
   z-index: 4;
-  background-image:
-    radial-gradient(circle at 50% 42%, transparent 28%, oklch(0.1 0 0 / 0.13) 100%),
-    linear-gradient(180deg, oklch(1 0 0 / 0.34), transparent 18%, transparent 74%, oklch(0.12 0 0 / 0.11));
+  background-image: none;
   pointer-events: none;
 }
 

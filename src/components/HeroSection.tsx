@@ -9,10 +9,11 @@ import { ButtonLink } from "@/components/ui";
 import { siteContent } from "@/content/site";
 
 const HERO_NAV_ITEMS = [
-  { label: "About", href: "#intro" },
-  { label: "Work", href: "#experience" },
-  { label: "Experiments", href: "#capabilities" },
-  { label: "Notes", href: "#proof" },
+  { label: "Overview", href: "#intro" },
+  { label: "Strengths", href: "#proof" },
+  { label: "Skills", href: "#capabilities" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
 ];
 
 interface HeroSectionProps {
@@ -25,12 +26,10 @@ interface HeroSectionProps {
 export function HeroHeader({ cvHref, onCvClick }: Pick<HeroSectionProps, "cvHref" | "onCvClick">) {
   return (
     <div className="sticky top-4 z-50 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center rounded-[0.8rem] border border-white/10 bg-[color:var(--color-surface-frosted)] px-5 py-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248_/_0.08),0_18px_40px_oklch(0.1_0.012_248_/_0.26)] backdrop-blur-sm sm:px-6 lg:px-8">
-      <a
-        href="#intro"
-        aria-label="Home"
-        className="font-mono text-[1.9rem] leading-none tracking-[-0.08em] text-text-strong sm:text-[2.35rem] lg:text-[2.8rem]"
-      >
-        AG.
+      <a href="#intro" aria-label="Home" className="group flex min-w-0 items-center gap-3">
+        <span className="font-mono text-[1.9rem] leading-none tracking-[-0.08em] text-text-strong transition-opacity duration-200 group-hover:opacity-70 sm:text-[2.35rem] lg:text-[2.8rem]">
+          AG.
+        </span>
       </a>
       <nav className="hidden justify-center lg:flex" aria-label="Primary">
         <div className="flex items-center gap-10 font-mono text-[0.78rem] font-semibold uppercase tracking-[0.26em] text-text-strong">

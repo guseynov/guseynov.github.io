@@ -4,19 +4,17 @@ const IMAGE_SRC = `${import.meta.env.BASE_URL}images/alex-ascii-source.png`;
 const FRAME_INTERVAL_MS = 1000 / 24;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const CHARACTER_BANDS = [
-  " .`",
-  ".,:",
-  ":;!",
-  "irs",
-  "7tz",
-  "xev",
-  "cof",
-  "nua",
-  "YXZ",
-  "AHK",
-  "MNR",
-  "B8&",
-  "#%@",
+  " .`'",
+  ".,:;-",
+  "_~^!/",
+  "\\|()[]",
+  "{}<>+",
+  "irsltf",
+  "7tzxv",
+  "ceouan",
+  "YZXFCJ",
+  "AHKMN",
+  "B8&%@",
 ];
 
 interface PointerState {
@@ -42,10 +40,10 @@ const seededNoise = (value: number) => {
 };
 
 function getRenderConfig(width: number, height: number): RenderConfig {
-  const cellHeight = clamp(width / 34, 8.4, 12.2);
-  const cellWidth = cellHeight * 0.56;
-  const columns = Math.max(28, Math.floor(width / cellWidth));
-  const rows = Math.max(30, Math.floor(height / cellHeight));
+  const cellHeight = clamp(width / 68, 4.8, 7.2);
+  const cellWidth = cellHeight * 0.53;
+  const columns = Math.max(82, Math.floor(width / cellWidth));
+  const rows = Math.max(72, Math.floor(height / cellHeight));
 
   return {
     cellHeight,
@@ -62,9 +60,9 @@ function drawCoverImage(
   image: HTMLImageElement,
   width: number,
   height: number,
+  targetRatio: number,
 ) {
   const sourceRatio = image.naturalWidth / image.naturalHeight;
-  const targetRatio = width / height;
   let sourceWidth = image.naturalWidth;
   let sourceHeight = image.naturalHeight;
   let sourceX = 0;
@@ -77,6 +75,12 @@ function drawCoverImage(
     sourceHeight = image.naturalWidth / targetRatio;
     sourceY = (image.naturalHeight - sourceHeight) / 2;
   }
+
+  const portraitZoom = 0.96;
+  sourceX += (sourceWidth * (1 - portraitZoom)) / 2;
+  sourceY += sourceHeight * (1 - portraitZoom) * 0.34;
+  sourceWidth *= portraitZoom;
+  sourceHeight *= portraitZoom;
 
   context.drawImage(
     image,
@@ -101,6 +105,17 @@ function pickCharacter(luminance: number, row: number, column: number, tick: num
   const drift = reducedMotion ? 0 : tick;
   const seed = row * 93.17 + column * 41.73 + bandIndex * 11.31 + drift;
   return band[Math.floor(seededNoise(seed) * band.length)] ?? band[0];
+}
+
+function getPixelLuminance(imageData: ImageData, row: number, column: number, columns: number, rows: number) {
+  const clampedRow = clamp(row, 0, rows - 1);
+  const clampedColumn = clamp(column, 0, columns - 1);
+  const pixelIndex = (clampedRow * columns + clampedColumn) * 4;
+  const red = imageData.data[pixelIndex] ?? 0;
+  const green = imageData.data[pixelIndex + 1] ?? 0;
+  const blue = imageData.data[pixelIndex + 2] ?? 0;
+
+  return (red * 0.2126 + green * 0.7152 + blue * 0.0722) / 255;
 }
 
 export function ProofHologramProjection() {
@@ -154,7 +169,13 @@ export function ProofHologramProjection() {
 
       if (loaded && sampleContext) {
         sampleContext.clearRect(0, 0, config.columns, config.rows);
-        drawCoverImage(sampleContext, image, config.columns, config.rows);
+        drawCoverImage(
+          sampleContext,
+          image,
+          config.columns,
+          config.rows,
+          config.cssWidth / config.cssHeight,
+        );
         imageData = sampleContext.getImageData(0, 0, config.columns, config.rows);
       }
     };
@@ -177,51 +198,62 @@ export function ProofHologramProjection() {
       const pulse = reducedMotion ? 0 : (Math.sin(now * 0.0016) + 1) / 2;
 
       context.clearRect(0, 0, cssWidth, cssHeight);
-      context.fillStyle = "oklch(0.965 0 0)";
+      context.fillStyle = "oklch(0.018 0 0)";
       context.fillRect(0, 0, cssWidth, cssHeight);
-      context.font = `${cellHeight * 0.92}px "Lettera Mono LL", "IBM Plex Mono", ui-monospace, monospace`;
+      context.font = `${cellHeight * 0.9}px "Lettera Mono LL", "IBM Plex Mono", ui-monospace, monospace`;
       context.textAlign = "center";
       context.textBaseline = "middle";
 
       for (let row = 0; row < rows; row += 1) {
         for (let column = 0; column < columns; column += 1) {
-          const pixelIndex = (row * columns + column) * 4;
-          const red = imageData.data[pixelIndex] ?? 0;
-          const green = imageData.data[pixelIndex + 1] ?? 0;
-          const blue = imageData.data[pixelIndex + 2] ?? 0;
-          const sourceLuminance = (red * 0.2126 + green * 0.7152 + blue * 0.0722) / 255;
+          const sourceLuminance = getPixelLuminance(imageData, row, column, columns, rows);
+          const horizontalEdge = Math.abs(
+            getPixelLuminance(imageData, row, column - 1, columns, rows) -
+              getPixelLuminance(imageData, row, column + 1, columns, rows),
+          );
+          const verticalEdge = Math.abs(
+            getPixelLuminance(imageData, row - 1, column, columns, rows) -
+              getPixelLuminance(imageData, row + 1, column, columns, rows),
+          );
+          const edgeLift = clamp((horizontalEdge + verticalEdge) * 3.15, 0, 0.72);
+          const contrastLuminance = clamp((sourceLuminance - 0.34) * 1.34 + 0.38, 0, 1);
           const x = (column + 0.5) * cellWidth;
           const y = (row + 0.5) * cellHeight;
           const normalizedX = column / Math.max(1, columns - 1);
           const normalizedY = row / Math.max(1, rows - 1);
           const distance = Math.hypot(normalizedX - pointer.x, normalizedY - pointer.y);
           const pointerLift = pointer.active ? clamp(1 - distance / 0.22, 0, 1) : 0;
+          const dropoutNoise = seededNoise(row * 17.91 + column * 29.13 + tick * 0.17);
+          const textureNoise = seededNoise(row * 5.37 + column * 13.71);
           const shimmer = reducedMotion
             ? 0
-            : (seededNoise(row * 21.3 + column * 9.7 + tick * 0.43) - 0.5) * 0.14;
-          const luminance = clamp(
-            sourceLuminance * (0.86 + pointerLift * 0.22) + shimmer + pulse * 0.025,
+            : (seededNoise(row * 21.3 + column * 9.7 + tick * 0.43) - 0.5) * 0.025;
+          const glyphTone = clamp(
+            contrastLuminance * 0.46 + edgeLift * 1.12 + shimmer + pulse * 0.006,
             0,
             1,
           );
-          const alpha = clamp(mix(0.12, 0.92, Math.pow(luminance, 1.08)) + pointerLift * 0.18, 0.08, 1);
-          const glyph = pickCharacter(luminance, row, column, tick, reducedMotion);
+          const portraitMask = clamp(contrastLuminance * 0.7 + edgeLift * 1.3, 0, 1);
+          const ink = clamp(glyphTone + pointerLift * 0.08, 0, 1);
+          const threshold = mix(0.18, 0.72, dropoutNoise) - edgeLift * 0.22;
+          const glyph = pickCharacter(glyphTone, row, column, tick, reducedMotion);
           const offset = reducedMotion
             ? 0
             : Math.sin(row * 0.31 + column * 0.17 + now * 0.003) * pointerLift * 1.6;
 
-          if (glyph === " " && pointerLift < 0.2) {
+          if (
+            (glyph === " " ||
+              ink < 0.18 ||
+              portraitMask < 0.16 ||
+              ink + textureNoise * 0.12 < threshold) &&
+            pointerLift < 0.2
+          ) {
             continue;
           }
 
-          context.fillStyle = `oklch(${mix(0.09, 0.36, 1 - luminance).toFixed(3)} 0 0 / ${alpha.toFixed(3)})`;
+          context.fillStyle = "oklch(0.98 0 0)";
           context.fillText(glyph, x + offset, y - offset * 0.42);
         }
-      }
-
-      context.fillStyle = "oklch(0.08 0 0 / 0.055)";
-      for (let scanY = (now * 0.022) % 18; scanY < cssHeight; scanY += 18) {
-        context.fillRect(0, scanY, cssWidth, 1);
       }
 
       if (!reducedMotion) {

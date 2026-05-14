@@ -1,31 +1,6 @@
 import { useId, useState } from "react";
 import clsx from "clsx";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { iconButtonVariants } from "@/components/ui";
 import { siteContent } from "@/content/site";
-
-const WORK_ENTRY_META: Record<string, { context: string; signals: string[] }> = {
-  Twee: {
-    context: "AI education product",
-    signals: ["React components", "SCSS architecture", "ASP.NET integration"],
-  },
-  Bylith: {
-    context: "Company UI foundation",
-    signals: ["Vue 3 UI kit", "Component quality", "Reusable patterns"],
-  },
-  Sberbank: {
-    context: "Large-scale EdTech",
-    signals: ["Microfrontends", "React + TypeScript", "Test coverage"],
-  },
-  FUTURECOMES: {
-    context: "Game-like learning SPA",
-    signals: ["React delivery", "Review standards", "Team consistency"],
-  },
-  "Older roles": {
-    context: "Production frontend base",
-    signals: ["Freelance delivery", "Business contexts", "Execution range"],
-  },
-};
 
 function clampIndex(index: number, total: number) {
   return Math.max(0, Math.min(total - 1, index));
@@ -35,56 +10,13 @@ export function ExperienceContent() {
   const experiencePanelId = useId();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const activeEntry = siteContent.experience[selectedIndex];
-  const activeMeta = activeEntry ? WORK_ENTRY_META[activeEntry.company] : null;
 
   const scrollToExperience = (index: number) => {
     setSelectedIndex(clampIndex(index, siteContent.experience.length));
   };
 
-  const showPrevious = () => {
-    setSelectedIndex((currentIndex) => clampIndex(currentIndex - 1, siteContent.experience.length));
-  };
-
-  const showNext = () => {
-    setSelectedIndex((currentIndex) => clampIndex(currentIndex + 1, siteContent.experience.length));
-  };
-
   return (
     <div className="flex h-full min-h-0 flex-col gap-6">
-      <div className="flex flex-wrap items-center justify-end gap-2 border-b border-white/8 pb-5">
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={showPrevious}
-            disabled={selectedIndex === 0}
-            aria-controls={experiencePanelId}
-            aria-label="Show previous experience"
-            className={iconButtonVariants({
-              state: selectedIndex === 0 ? "disabled" : "default",
-            })}
-          >
-            <span aria-hidden="true" className="text-icon-strong">
-              <ChevronLeft aria-hidden="true" className="h-6 w-6" />
-            </span>
-          </button>
-          <button
-            type="button"
-            onClick={showNext}
-            disabled={selectedIndex === siteContent.experience.length - 1}
-            aria-controls={experiencePanelId}
-            aria-label="Show next experience"
-            className={iconButtonVariants({
-              state:
-                selectedIndex === siteContent.experience.length - 1 ? "disabled" : "default",
-            })}
-          >
-            <span aria-hidden="true" className="text-icon-strong">
-              <ChevronRight aria-hidden="true" className="h-6 w-6" />
-            </span>
-          </button>
-        </div>
-      </div>
-
       <div className="grid min-h-0 gap-5 lg:grid-cols-[minmax(12rem,0.36fr)_minmax(0,1fr)] xl:gap-7">
         <div className="min-w-0">
           <p className="mb-3 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost">
@@ -161,32 +93,6 @@ export function ExperienceContent() {
                     {activeEntry.period}
                   </p>
                 </div>
-
-                {activeMeta ? (
-                  <div className="grid gap-3 border-b border-white/8 py-5 sm:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-                    <div>
-                      <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost">
-                        Context
-                      </p>
-                      <p className="mt-2 text-base text-text-strong">{activeMeta.context}</p>
-                    </div>
-                    <div>
-                      <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost">
-                        Signals
-                      </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {activeMeta.signals.map((signal) => (
-                          <span
-                            key={signal}
-                            className="rounded-full border border-white/10 bg-[color:oklch(0.25_0_0_/_0.42)] px-3 py-1.5 text-sm text-text-muted"
-                          >
-                            {signal}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
 
                 <ul className="divide-y divide-white/8">
                   {activeEntry.impact.map((item) => (

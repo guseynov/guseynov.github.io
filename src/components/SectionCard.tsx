@@ -47,12 +47,12 @@ export function SectionCard({
         className={clsx(
           "flex flex-col rounded-[inherit] border",
           isLight
-            ? "section-card-light border-black/8 bg-white text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)]"
+            ? "section-card-light border-black/8 bg-white text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)] selection:bg-black selection:text-white"
             : isPaper
-              ? "border-black/8 bg-[color:oklch(0.975_0_0)] text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)]"
-            : isBlack
-              ? "surface-hero border-white/10 bg-canvas"
-              : "surface-hero border-white/8 bg-surface/92",
+              ? "border-black/8 bg-[color:oklch(0.975_0_0)] text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)] selection:bg-black selection:text-white"
+              : isBlack
+                ? "surface-hero border-white/10 bg-canvas"
+                : "surface-hero border-white/8 bg-surface/92",
         )}
       >
         <div
