@@ -6,6 +6,10 @@ coverage
 .env
 .env.local
 .env.*.local
-.agents
-.codex-screenshots
-tmp
+# Agent / AI assistant local files
+AGENTS.md
+DESIGN.md
+DESIGN.backup-*.md
+PRODUCT.md
+skills-lock.json
+.codex-screenshots/
