@@ -14,3 +14,5 @@ PRODUCT.md
 skills-lock.json
 .codex-screenshots/
 .impeccable/
+.agents/
+tmp/

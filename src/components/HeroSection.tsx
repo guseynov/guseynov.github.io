@@ -1,11 +1,13 @@
-import type { MouseEventHandler } from "react";
+import { useEffect, useState, type MouseEventHandler } from "react";
 import {
   ArrowUpRight,
   Download,
   Mail,
+  Menu,
+  X,
 } from "lucide-react";
 import { HeroFidget } from "@/components/HeroFidget";
-import { ButtonLink } from "@/components/ui";
+import { ButtonLink, iconButtonVariants } from "@/components/ui";
 import { siteContent } from "@/content/site";
 
 const HERO_NAV_ITEMS = [
@@ -23,16 +25,42 @@ interface HeroSectionProps {
   onCvClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
-export function HeroHeader({ cvHref, onCvClick }: Pick<HeroSectionProps, "cvHref" | "onCvClick">) {
+export function HeroHeader({
+  cvHref,
+  onCvClick,
+  onEmailClick,
+}: Pick<HeroSectionProps, "cvHref" | "onCvClick" | "onEmailClick">) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mobileMenuId = "mobile-site-menu";
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <div className="sticky top-4 z-50 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center rounded-[0.8rem] border border-white/10 bg-[color:var(--color-surface-frosted)] px-5 py-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248_/_0.08),0_18px_40px_oklch(0.1_0.012_248_/_0.26)] backdrop-blur-sm sm:px-6 lg:px-8">
+    <div className="sticky top-4 z-50 rounded-[0.8rem] border border-white/10 bg-[color:var(--color-surface-frosted)] px-5 py-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248_/_0.08),0_18px_40px_oklch(0.1_0.012_248_/_0.26)] backdrop-blur-sm sm:px-6 lg:px-8">
+      <div className="relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center">
       <a href="#intro" aria-label="Home" className="group flex min-w-0 items-center gap-3">
-        <span className="font-mono text-[1.9rem] leading-none tracking-[-0.08em] text-text-strong transition-opacity duration-200 group-hover:opacity-70 sm:text-[2.35rem] lg:text-[2.8rem]">
+        <span className="font-mono text-[1.9rem] leading-none tracking-[0em] text-text-strong transition-opacity duration-200 group-hover:opacity-70 sm:text-[2.35rem] lg:text-[2.8rem]">
           AG.
         </span>
       </a>
       <nav className="hidden justify-center lg:flex" aria-label="Primary">
-        <div className="flex items-center gap-10 font-mono text-[0.78rem] font-semibold uppercase tracking-[0.26em] text-text-strong">
+        <div className="flex items-center gap-8 font-mono text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-text-strong">
           {HERO_NAV_ITEMS.map((item) => (
             <a
               key={item.label}
@@ -56,6 +84,73 @@ export function HeroHeader({ cvHref, onCvClick }: Pick<HeroSectionProps, "cvHref
           Resume
         </ButtonLink>
       </div>
+      <button
+        type="button"
+        className={`${iconButtonVariants()} ml-auto lg:hidden`}
+        aria-expanded={isMenuOpen}
+        aria-controls={mobileMenuId}
+        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        onClick={() => setIsMenuOpen((value) => !value)}
+      >
+        {isMenuOpen ? (
+          <X aria-hidden="true" className="h-5 w-5" />
+        ) : (
+          <Menu aria-hidden="true" className="h-5 w-5" />
+        )}
+      </button>
+
+      <div
+        id={mobileMenuId}
+        className={[
+          "absolute left-0 right-0 top-[calc(100%+0.75rem)] lg:hidden",
+          isMenuOpen ? "block" : "hidden",
+        ].join(" ")}
+      >
+        <div className="rounded-[1rem] border border-white/10 bg-[color:var(--color-surface-frosted)] p-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248_/_0.08),0_24px_48px_oklch(0.1_0.012_248_/_0.28)] backdrop-blur-sm">
+          <nav aria-label="Mobile primary" className="grid gap-1">
+            {HERO_NAV_ITEMS.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between rounded-[0.85rem] border border-transparent px-3 py-3 font-mono text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-text-strong transition-colors duration-200 ease-out hover:border-white/10 hover:bg-white/[0.04]"
+              >
+                <span>{item.label}</span>
+                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </a>
+            ))}
+          </nav>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <ButtonLink
+              href={`mailto:${siteContent.profile.email}`}
+              tone="secondary"
+              className="w-full justify-center"
+              onClick={(event) => {
+                setIsMenuOpen(false);
+                onEmailClick?.(event);
+              }}
+              icon={<Mail aria-hidden="true" className="h-5 w-5 shrink-0" />}
+            >
+              Email me
+            </ButtonLink>
+            <ButtonLink
+              href={cvHref}
+              tone="primary"
+              className="w-full justify-center"
+              download
+              onClick={(event) => {
+                setIsMenuOpen(false);
+                onCvClick?.(event);
+              }}
+              icon={<Download aria-hidden="true" className="h-4 w-4 shrink-0" />}
+            >
+              Resume
+            </ButtonLink>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   );
 }

@@ -90,31 +90,31 @@ export function ContactContent({ cvHref }: ContactContentProps) {
     <div className="grid min-h-0 min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.46fr)] xl:gap-6">
       <div className="relative isolate flex min-h-[13rem] min-w-0 items-center overflow-hidden rounded-[1rem] bg-[color:oklch(0.055_0_0)] p-5 text-text-strong shadow-[inset_0_0_0_1px_oklch(0.96_0_0_/_0.12)] sm:p-6 xl:p-7">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,oklch(0.96_0_0_/_0.48),transparent)]" />
-        <div className="grid w-full gap-7">
-          <div className="min-w-0">
-            <a
-              href={mailtoHref}
-              className="group inline-flex max-w-full items-center gap-3 whitespace-nowrap font-display text-[clamp(1.8rem,4.7vw,4rem)] leading-[0.9] tracking-[-0.08em] text-text-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]"
-              onClick={() =>
-                trackCtaClick({
-                  label: siteContent.contact.primaryCtaLabel,
-                  href: mailtoHref,
-                  placement: "contact_section_primary_cta",
-                })
-              }
-            >
-              <span>{siteContent.profile.email}</span>
-              <ExternalLink
-                aria-hidden="true"
-                className="mt-2 hidden h-7 w-7 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1 sm:block"
-              />
-            </a>
-          </div>
+      <div className="grid w-full gap-7">
+        <div className="min-w-0">
+          <a
+            href={mailtoHref}
+            className="group inline-flex max-w-full items-center gap-3 whitespace-nowrap font-display text-[clamp(1.8rem,4.7vw,4rem)] leading-[0.9] tracking-[0em] text-text-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]"
+            onClick={() =>
+              trackCtaClick({
+                label: siteContent.contact.primaryCtaLabel,
+                href: mailtoHref,
+                placement: "contact_section_primary_cta",
+              })
+            }
+          >
+            <span>{siteContent.profile.email}</span>
+            <ExternalLink
+              aria-hidden="true"
+              className="mt-2 hidden h-7 w-7 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1 sm:block"
+            />
+          </a>
+        </div>
 
           <div className="flex flex-wrap gap-3">
             <a
               href={mailtoHref}
-              className="control-tap-target inline-flex min-h-12 items-center justify-center rounded-[3px] bg-text-strong px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] text-text-inverse transition-colors duration-200 ease-out hover:bg-[color:oklch(0.9_0_0)] active:bg-[color:oklch(0.84_0_0)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]"
+              className="control-tap-target inline-flex min-h-12 items-center justify-center rounded-full bg-text-strong px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] text-text-inverse transition-colors duration-200 ease-out hover:bg-[color:oklch(0.9_0_0)] active:bg-[color:oklch(0.84_0_0)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]"
               onClick={() =>
                 trackCtaClick({
                   label: siteContent.contact.primaryCtaLabel,
@@ -129,7 +129,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
               type="button"
               onClick={handleCopyEmail}
               className={clsx(
-                "control-tap-target inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-[3px] border px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]",
+                "control-tap-target inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full border px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]",
                 isCopied
                   ? "border-text-strong bg-transparent text-text-strong"
                   : "border-white/14 bg-white/[0.055] text-text-strong hover:bg-white/[0.095] active:bg-white/[0.13]",

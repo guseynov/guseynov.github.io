@@ -28,7 +28,7 @@ export function ProjectsContent({ baseUrl }: ProjectsContentProps) {
               <span className="text-white/18">/</span>
               <span>{project.stack}</span>
             </div>
-            <h3 className="mt-3 text-[1.45rem] font-semibold tracking-[-0.03em] text-text-strong sm:text-[1.6rem]">
+            <h3 className="mt-3 text-[1.45rem] font-semibold tracking-[0em] text-text-strong sm:text-[1.6rem]">
               {project.title}
             </h3>
             <p className="mt-3 max-w-[60ch] text-base leading-7 text-text-muted">

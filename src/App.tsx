@@ -1,7 +1,6 @@
-import { useEffect, useRef, type MouseEventHandler, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { HeroHeader, HeroSection } from "@/components/HeroSection";
 import { SectionCard } from "@/components/SectionCard";
-import { ButtonLink } from "@/components/ui";
 import { CapabilitiesContent } from "@/components/sections/CapabilitiesContent";
 import { ContactContent } from "@/components/sections/ContactContent";
 import { ExperienceContent } from "@/components/sections/ExperienceContent";
@@ -51,18 +50,6 @@ interface SectionContentConfig {
   titleClassName?: string;
   aside?: ReactNode;
   content: ReactNode;
-}
-
-interface ActionLinkConfig {
-  href: string;
-  label: string;
-  tone: "primary" | "secondary";
-  icon?: ReactNode;
-  className?: string;
-  target?: string;
-  rel?: string;
-  download?: boolean;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionContentConfig {
@@ -180,6 +167,13 @@ function App() {
         <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 lg:gap-8">
           <HeroHeader
             cvHref={cvHref}
+            onEmailClick={() =>
+              trackCtaClick({
+                label: "Email me",
+                href: `mailto:${siteContent.profile.email}`,
+                placement: "hero",
+              })
+            }
             onCvClick={() =>
               trackCtaClick({
                 label: "Download CV",
