@@ -372,7 +372,7 @@
   width: 100%;
   cursor: crosshair;
   pointer-events: auto;
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 .hero-fidget__sound {
