@@ -111,10 +111,10 @@ export function ContactContent({ cvHref }: ContactContentProps) {
           </a>
         </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={mailtoHref}
-              className="control-tap-target inline-flex min-h-12 items-center justify-center rounded-full bg-text-strong px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] text-text-inverse transition-colors duration-200 ease-out hover:bg-[color:oklch(0.9_0_0)] active:bg-[color:oklch(0.84_0_0)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]"
+              className="control-tap-target inline-flex min-h-12 w-full items-center justify-center rounded-full bg-text-strong px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] text-text-inverse transition-colors duration-200 ease-out hover:bg-[color:oklch(0.9_0_0)] active:bg-[color:oklch(0.84_0_0)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)] sm:w-auto"
               onClick={() =>
                 trackCtaClick({
                   label: siteContent.contact.primaryCtaLabel,
@@ -129,7 +129,7 @@ export function ContactContent({ cvHref }: ContactContentProps) {
               type="button"
               onClick={handleCopyEmail}
               className={clsx(
-                "control-tap-target inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full border px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)]",
+                "control-tap-target inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-full border px-5 py-3 font-mono text-sm font-medium uppercase leading-none tracking-[0.14em] transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[color:oklch(0.055_0_0)] sm:w-auto",
                 isCopied
                   ? "border-text-strong bg-transparent text-text-strong"
                   : "border-white/14 bg-white/[0.055] text-text-strong hover:bg-white/[0.095] active:bg-white/[0.13]",

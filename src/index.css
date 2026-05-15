@@ -488,6 +488,12 @@
 
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .hero-fidget__sound {
+    display: none;
+  }
+}
+
 .section-scroll {
   scrollbar-gutter: stable;
   scrollbar-width: thin;

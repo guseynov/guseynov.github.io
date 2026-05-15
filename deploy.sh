@@ -48,7 +48,7 @@ printf '%s\n' "$PROJECT_SPECS" | while IFS='|' read -r project_dir build_dir dep
 done
 
 : > "$DEPLOY_DIR/.nojekyll"
-echo 'guseynov.github.io' > "$DEPLOY_DIR/CNAME"
+echo 'alex23.com' > "$DEPLOY_DIR/CNAME"
 
 cd "$DEPLOY_DIR"
 git init
