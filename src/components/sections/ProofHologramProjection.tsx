@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const IMAGE_SRC = `${import.meta.env.BASE_URL}images/alex-ascii-source.png`;
+const IMAGE_SRC = `${import.meta.env.BASE_URL}images/alex-ascii-source.jpg`;
 const FRAME_INTERVAL_MS = 1000 / 24;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const CHARACTER_BANDS = [
@@ -32,8 +32,10 @@ interface RenderConfig {
   rows: number;
 }
 
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
-const mix = (from: number, to: number, amount: number) => from + (to - from) * amount;
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value));
+const mix = (from: number, to: number, amount: number) =>
+  from + (to - from) * amount;
 const seededNoise = (value: number) => {
   const sine = Math.sin(value * 12.9898) * 43758.5453;
   return sine - Math.floor(sine);
@@ -95,7 +97,13 @@ function drawCoverImage(
   );
 }
 
-function pickCharacter(luminance: number, row: number, column: number, tick: number, reducedMotion: boolean) {
+function pickCharacter(
+  luminance: number,
+  row: number,
+  column: number,
+  tick: number,
+  reducedMotion: boolean,
+) {
   const bandIndex = clamp(
     Math.floor(Math.pow(luminance, 0.82) * (CHARACTER_BANDS.length - 1)),
     0,
@@ -107,7 +115,13 @@ function pickCharacter(luminance: number, row: number, column: number, tick: num
   return band[Math.floor(seededNoise(seed) * band.length)] ?? band[0];
 }
 
-function getPixelLuminance(imageData: ImageData, row: number, column: number, columns: number, rows: number) {
+function getPixelLuminance(
+  imageData: ImageData,
+  row: number,
+  column: number,
+  columns: number,
+  rows: number,
+) {
   const clampedRow = clamp(row, 0, rows - 1);
   const clampedColumn = clamp(column, 0, columns - 1);
   const pixelIndex = (clampedRow * columns + clampedColumn) * 4;
@@ -138,7 +152,9 @@ export function ProofHologramProjection() {
     }
 
     const sampleCanvas = document.createElement("canvas");
-    const sampleContext = sampleCanvas.getContext("2d", { willReadFrequently: true });
+    const sampleContext = sampleCanvas.getContext("2d", {
+      willReadFrequently: true,
+    });
     const image = new Image();
     const reducedMotion = window.matchMedia(REDUCED_MOTION_QUERY).matches;
 
@@ -176,7 +192,12 @@ export function ProofHologramProjection() {
           config.rows,
           config.cssWidth / config.cssHeight,
         );
-        imageData = sampleContext.getImageData(0, 0, config.columns, config.rows);
+        imageData = sampleContext.getImageData(
+          0,
+          0,
+          config.columns,
+          config.rows,
+        );
       }
     };
 
@@ -192,7 +213,8 @@ export function ProofHologramProjection() {
       }
 
       lastFrameAt = now;
-      const { cellHeight, cellWidth, columns, cssHeight, cssWidth, rows } = config;
+      const { cellHeight, cellWidth, columns, cssHeight, cssWidth, rows } =
+        config;
       const pointer = pointerRef.current;
       const tick = reducedMotion ? 0 : Math.floor(now / 132);
       const pulse = reducedMotion ? 0 : (Math.sin(now * 0.0016) + 1) / 2;
@@ -206,7 +228,13 @@ export function ProofHologramProjection() {
 
       for (let row = 0; row < rows; row += 1) {
         for (let column = 0; column < columns; column += 1) {
-          const sourceLuminance = getPixelLuminance(imageData, row, column, columns, rows);
+          const sourceLuminance = getPixelLuminance(
+            imageData,
+            row,
+            column,
+            columns,
+            rows,
+          );
           const horizontalEdge = Math.abs(
             getPixelLuminance(imageData, row, column - 1, columns, rows) -
               getPixelLuminance(imageData, row, column + 1, columns, rows),
@@ -215,31 +243,62 @@ export function ProofHologramProjection() {
             getPixelLuminance(imageData, row - 1, column, columns, rows) -
               getPixelLuminance(imageData, row + 1, column, columns, rows),
           );
-          const edgeLift = clamp((horizontalEdge + verticalEdge) * 3.15, 0, 0.72);
-          const contrastLuminance = clamp((sourceLuminance - 0.34) * 1.34 + 0.38, 0, 1);
+          const edgeLift = clamp(
+            (horizontalEdge + verticalEdge) * 3.15,
+            0,
+            0.72,
+          );
+          const contrastLuminance = clamp(
+            (sourceLuminance - 0.34) * 1.34 + 0.38,
+            0,
+            1,
+          );
           const x = (column + 0.5) * cellWidth;
           const y = (row + 0.5) * cellHeight;
           const normalizedX = column / Math.max(1, columns - 1);
           const normalizedY = row / Math.max(1, rows - 1);
-          const distance = Math.hypot(normalizedX - pointer.x, normalizedY - pointer.y);
-          const pointerLift = pointer.active ? clamp(1 - distance / 0.22, 0, 1) : 0;
-          const dropoutNoise = seededNoise(row * 17.91 + column * 29.13 + tick * 0.17);
+          const distance = Math.hypot(
+            normalizedX - pointer.x,
+            normalizedY - pointer.y,
+          );
+          const pointerLift = pointer.active
+            ? clamp(1 - distance / 0.22, 0, 1)
+            : 0;
+          const dropoutNoise = seededNoise(
+            row * 17.91 + column * 29.13 + tick * 0.17,
+          );
           const textureNoise = seededNoise(row * 5.37 + column * 13.71);
           const shimmer = reducedMotion
             ? 0
-            : (seededNoise(row * 21.3 + column * 9.7 + tick * 0.43) - 0.5) * 0.025;
+            : (seededNoise(row * 21.3 + column * 9.7 + tick * 0.43) - 0.5) *
+              0.025;
           const glyphTone = clamp(
-            contrastLuminance * 0.46 + edgeLift * 1.12 + shimmer + pulse * 0.006,
+            contrastLuminance * 0.46 +
+              edgeLift * 1.12 +
+              shimmer +
+              pulse * 0.006,
             0,
             1,
           );
-          const portraitMask = clamp(contrastLuminance * 0.7 + edgeLift * 1.3, 0, 1);
+          const portraitMask = clamp(
+            contrastLuminance * 0.7 + edgeLift * 1.3,
+            0,
+            1,
+          );
           const ink = clamp(glyphTone + pointerLift * 0.08, 0, 1);
           const threshold = mix(0.18, 0.72, dropoutNoise) - edgeLift * 0.22;
-          const glyph = pickCharacter(glyphTone, row, column, tick, reducedMotion);
+          const glyph = pickCharacter(
+            glyphTone,
+            row,
+            column,
+            tick,
+            reducedMotion,
+          );
           const offset = reducedMotion
             ? 0
-            : Math.sin(row * 0.31 + column * 0.17 + now * 0.003) * pointerLift * 1.6;
+            : Math.sin(row * 0.31 + column * 0.17 + now * 0.003) *
+              pointerLift *
+              1.6;
 
           if (
             (glyph === " " ||
