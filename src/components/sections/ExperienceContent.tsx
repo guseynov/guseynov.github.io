@@ -1,6 +1,6 @@
 import { useId, useState } from "react";
 import clsx from "clsx";
-import { siteContent } from "@/content/site";
+import { siteContent } from "../../content/site";
 
 function clampIndex(index: number, total: number) {
   return Math.max(0, Math.min(total - 1, index));
@@ -44,11 +44,13 @@ export function ExperienceContent() {
                     "control-tap-target group flex min-w-0 items-center rounded-[0.9rem] border p-3 text-left transition duration-200 ease-out focus-visible:outline-none",
                     isActive
                       ? "border-accent bg-accent text-text-inverse shadow-[0_0_24px_var(--color-accent-glow)]"
-                      : "border-white/8 bg-[color:oklch(0.18_0_0_/_0.46)] text-text-muted hover:border-white/18 hover:bg-[color:oklch(0.23_0_0_/_0.6)] hover:text-text-strong",
+                      : "border-white/8 bg-[oklch(0.18_0_0/0.46)] text-text-muted hover:border-white/18 hover:bg-[oklch(0.23_0_0/0.6)] hover:text-text-strong",
                   )}
                 >
                   <span className="min-w-0">
-                    <span className="block truncate text-sm font-medium">{entry.company}</span>
+                    <span className="block truncate text-sm font-medium">
+                      {entry.company}
+                    </span>
                     <span
                       className={clsx(
                         "mt-1 block truncate font-mono text-[0.66rem]",
@@ -66,14 +68,14 @@ export function ExperienceContent() {
 
         <div className="min-w-0 border-t border-white/8 pt-5 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
           <div
-            className="relative overflow-hidden rounded-[1rem] border border-white/8 bg-[color:oklch(0.07_0_0_/_0.64)] p-4 sm:p-5 lg:p-6"
+            className="relative overflow-hidden rounded-2xl border border-white/8 bg-[oklch(0.07_0_0/0.64)] p-4 sm:p-5 lg:p-6"
             id={experiencePanelId}
             role="tabpanel"
             aria-labelledby={`${experiencePanelId}-${String(selectedIndex + 1).padStart(2, "0")}-tab`}
           >
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 opacity-[0.16] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:2.2rem_2.2rem] [mask-image:linear-gradient(180deg,black,transparent_82%)]"
+              className="pointer-events-none absolute inset-0 opacity-[0.16] bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[2.2rem_2.2rem] mask-[linear-gradient(180deg,black,transparent_82%)]"
             />
             {activeEntry ? (
               <article
@@ -86,7 +88,9 @@ export function ExperienceContent() {
                       <h3 className="text-display-title text-[clamp(2.35rem,5.8vw,4.8rem)] text-text-strong">
                         {activeEntry.company}
                       </h3>
-                      <p className="pb-1 text-base text-text-muted">{activeEntry.role}</p>
+                      <p className="pb-1 text-base text-text-muted">
+                        {activeEntry.role}
+                      </p>
                     </div>
                   </div>
                   <p className="font-mono text-sm leading-6 text-text-ghost xl:pt-2">

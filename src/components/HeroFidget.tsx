@@ -108,10 +108,16 @@ const SOUND_PRESETS: SoundPreset[] = [
   },
 ];
 
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
-const mix = (from: number, to: number, amount: number) => from + (to - from) * amount;
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value));
+const mix = (from: number, to: number, amount: number) =>
+  from + (to - from) * amount;
 
-function distanceToSegment(point: THREE.Vector2, start: THREE.Vector2, end: THREE.Vector2) {
+function distanceToSegment(
+  point: THREE.Vector2,
+  start: THREE.Vector2,
+  end: THREE.Vector2,
+) {
   const segmentX = end.x - start.x;
   const segmentY = end.y - start.y;
   const lengthSquared = segmentX * segmentX + segmentY * segmentY;
@@ -121,19 +127,26 @@ function distanceToSegment(point: THREE.Vector2, start: THREE.Vector2, end: THRE
   }
 
   const t = clamp(
-    ((point.x - start.x) * segmentX + (point.y - start.y) * segmentY) / lengthSquared,
+    ((point.x - start.x) * segmentX + (point.y - start.y) * segmentY) /
+      lengthSquared,
     0,
     1,
   );
 
-  return Math.hypot(point.x - (start.x + t * segmentX), point.y - (start.y + t * segmentY));
+  return Math.hypot(
+    point.x - (start.x + t * segmentX),
+    point.y - (start.y + t * segmentY),
+  );
 }
 
 function distanceToPolyline(point: THREE.Vector2, points: THREE.Vector2[]) {
   let closest = Number.POSITIVE_INFINITY;
 
   for (let index = 0; index < points.length - 1; index += 1) {
-    closest = Math.min(closest, distanceToSegment(point, points[index], points[index + 1]));
+    closest = Math.min(
+      closest,
+      distanceToSegment(point, points[index], points[index + 1]),
+    );
   }
 
   return closest;
@@ -182,7 +195,8 @@ function updateRibbonGeometry(
     const normalX = -tangentY / length;
     const normalY = tangentX / length;
     const travel = index / (points.length - 1);
-    const wave = Math.sin(travel * Math.PI * 5.4 + time * 0.006 + phase) * amplitude;
+    const wave =
+      Math.sin(travel * Math.PI * 5.4 + time * 0.006 + phase) * amplitude;
     const stringWidth = width * (1 + pulse * 1.8 + proximity * 0.8);
     const x = current.x + normalX * wave;
     const y = current.y + normalY * wave;
@@ -244,7 +258,10 @@ function createStringAudio(preset: SoundPreset): StringAudio | null {
     }
 
     filter.type = "lowpass";
-    filter.frequency.setValueAtTime(preset.filterBase + amount * preset.filterSweep, now);
+    filter.frequency.setValueAtTime(
+      preset.filterBase + amount * preset.filterSweep,
+      now,
+    );
     filter.Q.value = 0.62;
 
     tone.type = preset.primary;
@@ -277,7 +294,8 @@ function createStringPoints(index: number) {
   const lane = index / (STRING_COUNT - 1);
   const baseY = mix(0.66, -0.66, lane);
   const slope = Math.sin(index * 1.17) * 0.34;
-  const bow = (index % 2 === 0 ? 1 : -1) * mix(0.05, 0.2, Math.abs(lane - 0.5) * 2);
+  const bow =
+    (index % 2 === 0 ? 1 : -1) * mix(0.05, 0.2, Math.abs(lane - 0.5) * 2);
 
   for (let pointIndex = 0; pointIndex < STRING_POINTS; pointIndex += 1) {
     const t = pointIndex / (STRING_POINTS - 1);
@@ -286,7 +304,7 @@ function createStringPoints(index: number) {
       baseY +
       (t - 0.5) * slope +
       Math.sin(t * Math.PI) * bow +
-      Math.sin((t * Math.PI * 2) + index * 0.9) * 0.018;
+      Math.sin(t * Math.PI * 2 + index * 0.9) * 0.018;
 
     points.push(new THREE.Vector2(x, y));
   }
@@ -344,13 +362,16 @@ export function HeroFidget() {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [webglReady, setWebglReady] = useState(true);
 
-  const playString = useCallback((frequency: number, intensity: number, pan: number) => {
-    if (!stateRef.current.soundEnabled) {
-      return;
-    }
+  const playString = useCallback(
+    (frequency: number, intensity: number, pan: number) => {
+      if (!stateRef.current.soundEnabled) {
+        return;
+      }
 
-    audioRef.current?.play(frequency, intensity, pan);
-  }, []);
+      audioRef.current?.play(frequency, intensity, pan);
+    },
+    [],
+  );
 
   const toggleSound = useCallback(async () => {
     if (soundEnabled) {
@@ -379,7 +400,9 @@ export function HeroFidget() {
       return undefined;
     }
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
     camera.position.z = 2;
@@ -404,7 +427,9 @@ export function HeroFidget() {
     mount.appendChild(renderer.domElement);
 
     const root = new THREE.Group();
-    const { group: stringGroup, strings } = createSonicStrings(presetRef.current.scale);
+    const { group: stringGroup, strings } = createSonicStrings(
+      presetRef.current.scale,
+    );
     root.add(stringGroup);
     scene.add(root);
     stringsRef.current = strings;
@@ -449,11 +474,30 @@ export function HeroFidget() {
         stringGroup.position.set(0, 0, 0);
 
         strings.forEach((item) => {
-          const proximityDistance = distanceToPolyline(state.pointer, item.points);
-          item.proximity = mix(item.proximity, clamp(1 - proximityDistance / 0.2, 0, 1), 0.12);
+          const proximityDistance = distanceToPolyline(
+            state.pointer,
+            item.points,
+          );
+          item.proximity = mix(
+            item.proximity,
+            clamp(1 - proximityDistance / 0.2, 0, 1),
+            0.12,
+          );
           item.pulse = Math.max(0, item.pulse - delta * 2.2);
-          item.material.opacity = clamp(item.baseOpacity + item.proximity * 0.16 + item.pulse * 0.48, 0.1, 0.72);
-          updateRibbonGeometry(item.mesh.geometry, item.points, item.width, item.pulse, item.proximity, now, item.phase);
+          item.material.opacity = clamp(
+            item.baseOpacity + item.proximity * 0.16 + item.pulse * 0.48,
+            0.1,
+            0.72,
+          );
+          updateRibbonGeometry(
+            item.mesh.geometry,
+            item.points,
+            item.width,
+            item.pulse,
+            item.proximity,
+            now,
+            item.phase,
+          );
         });
 
         renderer.render(scene, camera);
@@ -499,7 +543,8 @@ export function HeroFidget() {
 
       const bounds = root.getBoundingClientRect();
       const aspect = bounds.width / bounds.height;
-      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2 * aspect;
+      const x =
+        ((event.clientX - bounds.left) / bounds.width - 0.5) * 2 * aspect;
       const y = -(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
       const state = stateRef.current;
       const speed = Math.hypot(x - state.target.x, y - state.target.y);
@@ -514,15 +559,24 @@ export function HeroFidget() {
           item.armed = true;
         }
 
-        if (!item.armed || distance > HIT_DISTANCE || now - item.lastHitAt < 125) {
+        if (
+          !item.armed ||
+          distance > HIT_DISTANCE ||
+          now - item.lastHitAt < 125
+        ) {
           return;
         }
 
         item.lastHitAt = now;
         item.armed = false;
         item.pulse = 1;
-        (window as HeroWindow).__heroLineHits = ((window as HeroWindow).__heroLineHits ?? 0) + 1;
-        playString(item.frequency, clamp(0.26 + speed * 3.2, 0.22, 1), x / aspect);
+        (window as HeroWindow).__heroLineHits =
+          ((window as HeroWindow).__heroLineHits ?? 0) + 1;
+        playString(
+          item.frequency,
+          clamp(0.26 + speed * 3.2, 0.22, 1),
+          x / aspect,
+        );
       });
     },
     [playString],
@@ -533,7 +587,11 @@ export function HeroFidget() {
   }, []);
 
   return (
-    <div ref={rootRef} className="hero-fidget" aria-label="Interactive sound geometry">
+    <div
+      ref={rootRef}
+      className="hero-fidget"
+      aria-label="Interactive sound geometry"
+    >
       <div ref={mountRef} className="hero-fidget__canvas" aria-hidden="true" />
       {!webglReady ? (
         <div className="hero-fidget__fallback" aria-hidden="true">

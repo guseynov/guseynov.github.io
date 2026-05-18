@@ -1,27 +1,26 @@
 import { useEffect, useRef, type ReactNode } from "react";
-import { HeroHeader, HeroSection } from "@/components/HeroSection";
-import { SectionCard } from "@/components/SectionCard";
-import { CapabilitiesContent } from "@/components/sections/CapabilitiesContent";
-import { ContactContent } from "@/components/sections/ContactContent";
-import { ExperienceContent } from "@/components/sections/ExperienceContent";
-import { IntroContent } from "@/components/sections/IntroContent";
+import { HeroHeader, HeroSection } from "./components/HeroSection";
+import { SectionCard } from "./components/SectionCard";
+import { CapabilitiesContent } from "./components/sections/CapabilitiesContent";
+import { ContactContent } from "./components/sections/ContactContent";
+import { ExperienceContent } from "./components/sections/ExperienceContent";
+import { IntroContent } from "./components/sections/IntroContent";
 import {
   ProofContent,
   ProofProjectionPlaceholder,
-} from "@/components/sections/ProofContent";
+} from "./components/sections/ProofContent";
 import {
   SectionId,
   siteContent,
   type SectionId as SectionIdValue,
-} from "@/content/site";
-import { trackCtaClick, trackSectionView } from "@/lib/analytics";
+} from "./content/site";
+import { trackCtaClick, trackSectionView } from "./lib/analytics";
 
 const SECTION_INDEX_LABELS: Record<SectionIdValue, string> = {
   [SectionId.Intro]: "01 / OVERVIEW",
   [SectionId.Proof]: "02 / STRENGTHS",
   [SectionId.Capabilities]: "03 / SKILLS",
   [SectionId.Experience]: "04 / EXPERIENCE",
-  [SectionId.Projects]: "05 / WORK",
   [SectionId.Contact]: "05 / CONTACT",
 };
 
@@ -38,7 +37,6 @@ const SECTION_LAYOUT_CLASSNAMES: Record<SectionIdValue, string> = {
   [SectionId.Proof]: "xl:col-span-12 xl:-mt-18",
   [SectionId.Capabilities]: "xl:col-span-12",
   [SectionId.Experience]: "xl:col-span-12",
-  [SectionId.Projects]: "xl:col-span-7",
   [SectionId.Contact]: "xl:col-span-12",
 };
 
@@ -50,6 +48,37 @@ interface SectionContentConfig {
   titleClassName?: string;
   aside?: ReactNode;
   content: ReactNode;
+}
+
+interface SectionPresentation {
+  className: string;
+  tone: "dark" | "light" | "paper" | "black";
+}
+
+function getSectionPresentation(sectionId: SectionIdValue): SectionPresentation {
+  switch (sectionId) {
+    case SectionId.Proof:
+      return {
+        className: "relative z-20 h-full w-full -mt-8 sm:-mt-10 lg:-mt-12 xl:-mt-14",
+        tone: "light",
+      };
+    case SectionId.Capabilities:
+      return {
+        className: "h-full w-full",
+        tone: "black",
+      };
+    case SectionId.Contact:
+      return {
+        className: "h-full w-full",
+        tone: "paper",
+      };
+    case SectionId.Intro:
+    case SectionId.Experience:
+      return {
+        className: "h-full w-full",
+        tone: "dark",
+      };
+  }
 }
 
 function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionContentConfig {
@@ -108,7 +137,6 @@ function App() {
     [SectionId.Capabilities]: null,
     [SectionId.Experience]: null,
     [SectionId.Proof]: null,
-    [SectionId.Projects]: null,
     [SectionId.Contact]: null,
   });
 
@@ -207,42 +235,34 @@ function App() {
           >
             {sectionConfigs
               .filter((section) => section.id !== SectionId.Intro)
-              .map((section) => (
-                <div
-                  key={section.id}
-                  ref={(element) => {
-                    sectionRefs.current[section.id] = element;
-                  }}
-                  data-section-id={section.id}
-                  className={SECTION_LAYOUT_CLASSNAMES[section.id]}
-                >
-                  <SectionCard
-                    id={section.id}
-                    title={section.title}
-                    summary={section.summary}
-                    indexLabel={section.indexLabel}
-                    titleClassName={section.titleClassName}
-                    aside={section.aside}
-                    headerless={section.id === SectionId.Intro}
-                    className={
-                      section.id === SectionId.Proof
-                        ? "relative z-20 h-full w-full -mt-8 sm:-mt-10 lg:-mt-12 xl:-mt-14"
-                        : "h-full w-full"
-                    }
-                    tone={
-                      section.id === SectionId.Proof
-                        ? "light"
-                        : section.id === SectionId.Capabilities
-                          ? "black"
-                          : section.id === SectionId.Contact
-                            ? "paper"
-                          : "dark"
-                    }
+              .map((section) => {
+                const presentation = getSectionPresentation(section.id);
+
+                return (
+                  <div
+                    key={section.id}
+                    ref={(element) => {
+                      sectionRefs.current[section.id] = element;
+                    }}
+                    data-section-id={section.id}
+                    className={SECTION_LAYOUT_CLASSNAMES[section.id]}
                   >
-                    {section.content}
-                  </SectionCard>
-                </div>
-              ))}
+                    <SectionCard
+                      id={section.id}
+                      title={section.title}
+                      summary={section.summary}
+                      indexLabel={section.indexLabel}
+                      titleClassName={section.titleClassName}
+                      aside={section.aside}
+                      headerless={section.id === SectionId.Intro}
+                      className={presentation.className}
+                      tone={presentation.tone}
+                    >
+                      {section.content}
+                    </SectionCard>
+                  </div>
+                );
+              })}
           </main>
         </div>
       </div>

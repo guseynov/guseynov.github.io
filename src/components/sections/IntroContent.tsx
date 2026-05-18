@@ -1,5 +1,5 @@
-import { panelVariants } from "@/components/ui";
-import { siteContent } from "@/content/site";
+import { panelVariants } from "../ui";
+import { siteContent } from "../../content/site";
 
 const INTRO_SIGNALS = [
   { label: "Focus", value: "Design systems, modernization, delivery" },

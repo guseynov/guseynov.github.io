@@ -29,10 +29,36 @@ export function SectionCard({
 }: SectionCardProps) {
   const isLight = tone === "light";
   const isPaper = tone === "paper";
-  const isBlack = tone === "black";
   const hasIndexLabel = indexLabel.trim().length > 0;
   const hasSummary = summary.trim().length > 0;
-  const titleWidthClassName = titleClassName || "max-w-[14ch] sm:max-w-[16ch] md:max-w-[18ch]";
+  const titleWidthClassName =
+    titleClassName || "max-w-[14ch] sm:max-w-[16ch] md:max-w-[18ch]";
+  let cardToneClassName: string;
+
+  switch (tone) {
+    case "light":
+      cardToneClassName =
+        "section-card-light border-black/8 bg-white text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)] selection:bg-black selection:text-white";
+      break;
+    case "paper":
+      cardToneClassName =
+        "border-black/8 bg-[color:oklch(0.975_0_0)] text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)] selection:bg-black selection:text-white";
+      break;
+    case "black":
+      cardToneClassName = "surface-hero border-white/10 bg-canvas";
+      break;
+    default:
+      cardToneClassName = "surface-hero border-white/8 bg-surface/92";
+      break;
+  }
+  const headerBorderClassName =
+    isLight || isPaper ? "border-black/8" : "border-white/8";
+  const labelTextClassName =
+    isLight || isPaper ? "text-text-inverse/44" : "text-text-ghost";
+  const titleTextClassName =
+    isLight || isPaper ? "text-text-inverse" : "text-text-strong";
+  const summaryTextClassName =
+    isLight || isPaper ? "text-text-inverse/72" : "text-text-muted";
 
   return (
     <section
@@ -46,13 +72,7 @@ export function SectionCard({
       <div
         className={clsx(
           "flex flex-col rounded-[inherit] border",
-          isLight
-            ? "section-card-light border-black/8 bg-white text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)] selection:bg-black selection:text-white"
-            : isPaper
-              ? "border-black/8 bg-[color:oklch(0.975_0_0)] text-text-inverse shadow-[0_26px_60px_rgba(0,0,0,0.08)] selection:bg-black selection:text-white"
-              : isBlack
-                ? "surface-hero border-white/10 bg-canvas"
-                : "surface-hero border-white/8 bg-surface/92",
+          cardToneClassName,
         )}
       >
         <div
@@ -63,7 +83,7 @@ export function SectionCard({
             <header
               className={clsx(
                 "flex flex-col gap-4 border-b pb-4 sm:gap-5 sm:pb-5 md:flex-row md:items-start md:justify-between",
-                isLight || isPaper ? "border-black/8" : "border-white/8",
+                headerBorderClassName,
               )}
             >
               <div className="max-w-[58ch] space-y-3">
@@ -71,7 +91,7 @@ export function SectionCard({
                   <span
                     className={clsx(
                       "mb-2 block font-mono text-[0.7rem] uppercase tracking-[0.22em] md:hidden",
-                      isLight || isPaper ? "text-text-inverse/44" : "text-text-ghost",
+                      labelTextClassName,
                     )}
                   >
                     {indexLabel}
@@ -82,7 +102,7 @@ export function SectionCard({
                   className={clsx(
                     "text-display-title",
                     titleWidthClassName,
-                    isLight || isPaper ? "text-text-inverse" : "text-text-strong",
+                    titleTextClassName,
                   )}
                 >
                   {title}
@@ -91,7 +111,7 @@ export function SectionCard({
                   <p
                     className={clsx(
                       "max-w-[62ch] text-[1rem] leading-7 sm:text-[1.02rem] sm:leading-8",
-                      isLight || isPaper ? "text-text-inverse/72" : "text-text-muted",
+                      summaryTextClassName,
                     )}
                   >
                     {summary}
@@ -103,7 +123,7 @@ export function SectionCard({
                   <span
                     className={clsx(
                       "hidden font-mono text-[0.7rem] uppercase tracking-[0.22em] md:inline",
-                      isLight || isPaper ? "text-text-inverse/44" : "text-text-ghost",
+                      labelTextClassName,
                     )}
                   >
                     {indexLabel}

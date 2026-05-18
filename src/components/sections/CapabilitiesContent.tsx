@@ -49,7 +49,7 @@ import typescriptIcon from "simple-icons/icons/typescript.svg?raw";
 import viteIcon from "simple-icons/icons/vite.svg?raw";
 import vueIcon from "simple-icons/icons/vuedotjs.svg?raw";
 import webpackIcon from "simple-icons/icons/webpack.svg?raw";
-import { siteContent } from "@/content/site";
+import { siteContent } from "../../content/site";
 
 const SIMPLE_ICONS: Record<string, string> = {
   react: reactIcon,
@@ -120,7 +120,12 @@ function SkillIcon({ iconKey }: { iconKey: string }) {
 
   if (iconKey === "csharp") {
     return (
-      <svg aria-hidden="true" className="h-6 w-6" role="img" viewBox="0 0 24 24">
+      <svg
+        aria-hidden="true"
+        className="h-6 w-6"
+        role="img"
+        viewBox="0 0 24 24"
+      >
         <path
           d="M12 2.35 20.45 7.2v9.6L12 21.65 3.55 16.8V7.2L12 2.35Z"
           fill="none"
@@ -144,7 +149,12 @@ function SkillIcon({ iconKey }: { iconKey: string }) {
 
   if (iconKey === "zustand") {
     return (
-      <svg aria-hidden="true" className="h-6 w-6" role="img" viewBox="0 0 24 24">
+      <svg
+        aria-hidden="true"
+        className="h-6 w-6"
+        role="img"
+        viewBox="0 0 24 24"
+      >
         <path
           d="M5.2 5.2h13.6L9.15 18.8H18.8"
           fill="none"
@@ -159,7 +169,12 @@ function SkillIcon({ iconKey }: { iconKey: string }) {
 
   if (iconKey === "playwright") {
     return (
-      <svg aria-hidden="true" className="h-6 w-6" role="img" viewBox="0 0 24 24">
+      <svg
+        aria-hidden="true"
+        className="h-6 w-6"
+        role="img"
+        viewBox="0 0 24 24"
+      >
         <path
           d="M4.7 6.4c2.2-1.05 4.7-1.05 7 0 2.3-1.05 4.8-1.05 7.1 0-.15 6.45-2.35 10.7-7.1 11.9-4.7-1.2-6.9-5.45-7-11.9Z"
           fill="none"
@@ -179,7 +194,9 @@ function SkillIcon({ iconKey }: { iconKey: string }) {
   }
 
   if (SemanticIcon) {
-    return <SemanticIcon aria-hidden="true" className="h-5 w-5" strokeWidth={1.9} />;
+    return (
+      <SemanticIcon aria-hidden="true" className="h-5 w-5" strokeWidth={1.9} />
+    );
   }
 
   return <Component aria-hidden="true" className="h-5 w-5" strokeWidth={1.9} />;
@@ -188,7 +205,8 @@ function SkillIcon({ iconKey }: { iconKey: string }) {
 export function CapabilitiesContent() {
   const skillsId = useId();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const selectedGroup = siteContent.skills[selectedIndex] ?? siteContent.skills[0];
+  const selectedGroup =
+    siteContent.skills[selectedIndex] ?? siteContent.skills[0];
   const panelId = `${skillsId}-panel`;
 
   return (
@@ -207,10 +225,10 @@ export function CapabilitiesContent() {
               aria-controls={panelId}
               aria-selected={isSelected}
               className={[
-                "group flex min-w-[13rem] items-center rounded-[1rem] border px-4 py-3 text-left transition duration-200 ease-out focus-visible:outline-none lg:min-w-0",
+                "group flex min-w-52 items-center rounded-2xl border px-4 py-3 text-left transition duration-200 ease-out focus-visible:outline-none lg:min-w-0",
                 isSelected
                   ? "border-white/28 bg-white text-text-inverse"
-                  : "border-white/10 bg-white/[0.035] text-text-muted hover:border-white/20 hover:bg-white/[0.065] hover:text-text-strong",
+                  : "border-white/10 bg-white/4 text-text-muted hover:border-white/20 hover:bg-white/6.5 hover:text-text-strong",
               ].join(" ")}
               id={`${skillsId}-tab-${index}`}
               onClick={() => setSelectedIndex(index)}
@@ -251,7 +269,7 @@ export function CapabilitiesContent() {
           {selectedGroup.items.map((item) => {
             const skillBody = (
               <>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.8rem] border border-white/12 bg-white/[0.045] text-text-strong">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.8rem] border border-white/12 bg-white/4.5 text-text-strong">
                   <SkillIcon iconKey={item.icon} />
                 </span>
                 <span className="min-w-0 text-[1.02rem] font-semibold leading-6 text-text-strong">
@@ -272,7 +290,9 @@ export function CapabilitiesContent() {
                     {skillBody}
                   </a>
                 ) : (
-                  <div className="flex min-h-20 items-center gap-4 py-4">{skillBody}</div>
+                  <div className="flex min-h-20 items-center gap-4 py-4">
+                    {skillBody}
+                  </div>
                 )}
               </li>
             );

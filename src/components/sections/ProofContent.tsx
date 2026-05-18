@@ -1,5 +1,5 @@
-import { siteContent } from "@/content/site";
-import { ProofHologramProjection } from "@/components/sections/ProofHologramProjection";
+import { siteContent } from "../../content/site";
+import { ProofHologramProjection } from "./ProofHologramProjection";
 
 export function ProofProjectionPlaceholder() {
   return <ProofHologramProjection />;

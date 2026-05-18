@@ -3,7 +3,6 @@ export enum SectionId {
   Capabilities = "capabilities",
   Experience = "experience",
   Proof = "proof",
-  Projects = "projects",
   Contact = "contact",
 }
 
@@ -12,7 +11,6 @@ export interface SectionNavItem {
   label: string;
   index: number;
   title: string;
-  shortDescription: string;
 }
 
 export interface SkillGroup {
@@ -37,14 +35,6 @@ export interface StrengthItem {
   body: string;
 }
 
-export interface ProjectEntry {
-  title: string;
-  category: string;
-  stack: string;
-  description: string;
-  href: string;
-}
-
 export interface SiteContent {
   profile: {
     name: string;
@@ -64,7 +54,6 @@ export interface SiteContent {
   skills: SkillGroup[];
   experience: ExperienceEntry[];
   strengths: StrengthItem[];
-  projects: ProjectEntry[];
   contact: {
     title: string;
     body: string;
@@ -264,56 +253,6 @@ export const siteContent: SiteContent = {
       body: "I pay attention to the details that make interfaces feel finished after launch, including behavior, states, accessibility, and the implementation choices that other engineers inherit.",
     },
   ],
-  projects: [
-    {
-      title: "Synthesizer",
-      category: "React project",
-      stack: "React, TypeScript, Tone.js",
-      description:
-        "A browser-based synthesizer with custom controls, playable audio interaction, and a compact instrument-style interface.",
-      href: "projects/synthesizer",
-    },
-    {
-      title: "Breathing Bubble",
-      category: "React project",
-      stack: "React, TypeScript, MobX",
-      description:
-        "A guided breathing app built around calm pacing, minimal controls, and a focused visual rhythm.",
-      href: "projects/breathing-bubble",
-    },
-    {
-      title: "Calculator",
-      category: "React project",
-      stack: "React, Redux",
-      description:
-        "A browser calculator with keyboard support, responsive controls, and a clean app-style interface.",
-      href: "projects/calculator",
-    },
-    {
-      title: "Metronome",
-      category: "React project",
-      stack: "React",
-      description:
-        "A metronome app with tempo controls, visual beat feedback, and a minimal practice-focused interface.",
-      href: "projects/metronome",
-    },
-    {
-      title: "Weather",
-      category: "React project",
-      stack: "React, API integration",
-      description:
-        "A weather app with city search, five-day forecast cards, and a compact data-first layout.",
-      href: "projects/weather",
-    },
-    {
-      title: "Todo",
-      category: "Vue project",
-      stack: "Vue 2, Vuex",
-      description:
-        "A task management app with category-based organization, playful UI details, and a bold everyday productivity flow.",
-      href: "projects/todo",
-    },
-  ],
   contact: {
     title: "Contact",
     body: "If you need someone who can shape the interface layer, improve consistency, and ship production-ready UI with care, I am available for conversations about permanent roles and strong product teams.",
@@ -335,35 +274,30 @@ export const siteContent: SiteContent = {
       label: "Overview",
       index: 0,
       title: "Overview",
-      shortDescription: "Frontend focus, fit, and hiring context.",
     },
     {
       id: SectionId.Capabilities,
       label: "Skills",
       index: 1,
       title: "Skills",
-      shortDescription: "Frontend stack, UI systems, tooling, testing, and backend-adjacent work.",
     },
     {
       id: SectionId.Experience,
       label: "Experience",
       index: 2,
       title: "Experience",
-      shortDescription: "Selected roles and delivery outcomes.",
     },
     {
       id: SectionId.Proof,
       label: "Strengths",
       index: 3,
       title: "Strengths",
-      shortDescription: "Where Alex adds the most value in real teams.",
     },
     {
       id: SectionId.Contact,
       label: "Contact",
       index: 4,
       title: "Contact",
-      shortDescription: "Direct outreach and supporting links.",
     },
   ],
 };
