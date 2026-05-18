@@ -3,6 +3,7 @@ import { ArrowUpRight, Download, Mail, Menu, X } from "lucide-react";
 import { HeroFidget } from "./HeroFidget";
 import { ButtonLink, iconButtonVariants } from "./ui";
 import { siteContent } from "../content/site";
+import { trackEvent } from "../lib/analytics";
 
 const HERO_NAV_ITEMS = [
   { label: "Overview", href: "#intro" },
@@ -64,6 +65,13 @@ export function HeroHeader({
                 key={item.label}
                 href={item.href}
                 className="transition-opacity duration-200 hover:opacity-70"
+                onClick={() =>
+                  trackEvent("nav_item_clicked", {
+                    label: item.label,
+                    href: item.href,
+                    placement: "desktop_nav",
+                  })
+                }
               >
                 {item.label}
               </a>
@@ -112,7 +120,14 @@ export function HeroHeader({
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    trackEvent("nav_item_clicked", {
+                      label: item.label,
+                      href: item.href,
+                      placement: "mobile_nav",
+                    });
+                  }}
                   className="flex items-center justify-between rounded-[0.85rem] border border-transparent px-3 py-3 font-mono text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-text-strong transition-colors duration-200 ease-out hover:border-white/10 hover:bg-white/4"
                 >
                   <span>{item.label}</span>

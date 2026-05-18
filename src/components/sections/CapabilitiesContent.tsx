@@ -25,6 +25,7 @@ import dotnetIcon from "simple-icons/icons/dotnet.svg?raw";
 import figmaIcon from "simple-icons/icons/figma.svg?raw";
 import gitIcon from "simple-icons/icons/git.svg?raw";
 import githubActionsIcon from "simple-icons/icons/githubactions.svg?raw";
+import graphqlIcon from "simple-icons/icons/graphql.svg?raw";
 import htmlIcon from "simple-icons/icons/html5.svg?raw";
 import javascriptIcon from "simple-icons/icons/javascript.svg?raw";
 import jestIcon from "simple-icons/icons/jest.svg?raw";
@@ -50,6 +51,7 @@ import viteIcon from "simple-icons/icons/vite.svg?raw";
 import vueIcon from "simple-icons/icons/vuedotjs.svg?raw";
 import webpackIcon from "simple-icons/icons/webpack.svg?raw";
 import { siteContent } from "../../content/site";
+import { trackEvent } from "../../lib/analytics";
 
 const SIMPLE_ICONS: Record<string, string> = {
   react: reactIcon,
@@ -66,6 +68,7 @@ const SIMPLE_ICONS: Record<string, string> = {
   redux: reduxIcon,
   "react-query": reactQueryIcon,
   rest: openApiIcon,
+  graphql: graphqlIcon,
   websockets: socketIoIcon,
   forms: reactHookFormIcon,
   tailwind: tailwindIcon,
@@ -231,7 +234,13 @@ export function CapabilitiesContent() {
                   : "border-white/10 bg-white/4 text-text-muted hover:border-white/20 hover:bg-white/6.5 hover:text-text-strong",
               ].join(" ")}
               id={`${skillsId}-tab-${index}`}
-              onClick={() => setSelectedIndex(index)}
+              onClick={() => {
+                setSelectedIndex(index);
+                trackEvent("skill_category_selected", {
+                  category_title: group.title,
+                  category_index: index,
+                });
+              }}
               role="tab"
               type="button"
             >

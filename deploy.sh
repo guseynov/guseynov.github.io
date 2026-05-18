@@ -2,13 +2,15 @@
 
 set -e
 
+# PROJECT_SPECS='
+# projects/react/synthesizer|build|projects/synthesizer
+# projects/react/breathing_bubble|build|projects/breathing-bubble
+# projects/react/calculator|build|projects/calculator
+# projects/react/metronome|build|projects/metronome
+# projects/react/weather|build|projects/weather
+# projects/vue/todo|dist|projects/todo
+# '
 PROJECT_SPECS='
-projects/react/synthesizer|build|projects/synthesizer
-projects/react/breathing_bubble|build|projects/breathing-bubble
-projects/react/calculator|build|projects/calculator
-projects/react/metronome|build|projects/metronome
-projects/react/weather|build|projects/weather
-projects/vue/todo|dist|projects/todo
 '
 
 npm run build

@@ -131,6 +131,7 @@ export const siteContent: SiteContent = {
         { label: "Zustand", icon: "zustand" },
         { label: "TanStack Query / React Query", icon: "react-query" },
         { label: "REST APIs", icon: "rest" },
+        { label: "GraphQL", icon: "graphql" },
         { label: "WebSockets", icon: "websockets" },
         { label: "Form Architecture", icon: "forms" },
       ],

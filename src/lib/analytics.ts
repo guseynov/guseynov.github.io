@@ -1,9 +1,9 @@
-import posthog from "posthog-js";
+import posthog, { isPostHogEnabled } from "./posthog";
 
 const seenSectionViews = new Set<string>();
 
 function isAnalyticsEnabled() {
-  return Boolean(import.meta.env.VITE_PUBLIC_POSTHOG_KEY);
+  return isPostHogEnabled();
 }
 
 export function trackEvent(eventName: string, properties?: Record<string, string | number>) {

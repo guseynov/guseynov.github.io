@@ -55,11 +55,14 @@ interface SectionPresentation {
   tone: "dark" | "light" | "paper" | "black";
 }
 
-function getSectionPresentation(sectionId: SectionIdValue): SectionPresentation {
+function getSectionPresentation(
+  sectionId: SectionIdValue,
+): SectionPresentation {
   switch (sectionId) {
     case SectionId.Proof:
       return {
-        className: "relative z-20 h-full w-full -mt-8 sm:-mt-10 lg:-mt-12 xl:-mt-14",
+        className:
+          "relative z-20 h-full w-full -mt-8 sm:-mt-10 lg:-mt-12 xl:-mt-14",
         tone: "light",
       };
     case SectionId.Capabilities:
@@ -81,7 +84,10 @@ function getSectionPresentation(sectionId: SectionIdValue): SectionPresentation 
   }
 }
 
-function getSectionConfig(sectionId: SectionIdValue, cvHref: string): SectionContentConfig {
+function getSectionConfig(
+  sectionId: SectionIdValue,
+  cvHref: string,
+): SectionContentConfig {
   switch (sectionId) {
     case SectionId.Intro:
       return {
@@ -141,7 +147,9 @@ function App() {
   });
 
   const cvHref = `${import.meta.env.BASE_URL}${siteContent.profile.cvPath}`;
-  const sectionConfigs = SECTION_RENDER_ORDER.map((sectionId) => getSectionConfig(sectionId, cvHref));
+  const sectionConfigs = SECTION_RENDER_ORDER.map((sectionId) =>
+    getSectionConfig(sectionId, cvHref),
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -151,7 +159,9 @@ function App() {
             return;
           }
 
-          const sectionId = entry.target.getAttribute("data-section-id") as SectionIdValue | null;
+          const sectionId = entry.target.getAttribute(
+            "data-section-id",
+          ) as SectionIdValue | null;
           const section = sectionId
             ? siteContent.sections.find((item) => item.id === sectionId)
             : null;
