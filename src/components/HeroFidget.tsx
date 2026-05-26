@@ -10,12 +10,17 @@ interface StringAudio {
 }
 
 interface SoundPreset {
+  attack: number;
   decay: number;
   filterBase: number;
   filterSweep: number;
+  highpass: number;
   master: number;
   primary: OscillatorType;
+  resonance: number;
   secondary: OscillatorType;
+  secondaryGain: number;
+  secondaryRatio: number;
   scale: number[];
 }
 
@@ -55,58 +60,43 @@ const STRING_POINTS = 72;
 const HIT_DISTANCE = 0.062;
 const REARM_DISTANCE = 0.15;
 const STRING_SPAN_X = 4.4;
+const HERO_NOTES = {
+  A3: 220,
+  D4: 293.66,
+  E4: 329.63,
+  A4: 440,
+  D5: 587.33,
+  E5: 659.25,
+} as const;
+// Open fifths and ninths keep the hero neutral and deliberate.
 const STRING_SEQUENCE = [
-  246.94, // B
-  293.66, // D
-  329.63, // E
-  440, // A
-  440, // A
-  392, // G
-  369.99, // F#
-  293.66, // D
-  293.66, // D
-  440, // A
-  277.18, // C#
-  293.66, // D
+  HERO_NOTES.A3,
+  HERO_NOTES.D4,
+  HERO_NOTES.E4,
+  HERO_NOTES.A4,
+  HERO_NOTES.D5,
+  HERO_NOTES.E5,
+  HERO_NOTES.D5,
+  HERO_NOTES.A4,
+  HERO_NOTES.E4,
+  HERO_NOTES.D4,
+  HERO_NOTES.A3,
+  HERO_NOTES.D4,
 ];
-const SOUND_PRESETS: SoundPreset[] = [
-  {
-    decay: 0.72,
-    filterBase: 2100,
-    filterSweep: 1200,
-    master: 0.18,
-    primary: "sine",
-    secondary: "triangle",
-    scale: STRING_SEQUENCE,
-  },
-  {
-    decay: 0.48,
-    filterBase: 2800,
-    filterSweep: 1700,
-    master: 0.14,
-    primary: "triangle",
-    secondary: "sine",
-    scale: STRING_SEQUENCE,
-  },
-  {
-    decay: 0.9,
-    filterBase: 1700,
-    filterSweep: 900,
-    master: 0.2,
-    primary: "sine",
-    secondary: "sawtooth",
-    scale: STRING_SEQUENCE,
-  },
-  {
-    decay: 0.62,
-    filterBase: 2400,
-    filterSweep: 1450,
-    master: 0.16,
-    primary: "square",
-    secondary: "sine",
-    scale: STRING_SEQUENCE,
-  },
-];
+const SOUND_PRESET: SoundPreset = {
+  attack: 0.01,
+  decay: 0.56,
+  filterBase: 1380,
+  filterSweep: 760,
+  highpass: 120,
+  master: 0.11,
+  primary: "triangle",
+  resonance: 1.18,
+  secondary: "sine",
+  secondaryGain: 0.2,
+  secondaryRatio: 1.5,
+  scale: STRING_SEQUENCE,
+};
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(max, Math.max(min, value));
@@ -215,10 +205,6 @@ function updateRibbonGeometry(
   geometry.computeBoundingSphere();
 }
 
-function pickSoundPreset() {
-  return SOUND_PRESETS[Math.floor(Math.random() * SOUND_PRESETS.length)];
-}
-
 function createStringAudio(preset: SoundPreset): StringAudio | null {
   const AudioContextConstructor =
     window.AudioContext ?? (window as AudioWindow).webkitAudioContext;
@@ -242,10 +228,20 @@ function createStringAudio(preset: SoundPreset): StringAudio | null {
     const output = context.createGain();
     const tone = context.createOscillator();
     const overtone = context.createOscillator();
-    const filter = context.createBiquadFilter();
+    const toneGain = context.createGain();
+    const overtoneGain = context.createGain();
+    const lowpass = context.createBiquadFilter();
+    const highpass = context.createBiquadFilter();
 
     output.gain.setValueAtTime(0.0001, now);
-    output.gain.exponentialRampToValueAtTime(0.24 * amount, now + 0.012);
+    output.gain.exponentialRampToValueAtTime(
+      0.16 * amount,
+      now + preset.attack,
+    );
+    output.gain.exponentialRampToValueAtTime(
+      0.05 * amount,
+      now + preset.attack + 0.08,
+    );
     output.gain.exponentialRampToValueAtTime(0.0001, now + preset.decay);
 
     if ("createStereoPanner" in context) {
@@ -257,27 +253,40 @@ function createStringAudio(preset: SoundPreset): StringAudio | null {
       output.connect(master);
     }
 
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(
+    lowpass.type = "lowpass";
+    lowpass.frequency.setValueAtTime(
       preset.filterBase + amount * preset.filterSweep,
       now,
     );
-    filter.Q.value = 0.62;
+    lowpass.frequency.exponentialRampToValueAtTime(
+      preset.filterBase * 0.78,
+      now + preset.decay * 0.7,
+    );
+    lowpass.Q.value = preset.resonance;
+
+    highpass.type = "highpass";
+    highpass.frequency.value = preset.highpass;
+
+    toneGain.gain.value = 1;
+    overtoneGain.gain.value = preset.secondaryGain + amount * 0.04;
 
     tone.type = preset.primary;
-    tone.frequency.setValueAtTime(frequency * (1 + amount * 0.012), now);
-    tone.frequency.exponentialRampToValueAtTime(frequency * 0.985, now + 0.32);
+    tone.frequency.setValueAtTime(frequency * (1 + amount * 0.004), now);
+    tone.frequency.exponentialRampToValueAtTime(frequency * 0.994, now + 0.24);
 
     overtone.type = preset.secondary;
-    overtone.frequency.setValueAtTime(frequency * 2.006, now);
+    overtone.frequency.setValueAtTime(frequency * preset.secondaryRatio, now);
 
-    tone.connect(filter);
-    overtone.connect(filter);
-    filter.connect(output);
+    tone.connect(toneGain);
+    overtone.connect(overtoneGain);
+    toneGain.connect(lowpass);
+    overtoneGain.connect(lowpass);
+    lowpass.connect(highpass);
+    highpass.connect(output);
     tone.start(now);
     overtone.start(now);
     tone.stop(now + preset.decay + 0.04);
-    overtone.stop(now + Math.min(0.42, preset.decay * 0.62));
+    overtone.stop(now + Math.min(0.24, preset.decay * 0.44));
   };
 
   return {
@@ -348,7 +357,7 @@ function createSonicStrings(scale: number[]) {
 }
 
 export function HeroFidget() {
-  const presetRef = useRef<SoundPreset>(pickSoundPreset());
+  const presetRef = useRef<SoundPreset>(SOUND_PRESET);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const mountRef = useRef<HTMLDivElement | null>(null);
   const audioRef = useRef<StringAudio | null>(null);
