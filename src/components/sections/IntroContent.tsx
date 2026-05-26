@@ -7,11 +7,7 @@ const INTRO_SIGNALS = [
   { label: "Best fit", value: "Product teams hiring for quality and structure" },
 ];
 
-interface IntroContentProps {
-  cvHref: string;
-}
-
-export function IntroContent({ cvHref: _cvHref }: IntroContentProps) {
+export function IntroContent() {
   return (
     <div className="grid min-h-0 gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)]">
       <div className="flex min-h-0 flex-col gap-8 sm:gap-9">

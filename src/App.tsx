@@ -95,7 +95,7 @@ function getSectionConfig(
         title: siteContent.intro.headline,
         summary: siteContent.intro.summary,
         indexLabel: SECTION_INDEX_LABELS[SectionId.Intro],
-        content: <IntroContent cvHref={cvHref} />,
+        content: <IntroContent />,
       };
     case SectionId.Proof:
       return {

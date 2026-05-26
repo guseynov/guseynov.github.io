@@ -118,8 +118,6 @@ export const siteContent: SiteContent = {
         { label: "Responsive UI", icon: "responsive-ui" },
         { label: "Accessibility", icon: "accessibility" },
         { label: "Performance Optimization", icon: "performance" },
-        { label: "Complex Product UI", icon: "product-ui" },
-        { label: "Interactive Interfaces", icon: "interactive" },
       ],
     },
     {
@@ -133,7 +131,6 @@ export const siteContent: SiteContent = {
         { label: "REST APIs", icon: "rest" },
         { label: "GraphQL", icon: "graphql" },
         { label: "WebSockets", icon: "websockets" },
-        { label: "Form Architecture", icon: "forms" },
       ],
     },
     {
@@ -145,7 +142,6 @@ export const siteContent: SiteContent = {
         { label: "CSS Modules", icon: "css-modules" },
         { label: "Styled Components", icon: "styled-components" },
         { label: "SCSS", icon: "scss" },
-        { label: "Design Tokens", icon: "design-tokens" },
       ],
     },
     {

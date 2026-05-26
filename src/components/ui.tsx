@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { cva, type VariantProps } from "class-variance-authority";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 
-export const buttonLinkVariants = cva(
+const buttonLinkVariants = cva(
   "control-tap-target inline-flex min-h-13 items-center justify-center gap-2.5 rounded-full px-5 py-3.5 font-mono text-[0.98rem] font-medium uppercase tracking-[0.14em] leading-none transition-colors duration-200 ease-out focus-visible:outline-none sm:min-h-12 sm:gap-2 sm:py-3 sm:text-sm",
   {
     variants: {
@@ -57,14 +57,6 @@ export const panelVariants = cva("min-w-0 border border-border/80", {
   },
 });
 
-export const chipVariants = cva(
-  "rounded-full border border-white/10 bg-[color:oklch(0.31_0_0_/_0.38)] px-3 py-1.5 text-sm text-text-muted backdrop-blur-sm",
-);
-
-export const metaLinkVariants = cva(
-  "focus-ring-panel flex min-w-0 items-center gap-3 rounded-[0.9rem] px-3 py-2.5 text-base text-text-strong -mx-3 hover:bg-[color:oklch(0.32_0_0_/_0.32)] hover:text-[color:var(--color-accent-bright)] active:bg-[color:oklch(0.3_0_0_/_0.28)]",
-);
-
 export const iconButtonVariants = cva(
   "control-tap-target flex h-11 w-11 items-center justify-center rounded-full border transition duration-200 ease-out focus-visible:outline-none",
   {
@@ -80,22 +72,3 @@ export const iconButtonVariants = cva(
     },
   },
 );
-
-export const tabButtonVariants = cva(
-  "control-tap-target rounded-full border px-3 py-1.5 text-sm transition duration-200 ease-out focus-visible:outline-none",
-  {
-    variants: {
-      active: {
-        true: "border-accent bg-accent text-white shadow-[0_0_24px_var(--color-accent-glow)] focus-visible:shadow-[0_0_0_1px_var(--color-ring-accent-strong),0_0_0_4px_var(--color-accent-soft)]",
-        false:
-          "border-white/10 bg-[color:oklch(0.31_0_0_/_0.34)] text-text-muted hover:border-white/20 hover:text-text-strong active:bg-[color:oklch(0.3_0_0_/_0.28)] focus-visible:border-white/24 focus-visible:shadow-[0_0_0_1px_var(--color-ring-accent-strong),0_0_0_4px_var(--color-accent-soft)]",
-      },
-    },
-    defaultVariants: {
-      active: false,
-    },
-  },
-);
-
-export const iconCircleClassName =
-  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[color:oklch(0.31_0_0_/_0.36)] transition group-hover:border-accent group-hover:bg-accent-soft";
