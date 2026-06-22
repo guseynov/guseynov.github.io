@@ -1,6 +1,0 @@
-name = "hot-or-not-faces"
-main = "worker.mjs"
-compatibility_date = "2026-04-07"
-
-[vars]
-ALLOWED_ORIGIN = "*"
