@@ -16,3 +16,4 @@ skills-lock.json
 .impeccable/
 .agents/
 tmp/
+deploy.sh
