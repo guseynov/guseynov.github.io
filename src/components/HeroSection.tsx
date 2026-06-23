@@ -6,10 +6,10 @@ import { siteContent } from "../content/site";
 import { trackEvent } from "../lib/analytics";
 
 const HERO_NAV_ITEMS = [
-  { label: "Overview", href: "#intro" },
   { label: "Strengths", href: "#proof" },
   { label: "Skills", href: "#capabilities" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -59,7 +59,7 @@ export function HeroHeader({
           </span>
         </a>
         <nav className="hidden justify-center lg:flex" aria-label="Primary">
-          <div className="flex items-center gap-8 font-mono text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-text-strong">
+          <div className="flex items-center gap-5 font-mono text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-text-strong xl:gap-8">
             {HERO_NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
@@ -110,11 +110,11 @@ export function HeroHeader({
         <div
           id={mobileMenuId}
           className={[
-            "absolute left-0 right-0 top-[calc(100%+0.75rem)] lg:hidden",
+            "absolute left-0 right-0 top-[calc(100%+1.25rem)] lg:hidden",
             isMenuOpen ? "block" : "hidden",
           ].join(" ")}
         >
-        <div className="rounded-2xl border border-white/10 bg-surface-frosted p-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248/0.08),0_24px_48px_oklch(0.1_0.012_248/0.28)] backdrop-blur-sm">
+          <div className="rounded-2xl border border-white/10 bg-surface-frosted p-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248/0.08),0_24px_48px_oklch(0.1_0.012_248/0.28)] backdrop-blur-sm">
             <nav aria-label="Mobile primary" className="grid gap-1">
               {HERO_NAV_ITEMS.map((item) => (
                 <a

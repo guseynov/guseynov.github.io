@@ -2,6 +2,7 @@ export enum SectionId {
   Intro = "intro",
   Capabilities = "capabilities",
   Experience = "experience",
+  Projects = "projects",
   Proof = "proof",
   Contact = "contact",
 }
@@ -35,6 +36,15 @@ export interface StrengthItem {
   body: string;
 }
 
+export interface ProjectEntry {
+  name: string;
+  repository: string;
+  href: string;
+  liveHref: string;
+  summary: string;
+  tags: string[];
+}
+
 export interface SiteContent {
   profile: {
     name: string;
@@ -54,6 +64,7 @@ export interface SiteContent {
   skills: SkillGroup[];
   experience: ExperienceEntry[];
   strengths: StrengthItem[];
+  projects: ProjectEntry[];
   contact: {
     title: string;
     body: string;
@@ -250,6 +261,80 @@ export const siteContent: SiteContent = {
       body: "I pay attention to the details that make interfaces feel finished after launch, including behavior, states, accessibility, and the implementation choices that other engineers inherit.",
     },
   ],
+  projects: [
+    {
+      name: "Weather",
+      repository: "guseynov/weather",
+      href: "https://github.com/guseynov/weather",
+      liveHref: "https://weather-ebon-tau.vercel.app",
+      summary:
+        "A focused weather interface for reading forecast conditions quickly across responsive screens.",
+      tags: ["React", "API UI", "Responsive"],
+    },
+    {
+      name: "Synthesizer",
+      repository: "guseynov/synthesizer",
+      href: "https://github.com/guseynov/synthesizer",
+      liveHref: "https://synthesizer-phi.vercel.app",
+      summary:
+        "An interactive sound project that exposes controls clearly while keeping experimentation immediate.",
+      tags: ["Audio", "Interactive", "Controls"],
+    },
+    {
+      name: "Colorful Calculator",
+      repository: "guseynov/colorful-calculator",
+      href: "https://github.com/guseynov/colorful-calculator",
+      liveHref: "https://colorful-calculator-three.vercel.app",
+      summary:
+        "A compact calculator surface that treats interaction states and visual clarity as the feature.",
+      tags: ["JavaScript", "UI States", "Interaction"],
+    },
+    {
+      name: "Community Deals",
+      repository: "guseynov/community_deals",
+      href: "https://github.com/guseynov/community_deals",
+      liveHref: "https://community-deals-fawn.vercel.app",
+      summary:
+        "A commerce-style product surface for browsing and managing community deal flows.",
+      tags: ["Commerce", "Product UI", "Data"],
+    },
+    {
+      name: "Commerce Ops Console",
+      repository: "guseynov/commerce_ops_console",
+      href: "https://github.com/guseynov/commerce_ops_console",
+      liveHref: "https://commerce-ops-console-beige.vercel.app",
+      summary:
+        "An operations console shape for commerce workflows, admin visibility, and practical task handling.",
+      tags: ["Dashboard", "Admin UI", "Operations"],
+    },
+    {
+      name: "SpaceX Explorer",
+      repository: "guseynov/spacex_explorer",
+      href: "https://github.com/guseynov/spacex_explorer",
+      liveHref: "https://spacex-explorer-delta.vercel.app",
+      summary:
+        "A data-led explorer for SpaceX information with emphasis on filtering, structure, and readability.",
+      tags: ["Data UI", "Explorer", "API"],
+    },
+    {
+      name: "Metronome",
+      repository: "guseynov/metronome",
+      href: "https://github.com/guseynov/metronome",
+      liveHref: "https://metronome-tan.vercel.app",
+      summary:
+        "A timing tool centered on precise controls, immediate feedback, and a clean practice workflow.",
+      tags: ["Audio", "Controls", "Timing"],
+    },
+    {
+      name: "Breathing Bubble",
+      repository: "guseynov/breathing-bubble",
+      href: "https://github.com/guseynov/breathing-bubble",
+      liveHref: "https://breathing-bubble.vercel.app",
+      summary:
+        "A calm breathing interaction built around pacing, motion, and a minimal visual system.",
+      tags: ["Motion", "Wellbeing", "Interactive"],
+    },
+  ],
   contact: {
     title: "Contact",
     body: "If you need someone who can shape the interface layer, improve consistency, and ship production-ready UI with care, I am available for conversations about permanent roles and strong product teams.",
@@ -291,9 +376,15 @@ export const siteContent: SiteContent = {
       title: "Strengths",
     },
     {
+      id: SectionId.Projects,
+      label: "Projects",
+      index: 4,
+      title: "Projects",
+    },
+    {
       id: SectionId.Contact,
       label: "Contact",
-      index: 4,
+      index: 5,
       title: "Contact",
     },
   ],

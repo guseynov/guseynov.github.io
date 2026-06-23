@@ -5,6 +5,7 @@ import { CapabilitiesContent } from "./components/sections/CapabilitiesContent";
 import { ContactContent } from "./components/sections/ContactContent";
 import { ExperienceContent } from "./components/sections/ExperienceContent";
 import { IntroContent } from "./components/sections/IntroContent";
+import { ProjectsContent } from "./components/sections/ProjectsContent";
 import {
   ProofContent,
   ProofProjectionPlaceholder,
@@ -21,7 +22,8 @@ const SECTION_INDEX_LABELS: Record<SectionIdValue, string> = {
   [SectionId.Proof]: "02 / STRENGTHS",
   [SectionId.Capabilities]: "03 / SKILLS",
   [SectionId.Experience]: "04 / EXPERIENCE",
-  [SectionId.Contact]: "05 / CONTACT",
+  [SectionId.Projects]: "05 / PROJECTS",
+  [SectionId.Contact]: "06 / CONTACT",
 };
 
 const SECTION_RENDER_ORDER: SectionIdValue[] = [
@@ -29,6 +31,7 @@ const SECTION_RENDER_ORDER: SectionIdValue[] = [
   SectionId.Proof,
   SectionId.Capabilities,
   SectionId.Experience,
+  SectionId.Projects,
   SectionId.Contact,
 ];
 
@@ -37,6 +40,7 @@ const SECTION_LAYOUT_CLASSNAMES: Record<SectionIdValue, string> = {
   [SectionId.Proof]: "xl:col-span-12 xl:-mt-18",
   [SectionId.Capabilities]: "xl:col-span-12",
   [SectionId.Experience]: "xl:col-span-12",
+  [SectionId.Projects]: "xl:col-span-12",
   [SectionId.Contact]: "xl:col-span-12",
 };
 
@@ -74,6 +78,11 @@ function getSectionPresentation(
       return {
         className: "h-full w-full",
         tone: "paper",
+      };
+    case SectionId.Projects:
+      return {
+        className: "h-full w-full",
+        tone: "black",
       };
     case SectionId.Intro:
     case SectionId.Experience:
@@ -126,6 +135,16 @@ function getSectionConfig(
         indexLabel: "",
         content: <CapabilitiesContent />,
       };
+    case SectionId.Projects:
+      return {
+        id: SectionId.Projects,
+        title: "Projects",
+        summary:
+          "A selected set of public repositories that show product surfaces, interactive tools, data explorers, and focused UI experiments.",
+        indexLabel: "",
+        titleClassName: "max-w-[15ch] sm:max-w-[18ch] md:max-w-[20ch]",
+        content: <ProjectsContent />,
+      };
     case SectionId.Contact:
       return {
         id: SectionId.Contact,
@@ -142,6 +161,7 @@ function App() {
     [SectionId.Intro]: null,
     [SectionId.Capabilities]: null,
     [SectionId.Experience]: null,
+    [SectionId.Projects]: null,
     [SectionId.Proof]: null,
     [SectionId.Contact]: null,
   });
