@@ -269,7 +269,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://weather-ebon-tau.vercel.app",
       summary:
         "A focused weather interface for reading forecast conditions quickly across responsive screens.",
-      tags: ["React", "API UI", "Responsive"],
+      tags: ["React", "Vite", "TanStack Query", "Tailwind CSS"],
     },
     {
       name: "Synthesizer",
@@ -278,7 +278,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://synthesizer-phi.vercel.app",
       summary:
         "An interactive sound project that exposes controls clearly while keeping experimentation immediate.",
-      tags: ["Audio", "Interactive", "Controls"],
+      tags: ["React", "TypeScript", "Tone.js", "Sass"],
     },
     {
       name: "Colorful Calculator",
@@ -287,7 +287,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://colorful-calculator-three.vercel.app",
       summary:
         "A compact calculator surface that treats interaction states and visual clarity as the feature.",
-      tags: ["JavaScript", "UI States", "Interaction"],
+      tags: ["React", "Redux", "Big.js"],
     },
     {
       name: "Community Deals",
@@ -296,7 +296,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://community-deals-fawn.vercel.app",
       summary:
         "A commerce-style product surface for browsing and managing community deal flows.",
-      tags: ["Commerce", "Product UI", "Data"],
+      tags: ["Next.js", "TypeScript", "TanStack Query", "Zustand"],
     },
     {
       name: "Commerce Ops Console",
@@ -305,7 +305,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://commerce-ops-console-beige.vercel.app",
       summary:
         "An operations console shape for commerce workflows, admin visibility, and practical task handling.",
-      tags: ["Dashboard", "Admin UI", "Operations"],
+      tags: ["Next.js", "TypeScript", "TanStack Query", "Formik"],
     },
     {
       name: "SpaceX Explorer",
@@ -314,7 +314,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://spacex-explorer-delta.vercel.app",
       summary:
         "A data-led explorer for SpaceX information with emphasis on filtering, structure, and readability.",
-      tags: ["Data UI", "Explorer", "API"],
+      tags: ["Next.js", "TypeScript", "Vitest", "Playwright"],
     },
     {
       name: "Metronome",
@@ -323,7 +323,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://metronome-tan.vercel.app",
       summary:
         "A timing tool centered on precise controls, immediate feedback, and a clean practice workflow.",
-      tags: ["Audio", "Controls", "Timing"],
+      tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     },
     {
       name: "Breathing Bubble",
@@ -332,7 +332,7 @@ export const siteContent: SiteContent = {
       liveHref: "https://breathing-bubble.vercel.app",
       summary:
         "A calm breathing interaction built around pacing, motion, and a minimal visual system.",
-      tags: ["Motion", "Wellbeing", "Interactive"],
+      tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     },
   ],
   contact: {
@@ -371,9 +371,9 @@ export const siteContent: SiteContent = {
     },
     {
       id: SectionId.Proof,
-      label: "Strengths",
+      label: "Overview",
       index: 3,
-      title: "Strengths",
+      title: "Overview",
     },
     {
       id: SectionId.Projects,

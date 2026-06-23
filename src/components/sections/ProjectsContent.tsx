@@ -13,7 +13,7 @@ export function ProjectsContent() {
           "grid gap-3 overflow-hidden md:grid-cols-2 xl:grid-cols-10",
           isExpanded
             ? "max-h-none"
-            : "max-h-[56rem] md:max-h-[47rem] xl:max-h-[43rem]",
+            : "max-h-[54rem] md:max-h-[45rem] xl:max-h-[39rem]",
         ].join(" ")}
       >
         {siteContent.projects.map((project, index) => {
@@ -106,7 +106,7 @@ export function ProjectsContent() {
           "flex justify-center px-4",
           isExpanded
             ? "mt-5"
-            : "pointer-events-none absolute inset-x-0 bottom-0 min-h-44 items-end rounded-b-2xl bg-[linear-gradient(180deg,oklch(0.02_0_0/0),oklch(0.02_0_0/0.72)_42%,oklch(0.02_0_0)_100%)] pb-2",
+            : "pointer-events-none absolute -left-px -right-px bottom-0 min-h-56 items-end bg-[linear-gradient(180deg,oklch(0.02_0_0/0),oklch(0.02_0_0/0.86)_36%,oklch(0.02_0_0)_72%)] pb-3",
         ].join(" ")}
       >
         <button

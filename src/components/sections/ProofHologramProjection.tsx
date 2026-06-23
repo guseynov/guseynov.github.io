@@ -255,14 +255,12 @@ export function ProofHologramProjection() {
           );
           const x = (column + 0.5) * cellWidth;
           const y = (row + 0.5) * cellHeight;
-          const normalizedX = column / Math.max(1, columns - 1);
-          const normalizedY = row / Math.max(1, rows - 1);
-          const distance = Math.hypot(
-            normalizedX - pointer.x,
-            normalizedY - pointer.y,
-          );
+          const pointerX = pointer.x * cssWidth;
+          const pointerY = pointer.y * cssHeight;
+          const pointerRadius = Math.min(cssWidth, cssHeight) * 0.22;
+          const distance = Math.hypot(x - pointerX, y - pointerY);
           const pointerLift = pointer.active
-            ? clamp(1 - distance / 0.22, 0, 1)
+            ? clamp(1 - distance / pointerRadius, 0, 1)
             : 0;
           const dropoutNoise = seededNoise(
             row * 17.91 + column * 29.13 + tick * 0.17,

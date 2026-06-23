@@ -6,7 +6,7 @@ import { siteContent } from "../content/site";
 import { trackEvent } from "../lib/analytics";
 
 const HERO_NAV_ITEMS = [
-  { label: "Strengths", href: "#proof" },
+  { label: "Overview", href: "#proof" },
   { label: "Skills", href: "#capabilities" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },

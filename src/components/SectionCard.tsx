@@ -77,12 +77,16 @@ export function SectionCard({
       >
         <div
           ref={contentRef}
-          className="section-scroll flex flex-col gap-5 p-4 sm:gap-8 sm:p-6 xl:p-7"
+          className={clsx(
+            "section-scroll flex flex-col gap-5 p-4 sm:p-6 xl:p-7",
+            isLight ? "sm:gap-6" : "sm:gap-8",
+          )}
         >
           {headerless ? null : (
             <header
               className={clsx(
-                "flex flex-col gap-4 border-b pb-4 sm:gap-5 sm:pb-5 md:flex-row md:items-start md:justify-between",
+                "flex flex-col gap-4 border-b pb-4 sm:gap-5 md:flex-row md:items-start md:justify-between",
+                isLight ? "sm:pb-4" : "sm:pb-5",
                 headerBorderClassName,
               )}
             >

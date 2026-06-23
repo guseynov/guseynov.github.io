@@ -19,7 +19,7 @@ import { trackCtaClick, trackSectionView } from "./lib/analytics";
 
 const SECTION_INDEX_LABELS: Record<SectionIdValue, string> = {
   [SectionId.Intro]: "01 / OVERVIEW",
-  [SectionId.Proof]: "02 / STRENGTHS",
+  [SectionId.Proof]: "02 / OVERVIEW",
   [SectionId.Capabilities]: "03 / SKILLS",
   [SectionId.Experience]: "04 / EXPERIENCE",
   [SectionId.Projects]: "05 / PROJECTS",
@@ -84,8 +84,12 @@ function getSectionPresentation(
         className: "h-full w-full",
         tone: "black",
       };
-    case SectionId.Intro:
     case SectionId.Experience:
+      return {
+        className: "h-full w-full",
+        tone: "light",
+      };
+    case SectionId.Intro:
       return {
         className: "h-full w-full",
         tone: "dark",
@@ -109,7 +113,7 @@ function getSectionConfig(
     case SectionId.Proof:
       return {
         id: SectionId.Proof,
-        title: "Strengths",
+        title: "Overview",
         summary:
           "I build interfaces that stay clean under scale, from new product surfaces to legacy modernization. My work centers on React, TypeScript, Vue, and design-system minded UI architecture, with testing and implementation discipline treated as part of the product quality bar rather than cleanup work.",
         indexLabel: "",
