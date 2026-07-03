@@ -299,10 +299,10 @@ export const siteContent: SiteContent = {
       tags: ["Next.js", "TypeScript", "TanStack Query", "Zustand"],
     },
     {
-      name: "Commerce Ops Console",
-      repository: "guseynov/commerce_ops_console",
-      href: "https://github.com/guseynov/commerce_ops_console",
-      liveHref: "https://commerce-ops-console-beige.vercel.app",
+      name: "OfferFlow",
+      repository: "guseynov/offerflow",
+      href: "https://github.com/guseynov/offer-flow",
+      liveHref: "https://offer-flow-console.vercel.app/dashboard",
       summary:
         "An operations console shape for commerce workflows, admin visibility, and practical task handling.",
       tags: ["Next.js", "TypeScript", "TanStack Query", "Formik"],
