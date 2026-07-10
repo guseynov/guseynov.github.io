@@ -262,6 +262,33 @@ export const siteContent: SiteContent = {
     },
   ],
   projects: [
+     {
+      name: "Community Deals",
+      repository: "guseynov/community_deals",
+      href: "https://github.com/guseynov/community_deals",
+      liveHref: "https://community-deals-fawn.vercel.app",
+      summary:
+        "A commerce-style product surface for browsing and managing community deal flows.",
+      tags: ["Next.js", "TypeScript", "TanStack Query", "Zustand"],
+    },
+    {
+      name: "OfferFlow",
+      repository: "guseynov/offerflow",
+      href: "https://github.com/guseynov/offer-flow",
+      liveHref: "https://offer-flow-console.vercel.app/dashboard",
+      summary:
+        "An operations console shape for commerce workflows, admin visibility, and practical task handling.",
+      tags: ["Next.js", "TypeScript", "TanStack Query", "Formik"],
+    },
+    {
+      name: "SpaceX Explorer",
+      repository: "guseynov/spacex_explorer",
+      href: "https://github.com/guseynov/spacex_explorer",
+      liveHref: "https://spacex-explorer-delta.vercel.app",
+      summary:
+        "A data-led explorer for SpaceX information with emphasis on filtering, structure, and readability.",
+      tags: ["Next.js", "TypeScript", "Vitest", "Playwright"],
+    },
     {
       name: "Weather",
       repository: "guseynov/weather",
@@ -289,33 +316,7 @@ export const siteContent: SiteContent = {
         "A compact calculator surface that treats interaction states and visual clarity as the feature.",
       tags: ["React", "Redux", "Big.js"],
     },
-    {
-      name: "Community Deals",
-      repository: "guseynov/community_deals",
-      href: "https://github.com/guseynov/community_deals",
-      liveHref: "https://community-deals-fawn.vercel.app",
-      summary:
-        "A commerce-style product surface for browsing and managing community deal flows.",
-      tags: ["Next.js", "TypeScript", "TanStack Query", "Zustand"],
-    },
-    {
-      name: "OfferFlow",
-      repository: "guseynov/offerflow",
-      href: "https://github.com/guseynov/offer-flow",
-      liveHref: "https://offer-flow-console.vercel.app/dashboard",
-      summary:
-        "An operations console shape for commerce workflows, admin visibility, and practical task handling.",
-      tags: ["Next.js", "TypeScript", "TanStack Query", "Formik"],
-    },
-    {
-      name: "SpaceX Explorer",
-      repository: "guseynov/spacex_explorer",
-      href: "https://github.com/guseynov/spacex_explorer",
-      liveHref: "https://spacex-explorer-delta.vercel.app",
-      summary:
-        "A data-led explorer for SpaceX information with emphasis on filtering, structure, and readability.",
-      tags: ["Next.js", "TypeScript", "Vitest", "Playwright"],
-    },
+   
     {
       name: "Metronome",
       repository: "guseynov/metronome",
