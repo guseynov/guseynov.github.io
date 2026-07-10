@@ -118,7 +118,8 @@ function getSectionConfig(
           "I build interfaces that stay clean under scale, from new product surfaces to legacy modernization. My work centers on React, TypeScript, Vue, and design-system minded UI architecture, with testing and implementation discipline treated as part of the product quality bar rather than cleanup work.",
         indexLabel: "",
         titleClassName: "max-w-[30ch] sm:max-w-[38ch] md:max-w-[48ch]",
-        aside: <ProofProjectionPlaceholder />,
+        // aside: <ProofProjectionPlaceholder />,
+        aside: null,
         content: <ProofContent />,
       };
     case SectionId.Experience:
