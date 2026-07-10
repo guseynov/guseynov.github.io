@@ -31,17 +31,7 @@ export function ProjectsContent() {
               ].join(" ")}
             >
           <div className="min-w-0">
-            <div className="flex items-start justify-between gap-4">
-              <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-text-ghost">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <span
-                aria-hidden="true"
-                className="mt-[-0.15rem] h-px w-12 bg-white/14"
-              />
-            </div>
-
-            <h3 className="mt-5 break-words text-display-title text-[clamp(1.45rem,2.35vw,2.05rem)] leading-[1.04] text-text-strong">
+            <h3 className="break-words font-display text-[clamp(1.35rem,1.9vw,1.75rem)] leading-[1.04] text-text-strong">
               {project.name}
             </h3>
             <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-ghost">
