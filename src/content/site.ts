@@ -262,11 +262,11 @@ export const siteContent: SiteContent = {
     },
   ],
   projects: [
-     {
-      name: "Community Deals",
-      repository: "guseynov/community_deals",
-      href: "https://github.com/guseynov/community_deals",
-      liveHref: "https://community-deals-fawn.vercel.app",
+    {
+      name: "Scout",
+      repository: "guseynov/scout",
+      href: "https://github.com/guseynov/scout",
+      liveHref: "https://scout-deals-fawn.vercel.app",
       summary:
         "A commerce-style product surface for browsing and managing community deal flows.",
       tags: ["Next.js", "TypeScript", "TanStack Query", "Zustand"],
@@ -316,7 +316,7 @@ export const siteContent: SiteContent = {
         "A compact calculator surface that treats interaction states and visual clarity as the feature.",
       tags: ["React", "Redux", "Big.js"],
     },
-   
+
     {
       name: "Metronome",
       repository: "guseynov/metronome",
