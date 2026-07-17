@@ -281,12 +281,11 @@ export const siteContent: SiteContent = {
       tags: ["Next.js", "TypeScript", "TanStack Query", "Formik"],
     },
     {
-      name: "SpaceX Explorer",
-      repository: "guseynov/spacex_explorer",
-      href: "https://github.com/guseynov/spacex_explorer",
-      liveHref: "https://spacex-explorer-delta.vercel.app",
-      summary:
-        "A data-led explorer for SpaceX information with emphasis on filtering, structure, and readability.",
+      name: "Atlas Explorer",
+      repository: "guseynov/atlas",
+      href: "https://github.com/guseynov/atlas",
+      liveHref: "https://atlas-explorer-delta.vercel.app",
+      summary: "A data-led Earth events explorer",
       tags: ["Next.js", "TypeScript", "Vitest", "Playwright"],
     },
     {
