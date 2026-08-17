@@ -259,9 +259,6 @@ export function CapabilitiesContent() {
         role="tabpanel"
       >
         <div className="border-b border-white/10 pb-5">
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-ghost">
-            Selected category
-          </p>
           <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <h3 className="text-display-title text-[clamp(1.7rem,3vw,2.7rem)] text-text-strong">

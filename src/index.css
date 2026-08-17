@@ -250,13 +250,44 @@
   pointer-events: none;
 }
 
-.hero-fidget-shell {
+.hero-artwork-shell {
   position: absolute;
   inset: 0;
   z-index: 1;
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
+}
+
+.hero-ascii-copy {
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 2rem;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 3.5rem);
+  color: var(--color-text-strong);
+  font-family: var(--font-sans);
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.hero-ascii-copy__role,
+.hero-ascii-copy__name {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.65vw, 3.1rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.hero-ascii-copy__name {
+  text-align: right;
 }
 
 .hero-fidget {
@@ -386,6 +417,23 @@
     width: min(100%, 17rem);
   }
 
+  .hero-ascii-copy {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 0.75rem;
+    padding-right: 1rem;
+    padding-bottom: 1.4rem;
+    padding-left: 1rem;
+  }
+
+  .hero-ascii-copy__role {
+    font-size: clamp(0.75rem, 3.4vw, 0.95rem);
+    letter-spacing: -0.015em;
+  }
+
+  .hero-ascii-copy__name {
+    font-size: clamp(1rem, 4.7vw, 1.35rem);
+  }
+
   .hero-fidget__sound {
     right: 0.85rem;
     top: 2.65rem;
@@ -397,7 +445,6 @@
   .hero-fidget__interaction {
     width: 100%;
   }
-
 }
 
 @media (hover: none) and (pointer: coarse) {

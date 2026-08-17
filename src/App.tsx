@@ -1,15 +1,16 @@
 import { useEffect, useRef, type ReactNode } from "react";
-import { HeroHeader, HeroSection } from "./components/HeroSection";
+import {
+  HeroHeader,
+  HeroSection,
+  type HeroVariant,
+} from "./components/HeroSection";
 import { SectionCard } from "./components/SectionCard";
 import { CapabilitiesContent } from "./components/sections/CapabilitiesContent";
 import { ContactContent } from "./components/sections/ContactContent";
 import { ExperienceContent } from "./components/sections/ExperienceContent";
 import { IntroContent } from "./components/sections/IntroContent";
 import { ProjectsContent } from "./components/sections/ProjectsContent";
-import {
-  ProofContent,
-  ProofProjectionPlaceholder,
-} from "./components/sections/ProofContent";
+import { ProofContent } from "./components/sections/ProofContent";
 import {
   SectionId,
   siteContent,
@@ -161,7 +162,11 @@ function getSectionConfig(
   }
 }
 
-function App() {
+interface AppProps {
+  heroVariant?: HeroVariant;
+}
+
+function App({ heroVariant = "strings" }: AppProps) {
   const sectionRefs = useRef<Record<SectionIdValue, HTMLElement | null>>({
     [SectionId.Intro]: null,
     [SectionId.Capabilities]: null,
@@ -171,7 +176,9 @@ function App() {
     [SectionId.Contact]: null,
   });
 
-  const cvHref = `${import.meta.env.BASE_URL}${siteContent.profile.cvPath}`;
+  const assetBaseHref =
+    heroVariant === "ascii" ? "../" : import.meta.env.BASE_URL;
+  const cvHref = `${assetBaseHref}${siteContent.profile.cvPath}`;
   const sectionConfigs = SECTION_RENDER_ORDER.map((sectionId) =>
     getSectionConfig(sectionId, cvHref),
   );
@@ -248,6 +255,7 @@ function App() {
           <HeroSection
             id={SectionId.Intro}
             cvHref={cvHref}
+            variant={heroVariant}
             onEmailClick={() =>
               trackCtaClick({
                 label: "Email me",

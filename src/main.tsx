@@ -13,6 +13,13 @@ if (!container) {
 
 const posthogApiKey = import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN;
 const posthogHost = import.meta.env.VITE_PUBLIC_POSTHOG_HOST;
+const routeSegments = window.location.pathname.split("/").filter(Boolean);
+const routeLeaf = routeSegments.at(-1);
+const heroVariant =
+  routeLeaf === "ascii" ||
+  (routeLeaf === "index.html" && routeSegments.at(-2) === "ascii")
+    ? "ascii"
+    : "strings";
 const posthogConfig =
   isPostHogEnabled() && posthogApiKey && posthogHost
     ? {
@@ -28,10 +35,10 @@ createRoot(container).render(
   <StrictMode>
     {posthogConfig ? (
       <PostHogProvider apiKey={posthogConfig.apiKey} options={posthogConfig.options}>
-        <App />
+        <App heroVariant={heroVariant} />
       </PostHogProvider>
     ) : (
-      <App />
+      <App heroVariant={heroVariant} />
     )}
   </StrictMode>,
 );

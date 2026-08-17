@@ -19,9 +19,6 @@ export function ExperienceContent() {
     <div className="flex h-full min-h-0 flex-col gap-6">
       <div className="grid min-h-0 gap-5 lg:grid-cols-[minmax(12rem,0.36fr)_minmax(0,1fr)] xl:gap-7">
         <div className="min-w-0">
-          <p className="mb-3 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-inverse/44">
-            Timeline
-          </p>
           <div
             role="tablist"
             aria-label="Experience timeline"
@@ -54,7 +51,9 @@ export function ExperienceContent() {
                     <span
                       className={clsx(
                         "mt-1 block truncate font-mono text-[0.66rem]",
-                        isActive ? "text-text-strong/58" : "text-text-inverse/42",
+                        isActive
+                          ? "text-text-strong/58"
+                          : "text-text-inverse/42",
                       )}
                     >
                       {entry.period}

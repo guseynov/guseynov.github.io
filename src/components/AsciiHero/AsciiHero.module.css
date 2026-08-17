@@ -1,0 +1,34 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #202020;
+  cursor: crosshair;
+  pointer-events: auto;
+  touch-action: pan-y;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.root[data-status="failed"] {
+  cursor: default;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .root {
+    cursor: default;
+  }
+}

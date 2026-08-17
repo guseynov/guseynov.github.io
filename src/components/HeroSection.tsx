@@ -1,9 +1,25 @@
-import { useEffect, useState, type MouseEventHandler } from "react";
+import {
+  Suspense,
+  lazy,
+  useEffect,
+  useState,
+  type MouseEventHandler,
+} from "react";
 import { ArrowUpRight, Download, Mail, Menu, X } from "lucide-react";
-import { HeroFidget } from "./HeroFidget";
 import { ButtonLink, iconButtonVariants } from "./ui";
 import { siteContent } from "../content/site";
 import { trackEvent } from "../lib/analytics";
+
+const AsciiHero = lazy(() =>
+  import("./AsciiHero/AsciiHero").then((module) => ({
+    default: module.AsciiHero,
+  })),
+);
+const HeroFidget = lazy(() =>
+  import("./HeroFidget").then((module) => ({
+    default: module.HeroFidget,
+  })),
+);
 
 const HERO_NAV_ITEMS = [
   { label: "Overview", href: "#proof" },
@@ -16,9 +32,12 @@ const HERO_NAV_ITEMS = [
 interface HeroSectionProps {
   id: string;
   cvHref: string;
+  variant?: HeroVariant;
   onEmailClick?: MouseEventHandler<HTMLAnchorElement>;
   onCvClick?: MouseEventHandler<HTMLAnchorElement>;
 }
+
+export type HeroVariant = "strings" | "ascii";
 
 export function HeroHeader({
   cvHref,
@@ -177,64 +196,81 @@ export function HeroSection({
   cvHref,
   onEmailClick,
   onCvClick,
+  variant = "strings",
 }: HeroSectionProps) {
+  const isAsciiVariant = variant === "ascii";
+
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
       className="hero-shell relative min-h-[min(54rem,calc(100svh-2rem))] overflow-visible bg-canvas text-text-strong"
     >
-      <div className="hero-fidget-shell">
-        <HeroFidget />
+      <div className="hero-artwork-shell">
+        <Suspense fallback={null}>
+          {isAsciiVariant ? <AsciiHero /> : <HeroFidget />}
+        </Suspense>
       </div>
-      <div className="pointer-events-none relative z-20 mx-auto grid w-full max-w-7xl px-5 pb-5 pt-14 sm:px-6 sm:pb-6 sm:pt-16 lg:px-10 lg:pb-8 lg:pt-20 xl:px-14">
-        <div className="grid gap-8 lg:grid-cols-[minmax(12rem,0.18fr)_minmax(0,0.82fr)] lg:items-stretch lg:gap-10">
-          <div className="hidden lg:block" aria-hidden="true" />
-          <div className="flex h-full flex-col gap-8 lg:gap-10">
-            <div className="space-y-6 pt-1">
-              <div className="space-y-4">
-                <h1
-                  id={`${id}-title`}
-                  className="text-display-hero max-w-[10ch] text-text-strong sm:max-w-[11ch] lg:max-w-[9ch]"
-                >
-                  {siteContent.profile.name}
-                </h1>
+      {isAsciiVariant ? (
+        <div className="hero-ascii-copy">
+          <p className="hero-ascii-copy__role">Frontend Engineer</p>
+          <h1 id={`${id}-title`} className="hero-ascii-copy__name">
+            {siteContent.profile.name}
+          </h1>
+        </div>
+      ) : (
+        <div className="pointer-events-none relative z-20 mx-auto grid w-full max-w-7xl px-5 pb-5 pt-14 sm:px-6 sm:pb-6 sm:pt-16 lg:px-10 lg:pb-8 lg:pt-20 xl:px-14">
+          <div className="grid gap-8 lg:grid-cols-[minmax(12rem,0.18fr)_minmax(0,0.82fr)] lg:items-stretch lg:gap-10">
+            <div className="hidden lg:block" aria-hidden="true" />
+            <div className="flex h-full flex-col gap-8 lg:gap-10">
+              <div className="space-y-6 pt-1">
+                <div className="space-y-4">
+                  <h1
+                    id={`${id}-title`}
+                    className="text-display-hero max-w-[10ch] text-text-strong sm:max-w-[11ch] lg:max-w-[9ch]"
+                  >
+                    {siteContent.profile.name}
+                  </h1>
+                </div>
+                <p className="max-w-[20ch] font-mono text-[1rem] font-medium leading-[1.05] tracking-[0.06em] text-text-muted sm:max-w-[22ch] sm:text-[1.05rem] lg:text-[1.1rem]">
+                  Frontend Engineer
+                </p>
               </div>
-              <p className="max-w-[20ch] font-mono text-[1rem] font-medium leading-[1.05] tracking-[0.06em] text-text-muted sm:max-w-[22ch] sm:text-[1.05rem] lg:text-[1.1rem]">
-                Frontend Engineer
-              </p>
-            </div>
 
-            <div className="pointer-events-auto mt-1 space-y-5">
-              <div className="flex flex-wrap gap-3">
-                <ButtonLink
-                  href={`mailto:${siteContent.profile.email}`}
-                  tone="secondary"
-                  className="px-5"
-                  onClick={onEmailClick}
-                  icon={
-                    <Mail aria-hidden="true" className="h-5 w-5 shrink-0" />
-                  }
-                >
-                  Email me
-                </ButtonLink>
-                <ButtonLink
-                  href={cvHref}
-                  tone="secondary"
-                  className="px-5"
-                  download
-                  onClick={onCvClick}
-                  icon={
-                    <Download aria-hidden="true" className="h-5 w-5 shrink-0" />
-                  }
-                >
-                  Download CV
-                </ButtonLink>
+              <div className="pointer-events-auto mt-1 space-y-5">
+                <div className="flex flex-wrap gap-3">
+                  <ButtonLink
+                    href={`mailto:${siteContent.profile.email}`}
+                    tone="secondary"
+                    className="px-5"
+                    onClick={onEmailClick}
+                    icon={
+                      <Mail aria-hidden="true" className="h-5 w-5 shrink-0" />
+                    }
+                  >
+                    Email me
+                  </ButtonLink>
+                  <ButtonLink
+                    href={cvHref}
+                    tone="secondary"
+                    className="px-5"
+                    download
+                    onClick={onCvClick}
+                    icon={
+                      <Download
+                        aria-hidden="true"
+                        className="h-5 w-5 shrink-0"
+                      />
+                    }
+                  >
+                    Download CV
+                  </ButtonLink>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
