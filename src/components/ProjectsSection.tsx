@@ -140,18 +140,21 @@ export function ProjectsSection() {
   }, [prefersReducedMotion]);
 
   return (
-    <section className="projects" id="projects">
-      <div className="projects__header">
-        <h2>
-          Projects<sup>(8)</sup>
+    <section className="relative bg-background" id="projects">
+      <div className="mx-auto h-[250px] w-[calc(100%-24px)] pt-[31px] md:h-[259px] md:w-[min(calc(100%-176px),1104px)] md:pt-11 md:max-[901px]:w-[calc(100%-80px)]">
+        <h2 className="m-0 font-sans text-5xl leading-[58px] font-medium tracking-[-2.4px] md:text-[64px] md:leading-[1.06] md:tracking-[-3.2px]">
+          Projects
+          <sup className="relative -top-1 align-top text-2xl leading-none tracking-[-1.2px] md:-top-[7px] md:text-[32px] md:tracking-[-1.6px]">
+            (8)
+          </sup>
         </h2>
-        <p>
+        <p className="mt-4 mb-0 w-[min(100%,350px)] font-sans text-[15px] leading-[22px] font-normal md:mt-5 md:w-[348px] md:text-base md:leading-[26px]">
           A selected set of public repositories that show product surfaces,
           interactive tools.
         </p>
       </div>
 
-      <div className="projects__list">
+      <div className="flex flex-col gap-24 px-3 pb-24 md:gap-40 md:px-9 md:pb-40 motion-reduce:gap-6 motion-reduce:px-9 motion-reduce:pb-[60px]">
         {projects.map((project, index) => {
           const arrival = arrivals[index] ?? 0;
           const nextArrival = arrivals[index + 1] ?? 0;
@@ -166,31 +169,40 @@ export function ProjectsSection() {
 
           return (
             <article
-              className="project-card"
+              className="sticky top-4 mx-auto h-[calc(100dvh-32px)] min-h-0 w-full origin-top overflow-hidden bg-white text-black will-change-[transform,box-shadow] md:top-8 md:h-[548px] md:max-w-[1188px] md:max-[1280px]:h-[min(548px,calc(100vh-84px))] md:max-[1280px]:max-w-none motion-reduce:relative motion-reduce:top-auto motion-reduce:transform-none"
               key={project.name}
               ref={(card) => {
                 cardRefs.current[index] = card;
               }}
               style={cardStyle}
             >
-              <div className="project-card__content">
-                <div className="project-card__details">
-                  <h3>{project.name}</h3>
-                  <p>{project.summary}</p>
+              <div className="relative flex h-full flex-col gap-6 overflow-y-auto px-6 pt-[58px] pb-6 md:grid md:grid-cols-[360px_minmax(0,1fr)] md:gap-x-12 md:gap-y-0 md:overflow-visible md:px-[50px] md:pt-24 md:pb-[50px] md:max-[901px]:grid-cols-[300px_minmax(0,1fr)] md:max-[901px]:gap-x-10 md:max-[901px]:px-[42px] md:max-[901px]:pt-[86px] md:max-[901px]:pb-12 xl:block xl:p-0">
+                <div className="relative min-w-0 text-[#010101] xl:absolute xl:top-[104px] xl:left-[68px] xl:w-[344px]">
+                  <h3 className="m-0 font-sans text-4xl leading-[1.05] font-semibold tracking-[-1.4px] md:text-5xl md:tracking-normal md:max-[901px]:text-[42px] xl:leading-[62px]">
+                    {project.name}
+                  </h3>
+                  <p className="mt-3.5 mb-0 w-[344px] font-sans text-[15px] leading-[22px] font-normal md:mt-2 md:text-base md:leading-[26px]">
+                    {project.summary}
+                  </p>
 
                   <ul
                     aria-label={`${project.name} technologies`}
-                    className="project-card__tags"
+                    className="mt-[18px] mb-0 flex w-[314px] list-none flex-wrap gap-1.5 p-0 text-[#bdbbc1] md:mt-6 md:gap-2"
                   >
                     {project.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
+                      <li
+                        className="min-h-[25px] rounded-full border border-current px-2 py-px font-mono text-sm leading-[21px] font-medium whitespace-nowrap md:h-[29px] md:min-h-0 md:px-2.5 md:py-1 md:text-base md:leading-[19px]"
+                        key={tag}
+                      >
+                        {tag}
+                      </li>
                     ))}
                   </ul>
 
-                  <div className="project-card__actions">
+                  <div className="mt-6 flex h-10 w-56 gap-2 md:mt-[61px] md:max-[901px]:mt-[42px] xl:absolute xl:top-[301px] xl:left-0 xl:m-0">
                     <CornerButton
                       ariaLabel={`View ${project.name} source code`}
-                      className="project-card__link"
+                      className="!h-[38px] !w-[104px] bg-surface !text-[13px] !leading-[18.24px] !font-medium text-white md:!h-10 md:!w-[108px] md:!text-sm"
                       href={project.codeUrl}
                       rel="noreferrer"
                       target="_blank"
@@ -199,7 +211,7 @@ export function ProjectsSection() {
                     </CornerButton>
                     <CornerButton
                       ariaLabel={`Open the live ${project.name} project`}
-                      className="project-card__link"
+                      className="!h-[38px] !w-[104px] bg-surface !text-[13px] !leading-[18.24px] !font-medium text-white md:!h-10 md:!w-[108px] md:!text-sm"
                       href={project.liveUrl}
                       rel="noreferrer"
                       target="_blank"
@@ -209,10 +221,10 @@ export function ProjectsSection() {
                   </div>
                 </div>
 
-                <div className="project-card__preview">
+                <div className="relative mt-0 aspect-[599/306] h-auto w-full self-start overflow-hidden rounded-[8.528px] border-[1.03px] border-[#cccfda] md:mt-[25px] xl:absolute xl:top-[121px] xl:left-[489px] xl:mt-0 xl:h-[306px] xl:w-[599px]">
                   <img
                     alt={`${project.name} interface`}
-                    className="project-card__preview-image"
+                    className="absolute block w-full select-none"
                     draggable="false"
                     loading="lazy"
                     src={`${import.meta.env.BASE_URL}images/${project.image}`}

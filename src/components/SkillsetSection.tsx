@@ -145,7 +145,7 @@ function TechnologyIcon({ brandIcon, icon: Icon }: Skill) {
     return (
       <svg
         aria-hidden="true"
-        className="skillset__technology-icon skillset__technology-icon--brand"
+        className="h-5 w-5 flex-[0_0_20px] fill-current"
         viewBox="0 0 24 24"
       >
         <path d={brandIcon.path} />
@@ -156,7 +156,7 @@ function TechnologyIcon({ brandIcon, icon: Icon }: Skill) {
   return Icon ? (
     <Icon
       aria-hidden="true"
-      className="skillset__technology-icon skillset__technology-icon--lucide"
+      className="h-5 w-5 flex-[0_0_20px] fill-none stroke-current"
       strokeWidth={1.8}
     />
   ) : null;
@@ -168,11 +168,16 @@ export function SkillsetSection() {
     categories.find((category) => category.id === selectedCategoryId) ?? categories[0];
 
   return (
-    <section className="skillset" id="skills">
-      <div className="skillset__inner">
-        <div className="skillset__intro">
-          <h2>Skillset</h2>
-          <p>
+    <section
+      className="relative min-h-[950px] overflow-hidden bg-background pt-[31px] md:min-h-[796px] md:overflow-clip md:pt-0"
+      id="skills"
+    >
+      <div className="relative mx-auto min-h-[919px] w-[calc(100%-24px)] md:h-[796px] md:min-h-0 md:w-[min(calc(100%-192px),1088px)] md:max-[901px]:w-[calc(100%-80px)]">
+        <div className="relative min-h-[188px] w-full md:absolute md:top-[54px] md:left-0 md:min-h-0 md:w-[344px]">
+          <h2 className="m-0 min-h-[78px] pt-[5px] pr-[132px] font-sans text-5xl leading-[58px] font-medium tracking-[-2.4px] md:min-h-0 md:p-0 md:text-[64px] md:leading-[1.06] md:tracking-[-3.2px]">
+            Skillset
+          </h2>
+          <p className="mt-[9px] mb-0 font-sans text-[15px] leading-[22px] font-normal md:mt-5 md:text-base md:leading-[26px]">
             I pay attention to the details that make interfaces feel finished after launch,
             including behavior, states, accessibility, and the implementation choices that other
             engineers inherit.
@@ -181,19 +186,27 @@ export function SkillsetSection() {
 
         <img
           alt="Alex Guseynov"
-          className="skillset__portrait"
+          className="absolute top-0 right-0 block h-[78px] w-[120px] object-cover object-[center_43%] md:top-[54px] md:h-[103px] md:w-[158px]"
           loading="lazy"
           src={`${import.meta.env.BASE_URL}images/image.JPEG`}
         />
 
-        <div className="skillset__table">
-          <div className="skillset__table-head">
-            <p>/Select</p>
-            <p>/{selectedCategory.label}</p>
+        <div className="relative mt-[78px] grid md:absolute md:top-[361px] md:right-0 md:left-0 md:mt-0 md:block">
+          <div className="contents md:grid md:grid-cols-[31.6176%_minmax(0,1fr)] md:gap-x-7">
+            <p className="col-start-1 row-start-1 m-0 border-b-[0.6px] border-rule pb-0 text-base leading-[18px] font-normal md:pb-[9px] md:leading-6">
+              /Select
+            </p>
+            <p className="col-start-1 row-start-3 mt-[46px] mb-0 border-b-[0.6px] border-rule pb-0 text-base leading-[18px] font-normal md:col-start-2 md:row-start-1 md:mt-0 md:pb-[9px] md:leading-6">
+              /{selectedCategory.label}
+            </p>
           </div>
 
-          <div className="skillset__table-body">
-            <div aria-label="Skill categories" className="skillset__categories" role="tablist">
+          <div className="contents md:mt-[27px] md:grid md:grid-cols-[31.6176%_minmax(0,1fr)] md:gap-x-7">
+            <div
+              aria-label="Skill categories"
+              className="col-start-1 row-start-2 mt-[29px] flex h-6 flex-row gap-5 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-0 md:h-[252px] md:flex-col md:gap-3.5 md:overflow-visible md:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] md:bg-[length:1px_100%] md:bg-left-top md:bg-no-repeat md:pl-5"
+              role="tablist"
+            >
               {categories.map((category) => {
                 const isSelected = category.id === selectedCategory.id;
 
@@ -201,20 +214,33 @@ export function SkillsetSection() {
                   <button
                     aria-controls="selected-skills"
                     aria-selected={isSelected}
-                    className={clsx("skillset__category", {
-                      "skillset__category--selected": isSelected,
-                    })}
+                    className={clsx(
+                      "flex h-6 w-max min-w-max flex-[0_0_auto] cursor-pointer items-center gap-0 bg-transparent p-0 text-left text-lg leading-6 font-light text-rule transition-colors duration-140 hover:text-white focus-visible:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-3 focus-visible:outline-rule md:grid md:w-full md:min-w-0 md:grid-cols-[18px_minmax(0,1fr)_auto] md:pr-0.5 md:text-base",
+                      isSelected && "!font-normal !text-white",
+                    )}
                     id={`category-${category.id}`}
                     key={category.id}
                     onClick={() => setSelectedCategoryId(category.id)}
                     role="tab"
                     type="button"
                   >
-                    <span aria-hidden="true" className="skillset__category-arrow">
+                    <span
+                      aria-hidden="true"
+                      className={clsx("hidden", isSelected && "md:block")}
+                    >
                       {isSelected ? ">" : ""}
                     </span>
-                    <span className="skillset__category-label">{category.label}</span>
-                    <span className="skillset__category-count">({category.skills.length})</span>
+                    <span
+                      className={clsx(
+                        "overflow-hidden text-ellipsis whitespace-nowrap",
+                        isSelected
+                          ? "md:underline md:underline-offset-2"
+                          : "md:col-span-2",
+                      )}
+                    >
+                      {category.label}
+                    </span>
+                    <span className="md:col-start-3">({category.skills.length})</span>
                   </button>
                 );
               })}
@@ -222,12 +248,20 @@ export function SkillsetSection() {
 
             <div
               aria-labelledby={`category-${selectedCategory.id}`}
-              className="skillset__skills"
+              className="relative col-start-1 row-start-4 mt-6 grid h-auto grid-cols-[minmax(0,1fr)] auto-rows-[44px] gap-y-5 md:col-start-2 md:row-start-1 md:mt-0 md:h-[252px] md:grid-cols-[52%_48%] md:grid-rows-[repeat(4,44px)] md:auto-rows-auto md:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] md:bg-[length:1px_100%] md:bg-left-top md:bg-no-repeat md:after:absolute md:after:top-0 md:after:bottom-0 md:after:left-[52%] md:after:w-px md:after:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] md:after:content-['']"
               id="selected-skills"
               role="tabpanel"
             >
-              {selectedCategory.skills.map((skill) => (
-                <div className="skillset__skill" key={skill.label}>
+              {selectedCategory.skills.map((skill, index) => (
+                <div
+                  className={clsx(
+                    "flex h-11 min-w-0 items-center gap-4 border-b-[0.6px] border-rule font-sans text-lg leading-6 font-medium whitespace-nowrap last:border-b-transparent md:gap-3 md:text-base md:last:border-b-rule",
+                    index % 2 === 0
+                      ? "md:mr-9 md:ml-3"
+                      : "md:ml-5",
+                  )}
+                  key={skill.label}
+                >
                   <TechnologyIcon {...skill} />
                   <span>{skill.label}</span>
                 </div>
