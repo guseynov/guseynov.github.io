@@ -3,7 +3,6 @@ import {
   createAsciiRenderer,
   type AsciiRendererController,
 } from "./asciiRenderer";
-import styles from "./AsciiHero.module.css";
 
 type ArtworkStatus = "loading" | "ready" | "failed";
 
@@ -87,11 +86,14 @@ export function AsciiHero() {
   return (
     <div
       ref={rootRef}
-      className={styles.root}
+      className="absolute inset-0 isolate h-full w-full touch-pan-y cursor-crosshair overflow-hidden bg-[#181818] pointer-events-auto data-[status=failed]:cursor-default [@media(hover:none)_and_(pointer:coarse)]:cursor-default"
       data-status={status}
       aria-hidden="true"
     >
-      <pre ref={outputRef} className={styles.glyphs} />
+      <pre
+        ref={outputRef}
+        className="pointer-events-none absolute m-0 block overflow-hidden p-0 font-mono text-[#e9e7e1] font-medium tracking-[0] whitespace-pre select-none [font-feature-settings:'liga'_0,'calt'_0] [font-variant-ligatures:none] [line-height:1.28] [text-rendering:geometricPrecision]"
+      />
     </div>
   );
 }

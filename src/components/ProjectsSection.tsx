@@ -4,11 +4,6 @@ import { CornerButton } from "./CornerButton";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
-const smoothstep = (value: number) => {
-  const amount = clamp(value);
-  return amount * amount * (3 - 2 * amount);
-};
-
 const mix = (from: number, to: number, amount: number) =>
   Math.round(from + (to - from) * amount);
 
@@ -109,7 +104,7 @@ export function ProjectsSection() {
   return (
     <section className="relative scroll-mt-[132px] bg-background md:scroll-mt-0" id="projects">
       <div className="mx-auto h-[316px] w-[calc(100%-24px)] pt-[102px] md:h-[339px] md:w-[min(calc(100%-176px),1104px)] md:pt-[74px] md:max-[901px]:w-[calc(100%-80px)]">
-        <h2 className="m-0 font-sans text-[clamp(56px,17.9vw,72px)] leading-[66px] font-medium tracking-[-3.6px] md:text-[72px]">
+        <h2 className="m-0 font-sans text-[clamp(56px,17.9vw,72px)] leading-[66px] font-medium tracking-normal md:text-[72px]">
           Projects
           <sup className="relative -top-[7px] align-top text-[32px] leading-none tracking-[-1.6px]">
             ({projects.length})
@@ -125,13 +120,12 @@ export function ProjectsSection() {
         {projects.map((project, index) => {
           const arrival = arrivals[index] ?? 0;
           const nextArrival = arrivals[index + 1] ?? 0;
-          const entryTilt = -7 * (1 - smoothstep(arrival));
           const cardStyle: CSSProperties | undefined = prefersReducedMotion
             ? undefined
             : {
                 backgroundColor: getCardSurface(index, arrivals),
                 boxShadow: `0 ${mix(0, -64, arrival)}px ${mix(0, 160, arrival)}px rgb(0 0 0 / ${arrival * 0.25})`,
-                transform: `perspective(1600px) rotateX(${entryTilt.toFixed(3)}deg) scale(${1 - nextArrival * 0.04})`,
+                transform: `scale(${1 - nextArrival * 0.04})`,
                 zIndex: index + 1,
               };
 

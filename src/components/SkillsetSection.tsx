@@ -93,7 +93,7 @@ export function SkillsetSection() {
     >
       <div className="relative mx-auto min-h-[1049px] w-[calc(100%-24px)] md:h-[796px] md:min-h-0 md:w-[min(calc(100%-192px),1088px)] md:max-[901px]:w-[calc(100%-80px)]">
         <div className="relative w-full md:absolute md:top-[54px] md:left-0 md:w-[344px]">
-          <h2 className="m-0 h-[66px] font-sans text-[72px] leading-[66px] font-medium tracking-[-3.6px]">
+          <h2 className="m-0 h-[66px] font-sans text-[72px] leading-[66px] font-medium tracking-normal">
             Skillset
           </h2>
           <p className="mt-[22px] mb-0 max-w-[344px] font-sans text-base leading-[26px] font-normal">
@@ -105,7 +105,7 @@ export function SkillsetSection() {
 
         <img
           alt="Alex Guseynov"
-          className="absolute top-[54px] right-0 hidden h-[103px] w-[158px] object-cover object-[center_43%] md:block"
+          className="absolute top-[54px] right-0 hidden h-[206px] w-[316px] object-cover object-[center_43%] md:block"
           loading="lazy"
           src={`${import.meta.env.BASE_URL}images/image.JPEG`}
         />
