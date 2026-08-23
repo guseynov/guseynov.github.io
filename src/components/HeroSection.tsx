@@ -1,26 +1,44 @@
 import { clsx } from "clsx";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { navigation } from "../data/navigation";
+import { cvUrl } from "../data/site";
 import { CornerButton } from "./CornerButton";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets/hero`;
-const cvUrl = `${import.meta.env.BASE_URL}alex-guseynov-cv.pdf`;
-
-const navigation = [
-  ["/Overview", "#overview"],
-  ["/Skills", "#skills"],
-  ["/Experience", "#experience"],
-  ["/Projects", "#projects"],
-] as const;
 
 export function HeroSection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const openButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = (restoreFocus = false) => {
+    setIsMenuOpen(false);
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => openButtonRef.current?.focus());
+    }
+  };
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    closeButtonRef.current?.focus();
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu(true);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isMenuOpen]);
 
   return (
-    <section className="relative min-h-[900px] overflow-clip bg-background md:min-h-[796px]" id="overview">
+    <section className="relative min-h-[900px] scroll-mt-[132px] overflow-clip bg-background md:min-h-[796px] md:scroll-mt-0" id="overview">
       <header className="relative z-10 hidden h-[87px] md:block">
         <div className="relative mx-auto h-full w-[min(calc(100%-192px),1088px)] max-[901px]:w-[calc(100%-80px)]">
           <a
-            className="absolute top-8 left-0 text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:text-rule focus-visible:text-rule max-[901px]:hidden"
+            className="absolute top-8 left-0 text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white max-[901px]:hidden"
             href="#overview"
           >
             Alex Guseynov
@@ -30,9 +48,9 @@ export function HeroSection() {
             aria-label="Primary"
             className="absolute top-8 left-1/2 flex -translate-x-1/2 gap-[13px] text-xs leading-[18px] font-normal whitespace-nowrap max-[901px]:left-0 max-[901px]:translate-x-0"
           >
-            {navigation.map(([label, href]) => (
+            {navigation.map(({ href, label }) => (
               <a
-                className="transition-colors duration-160 hover:text-rule focus-visible:text-rule"
+                className="transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 href={href}
                 key={href}
               >
@@ -67,19 +85,30 @@ export function HeroSection() {
 
       <header
         className={clsx(
-          "relative z-10 block overflow-hidden md:hidden",
-          isMenuOpen ? "h-[410px] bg-surface" : "h-[132px] bg-background",
+          "fixed inset-x-0 top-0 z-50 block overflow-hidden bg-background md:hidden",
+          isMenuOpen ? "h-[410px]" : "h-[132px]",
         )}
       >
+        <div
+          aria-hidden="true"
+          className={clsx(
+            "absolute inset-0 bg-surface transition-opacity duration-300 ease-out motion-reduce:transition-none",
+            isMenuOpen ? "opacity-100" : "opacity-0",
+          )}
+        />
+
         <button
           aria-controls="mobile-navigation"
           aria-expanded={isMenuOpen}
+          aria-hidden={isMenuOpen}
           aria-label="Open navigation"
           className={clsx(
-            "absolute top-[71px] left-1/2 z-2 h-[10px] w-[54.75px] -translate-x-1/2 cursor-pointer bg-transparent p-0",
-            isMenuOpen ? "hidden" : "block",
+            "absolute top-[54px] left-1/2 z-2 grid h-11 w-[76px] -translate-x-1/2 cursor-pointer place-items-center bg-transparent p-0 transition-opacity duration-300 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white motion-reduce:transition-none",
+            isMenuOpen ? "pointer-events-none opacity-0" : "opacity-100",
           )}
           onClick={() => setIsMenuOpen(true)}
+          ref={openButtonRef}
+          tabIndex={isMenuOpen ? -1 : 0}
           type="button"
         >
           <img
@@ -94,17 +123,20 @@ export function HeroSection() {
         <button
           aria-controls="mobile-navigation"
           aria-expanded={isMenuOpen}
+          aria-hidden={!isMenuOpen}
           aria-label="Close navigation"
           className={clsx(
-            "absolute top-[62px] left-1/2 z-2 h-[27px] w-[76px] -translate-x-1/2 cursor-pointer bg-transparent p-0 text-base leading-[27px] font-normal text-white before:absolute before:top-0 before:left-0 before:content-['['] after:absolute after:top-0 after:right-0 after:content-[']']",
-            isMenuOpen ? "block" : "hidden",
+            "absolute top-[53px] left-1/2 z-2 h-11 w-[76px] -translate-x-1/2 cursor-pointer bg-transparent p-0 text-base leading-[27px] font-normal text-white transition-opacity duration-300 ease-out before:absolute before:top-[8.5px] before:left-0 before:content-['['] after:absolute after:top-[8.5px] after:right-0 after:content-[']'] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white motion-reduce:transition-none",
+            isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0",
           )}
-          onClick={() => setIsMenuOpen(false)}
+          onClick={() => closeMenu(true)}
+          ref={closeButtonRef}
+          tabIndex={isMenuOpen ? 0 : -1}
           type="button"
         >
           <img
             alt=""
-            className="absolute top-[5px] left-[3px] block h-5 w-[70px]"
+            className="absolute top-[13.5px] left-[3px] block h-5 w-[70px]"
             height="20"
             src={`${assetRoot}/mobile-menu-close.svg`}
             width="70"
@@ -113,14 +145,21 @@ export function HeroSection() {
 
         <nav
           aria-label="Mobile primary"
+          aria-hidden={!isMenuOpen}
           className={clsx(
-            "absolute top-[221px] right-[13px] left-3 z-1 flex flex-col items-start gap-[26px] bg-transparent p-0 text-2xl leading-[18px] font-light whitespace-nowrap transition-[opacity,visibility] duration-140",
+            "absolute top-[208px] right-[13px] left-3 z-1 flex flex-col items-start bg-transparent p-0 text-2xl leading-[18px] font-light whitespace-nowrap transition-[opacity,visibility] duration-300 ease-out motion-reduce:transition-none",
             isMenuOpen ? "visible opacity-100" : "invisible opacity-0",
           )}
           id="mobile-navigation"
+          inert={!isMenuOpen}
         >
-          {navigation.map(([label, href]) => (
-            <a className="w-full p-0" href={href} key={href} onClick={() => setIsMenuOpen(false)}>
+          {navigation.map(({ href, label }) => (
+            <a
+              className="flex h-11 w-full items-center p-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+              href={href}
+              key={href}
+              onClick={() => closeMenu()}
+            >
               {label}
             </a>
           ))}
@@ -129,8 +168,8 @@ export function HeroSection() {
         <img
           alt="Alex Guseynov"
           className={clsx(
-            "absolute top-[142px] left-1/2 h-[34.028px] w-[calc(100%-23.382px)] -translate-x-1/2",
-            isMenuOpen ? "block" : "hidden",
+            "absolute top-[142px] left-1/2 h-[34.028px] w-[calc(100%-23.382px)] -translate-x-1/2 transition-opacity duration-300 ease-out motion-reduce:transition-none",
+            isMenuOpen ? "opacity-100" : "opacity-0",
           )}
           height="34.028"
           src={`${assetRoot}/mobile-name-open.svg`}

@@ -35,7 +35,7 @@ export function CornerButton({
     <a
       aria-label={ariaLabel}
       className={clsx(
-        "relative grid h-[27px] w-[118px] place-items-center overflow-hidden bg-surface text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:bg-[#454545] focus-visible:bg-[#454545] focus-visible:outline-none",
+        "relative grid h-[27px] w-[118px] place-items-center overflow-visible bg-surface text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 after:absolute after:top-1/2 after:left-0 after:h-11 after:w-full after:-translate-y-1/2 after:content-[''] hover:bg-rule focus-visible:bg-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
         className,
       )}
       download={download}

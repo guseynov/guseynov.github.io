@@ -6,12 +6,17 @@ import { SkillsetSection } from "./components/SkillsetSection";
 
 export default function App() {
   return (
-    <main>
-      <HeroSection />
-      <SkillsetSection />
-      <ProjectsSection />
-      <ExperienceSection />
+    <>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+      <main id="main-content" tabIndex={-1}>
+        <HeroSection />
+        <SkillsetSection />
+        <ProjectsSection />
+        <ExperienceSection />
+      </main>
       <FooterSection />
-    </main>
+    </>
   );
 }

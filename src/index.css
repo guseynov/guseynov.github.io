@@ -47,6 +47,26 @@
   button {
     border: 0;
   }
+
+  .skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 100;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 16px;
+    color: var(--color-white);
+    background: var(--color-rule);
+    transform: translateY(calc(-100% - 24px));
+    transition: transform 160ms ease-out;
+  }
+
+  .skip-link:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -57,6 +77,8 @@
   *,
   *::before,
   *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

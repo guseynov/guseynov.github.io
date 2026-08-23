@@ -1,31 +1,7 @@
-type FooterLink = {
-  download?: boolean;
-  href: string;
-  label: string;
-  newTab?: boolean;
-};
+import { footerLinks } from "../data/footer";
+import { emailAddress } from "../data/site";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets`;
-const emailAddress = "me@alex23.com";
-
-const footerLinks: FooterLink[] = [
-  { href: `mailto:${emailAddress}`, label: "Email" },
-  {
-    download: true,
-    href: `${import.meta.env.BASE_URL}alex-guseynov-cv.pdf`,
-    label: "CV",
-  },
-  {
-    href: "https://github.com/guseynov",
-    label: "Github",
-    newTab: true,
-  },
-  {
-    href: "https://linkedin.com/in/aguseynov/",
-    label: "LinkedIn",
-    newTab: true,
-  },
-];
 
 export function FooterSection() {
   return (
@@ -55,11 +31,13 @@ export function FooterSection() {
 
         <a
           aria-label={`Email ${emailAddress}`}
-          className="absolute top-[275px] right-3 left-3 flex h-14 items-center justify-between gap-4 font-sans text-[40px] leading-14 font-normal tracking-[0.4px] uppercase transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline-none md:top-64 md:right-auto md:left-0 md:h-[70px] md:justify-start md:gap-[27px] md:text-7xl md:leading-[70px] md:tracking-normal"
+          className="group absolute top-[275px] right-3 left-3 flex h-14 items-center justify-between gap-4 font-sans text-[40px] leading-14 font-normal tracking-[0.4px] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:top-64 md:right-auto md:left-0 md:h-[70px] md:justify-start md:gap-[27px] md:text-7xl md:leading-[70px] md:tracking-normal"
           href={`mailto:${emailAddress}`}
         >
-          <span>Email me</span>
-          <picture className="block h-[15px] w-[45.787px] flex-[0_0_auto] md:h-[25.52px] md:w-[77.9px]">
+          <span className="underline decoration-transparent decoration-[2px] underline-offset-[7px] transition-[text-decoration-color] duration-160 group-hover:decoration-current group-focus-visible:decoration-current">
+            Email me
+          </span>
+          <picture className="block h-[15px] w-[45.787px] flex-[0_0_auto] transition-transform duration-160 ease-out group-hover:translate-x-2.5 group-focus-visible:translate-x-2.5 motion-reduce:transition-none md:h-[25.52px] md:w-[77.9px]">
             <source
               media="(max-width: 767px)"
               srcSet={`${assetRoot}/footer-arrow-mobile.svg`}
@@ -86,7 +64,7 @@ export function FooterSection() {
         >
           {footerLinks.map((link) => (
             <a
-              className="flex h-[19px] w-max items-center gap-2.5 text-base leading-[18.24px] font-medium transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline-none md:w-[75.5px] md:text-xs"
+              className="relative flex h-[19px] w-max items-center gap-2.5 text-base leading-[18.24px] font-medium transition-colors duration-160 after:absolute after:-inset-x-2 after:-inset-y-3 after:content-[''] hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:w-[75.5px] md:text-xs"
               download={link.download}
               href={link.href}
               key={link.label}
@@ -100,6 +78,7 @@ export function FooterSection() {
                 src={`${assetRoot}/footer-link.svg`}
               />
               <span className="w-auto md:w-[58px]">{link.label}</span>
+              {link.newTab && <span className="sr-only"> (opens in a new tab)</span>}
             </a>
           ))}
         </nav>

@@ -1,144 +1,6 @@
 import { clsx } from "clsx";
-import {
-  Accessibility,
-  Braces,
-  CodeXml,
-  Component,
-  Database,
-  Gauge,
-  MonitorSmartphone,
-  PanelsTopLeft,
-  Radio,
-  TestTube2,
-  type LucideIcon,
-} from "lucide-react";
-import { useState } from "react";
-import {
-  siCss,
-  siDocker,
-  siDotnet,
-  siExpress,
-  siGit,
-  siGraphql,
-  siHtml5,
-  siJavascript,
-  siJest,
-  siMongodb,
-  siNextdotjs,
-  siNodedotjs,
-  siNuxt,
-  siPostgresql,
-  siReact,
-  siReactquery,
-  siRedis,
-  siRedux,
-  siSass,
-  siStorybook,
-  siTailwindcss,
-  siTestinglibrary,
-  siTypescript,
-  siVite,
-  siVitest,
-  siVuedotjs,
-  siWebpack,
-  type SimpleIcon,
-} from "simple-icons";
-
-type Skill = {
-  brandIcon?: SimpleIcon;
-  icon?: LucideIcon;
-  label: string;
-};
-
-type Category = {
-  id: string;
-  label: string;
-  skills: Skill[];
-};
-
-const categories: Category[] = [
-  {
-    id: "core-frontend",
-    label: "Core frontend",
-    skills: [
-      { brandIcon: siReact, label: "React" },
-      { brandIcon: siJavascript, label: "JavaScript" },
-      { brandIcon: siCss, label: "CSS" },
-      { brandIcon: siVuedotjs, label: "Vue" },
-      { brandIcon: siTypescript, label: "TypeScript" },
-      { brandIcon: siHtml5, label: "HTML" },
-      { brandIcon: siNextdotjs, label: "Next.js" },
-      { brandIcon: siNuxt, label: "Nuxt" },
-    ],
-  },
-  {
-    id: "ui-engineering",
-    label: "UI engineering",
-    skills: [
-      { icon: PanelsTopLeft, label: "Design systems" },
-      { icon: MonitorSmartphone, label: "Responsive UI" },
-      { icon: Gauge, label: "Performance optimization" },
-      { icon: Component, label: "Component libraries" },
-      { icon: Accessibility, label: "Accessibility" },
-    ],
-  },
-  {
-    id: "state-and-data",
-    label: "State & data",
-    skills: [
-      { brandIcon: siRedux, label: "Redux" },
-      { brandIcon: siReactquery, label: "TanStack Query" },
-      { brandIcon: siGraphql, label: "GraphQL" },
-      { icon: Database, label: "Zustand" },
-      { icon: Braces, label: "REST APIs" },
-      { icon: Radio, label: "WebSockets" },
-    ],
-  },
-  {
-    id: "styling",
-    label: "Styling",
-    skills: [
-      { brandIcon: siTailwindcss, label: "Tailwind CSS" },
-      { brandIcon: siSass, label: "Sass" },
-      { icon: PanelsTopLeft, label: "CSS Modules" },
-      { icon: CodeXml, label: "CSS-in-JS" },
-    ],
-  },
-  {
-    id: "tooling",
-    label: "Tooling",
-    skills: [
-      { brandIcon: siVite, label: "Vite" },
-      { brandIcon: siWebpack, label: "Webpack" },
-      { brandIcon: siStorybook, label: "Storybook" },
-      { brandIcon: siGit, label: "Git" },
-    ],
-  },
-  {
-    id: "testing",
-    label: "Testing",
-    skills: [
-      { brandIcon: siVitest, label: "Vitest" },
-      { brandIcon: siJest, label: "Jest" },
-      { icon: TestTube2, label: "Playwright" },
-      { brandIcon: siTestinglibrary, label: "Testing Library" },
-    ],
-  },
-  {
-    id: "backend-adjacent",
-    label: "Backend-adjacent",
-    skills: [
-      { brandIcon: siNodedotjs, label: "Node.js" },
-      { brandIcon: siExpress, label: "Express" },
-      { brandIcon: siDotnet, label: "ASP.NET Core" },
-      { icon: CodeXml, label: "C#" },
-      { brandIcon: siPostgresql, label: "PostgreSQL" },
-      { brandIcon: siMongodb, label: "MongoDB" },
-      { brandIcon: siDocker, label: "Docker" },
-      { brandIcon: siRedis, label: "Redis" },
-    ],
-  },
-];
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { skillCategories, type Skill } from "../data/skills";
 
 function TechnologyIcon({ brandIcon, icon: Icon }: Skill) {
   if (brandIcon) {
@@ -162,22 +24,79 @@ function TechnologyIcon({ brandIcon, icon: Icon }: Skill) {
   ) : null;
 }
 
+function SkillRow({ skill }: { skill: Skill }) {
+  return (
+    <div className="flex h-11 min-w-0 items-center gap-4 border-b-[0.6px] border-rule font-sans text-lg leading-6 font-medium whitespace-nowrap md:gap-3 md:text-base">
+      <TechnologyIcon {...skill} />
+      <span>{skill.label}</span>
+    </div>
+  );
+}
+
 export function SkillsetSection() {
-  const [selectedCategoryId, setSelectedCategoryId] = useState(categories[0].id);
-  const selectedCategory =
-    categories.find((category) => category.id === selectedCategoryId) ?? categories[0];
+  const [selectedCategoryId, setSelectedCategoryId] = useState(skillCategories[0].id);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const selectedCategoryIndex = Math.max(
+    0,
+    skillCategories.findIndex((category) => category.id === selectedCategoryId),
+  );
+  const selectedCategory = skillCategories[selectedCategoryIndex];
+  const desktopSkills = (selectedCategory.desktopOrder ?? selectedCategory.skills.map((_, index) => index))
+    .map((index) => selectedCategory.skills[index])
+    .filter(Boolean);
+  const firstDesktopColumn = desktopSkills.slice(0, selectedCategory.desktopColumnBreak);
+  const secondDesktopColumn = desktopSkills.slice(selectedCategory.desktopColumnBreak);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const updateOrientation = () => setIsDesktop(mediaQuery.matches);
+
+    updateOrientation();
+    mediaQuery.addEventListener("change", updateOrientation);
+    return () => mediaQuery.removeEventListener("change", updateOrientation);
+  }, []);
+
+  const activateTab = (index: number) => {
+    const nextIndex = (index + skillCategories.length) % skillCategories.length;
+    setSelectedCategoryId(skillCategories[nextIndex].id);
+    tabRefs.current[nextIndex]?.focus();
+
+    if (!isDesktop) {
+      tabRefs.current[nextIndex]?.scrollIntoView({
+        behavior: "auto",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
+  const handleTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex: number | undefined;
+
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = skillCategories.length - 1;
+    if (isDesktop && event.key === "ArrowUp") nextIndex = index - 1;
+    if (isDesktop && event.key === "ArrowDown") nextIndex = index + 1;
+    if (!isDesktop && event.key === "ArrowLeft") nextIndex = index - 1;
+    if (!isDesktop && event.key === "ArrowRight") nextIndex = index + 1;
+
+    if (nextIndex === undefined) return;
+    event.preventDefault();
+    activateTab(nextIndex);
+  };
 
   return (
     <section
-      className="relative min-h-[950px] overflow-hidden bg-background pt-[31px] md:min-h-[796px] md:overflow-clip md:pt-0"
+      className="relative min-h-[1080px] scroll-mt-[132px] overflow-hidden bg-background pt-[31px] md:min-h-[796px] md:scroll-mt-0 md:overflow-clip md:pt-0"
       id="skills"
     >
-      <div className="relative mx-auto min-h-[919px] w-[calc(100%-24px)] md:h-[796px] md:min-h-0 md:w-[min(calc(100%-192px),1088px)] md:max-[901px]:w-[calc(100%-80px)]">
-        <div className="relative min-h-[188px] w-full md:absolute md:top-[54px] md:left-0 md:min-h-0 md:w-[344px]">
-          <h2 className="m-0 min-h-[78px] pt-[5px] pr-[132px] font-sans text-5xl leading-[58px] font-medium tracking-[-2.4px] md:min-h-0 md:p-0 md:text-[64px] md:leading-[1.06] md:tracking-[-3.2px]">
+      <div className="relative mx-auto min-h-[1049px] w-[calc(100%-24px)] md:h-[796px] md:min-h-0 md:w-[min(calc(100%-192px),1088px)] md:max-[901px]:w-[calc(100%-80px)]">
+        <div className="relative w-full md:absolute md:top-[54px] md:left-0 md:w-[344px]">
+          <h2 className="m-0 h-[66px] font-sans text-[72px] leading-[66px] font-medium tracking-[-3.6px]">
             Skillset
           </h2>
-          <p className="mt-[9px] mb-0 font-sans text-[15px] leading-[22px] font-normal md:mt-5 md:text-base md:leading-[26px]">
+          <p className="mt-[22px] mb-0 max-w-[344px] font-sans text-base leading-[26px] font-normal">
             I pay attention to the details that make interfaces feel finished after launch,
             including behavior, states, accessibility, and the implementation choices that other
             engineers inherit.
@@ -186,28 +105,29 @@ export function SkillsetSection() {
 
         <img
           alt="Alex Guseynov"
-          className="absolute top-0 right-0 block h-[78px] w-[120px] object-cover object-[center_43%] md:top-[54px] md:h-[103px] md:w-[158px]"
+          className="absolute top-[54px] right-0 hidden h-[103px] w-[158px] object-cover object-[center_43%] md:block"
           loading="lazy"
           src={`${import.meta.env.BASE_URL}images/image.JPEG`}
         />
 
-        <div className="relative mt-[78px] grid md:absolute md:top-[361px] md:right-0 md:left-0 md:mt-0 md:block">
+        <div className="relative mt-[85px] grid md:absolute md:top-[361px] md:right-0 md:left-0 md:mt-0 md:block">
           <div className="contents md:grid md:grid-cols-[31.6176%_minmax(0,1fr)] md:gap-x-7">
-            <p className="col-start-1 row-start-1 m-0 border-b-[0.6px] border-rule pb-0 text-base leading-[18px] font-normal md:pb-[9px] md:leading-6">
+            <p className="col-start-1 row-start-1 m-0 border-b-[0.6px] border-rule pb-0 text-base leading-[24px] font-normal md:pb-[9px]">
               /Select
             </p>
-            <p className="col-start-1 row-start-3 mt-[46px] mb-0 border-b-[0.6px] border-rule pb-0 text-base leading-[18px] font-normal md:col-start-2 md:row-start-1 md:mt-0 md:pb-[9px] md:leading-6">
-              /{selectedCategory.label}
+            <p className="col-start-1 row-start-3 mt-[46px] mb-0 border-b-[0.6px] border-rule pb-0 text-base leading-[24px] font-normal md:col-start-2 md:row-start-1 md:mt-0 md:pb-[9px]">
+              /Selected category
             </p>
           </div>
 
           <div className="contents md:mt-[27px] md:grid md:grid-cols-[31.6176%_minmax(0,1fr)] md:gap-x-7">
             <div
               aria-label="Skill categories"
-              className="col-start-1 row-start-2 mt-[29px] flex h-6 flex-row gap-5 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-0 md:h-[252px] md:flex-col md:gap-3.5 md:overflow-visible md:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] md:bg-[length:1px_100%] md:bg-left-top md:bg-no-repeat md:pl-5"
+              aria-orientation={isDesktop ? "vertical" : "horizontal"}
+              className="col-start-1 row-start-2 mt-[29px] flex h-11 flex-row gap-5 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:row-start-1 md:mt-0 md:h-[252px] md:flex-col md:gap-3.5 md:overflow-visible md:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] md:bg-[length:1px_100%] md:bg-left-top md:bg-no-repeat md:pl-5"
               role="tablist"
             >
-              {categories.map((category) => {
+              {skillCategories.map((category, index) => {
                 const isSelected = category.id === selectedCategory.id;
 
                 return (
@@ -215,27 +135,27 @@ export function SkillsetSection() {
                     aria-controls="selected-skills"
                     aria-selected={isSelected}
                     className={clsx(
-                      "flex h-6 w-max min-w-max flex-[0_0_auto] cursor-pointer items-center gap-0 bg-transparent p-0 text-left text-lg leading-6 font-light text-rule transition-colors duration-140 hover:text-white focus-visible:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-3 focus-visible:outline-rule md:grid md:w-full md:min-w-0 md:grid-cols-[18px_minmax(0,1fr)_auto] md:pr-0.5 md:text-base",
+                      "flex h-11 w-max min-w-max flex-[0_0_auto] cursor-pointer items-center bg-transparent p-0 text-left text-lg leading-6 font-light text-rule focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:grid md:h-6 md:w-full md:min-w-0 md:grid-cols-[18px_minmax(0,1fr)_auto] md:pr-0.5 md:text-base",
                       isSelected && "!font-normal !text-white",
                     )}
                     id={`category-${category.id}`}
                     key={category.id}
                     onClick={() => setSelectedCategoryId(category.id)}
+                    onKeyDown={(event) => handleTabKeyDown(event, index)}
+                    ref={(element) => {
+                      tabRefs.current[index] = element;
+                    }}
                     role="tab"
+                    tabIndex={isSelected ? 0 : -1}
                     type="button"
                   >
-                    <span
-                      aria-hidden="true"
-                      className={clsx("hidden", isSelected && "md:block")}
-                    >
-                      {isSelected ? ">" : ""}
+                    <span aria-hidden="true" className={clsx("hidden", isSelected && "md:block")}>
+                      &gt;
                     </span>
                     <span
                       className={clsx(
                         "overflow-hidden text-ellipsis whitespace-nowrap",
-                        isSelected
-                          ? "md:underline md:underline-offset-2"
-                          : "md:col-span-2",
+                        isSelected ? "md:underline md:underline-offset-2" : "md:col-span-2",
                       )}
                     >
                       {category.label}
@@ -248,24 +168,29 @@ export function SkillsetSection() {
 
             <div
               aria-labelledby={`category-${selectedCategory.id}`}
-              className="relative col-start-1 row-start-4 mt-6 grid h-auto grid-cols-[minmax(0,1fr)] auto-rows-[44px] gap-y-5 md:col-start-2 md:row-start-1 md:mt-0 md:h-[252px] md:grid-cols-[52%_48%] md:grid-rows-[repeat(4,44px)] md:auto-rows-auto md:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] md:bg-[length:1px_100%] md:bg-left-top md:bg-no-repeat md:after:absolute md:after:top-0 md:after:bottom-0 md:after:left-[52%] md:after:w-px md:after:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] md:after:content-['']"
+              className="col-start-1 row-start-4 mt-6 md:col-start-2 md:row-start-1 md:mt-0"
               id="selected-skills"
               role="tabpanel"
+              tabIndex={0}
             >
-              {selectedCategory.skills.map((skill, index) => (
-                <div
-                  className={clsx(
-                    "flex h-11 min-w-0 items-center gap-4 border-b-[0.6px] border-rule font-sans text-lg leading-6 font-medium whitespace-nowrap last:border-b-transparent md:gap-3 md:text-base md:last:border-b-rule",
-                    index % 2 === 0
-                      ? "md:mr-9 md:ml-3"
-                      : "md:ml-5",
-                  )}
-                  key={skill.label}
-                >
-                  <TechnologyIcon {...skill} />
-                  <span>{skill.label}</span>
+              <div className="grid auto-rows-[44px] grid-cols-1 gap-y-5 md:hidden">
+                {selectedCategory.skills.map((skill) => (
+                  <SkillRow key={skill.label} skill={skill} />
+                ))}
+              </div>
+
+              <div className="relative hidden h-[252px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-7 bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] bg-[length:1px_100%] bg-left-top bg-no-repeat after:absolute after:top-0 after:bottom-0 after:left-[calc(50%)] after:w-px after:bg-[repeating-linear-gradient(to_bottom,var(--color-rule)_0_5px,transparent_5px_9px)] after:content-[''] md:grid">
+                <div className="ml-5 grid auto-rows-[44px] gap-y-5">
+                  {firstDesktopColumn.map((skill) => (
+                    <SkillRow key={skill.label} skill={skill} />
+                  ))}
                 </div>
-              ))}
+                <div className="ml-5 grid auto-rows-[44px] gap-y-5">
+                  {secondDesktopColumn.map((skill) => (
+                    <SkillRow key={skill.label} skill={skill} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
