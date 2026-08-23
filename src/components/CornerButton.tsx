@@ -35,7 +35,7 @@ export function CornerButton({
     <a
       aria-label={ariaLabel}
       className={clsx(
-        "relative grid h-[27px] w-[118px] place-items-center overflow-visible bg-surface text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 after:absolute after:top-1/2 after:left-0 after:h-11 after:w-full after:-translate-y-1/2 after:content-[''] hover:bg-rule focus-visible:bg-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+        "group relative grid h-[27px] w-[118px] place-items-center overflow-visible bg-surface text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 after:absolute after:top-1/2 after:left-0 after:h-11 after:w-full after:-translate-y-1/2 after:content-[''] hover:bg-rule focus-visible:bg-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
         className,
       )}
       download={download}
@@ -51,7 +51,7 @@ export function CornerButton({
         >
           <img
             alt=""
-            className="absolute -top-[0.3px] -left-[0.3px] block h-[7.3px] w-[7.3px] max-w-none"
+            className="absolute -top-[0.3px] -left-[0.3px] block h-[7.3px] w-[7.3px] max-w-none transition-[filter] duration-160 group-hover:brightness-0 group-hover:invert group-focus-visible:brightness-0 group-focus-visible:invert"
             height="7.3"
             src={`${assetRoot}/${filename}`}
             width="7.3"

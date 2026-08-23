@@ -73,7 +73,7 @@ export function ExperienceSection() {
   return (
     <section className="relative scroll-mt-[132px] bg-background py-24 md:scroll-mt-0 md:py-40 md:max-[901px]:py-[120px]" id="experience">
       <div className="mx-auto block w-[calc(100%-24px)] md:grid md:w-[min(calc(100%-192px),1088px)] md:grid-cols-[513px_530px] md:items-start md:gap-x-[45px] md:max-[901px]:block md:max-[901px]:w-[calc(100%-80px)]">
-        <div className="relative self-start md:sticky md:top-0 md:max-[901px]:relative md:max-[901px]:top-auto md:max-[901px]:w-[min(100%,513px)]">
+        <div className="relative self-start md:sticky md:top-8 md:max-[901px]:relative md:max-[901px]:top-auto md:max-[901px]:w-[min(100%,513px)]">
           <h2 className="m-0 font-sans text-[clamp(53px,17.9vw,72px)] leading-[66px] font-normal tracking-normal max-[360px]:text-[52px] max-[360px]:tracking-[-2px] md:text-7xl">
             Experience
             <sup className="top-auto align-super text-2xl leading-normal tracking-normal md:text-[46.44px]">
