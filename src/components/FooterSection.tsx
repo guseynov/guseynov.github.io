@@ -1,5 +1,6 @@
 import { footerLinks } from "../data/footer";
 import { emailAddress } from "../data/site";
+import { trackCtaClick } from "../lib/analytics";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets`;
 
@@ -33,6 +34,13 @@ export function FooterSection() {
           aria-label={`Email ${emailAddress}`}
           className="group absolute top-[275px] right-3 left-3 flex h-14 items-center justify-between gap-4 font-sans text-[40px] leading-14 font-normal tracking-[0.4px] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:top-64 md:right-auto md:left-0 md:h-[70px] md:justify-start md:gap-[27px] md:text-7xl md:leading-[70px] md:tracking-normal"
           href={`mailto:${emailAddress}`}
+          onClick={() =>
+            trackCtaClick({
+              href: `mailto:${emailAddress}`,
+              label: "Email me",
+              placement: "footer_primary",
+            })
+          }
         >
           <span className="underline decoration-transparent decoration-[2px] underline-offset-[7px] transition-[text-decoration-color] duration-160 group-hover:decoration-current group-focus-visible:decoration-current">
             Email me
@@ -68,6 +76,13 @@ export function FooterSection() {
               download={link.download}
               href={link.href}
               key={link.label}
+              onClick={() =>
+                trackCtaClick({
+                  href: link.href,
+                  label: link.label,
+                  placement: "footer_links",
+                })
+              }
               rel={link.newTab ? "noreferrer" : undefined}
               target={link.newTab ? "_blank" : undefined}
             >

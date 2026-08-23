@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets/hero`;
 
@@ -9,6 +9,7 @@ type CornerButtonProps = {
   className?: string;
   download?: boolean;
   href: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
   rel?: string;
   tabIndex?: number;
   target?: "_blank" | "_parent" | "_self" | "_top";
@@ -27,6 +28,7 @@ export function CornerButton({
   className = "",
   download,
   href,
+  onClick,
   rel,
   tabIndex,
   target,
@@ -40,6 +42,7 @@ export function CornerButton({
       )}
       download={download}
       href={href}
+      onClick={onClick}
       rel={rel}
       tabIndex={tabIndex}
       target={target}

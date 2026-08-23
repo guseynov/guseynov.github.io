@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { projects } from "../data/projects";
+import { trackCtaClick } from "../lib/analytics";
 import { CornerButton } from "./CornerButton";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
@@ -165,6 +166,16 @@ export function ProjectsSection() {
                     <CornerButton
                       className="!h-[38px] !w-[104px] bg-surface !text-[13px] !leading-[18.24px] !font-medium text-white md:!h-10 md:!w-[108px] md:!text-sm"
                       href={project.codeUrl}
+                      onClick={() =>
+                        trackCtaClick({
+                          href: project.codeUrl,
+                          label: "View code",
+                          placement: "project_card",
+                          properties: {
+                            project_name: project.name,
+                          },
+                        })
+                      }
                       rel="noreferrer"
                       target="_blank"
                     >
@@ -176,6 +187,16 @@ export function ProjectsSection() {
                     <CornerButton
                       className="!h-[38px] !w-[104px] bg-surface !text-[13px] !leading-[18.24px] !font-medium text-white md:!h-10 md:!w-[108px] md:!text-sm"
                       href={project.liveUrl}
+                      onClick={() =>
+                        trackCtaClick({
+                          href: project.liveUrl,
+                          label: "View live project",
+                          placement: "project_card",
+                          properties: {
+                            project_name: project.name,
+                          },
+                        })
+                      }
                       rel="noreferrer"
                       target="_blank"
                     >

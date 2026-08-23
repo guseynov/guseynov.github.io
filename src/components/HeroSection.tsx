@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { navigation } from "../data/navigation";
 import { cvUrl } from "../data/site";
+import { trackCtaClick, trackNavigationClick } from "../lib/analytics";
 import { AsciiHero } from "./AsciiHero/AsciiHero";
 import { CornerButton } from "./CornerButton";
 
@@ -42,6 +43,13 @@ export function HeroSection() {
           <a
             className="absolute top-8 left-0 text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white max-[901px]:hidden"
             href="#overview"
+            onClick={() =>
+              trackNavigationClick({
+                href: "#overview",
+                label: "Alex Guseynov",
+                placement: "desktop_header",
+              })
+            }
           >
             Alex Guseynov
           </a>
@@ -55,6 +63,13 @@ export function HeroSection() {
                 className="transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 href={href}
                 key={href}
+                onClick={() =>
+                  trackNavigationClick({
+                    href,
+                    label,
+                    placement: "desktop_header",
+                  })
+                }
               >
                 {label}
               </a>
@@ -62,8 +77,29 @@ export function HeroSection() {
           </nav>
 
           <div className="absolute top-7 right-0 flex gap-4">
-            <CornerButton href="#contact">Contact me →</CornerButton>
-            <CornerButton download href={cvUrl}>
+            <CornerButton
+              href="#contact"
+              onClick={() =>
+                trackCtaClick({
+                  href: "#contact",
+                  label: "Contact me",
+                  placement: "desktop_header",
+                })
+              }
+            >
+              Contact me →
+            </CornerButton>
+            <CornerButton
+              download
+              href={cvUrl}
+              onClick={() =>
+                trackCtaClick({
+                  href: cvUrl,
+                  label: "Download CV",
+                  placement: "desktop_header",
+                })
+              }
+            >
               Download CV ↓
             </CornerButton>
           </div>
@@ -160,7 +196,14 @@ export function HeroSection() {
               className="flex h-11 w-full items-center p-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
               href={href}
               key={href}
-              onClick={() => closeMenu()}
+              onClick={() => {
+                trackNavigationClick({
+                  href,
+                  label,
+                  placement: "mobile_menu",
+                });
+                closeMenu();
+              }}
             >
               {label}
             </a>
@@ -222,10 +265,31 @@ export function HeroSection() {
       </h1>
 
       <div className="absolute right-3 bottom-[clamp(50px,10.3svh,87px)] left-3 z-10 flex flex-col gap-3 md:hidden">
-        <CornerButton className="!h-10 !w-full !text-base !leading-[18.24px] !font-medium" href="#contact">
+        <CornerButton
+          className="!h-10 !w-full !text-base !leading-[18.24px] !font-medium"
+          href="#contact"
+          onClick={() =>
+            trackCtaClick({
+              href: "#contact",
+              label: "Contact me",
+              placement: "mobile_hero",
+            })
+          }
+        >
           Contact me →
         </CornerButton>
-        <CornerButton className="!h-10 !w-full !text-base !leading-[18.24px] !font-medium" download href={cvUrl}>
+        <CornerButton
+          className="!h-10 !w-full !text-base !leading-[18.24px] !font-medium"
+          download
+          href={cvUrl}
+          onClick={() =>
+            trackCtaClick({
+              href: cvUrl,
+              label: "Download CV",
+              placement: "mobile_hero",
+            })
+          }
+        >
           Download CV ↓
         </CornerButton>
       </div>

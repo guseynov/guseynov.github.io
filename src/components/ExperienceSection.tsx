@@ -1,5 +1,6 @@
 import { experiences, type Experience } from "../data/experiences";
 import { cvUrl } from "../data/site";
+import { trackCtaClick } from "../lib/analytics";
 import { CornerButton } from "./CornerButton";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets`;
@@ -93,6 +94,13 @@ export function ExperienceSection() {
               className="mt-10 !h-10 !w-[min(279px,100%)] bg-surface !text-xs !leading-[18.24px] !font-medium text-white md:mt-12 md:!w-[190px]"
               download
               href={cvUrl}
+              onClick={() =>
+                trackCtaClick({
+                  href: cvUrl,
+                  label: "Download full resume",
+                  placement: "experience",
+                })
+              }
             >
               <span className="hidden md:inline">
                 Download full resume
