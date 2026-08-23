@@ -4,6 +4,11 @@ import { CornerButton } from "./CornerButton";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
+const smoothstep = (value: number) => {
+  const amount = clamp(value);
+  return amount * amount * (3 - 2 * amount);
+};
+
 const mix = (from: number, to: number, amount: number) =>
   Math.round(from + (to - from) * amount);
 
@@ -120,18 +125,19 @@ export function ProjectsSection() {
         {projects.map((project, index) => {
           const arrival = arrivals[index] ?? 0;
           const nextArrival = arrivals[index + 1] ?? 0;
+          const entryTilt = -7 * (1 - smoothstep(arrival));
           const cardStyle: CSSProperties | undefined = prefersReducedMotion
             ? undefined
             : {
                 backgroundColor: getCardSurface(index, arrivals),
                 boxShadow: `0 ${mix(0, -64, arrival)}px ${mix(0, 160, arrival)}px rgb(0 0 0 / ${arrival * 0.25})`,
-                transform: `scale(${1 - nextArrival * 0.04})`,
+                transform: `perspective(1600px) rotateX(${entryTilt.toFixed(3)}deg) scale(${1 - nextArrival * 0.04})`,
                 zIndex: index + 1,
               };
 
           return (
             <article
-              className="sticky top-4 mx-auto h-[min(663px,calc(100dvh-32px))] min-h-[560px] w-full origin-top overflow-hidden bg-white text-black will-change-[transform,box-shadow] md:top-8 md:h-[548px] md:min-h-0 md:max-w-[1188px] md:max-[1280px]:h-[min(548px,calc(100vh-84px))] md:max-[1280px]:max-w-none motion-reduce:relative motion-reduce:top-auto motion-reduce:h-auto motion-reduce:min-h-[560px] motion-reduce:transform-none"
+              className="sticky top-[calc(var(--mobile-header-height)+16px)] mx-auto h-[min(663px,calc(100dvh-var(--mobile-header-height)-32px))] min-h-[440px] w-full origin-top overflow-hidden bg-white text-black will-change-[transform,box-shadow] md:top-8 md:h-[548px] md:min-h-0 md:max-w-[1188px] md:max-[1280px]:h-[min(548px,calc(100vh-84px))] md:max-[1280px]:max-w-none motion-reduce:relative motion-reduce:top-auto motion-reduce:h-auto motion-reduce:min-h-[560px] motion-reduce:transform-none"
               key={project.name}
               ref={(card) => {
                 cardRefs.current[index] = card;

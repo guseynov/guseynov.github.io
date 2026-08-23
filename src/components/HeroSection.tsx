@@ -35,9 +35,9 @@ export function HeroSection() {
   }, [isMenuOpen]);
 
   return (
-    <section className="relative min-h-[900px] scroll-mt-[132px] overflow-clip bg-background md:min-h-[796px] md:scroll-mt-0" id="overview">
+    <section className="hero-section relative min-h-[max(620px,100svh)] scroll-mt-[132px] overflow-clip bg-[#181818] md:min-h-[796px] md:scroll-mt-0" id="overview">
       <AsciiHero />
-      <header className="relative z-10 hidden h-[87px] md:block">
+      <header className="hero-desktop-header relative z-10 hidden h-[87px] md:block">
         <div className="relative mx-auto h-full w-[min(calc(100%-192px),1088px)] max-[901px]:w-[calc(100%-80px)]">
           <a
             className="absolute top-8 left-0 text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white max-[901px]:hidden"
@@ -88,7 +88,7 @@ export function HeroSection() {
       <header
         className={clsx(
           "fixed inset-x-0 top-0 z-50 block overflow-hidden bg-background md:hidden",
-          isMenuOpen ? "h-[410px]" : "h-[132px]",
+          isMenuOpen ? "h-[410px]" : "h-[var(--mobile-header-height)]",
         )}
       >
         <div
@@ -194,12 +194,34 @@ export function HeroSection() {
         </div>
       </header>
 
-      <div className="absolute top-[597px] left-1/2 hidden w-[min(calc(100%-192px),1088px)] -translate-x-1/2 items-center justify-between font-sans text-[clamp(38px,3.75vw,48px)] leading-normal font-medium tracking-[0.48px] whitespace-nowrap uppercase md:flex max-[901px]:w-[calc(100%-68px)] max-[901px]:text-[34px]">
-        <p className="m-0 -translate-x-1.5">Frontend Engineer</p>
-        <p className="m-0">Alex Guseynov</p>
-      </div>
+      <h1 className="hero-desktop-identity absolute top-[597px] left-1/2 z-10 m-0 hidden w-[min(calc(100%-192px),1088px)] -translate-x-1/2 items-center justify-between font-sans text-[clamp(38px,3.75vw,48px)] leading-normal font-medium tracking-[0.48px] whitespace-nowrap uppercase md:flex max-[901px]:w-[calc(100%-68px)] max-[901px]:text-[34px]">
+        <span className="-translate-x-1.5">Frontend Engineer</span>
+        <span>Alex Guseynov</span>
+      </h1>
 
-      <div className="absolute top-[721px] right-3 left-3 flex flex-col gap-3 md:hidden">
+      <h1
+        aria-label="Alex Guseynov, Frontend Engineer"
+        className="pointer-events-none absolute inset-0 z-10 m-0 md:hidden"
+      >
+        <img
+          alt=""
+          aria-hidden="true"
+          className="absolute top-[142px] right-[11.38px] left-3 block h-auto w-[calc(100%-23.38px)]"
+          height="34.028"
+          src={`${assetRoot}/mobile-name.svg`}
+          width="378.618"
+        />
+        <img
+          alt=""
+          aria-hidden="true"
+          className="absolute right-[17.1px] bottom-[clamp(164px,25.8svh,218px)] left-3 block h-auto w-[calc(100%-29.1px)]"
+          height="26.0645"
+          src={`${assetRoot}/mobile-role.svg`}
+          width="367.188"
+        />
+      </h1>
+
+      <div className="absolute right-3 bottom-[clamp(50px,10.3svh,87px)] left-3 z-10 flex flex-col gap-3 md:hidden">
         <CornerButton className="!h-10 !w-full !text-base !leading-[18.24px] !font-medium" href="#contact">
           Contact me →
         </CornerButton>
@@ -211,7 +233,7 @@ export function HeroSection() {
       <img
         alt=""
         aria-hidden="true"
-        className="absolute top-[839.5px] left-1/2 block h-[6.51px] w-[19.553px] -translate-x-1/2 md:hidden"
+        className="absolute bottom-[clamp(26px,6.4svh,54px)] left-1/2 z-10 block h-[6.51px] w-[19.553px] -translate-x-1/2 md:hidden"
         height="6.51"
         src={`${assetRoot}/scroll-cue.svg`}
         width="19.553"

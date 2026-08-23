@@ -8,8 +8,12 @@ export const ASCII_CONFIG = {
     desktopWidth: 0.34,
     tabletWidth: 0.48,
     mobileWidth: 0.72,
-    height: 0.94,
-    centerY: 0.5,
+    desktopTop: 110,
+    desktopBottomClearance: 215,
+    shortTop: 100,
+    shortBottomClearance: 75,
+    mobileTop: 210,
+    mobileRoleClearance: 42,
     waistWidth: 0.012,
   },
   animation: {
@@ -40,6 +44,34 @@ export const ASCII_CONFIG = {
 } as const;
 
 export type AsciiHeroConfig = typeof ASCII_CONFIG;
+
+export function getAsciiShapeLayout(width: number, height: number) {
+  if (width < 768) {
+    const identityBottom = Math.min(218, Math.max(164, height * 0.258));
+    const artTop = ASCII_CONFIG.shape.mobileTop;
+    const artBottom = height - identityBottom - ASCII_CONFIG.shape.mobileRoleClearance;
+    const artHeight = Math.max(180, artBottom - artTop);
+
+    return {
+      centerY: (artTop + artHeight * 0.5) / height,
+      height: artHeight / height,
+    };
+  }
+
+  const shortViewport = height <= 650;
+  const artTop = shortViewport
+    ? ASCII_CONFIG.shape.shortTop
+    : ASCII_CONFIG.shape.desktopTop;
+  const bottomClearance = shortViewport
+    ? ASCII_CONFIG.shape.shortBottomClearance
+    : ASCII_CONFIG.shape.desktopBottomClearance;
+  const artHeight = Math.max(180, height - artTop - bottomClearance);
+
+  return {
+    centerY: (artTop + artHeight * 0.5) / height,
+    height: artHeight / height,
+  };
+}
 
 export function getAsciiShapeWidth(width: number) {
   if (width >= 1024) {

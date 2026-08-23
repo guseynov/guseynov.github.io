@@ -1,6 +1,7 @@
 import {
   ASCII_CONFIG,
   getAsciiFontSize,
+  getAsciiShapeLayout,
   getAsciiShapeWidth,
   type AsciiHeroConfig,
 } from "./asciiConfig";
@@ -271,8 +272,9 @@ export function createAsciiRenderer({
       return;
     }
 
-    const artHeight = bounds.height * config.shape.height;
-    const artTop = bounds.height * config.shape.centerY - artHeight * 0.5;
+    const shapeLayout = getAsciiShapeLayout(bounds.width, bounds.height);
+    const artHeight = bounds.height * shapeLayout.height;
+    const artTop = bounds.height * shapeLayout.centerY - artHeight * 0.5;
     const artWidth = bounds.width * getAsciiShapeWidth(bounds.width);
     const artLeft = (bounds.width - artWidth) * 0.5;
     const nextX = ((event.clientX - bounds.left - artLeft) / artWidth) * 2 - 1;
@@ -366,7 +368,8 @@ export function createAsciiRenderer({
     dynamics.time = reducedMotion ? 1.75 : now / 1000;
     dynamics.velocity = pointer.velocity;
 
-    const artHeight = metrics.height * config.shape.height;
+    const shapeLayout = getAsciiShapeLayout(metrics.width, metrics.height);
+    const artHeight = metrics.height * shapeLayout.height;
     const restingShapeWidth = getAsciiShapeWidth(metrics.width);
     const sequenceShapeWidth = mix(
       restingShapeWidth,
@@ -375,7 +378,7 @@ export function createAsciiRenderer({
     );
     const artHalfWidth =
       metrics.width * sequenceShapeWidth * (1 - sequence.compression) * 0.5;
-    const artCenterY = metrics.height * config.shape.centerY;
+    const artCenterY = metrics.height * shapeLayout.centerY;
     const shiftX = pointer.smoothX * config.interaction.parallaxX;
     const shiftY = pointer.smoothY * config.interaction.parallaxY;
     const lines = new Array<string>(metrics.rows);
