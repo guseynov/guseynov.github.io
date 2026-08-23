@@ -1,240 +1,243 @@
-import { useEffect, useState, type MouseEventHandler } from "react";
-import { ArrowUpRight, Download, Mail, Menu, X } from "lucide-react";
-import { HeroFidget } from "./HeroFidget";
-import { ButtonLink, iconButtonVariants } from "./ui";
-import { siteContent } from "../content/site";
-import { trackEvent } from "../lib/analytics";
+import { clsx } from "clsx";
+import { useEffect, useRef, useState } from "react";
+import { navigation } from "../data/navigation";
+import { cvUrl } from "../data/site";
+import { AsciiHero } from "./AsciiHero/AsciiHero";
+import { CornerButton } from "./CornerButton";
 
-const HERO_NAV_ITEMS = [
-  { label: "Overview", href: "#proof" },
-  { label: "Skills", href: "#capabilities" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
+const assetRoot = `${import.meta.env.BASE_URL}assets/hero`;
 
-interface HeroSectionProps {
-  id: string;
-  cvHref: string;
-  onEmailClick?: MouseEventHandler<HTMLAnchorElement>;
-  onCvClick?: MouseEventHandler<HTMLAnchorElement>;
-}
-
-export function HeroHeader({
-  cvHref,
-  onCvClick,
-  onEmailClick,
-}: Pick<HeroSectionProps, "cvHref" | "onCvClick" | "onEmailClick">) {
+export function HeroSection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const mobileMenuId = "mobile-site-menu";
+  const openButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = (restoreFocus = false) => {
+    setIsMenuOpen(false);
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => openButtonRef.current?.focus());
+    }
+  };
 
   useEffect(() => {
-    if (!isMenuOpen) {
-      return undefined;
-    }
+    if (!isMenuOpen) return;
 
-    const handleKeyDown = (event: KeyboardEvent) => {
+    closeButtonRef.current?.focus();
+    const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsMenuOpen(false);
+        event.preventDefault();
+        closeMenu(true);
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [isMenuOpen]);
 
   return (
-    <div className="sticky top-4 z-50 rounded-[0.8rem] border border-white/10 bg-surface-frosted px-5 py-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248/0.08),0_18px_40px_oklch(0.1_0.012_248/0.26)] backdrop-blur-sm sm:px-6 lg:px-8">
-      <div className="relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center">
-        <a
-          href="#intro"
-          aria-label="Home"
-          className="group flex min-w-0 items-center gap-3"
-        >
-          <span className="font-mono text-[1.9rem] leading-none tracking-[0em] text-text-strong transition-opacity duration-200 group-hover:opacity-70 sm:text-[2.35rem] lg:text-[2.8rem]">
-            AG.
-          </span>
-        </a>
-        <nav className="hidden justify-center lg:flex" aria-label="Primary">
-          <div className="flex items-center gap-5 font-mono text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-text-strong xl:gap-8">
-            {HERO_NAV_ITEMS.map((item) => (
+    <section className="hero-section relative min-h-[max(620px,100svh)] scroll-mt-[132px] overflow-clip bg-[#181818] md:min-h-[796px] md:scroll-mt-0" id="overview">
+      <AsciiHero />
+      <header className="hero-desktop-header relative z-10 hidden h-[87px] md:block">
+        <div className="relative mx-auto h-full w-[min(calc(100%-192px),1088px)] max-[901px]:w-[calc(100%-80px)]">
+          <a
+            className="absolute top-8 left-0 text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white max-[901px]:hidden"
+            href="#overview"
+          >
+            Alex Guseynov
+          </a>
+
+          <nav
+            aria-label="Primary"
+            className="absolute top-8 left-1/2 flex -translate-x-1/2 gap-[13px] text-xs leading-[18px] font-normal whitespace-nowrap max-[901px]:left-0 max-[901px]:translate-x-0"
+          >
+            {navigation.map(({ href, label }) => (
               <a
-                key={item.label}
-                href={item.href}
-                className="transition-opacity duration-200 hover:opacity-70"
-                onClick={() =>
-                  trackEvent("nav_item_clicked", {
-                    label: item.label,
-                    href: item.href,
-                    placement: "desktop_nav",
-                  })
-                }
+                className="transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                href={href}
+                key={href}
               >
-                {item.label}
+                {label}
               </a>
             ))}
+          </nav>
+
+          <div className="absolute top-7 right-0 flex gap-4">
+            <CornerButton href="#contact">Contact me →</CornerButton>
+            <CornerButton download href={cvUrl}>
+              Download CV ↓
+            </CornerButton>
           </div>
-        </nav>
-        <div className="ml-auto hidden items-center gap-4 lg:flex">
-          <ButtonLink
-            href={cvHref}
-            tone="primary"
-            className="px-5"
-            download
-            onClick={onCvClick}
-            icon={
-              <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
-            }
-          >
-            Resume
-          </ButtonLink>
+
+          <div className="absolute top-16 left-0 w-[calc(100%-2px)]" aria-hidden="true">
+            <img
+              alt=""
+              className="block h-[0.6px] w-full"
+              height="0.6"
+              src={`${assetRoot}/desktop-rule.svg`}
+              width="1086"
+            />
+            <div className="mt-[3px] flex justify-between font-instrument text-[12.16px] leading-[18.24px] text-rule">
+              {Array.from({ length: 8 }, (_, index) => (
+                <span key={index}>+</span>
+              ))}
+            </div>
+          </div>
         </div>
-        <button
-          type="button"
-          className={`${iconButtonVariants()} ml-auto lg:hidden`}
-          aria-expanded={isMenuOpen}
-          aria-controls={mobileMenuId}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          onClick={() => setIsMenuOpen((value) => !value)}
-        >
-          {isMenuOpen ? (
-            <X aria-hidden="true" className="h-5 w-5" />
-          ) : (
-            <Menu aria-hidden="true" className="h-5 w-5" />
+      </header>
+
+      <header
+        className={clsx(
+          "fixed inset-x-0 top-0 z-50 block overflow-hidden bg-background md:hidden",
+          isMenuOpen ? "h-[410px]" : "h-[var(--mobile-header-height)]",
+        )}
+      >
+        <div
+          aria-hidden="true"
+          className={clsx(
+            "absolute inset-0 bg-surface transition-opacity duration-300 ease-out motion-reduce:transition-none",
+            isMenuOpen ? "opacity-100" : "opacity-0",
           )}
+        />
+
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded={isMenuOpen}
+          aria-hidden={isMenuOpen}
+          aria-label="Open navigation"
+          className={clsx(
+            "absolute top-[54px] left-1/2 z-2 grid h-11 w-[76px] -translate-x-1/2 cursor-pointer place-items-center bg-transparent p-0 transition-opacity duration-300 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white motion-reduce:transition-none",
+            isMenuOpen ? "pointer-events-none opacity-0" : "opacity-100",
+          )}
+          onClick={() => setIsMenuOpen(true)}
+          ref={openButtonRef}
+          tabIndex={isMenuOpen ? -1 : 0}
+          type="button"
+        >
+          <img
+            alt=""
+            className="block h-[10px] w-[54.75px]"
+            height="10"
+            src={`${assetRoot}/mobile-menu.svg`}
+            width="54.75"
+          />
         </button>
 
-        <div
-          id={mobileMenuId}
-          className={[
-            "absolute left-0 right-0 top-[calc(100%+1.25rem)] lg:hidden",
-            isMenuOpen ? "block" : "hidden",
-          ].join(" ")}
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded={isMenuOpen}
+          aria-hidden={!isMenuOpen}
+          aria-label="Close navigation"
+          className={clsx(
+            "absolute top-[53px] left-1/2 z-2 h-11 w-[76px] -translate-x-1/2 cursor-pointer bg-transparent p-0 text-base leading-[27px] font-normal text-white transition-opacity duration-300 ease-out before:absolute before:top-[8.5px] before:left-0 before:content-['['] after:absolute after:top-[8.5px] after:right-0 after:content-[']'] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white motion-reduce:transition-none",
+            isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0",
+          )}
+          onClick={() => closeMenu(true)}
+          ref={closeButtonRef}
+          tabIndex={isMenuOpen ? 0 : -1}
+          type="button"
         >
-          <div className="rounded-2xl border border-white/10 bg-[oklch(0.15_0_0_/_0.94)] p-4 shadow-[inset_0_0.5px_0_0.5px_oklch(0.95_0.008_248/0.08),0_24px_48px_oklch(0.1_0.012_248/0.28)] backdrop-blur-sm">
-            <nav aria-label="Mobile primary" className="grid gap-1">
-              {HERO_NAV_ITEMS.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    trackEvent("nav_item_clicked", {
-                      label: item.label,
-                      href: item.href,
-                      placement: "mobile_nav",
-                    });
-                  }}
-                  className="flex items-center justify-between rounded-[0.85rem] border border-transparent px-3 py-3 font-mono text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-text-strong transition-colors duration-200 ease-out hover:border-white/10 hover:bg-white/4"
-                >
-                  <span>{item.label}</span>
-                  <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-                </a>
-              ))}
-            </nav>
+          <img
+            alt=""
+            className="absolute top-[13.5px] left-[3px] block h-5 w-[70px]"
+            height="20"
+            src={`${assetRoot}/mobile-menu-close.svg`}
+            width="70"
+          />
+        </button>
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <ButtonLink
-                href={`mailto:${siteContent.profile.email}`}
-                tone="secondary"
-                className="w-full justify-center"
-                onClick={(event) => {
-                  setIsMenuOpen(false);
-                  onEmailClick?.(event);
-                }}
-                icon={<Mail aria-hidden="true" className="h-5 w-5 shrink-0" />}
-              >
-                Email me
-              </ButtonLink>
-              <ButtonLink
-                href={cvHref}
-                tone="primary"
-                className="w-full justify-center"
-                download
-                onClick={(event) => {
-                  setIsMenuOpen(false);
-                  onCvClick?.(event);
-                }}
-                icon={
-                  <Download aria-hidden="true" className="h-4 w-4 shrink-0" />
-                }
-              >
-                Resume
-              </ButtonLink>
-            </div>
+        <nav
+          aria-label="Mobile primary"
+          aria-hidden={!isMenuOpen}
+          className={clsx(
+            "absolute top-[208px] right-[13px] left-3 z-1 flex flex-col items-start bg-transparent p-0 text-2xl leading-[18px] font-light whitespace-nowrap transition-[opacity,visibility] duration-300 ease-out motion-reduce:transition-none",
+            isMenuOpen ? "visible opacity-100" : "invisible opacity-0",
+          )}
+          id="mobile-navigation"
+          inert={!isMenuOpen}
+        >
+          {navigation.map(({ href, label }) => (
+            <a
+              className="flex h-11 w-full items-center p-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+              href={href}
+              key={href}
+              onClick={() => closeMenu()}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        <img
+          alt="Alex Guseynov"
+          className={clsx(
+            "absolute top-[142px] left-1/2 h-[34.028px] w-[calc(100%-23.382px)] -translate-x-1/2 transition-opacity duration-300 ease-out motion-reduce:transition-none",
+            isMenuOpen ? "opacity-100" : "opacity-0",
+          )}
+          height="34.028"
+          src={`${assetRoot}/mobile-name-open.svg`}
+          width="378.618"
+        />
+
+        <div className="absolute top-[105px] right-3 left-3" aria-hidden="true">
+          <img
+            alt=""
+            className="block h-[0.6px] w-full"
+            height="0.6"
+            src={`${assetRoot}/mobile-rule.svg`}
+            width="378"
+          />
+          <div className="mt-[3px] flex justify-between font-instrument text-sm leading-[18.24px] text-rule">
+            {Array.from({ length: 4 }, (_, index) => (
+              <span key={index}>{isMenuOpen ? "-" : "+"}</span>
+            ))}
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
+      </header>
 
-export function HeroSection({
-  id,
-  cvHref,
-  onEmailClick,
-  onCvClick,
-}: HeroSectionProps) {
-  return (
-    <section
-      id={id}
-      aria-labelledby={`${id}-title`}
-      className="hero-shell relative min-h-[min(54rem,calc(100svh-2rem))] overflow-visible bg-canvas text-text-strong"
-    >
-      <div className="hero-fidget-shell">
-        <HeroFidget />
-      </div>
-      <div className="pointer-events-none relative z-20 mx-auto grid w-full max-w-7xl px-5 pb-5 pt-14 sm:px-6 sm:pb-6 sm:pt-16 lg:px-10 lg:pb-8 lg:pt-20 xl:px-14">
-        <div className="grid gap-8 lg:grid-cols-[minmax(12rem,0.18fr)_minmax(0,0.82fr)] lg:items-stretch lg:gap-10">
-          <div className="hidden lg:block" aria-hidden="true" />
-          <div className="flex h-full flex-col gap-8 lg:gap-10">
-            <div className="space-y-6 pt-1">
-              <div className="space-y-4">
-                <h1
-                  id={`${id}-title`}
-                  className="text-display-hero max-w-[10ch] text-text-strong sm:max-w-[11ch] lg:max-w-[9ch]"
-                >
-                  {siteContent.profile.name}
-                </h1>
-              </div>
-              <p className="max-w-[20ch] font-mono text-[1rem] font-medium leading-[1.05] tracking-[0.06em] text-text-muted sm:max-w-[22ch] sm:text-[1.05rem] lg:text-[1.1rem]">
-                Frontend Engineer
-              </p>
-            </div>
+      <h1 className="hero-desktop-identity absolute top-[597px] left-1/2 z-10 m-0 hidden w-[min(calc(100%-192px),1088px)] -translate-x-1/2 items-center justify-between font-sans text-[clamp(38px,3.75vw,48px)] leading-normal font-medium tracking-[0.48px] whitespace-nowrap uppercase md:flex max-[901px]:w-[calc(100%-68px)] max-[901px]:text-[34px]">
+        <span className="-translate-x-1.5">Frontend Engineer</span>
+        <span>Alex Guseynov</span>
+      </h1>
 
-            <div className="pointer-events-auto mt-1 space-y-5">
-              <div className="flex flex-wrap gap-3">
-                <ButtonLink
-                  href={`mailto:${siteContent.profile.email}`}
-                  tone="secondary"
-                  className="px-5"
-                  onClick={onEmailClick}
-                  icon={
-                    <Mail aria-hidden="true" className="h-5 w-5 shrink-0" />
-                  }
-                >
-                  Email me
-                </ButtonLink>
-                <ButtonLink
-                  href={cvHref}
-                  tone="secondary"
-                  className="px-5"
-                  download
-                  onClick={onCvClick}
-                  icon={
-                    <Download aria-hidden="true" className="h-5 w-5 shrink-0" />
-                  }
-                >
-                  Download CV
-                </ButtonLink>
-              </div>
-            </div>
-          </div>
-        </div>
+      <h1
+        aria-label="Alex Guseynov, Frontend Engineer"
+        className="pointer-events-none absolute inset-0 z-10 m-0 md:hidden"
+      >
+        <img
+          alt=""
+          aria-hidden="true"
+          className="absolute top-[142px] right-[11.38px] left-3 block h-auto w-[calc(100%-23.38px)]"
+          height="34.028"
+          src={`${assetRoot}/mobile-name.svg`}
+          width="378.618"
+        />
+        <img
+          alt=""
+          aria-hidden="true"
+          className="absolute right-[17.1px] bottom-[clamp(164px,25.8svh,218px)] left-3 block h-auto w-[calc(100%-29.1px)]"
+          height="26.0645"
+          src={`${assetRoot}/mobile-role.svg`}
+          width="367.188"
+        />
+      </h1>
+
+      <div className="absolute right-3 bottom-[clamp(50px,10.3svh,87px)] left-3 z-10 flex flex-col gap-3 md:hidden">
+        <CornerButton className="!h-10 !w-full !text-base !leading-[18.24px] !font-medium" href="#contact">
+          Contact me →
+        </CornerButton>
+        <CornerButton className="!h-10 !w-full !text-base !leading-[18.24px] !font-medium" download href={cvUrl}>
+          Download CV ↓
+        </CornerButton>
       </div>
+
+      <img
+        alt=""
+        aria-hidden="true"
+        className="absolute bottom-[clamp(26px,6.4svh,54px)] left-1/2 z-10 block h-[6.51px] w-[19.553px] -translate-x-1/2 md:hidden"
+        height="6.51"
+        src={`${assetRoot}/scroll-cue.svg`}
+        width="19.553"
+      />
     </section>
   );
 }
