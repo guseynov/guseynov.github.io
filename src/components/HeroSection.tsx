@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { navigation } from "../data/navigation";
 import { cvUrl } from "../data/site";
+import { AsciiHero } from "./AsciiHero/AsciiHero";
 import { CornerButton } from "./CornerButton";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets/hero`;
@@ -35,6 +36,7 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[900px] scroll-mt-[132px] overflow-clip bg-background md:min-h-[796px] md:scroll-mt-0" id="overview">
+      <AsciiHero />
       <header className="relative z-10 hidden h-[87px] md:block">
         <div className="relative mx-auto h-full w-[min(calc(100%-192px),1088px)] max-[901px]:w-[calc(100%-80px)]">
           <a
@@ -195,26 +197,6 @@ export function HeroSection() {
       <div className="absolute top-[597px] left-1/2 hidden w-[min(calc(100%-192px),1088px)] -translate-x-1/2 items-center justify-between font-sans text-[clamp(38px,3.75vw,48px)] leading-normal font-medium tracking-[0.48px] whitespace-nowrap uppercase md:flex max-[901px]:w-[calc(100%-68px)] max-[901px]:text-[34px]">
         <p className="m-0 -translate-x-1.5">Frontend Engineer</p>
         <p className="m-0">Alex Guseynov</p>
-      </div>
-
-      <div className="absolute top-[142px] right-[11.38px] left-3 block h-[551.092px] md:hidden">
-        <img
-          alt="Alex Guseynov"
-          className="absolute top-0 left-0 block h-[34.028px] w-full"
-          height="34.028"
-          src={`${assetRoot}/mobile-name.svg`}
-          width="378.618"
-        />
-
-        <div aria-hidden="true" className="absolute top-[50.028px] right-0 left-0 h-[459px]" />
-
-        <img
-          alt="Frontend engineer"
-          className="absolute right-[5.715px] bottom-0 block h-[26.064px] w-[calc(100%-11.43px)]"
-          height="26.064"
-          src={`${assetRoot}/mobile-role.svg`}
-          width="367.188"
-        />
       </div>
 
       <div className="absolute top-[721px] right-3 left-3 flex flex-col gap-3 md:hidden">
