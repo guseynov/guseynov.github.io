@@ -3,23 +3,28 @@
   inset: 0;
   overflow: hidden;
   isolation: isolate;
-  background: #202020;
+  background: #181818;
   cursor: crosshair;
   pointer-events: auto;
   touch-action: pan-y;
 }
 
-.canvas {
+.glyphs {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.canvas canvas {
   display: block;
-  width: 100%;
-  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #e9e7e1;
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: 0;
+  text-rendering: geometricPrecision;
+  white-space: pre;
+  user-select: none;
   pointer-events: none;
 }
 

@@ -1,27 +1,25 @@
-export const REFERENCE_RAMP = " .-:/+=><!?3I254968A0N";
-export const DEBUG_SHOW_SOURCE = false;
-export const DEBUG_FREEZE_TIME = false;
-export const DEBUG_SHOW_MOTIF = false;
-
 export const ASCII_CONFIG = {
-  characters: REFERENCE_RAMP,
-  edgeCharacters: "-/|\\-/|\\",
-  colors: {
-    background: "#202020",
-    foreground: "#dedede",
+  characters: {
+    edge: ".",
+    body: "-",
+    ramp: " .-:/+=><!?3I254968A0N",
   },
   shape: {
-    width: 0.84,
-    height: 0.75,
-    centerY: 0.46,
-    waistWidth: 0.0095,
-    fieldRows: 72,
-    fieldSegments: 96,
+    desktopWidth: 0.34,
+    tabletWidth: 0.48,
+    mobileWidth: 0.72,
+    height: 0.94,
+    centerY: 0.5,
+    waistWidth: 0.012,
   },
   animation: {
-    breathSpeed: 0.28,
-    breathAmount: 0.005,
-    rotationDegrees: 0.18,
+    breathSpeed: 0.12,
+    breathAmount: 0.045,
+    frameRate: 60,
+  },
+  sequence: {
+    durationMs: 5400,
+    expandedWidth: 0.88,
   },
   interaction: {
     smoothing: 0.07,
@@ -29,26 +27,31 @@ export const ASCII_CONFIG = {
     parallaxY: 7,
     pointerRadius: 0.36,
     pointerRowSpread: 0.31,
-    pointerStrength: 0.085,
-    velocityStrength: 0.1,
     clickStrength: 0.13,
     clickDurationMs: 1200,
+    label: "CLICK",
   },
   ascii: {
-    desktopSize: 14,
-    laptopSize: 14,
-    tabletSize: 16,
-    mobileSize: 18,
-    lineHeight: 1.18,
-    edgeEnabled: false,
-  },
-  performance: {
-    frameRate: 50,
-    pixelDensity: 1,
+    desktopSize: 12.5,
+    laptopSize: 12.5,
+    tabletSize: 12,
+    mobileSize: 12,
   },
 } as const;
 
 export type AsciiHeroConfig = typeof ASCII_CONFIG;
+
+export function getAsciiShapeWidth(width: number) {
+  if (width >= 1024) {
+    return ASCII_CONFIG.shape.desktopWidth;
+  }
+
+  if (width >= 640) {
+    return ASCII_CONFIG.shape.tabletWidth;
+  }
+
+  return ASCII_CONFIG.shape.mobileWidth;
+}
 
 export function getAsciiFontSize(width: number) {
   if (width >= 1440) {

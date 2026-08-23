@@ -1,47 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  createAsciiSketch,
-  type Asciifier,
-  type AsciiSketchController,
-} from "./asciiSketch";
+  createAsciiRenderer,
+  type AsciiRendererController,
+} from "./asciiRenderer";
 import styles from "./AsciiHero.module.css";
 
 type ArtworkStatus = "loading" | "ready" | "failed";
 
-interface AsciiWindow {
-  p5?: unknown;
-  p5asciify?: Asciifier;
-}
-
-function getAsciifier(moduleValue: unknown): Asciifier | null {
-  const candidates = [
-    moduleValue,
-    (moduleValue as { default?: unknown } | null)?.default,
-    (window as unknown as AsciiWindow).p5asciify,
-  ];
-
-  return (
-    candidates.find(
-      (candidate): candidate is Asciifier =>
-        typeof candidate === "object" &&
-        candidate !== null &&
-        "instance" in candidate &&
-        typeof candidate.instance === "function",
-    ) ?? null
-  );
-}
-
 export function AsciiHero() {
   const rootRef = useRef<HTMLDivElement | null>(null);
-  const mountRef = useRef<HTMLDivElement | null>(null);
-  const controllerRef = useRef<AsciiSketchController | null>(null);
+  const outputRef = useRef<HTMLPreElement | null>(null);
+  const controllerRef = useRef<AsciiRendererController | null>(null);
   const [status, setStatus] = useState<ArtworkStatus>("loading");
 
   useEffect(() => {
     const root = rootRef.current;
-    const mount = mountRef.current;
+    const output = outputRef.current;
 
-    if (!root || !mount) {
+    if (!root || !output) {
       return undefined;
     }
 
@@ -73,56 +49,31 @@ export function AsciiHero() {
     let inViewport = true;
     const handleVisibilityChange = () => syncPlayback(inViewport);
 
-    const initialize = async () => {
-      try {
-        const p5Module = await import("p5");
-        const P5Constructor = p5Module.default;
+    try {
+      controllerRef.current = createAsciiRenderer({
+        root,
+        output,
+        onError: failSafely,
+        onReady: () => {
+          if (!cancelled) {
+            setStatus("ready");
+          }
+        },
+        reducedMotion,
+      });
 
-        if (cancelled) {
-          return;
-        }
-
-        // p5.asciify 0.3 ships as UMD and expects the p5 constructor globally.
-        (window as unknown as AsciiWindow).p5 = P5Constructor;
-        const asciifyModule = await import("p5.asciify");
-
-        if (cancelled) {
-          return;
-        }
-
-        const asciifier = getAsciifier(asciifyModule);
-        if (!asciifier) {
-          throw new Error("p5.asciify did not expose an instance-mode renderer.");
-        }
-
-        controllerRef.current = createAsciiSketch({
-          P5Constructor,
-          asciifier,
-          mount,
-          onError: failSafely,
-          onReady: () => {
-            if (!cancelled) {
-              setStatus("ready");
-            }
-          },
-          reducedMotion,
-        });
-
-        intersectionObserver = new IntersectionObserver(
-          ([entry]) => {
-            inViewport = entry?.isIntersecting ?? true;
-            syncPlayback(inViewport);
-          },
-          { rootMargin: "120px 0px", threshold: 0 },
-        );
-        intersectionObserver.observe(root);
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-      } catch (error) {
-        failSafely(error);
-      }
-    };
-
-    void initialize();
+      intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          inViewport = entry?.isIntersecting ?? true;
+          syncPlayback(inViewport);
+        },
+        { rootMargin: "120px 0px", threshold: 0 },
+      );
+      intersectionObserver.observe(root);
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+    } catch (error) {
+      failSafely(error);
+    }
 
     return () => {
       cancelled = true;
@@ -140,7 +91,7 @@ export function AsciiHero() {
       data-status={status}
       aria-hidden="true"
     >
-      <div ref={mountRef} className={styles.canvas} />
+      <pre ref={outputRef} className={styles.glyphs} />
     </div>
   );
 }
