@@ -5,9 +5,10 @@ export const ASCII_CONFIG = {
     ramp: " .-:/+=><!?3I254968A0N",
   },
   shape: {
-    desktopWidth: 0.34,
-    tabletWidth: 0.48,
-    mobileWidth: 0.72,
+    desktopGutter: 96,
+    compactDesktopGutter: 34,
+    mobileGutter: 12,
+    maxWidth: 1088,
     desktopTop: 110,
     desktopBottomClearance: 215,
     shortTop: 100,
@@ -23,7 +24,7 @@ export const ASCII_CONFIG = {
   },
   sequence: {
     durationMs: 5400,
-    expandedWidth: 0.88,
+    expandedScale: 1.12,
   },
   interaction: {
     smoothing: 0.07,
@@ -74,15 +75,20 @@ export function getAsciiShapeLayout(width: number, height: number) {
 }
 
 export function getAsciiShapeWidth(width: number) {
-  if (width >= 1024) {
-    return ASCII_CONFIG.shape.desktopWidth;
+  let gutter: number = ASCII_CONFIG.shape.desktopGutter;
+
+  if (width < 768) {
+    gutter = ASCII_CONFIG.shape.mobileGutter;
+  } else if (width <= 901) {
+    gutter = ASCII_CONFIG.shape.compactDesktopGutter;
   }
 
-  if (width >= 640) {
-    return ASCII_CONFIG.shape.tabletWidth;
-  }
+  const availableWidth = Math.min(
+    Math.max(1, width - gutter * 2),
+    ASCII_CONFIG.shape.maxWidth,
+  );
 
-  return ASCII_CONFIG.shape.mobileWidth;
+  return availableWidth / Math.max(1, width);
 }
 
 export function getAsciiFontSize(width: number) {

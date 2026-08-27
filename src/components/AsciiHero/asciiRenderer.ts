@@ -63,7 +63,7 @@ interface MorphSequenceState {
   compression: number;
   expansion: number;
   morphAmount: number;
-  progress: number;
+  motionProgress: number;
 }
 
 const clamp = (value: number, min: number, max: number) =>
@@ -71,11 +71,6 @@ const clamp = (value: number, min: number, max: number) =>
 
 const mix = (from: number, to: number, amount: number) =>
   from + (to - from) * amount;
-
-const smoothstep = (edge0: number, edge1: number, value: number) => {
-  const amount = clamp((value - edge0) / (edge1 - edge0), 0, 1);
-  return amount * amount * (3 - 2 * amount);
-};
 
 const getSegmentProgress = (value: number, start: number, end: number) =>
   clamp((value - start) / (end - start), 0, 1);
@@ -86,6 +81,12 @@ const easeInOutCubic = (value: number) =>
   value < 0.5
     ? 4 * value * value * value
     : 1 - Math.pow(-2 * value + 2, 3) * 0.5;
+
+const easeInOutSmoother = (value: number) =>
+  value * value * value * (value * (value * 6 - 15) + 10);
+
+const easeOutSine = (value: number) =>
+  Math.sin(clamp(value, 0, 1) * Math.PI * 0.5);
 
 const easeOutQuint = (value: number) => 1 - Math.pow(1 - value, 5);
 
@@ -123,7 +124,7 @@ function getMorphSequenceState(
       compression: 0,
       expansion: 0,
       morphAmount: 0,
-      progress: 0,
+      motionProgress: 0,
     };
   }
 
@@ -135,7 +136,7 @@ function getMorphSequenceState(
       compression: 0,
       expansion: 0,
       morphAmount: 0,
-      progress: 0,
+      motionProgress: 0,
     };
   }
 
@@ -152,20 +153,20 @@ function getMorphSequenceState(
   const morphOut =
     1 - easeInOutCubic(getSegmentProgress(progress, 0.63, 0.91));
   const morphAmount = clamp(morphIn * morphOut, 0, 1);
+  const motionProgress = easeInOutSmoother(progress);
 
   return {
     active: true,
     compression,
     expansion,
     morphAmount,
-    progress,
+    motionProgress,
   };
 }
 
 function measureGrid(
   root: HTMLElement,
   output: HTMLElement,
-  config: AsciiHeroConfig,
 ): GridMetrics {
   const bounds = root.getBoundingClientRect();
   const width = Math.max(1, bounds.width);
@@ -193,8 +194,10 @@ function measureGrid(
   const lineHeight = Number.isFinite(parsedLineHeight)
     ? parsedLineHeight
     : fontSize * 1.28;
-  const columns = Math.max(1, Math.floor(width / characterWidth));
-  const rows = Math.max(1, Math.floor(height / lineHeight));
+  // Overscan by one partial cell and clip it in the root so the glyph grid
+  // always meets every edge without thin, unpainted gutters after resizing.
+  const columns = Math.max(1, Math.ceil(width / characterWidth));
+  const rows = Math.max(1, Math.ceil(height / lineHeight));
   const gridWidth = columns * characterWidth;
   const gridHeight = rows * lineHeight;
   const offsetX = (width - gridWidth) * 0.5;
@@ -227,7 +230,7 @@ export function createAsciiRenderer({
 }: RendererOptions): AsciiRendererController {
   let animationFrame = 0;
   let destroyed = false;
-  let metrics = measureGrid(root, output, config);
+  let metrics = measureGrid(root, output);
   let playing = true;
   let ready = false;
   let resizeObserver: ResizeObserver | null = null;
@@ -357,14 +360,14 @@ export function createAsciiRenderer({
     dynamics.clickEnvelope = reducedMotion
       ? 0
       : getClickEnvelope(now, pointer, config);
-    dynamics.clickWaveFront =
-      (clickAge / config.interaction.clickDurationMs) * 2.15;
+    const clickProgress = clickAge / config.interaction.clickDurationMs;
+    dynamics.clickWaveFront = easeOutSine(clickProgress) * 2.15;
     dynamics.clickX = pointer.clickX;
     dynamics.clickY = pointer.clickY;
     dynamics.pointerX = pointer.smoothX;
     dynamics.pointerY = pointer.smoothY;
     dynamics.morphAmount = sequence.morphAmount;
-    dynamics.sequenceProgress = sequence.progress;
+    dynamics.sequenceProgress = sequence.motionProgress;
     dynamics.time = reducedMotion ? 1.75 : now / 1000;
     dynamics.velocity = pointer.velocity;
 
@@ -373,7 +376,7 @@ export function createAsciiRenderer({
     const restingShapeWidth = getAsciiShapeWidth(metrics.width);
     const sequenceShapeWidth = mix(
       restingShapeWidth,
-      config.sequence.expandedWidth,
+      restingShapeWidth * config.sequence.expandedScale,
       sequence.expansion,
     );
     const artHalfWidth =
@@ -471,7 +474,7 @@ export function createAsciiRenderer({
 
   const resize = () => {
     try {
-      metrics = measureGrid(root, output, config);
+      metrics = measureGrid(root, output);
       lastFrameAt = 0;
       render(performance.now());
     } catch (error) {
