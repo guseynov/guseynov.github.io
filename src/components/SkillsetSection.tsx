@@ -116,7 +116,7 @@ export function SkillsetSection() {
               /Select
             </p>
             <p className="col-start-1 row-start-3 mt-[46px] mb-0 border-b-[0.6px] border-rule pb-0 text-base leading-[24px] font-normal md:col-start-2 md:row-start-1 md:mt-0 md:pb-[9px]">
-              /Selected category
+              /{selectedCategory.label}
             </p>
           </div>
 
