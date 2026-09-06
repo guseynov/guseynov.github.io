@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { skillCategories, type Skill } from "../data/skills";
+import { AsciiLinkText } from "./AsciiLinkText";
 
 function TechnologyIcon({ brandIcon, icon: Icon }: Skill) {
   if (brandIcon) {
@@ -158,7 +159,7 @@ export function SkillsetSection() {
                         isSelected ? "md:underline md:underline-offset-2" : "md:col-span-2",
                       )}
                     >
-                      {category.label}
+                      <AsciiLinkText>{category.label}</AsciiLinkText>
                     </span>
                     <span className="md:col-start-3">({category.skills.length})</span>
                   </button>

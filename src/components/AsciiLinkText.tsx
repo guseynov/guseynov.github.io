@@ -28,9 +28,9 @@ export function AsciiLinkText({ children, className }: AsciiLinkTextProps) {
     const label = labelRef.current;
     const source = sourceRef.current;
     const overlay = overlayRef.current;
-    const link = label?.closest("a");
+    const control = label?.closest<HTMLElement>("a, button");
 
-    if (!label || !source || !overlay || !link) return;
+    if (!label || !source || !overlay || !control) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const finePointer = window.matchMedia("(any-hover: hover) and (any-pointer: fine)");
@@ -176,11 +176,11 @@ export function AsciiLinkText({ children, className }: AsciiLinkTextProps) {
 
     const resizeObserver = new ResizeObserver(reset);
     resizeObserver.observe(label);
-    link.addEventListener("pointerenter", disturb);
-    link.addEventListener("pointermove", disturb);
-    link.addEventListener("pointerleave", leave);
-    link.addEventListener("pointercancel", reset);
-    link.addEventListener("click", reset);
+    control.addEventListener("pointerenter", disturb);
+    control.addEventListener("pointermove", disturb);
+    control.addEventListener("pointerleave", leave);
+    control.addEventListener("pointercancel", reset);
+    control.addEventListener("click", reset);
     reducedMotion.addEventListener("change", reset);
     finePointer.addEventListener("change", reset);
     document.addEventListener("visibilitychange", reset);
@@ -191,11 +191,11 @@ export function AsciiLinkText({ children, className }: AsciiLinkTextProps) {
     return () => {
       reset();
       resizeObserver.disconnect();
-      link.removeEventListener("pointerenter", disturb);
-      link.removeEventListener("pointermove", disturb);
-      link.removeEventListener("pointerleave", leave);
-      link.removeEventListener("pointercancel", reset);
-      link.removeEventListener("click", reset);
+      control.removeEventListener("pointerenter", disturb);
+      control.removeEventListener("pointermove", disturb);
+      control.removeEventListener("pointerleave", leave);
+      control.removeEventListener("pointercancel", reset);
+      control.removeEventListener("click", reset);
       reducedMotion.removeEventListener("change", reset);
       finePointer.removeEventListener("change", reset);
       document.removeEventListener("visibilitychange", reset);
