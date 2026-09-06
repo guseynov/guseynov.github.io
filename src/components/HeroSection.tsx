@@ -37,7 +37,7 @@ export function HeroSection() {
   }, [isMenuOpen]);
 
   return (
-    <section className="hero-section relative min-h-[max(620px,100svh)] scroll-mt-[132px] overflow-clip bg-[#181818] md:min-h-[796px] md:scroll-mt-0" id="overview">
+    <section className="hero-section relative min-h-[max(620px,100svh)] scroll-mt-[132px] overflow-clip bg-background md:min-h-[796px] md:scroll-mt-0" id="overview">
       <AsciiHero />
       <header className="hero-desktop-header relative z-10 hidden h-[87px] md:block">
         <div className="relative mx-auto h-full w-[min(calc(100%-192px),1088px)] max-[901px]:w-[calc(100%-80px)]">

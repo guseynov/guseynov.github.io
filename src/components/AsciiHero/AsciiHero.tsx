@@ -86,7 +86,7 @@ export function AsciiHero() {
   return (
     <div
       ref={rootRef}
-      className="absolute inset-0 isolate h-full w-full touch-pan-y cursor-crosshair overflow-hidden bg-[#181818] pointer-events-auto data-[status=failed]:cursor-default [@media(hover:none)_and_(pointer:coarse)]:cursor-default"
+      className="absolute inset-0 isolate h-full w-full touch-pan-y cursor-crosshair overflow-hidden bg-background pointer-events-auto data-[status=failed]:cursor-default [@media(hover:none)_and_(pointer:coarse)]:cursor-default"
       data-status={status}
       aria-hidden="true"
     >
