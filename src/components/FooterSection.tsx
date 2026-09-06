@@ -1,6 +1,7 @@
 import { footerLinks } from "../data/footer";
 import { emailAddress } from "../data/site";
 import { trackCtaClick } from "../lib/analytics";
+import { AsciiLinkText } from "./AsciiLinkText";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets`;
 
@@ -42,9 +43,9 @@ export function FooterSection() {
             })
           }
         >
-          <span className="underline decoration-transparent decoration-[2px] underline-offset-[7px] transition-[text-decoration-color] duration-160 group-hover:decoration-current group-focus-visible:decoration-current">
+          <AsciiLinkText className="underline decoration-transparent decoration-[2px] underline-offset-[7px] transition-[text-decoration-color] duration-160 group-hover:decoration-current group-focus-visible:decoration-current">
             Email me
-          </span>
+          </AsciiLinkText>
           <picture className="block h-[15px] w-[45.787px] flex-[0_0_auto] transition-transform duration-160 ease-out group-hover:translate-x-2.5 group-focus-visible:translate-x-2.5 motion-reduce:transition-none md:h-[25.52px] md:w-[77.9px]">
             <source
               media="(max-width: 767px)"
@@ -92,7 +93,7 @@ export function FooterSection() {
                 className="block h-2.5 w-2.5 flex-[0_0_10px] md:h-[9px] md:w-[9px] md:flex-[0_0_9px]"
                 src={`${assetRoot}/footer-link.svg`}
               />
-              <span className="w-auto md:w-[58px]">{link.label}</span>
+              <AsciiLinkText className="w-auto md:w-[58px]">{link.label}</AsciiLinkText>
               {link.newTab && <span className="sr-only"> (opens in a new tab)</span>}
             </a>
           ))}

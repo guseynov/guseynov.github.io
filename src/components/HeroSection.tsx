@@ -4,6 +4,7 @@ import { navigation } from "../data/navigation";
 import { cvUrl } from "../data/site";
 import { trackCtaClick, trackNavigationClick } from "../lib/analytics";
 import { AsciiHero } from "./AsciiHero/AsciiHero";
+import { AsciiLinkText } from "./AsciiLinkText";
 import { CornerButton } from "./CornerButton";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets/hero`;
@@ -51,7 +52,7 @@ export function HeroSection() {
               })
             }
           >
-            Alex Guseynov
+            <AsciiLinkText>Alex Guseynov</AsciiLinkText>
           </a>
 
           <nav
@@ -71,7 +72,7 @@ export function HeroSection() {
                   })
                 }
               >
-                {label}
+                <AsciiLinkText>{label}</AsciiLinkText>
               </a>
             ))}
           </nav>
@@ -205,7 +206,7 @@ export function HeroSection() {
                 closeMenu();
               }}
             >
-              {label}
+              <AsciiLinkText>{label}</AsciiLinkText>
             </a>
           ))}
         </nav>

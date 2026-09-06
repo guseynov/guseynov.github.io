@@ -70,6 +70,20 @@
   }
 }
 
+@layer components {
+  [data-ascii-overlay] {
+    opacity: 0;
+  }
+
+  [data-ascii-active] > [data-ascii-source] {
+    color: transparent;
+  }
+
+  [data-ascii-active] > [data-ascii-overlay] {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

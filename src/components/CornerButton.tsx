@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import type { MouseEventHandler, ReactNode } from "react";
+import { AsciiLinkText } from "./AsciiLinkText";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets/hero`;
 
@@ -61,7 +62,9 @@ export function CornerButton({
           />
         </span>
       ))}
-      <span className="relative z-1">{children}</span>
+      <span className="relative z-1">
+        {typeof children === "string" ? <AsciiLinkText>{children}</AsciiLinkText> : children}
+      </span>
     </a>
   );
 }
