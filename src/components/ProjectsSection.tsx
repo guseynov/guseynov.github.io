@@ -32,23 +32,31 @@ export function ProjectsSection() {
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
   const [arrivals, setArrivals] = useState(() => projects.map(() => 0));
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const isStackingEnabled = isDesktop && !prefersReducedMotion;
 
   useEffect(() => {
     const reducedMotionQuery = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );
-    const syncMotionPreference = () =>
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+    const syncMotionPreference = () => {
       setPrefersReducedMotion(reducedMotionQuery.matches);
+      setIsDesktop(desktopQuery.matches);
+    };
 
     syncMotionPreference();
     reducedMotionQuery.addEventListener("change", syncMotionPreference);
+    desktopQuery.addEventListener("change", syncMotionPreference);
 
-    return () =>
+    return () => {
       reducedMotionQuery.removeEventListener("change", syncMotionPreference);
+      desktopQuery.removeEventListener("change", syncMotionPreference);
+    };
   }, []);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
+    if (!isStackingEnabled) {
       setArrivals(projects.map(() => 0));
       return;
     }
@@ -99,7 +107,7 @@ export function ProjectsSection() {
       window.removeEventListener("resize", requestCardUpdate);
       window.removeEventListener("scroll", requestCardUpdate);
     };
-  }, [prefersReducedMotion]);
+  }, [isStackingEnabled]);
 
   return (
     <section className="relative scroll-mt-[132px] bg-background md:scroll-mt-0" id="projects">
@@ -120,7 +128,7 @@ export function ProjectsSection() {
         {projects.map((project, index) => {
           const arrival = arrivals[index] ?? 0;
           const nextArrival = arrivals[index + 1] ?? 0;
-          const cardStyle: CSSProperties | undefined = prefersReducedMotion
+          const cardStyle: CSSProperties | undefined = !isStackingEnabled
             ? undefined
             : {
                 backgroundColor: getCardSurface(index, arrivals),
@@ -131,25 +139,25 @@ export function ProjectsSection() {
 
           return (
             <article
-              className="sticky top-[calc(var(--mobile-header-height)+16px)] mx-auto h-[min(663px,calc(100dvh-var(--mobile-header-height)-32px))] min-h-[440px] w-full origin-top overflow-hidden bg-white text-black will-change-[transform,box-shadow] md:top-8 md:h-[548px] md:min-h-0 md:max-w-[1188px] md:max-[1280px]:h-[min(548px,calc(100vh-84px))] md:max-[1280px]:max-w-none motion-reduce:relative motion-reduce:top-auto motion-reduce:h-auto motion-reduce:min-h-[560px] motion-reduce:transform-none"
+              className="relative mx-auto w-full origin-top overflow-hidden bg-white text-black md:sticky md:top-8 md:will-change-[transform,box-shadow] md:h-[548px] md:min-h-0 md:max-w-[1188px] md:max-[1280px]:h-[min(548px,calc(100vh-84px))] md:max-[1280px]:max-w-none motion-reduce:relative motion-reduce:top-auto motion-reduce:h-auto motion-reduce:min-h-[560px] motion-reduce:transform-none"
               key={project.name}
               ref={(card) => {
                 cardRefs.current[index] = card;
               }}
               style={cardStyle}
             >
-              <div className="relative flex h-full flex-col gap-6 overflow-y-auto px-5 pt-10 pb-10 md:grid md:grid-cols-[360px_minmax(0,1fr)] md:gap-x-12 md:gap-y-0 md:overflow-visible md:px-[50px] md:pt-24 md:pb-[50px] md:max-[901px]:grid-cols-[300px_minmax(0,1fr)] md:max-[901px]:gap-x-10 md:max-[901px]:px-[42px] md:max-[901px]:pt-[86px] md:max-[901px]:pb-12 xl:block xl:p-0">
+              <div className="relative flex flex-col gap-6 px-5 pt-10 pb-10 md:grid md:h-full md:grid-cols-[360px_minmax(0,1fr)] md:gap-x-12 md:gap-y-0 md:overflow-visible md:px-[50px] md:pt-24 md:pb-[50px] md:max-[901px]:grid-cols-[300px_minmax(0,1fr)] md:max-[901px]:gap-x-10 md:max-[901px]:px-[42px] md:max-[901px]:pt-[86px] md:max-[901px]:pb-12 xl:block xl:p-0">
                 <div className="relative min-w-0 text-[#010101] xl:absolute xl:top-[104px] xl:left-[68px] xl:w-[344px]">
                   <h3 className="m-0 font-sans text-4xl leading-[1.05] font-semibold tracking-[-1.4px] md:text-5xl md:tracking-normal md:max-[901px]:text-[42px] xl:leading-[62px]">
                     {project.name}
                   </h3>
-                  <p className="mt-3.5 mb-0 w-[344px] font-sans text-[15px] leading-[22px] font-normal md:mt-2 md:text-base md:leading-[26px]">
+                  <p className="mt-3.5 mb-0 w-full font-sans text-[15px] leading-[22px] font-normal md:mt-2 md:w-[344px] md:text-base md:leading-[26px]">
                     {project.summary}
                   </p>
 
                   <ul
                     aria-label={`${project.name} technologies`}
-                    className="mt-[18px] mb-0 flex w-[314px] list-none flex-wrap gap-1.5 p-0 text-[#bdbbc1] md:mt-6 md:gap-2"
+                    className="mt-[18px] mb-0 flex w-full list-none flex-wrap gap-1.5 p-0 text-[#bdbbc1] md:mt-6 md:w-[314px] md:gap-2"
                   >
                     {project.tags.map((tag) => (
                       <li

@@ -89,10 +89,10 @@ export function SkillsetSection() {
 
   return (
     <section
-      className="relative min-h-[1080px] scroll-mt-[132px] overflow-hidden bg-background pt-[31px] md:min-h-[796px] md:scroll-mt-0 md:overflow-clip md:pt-0"
+      className="relative scroll-mt-[132px] overflow-hidden bg-background pt-[31px] md:min-h-[796px] md:scroll-mt-0 md:overflow-clip md:pt-0"
       id="skills"
     >
-      <div className="relative mx-auto min-h-[1049px] w-[calc(100%-24px)] md:h-[796px] md:min-h-0 md:w-[min(calc(100%-192px),1088px)] md:max-[901px]:w-[calc(100%-80px)]">
+      <div className="relative mx-auto w-[calc(100%-24px)] md:h-[796px] md:w-[min(calc(100%-192px),1088px)] md:max-[901px]:w-[calc(100%-80px)]">
         <div className="relative w-full md:absolute md:top-[54px] md:left-0 md:w-[344px]">
           <h2 className="m-0 h-[66px] font-sans text-[72px] leading-[66px] font-medium tracking-normal">
             Skillset
