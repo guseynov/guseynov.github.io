@@ -1,6 +1,7 @@
 import { AsciiVideo } from "../AsciiVideo/AsciiVideo";
 
-const videoSource = `${import.meta.env.BASE_URL}assets/hero/hero.mp4`;
+// The clip includes forward and reverse playback, with no repeated end frames.
+const videoSource = `${import.meta.env.BASE_URL}assets/hero/hero-loop.mp4`;
 
 export function AsciiVideoHero() {
   return (
