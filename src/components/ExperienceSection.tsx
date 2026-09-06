@@ -1,6 +1,7 @@
 import { experiences, type Experience } from "../data/experiences";
 import { cvUrl } from "../data/site";
 import { trackCtaClick } from "../lib/analytics";
+import { AsciiLinkText } from "./AsciiLinkText";
 import { CornerButton } from "./CornerButton";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets`;
@@ -103,10 +104,10 @@ export function ExperienceSection() {
               }
             >
               <span className="hidden md:inline">
-                Download full resume
+                <AsciiLinkText>Download full resume</AsciiLinkText>
               </span>
               <span className="inline md:hidden">
-                Download full resume ↓
+                <AsciiLinkText>Download full resume ↓</AsciiLinkText>
               </span>
             </CornerButton>
           </div>
