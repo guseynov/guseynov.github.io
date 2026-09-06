@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { projects } from "../data/projects";
 import { trackCtaClick } from "../lib/analytics";
-import { CornerButton } from "./CornerButton";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
@@ -163,8 +162,8 @@ export function ProjectsSection() {
                   </ul>
 
                   <div className="mt-6 flex h-10 w-56 gap-2 md:mt-[61px] md:max-[901px]:mt-[42px] xl:absolute xl:top-[301px] xl:left-0 xl:m-0">
-                    <CornerButton
-                      className="!h-[38px] !w-[104px] bg-surface !text-[13px] !leading-[18.24px] !font-medium text-white md:!h-10 md:!w-[108px] md:!text-sm"
+                    <a
+                      className="relative inline-flex h-[38px] w-[104px] items-center justify-center bg-surface text-[13px] leading-[18.24px] font-medium whitespace-nowrap text-white transition-colors duration-160 after:absolute after:top-1/2 after:left-0 after:h-11 after:w-full after:-translate-y-1/2 after:content-[''] hover:bg-rule focus-visible:bg-rule focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface md:h-10 md:w-[108px] md:text-sm"
                       href={project.codeUrl}
                       onClick={() =>
                         trackCtaClick({
@@ -183,9 +182,9 @@ export function ProjectsSection() {
                       <span className="sr-only">
                         {` for ${project.name} (opens in a new tab)`}
                       </span>
-                    </CornerButton>
-                    <CornerButton
-                      className="!h-[38px] !w-[104px] bg-surface !text-[13px] !leading-[18.24px] !font-medium text-white md:!h-10 md:!w-[108px] md:!text-sm"
+                    </a>
+                    <a
+                      className="relative inline-flex h-[38px] w-[104px] items-center justify-center bg-surface text-[13px] leading-[18.24px] font-medium whitespace-nowrap text-white transition-colors duration-160 after:absolute after:top-1/2 after:left-0 after:h-11 after:w-full after:-translate-y-1/2 after:content-[''] hover:bg-rule focus-visible:bg-rule focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface md:h-10 md:w-[108px] md:text-sm"
                       href={project.liveUrl}
                       onClick={() =>
                         trackCtaClick({
@@ -204,7 +203,7 @@ export function ProjectsSection() {
                       <span className="sr-only">
                         {` for ${project.name} (opens in a new tab)`}
                       </span>
-                    </CornerButton>
+                    </a>
                   </div>
                 </div>
 
