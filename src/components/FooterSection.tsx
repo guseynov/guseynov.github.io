@@ -2,6 +2,7 @@ import { footerLinks } from "../data/footer";
 import { emailAddress } from "../data/site";
 import { trackCtaClick } from "../lib/analytics";
 import { AsciiLinkText } from "./AsciiLinkText";
+import { AsciiVideo } from "./AsciiVideo/AsciiVideo";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets`;
 
@@ -16,16 +17,13 @@ export function FooterSection() {
           src={`${assetRoot}/footer-rule.svg`}
         />
 
-        <div
-          aria-hidden="true"
-          className="absolute top-[153px] left-3 h-[106px] w-[calc(100%-24px)] overflow-hidden md:top-7 md:left-0 md:w-[346px]"
-        >
-          <img
-            alt=""
-            className="absolute -top-[58px] -left-1.5 block h-[280px] w-[calc(100%+6px)] max-w-none mix-blend-lighten md:-top-[47px] md:h-[258px] md:w-[353.32px]"
-            src={`${assetRoot}/footer-strip.png`}
-          />
-        </div>
+        <AsciiVideo
+          blackPoint={12}
+          className="footer-ascii-video absolute top-[153px] left-3 h-[106px] w-[calc(100%-24px)] overflow-hidden md:top-7 md:left-0 md:w-[346px]"
+          fontSize={6}
+          src={`${assetRoot}/footer/eye.mp4`}
+          whitePoint={242}
+        />
 
         <p className="absolute top-[45px] left-3 m-0 flex h-[92px] w-[calc(100%-24px)] items-start font-sans text-[40px] leading-[46px] font-normal tracking-[0.4px] whitespace-normal uppercase text-rule md:top-[162px] md:left-0 md:h-[70px] md:w-[841px] md:items-center md:text-7xl md:leading-[70px] md:tracking-normal md:whitespace-nowrap md:max-[1181px]:w-[calc(100%-120px)] md:max-[1181px]:text-[clamp(52px,6vw,72px)]">
           Let’s work together

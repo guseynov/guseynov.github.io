@@ -4,6 +4,7 @@ import { navigation } from "../data/navigation";
 import { cvUrl } from "../data/site";
 import { trackCtaClick, trackNavigationClick } from "../lib/analytics";
 import { AsciiLinkText } from "./AsciiLinkText";
+import { AsciiVideoHero } from "./AsciiVideoHero/AsciiVideoHero";
 import { CornerButton } from "./CornerButton";
 
 const assetRoot = `${import.meta.env.BASE_URL}assets/hero`;
@@ -37,10 +38,11 @@ export function HeroSection() {
 
   return (
     <section className="hero-section relative min-h-[max(620px,100svh)] scroll-mt-[132px] overflow-clip bg-background md:min-h-[796px] md:scroll-mt-0" id="overview">
+      <AsciiVideoHero />
       <header className="hero-desktop-header relative z-10 hidden h-[87px] md:block">
-        <div className="relative mx-auto h-full w-[min(calc(100%-192px),1088px)] max-[901px]:w-[calc(100%-80px)]">
+        <div className="relative mx-auto grid h-full w-[min(calc(100%-192px),1088px)] grid-cols-[minmax(max-content,1fr)_auto_minmax(max-content,1fr)] items-start gap-x-6 pt-7 max-[901px]:w-[calc(100%-80px)] max-[901px]:grid-cols-[1fr_auto]">
           <a
-            className="absolute top-8 left-0 text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white max-[901px]:hidden"
+            className="mt-1 justify-self-start text-xs leading-[18px] font-normal whitespace-nowrap transition-colors duration-160 hover:text-rule focus-visible:text-rule focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white max-[901px]:hidden"
             href="#overview"
             onClick={() =>
               trackNavigationClick({
@@ -55,7 +57,7 @@ export function HeroSection() {
 
           <nav
             aria-label="Primary"
-            className="absolute top-8 left-1/2 flex -translate-x-1/2 gap-[13px] text-xs leading-[18px] font-normal whitespace-nowrap max-[901px]:left-0 max-[901px]:translate-x-0"
+            className="mt-1 flex gap-[13px] text-xs leading-[18px] font-normal whitespace-nowrap"
           >
             {navigation.map(({ href, label }) => (
               <a
@@ -75,7 +77,7 @@ export function HeroSection() {
             ))}
           </nav>
 
-          <div className="absolute top-7 right-0 flex gap-4">
+          <div className="flex justify-self-end gap-4">
             <CornerButton
               href="#contact"
               onClick={() =>
@@ -209,17 +211,6 @@ export function HeroSection() {
           ))}
         </nav>
 
-        <img
-          alt="Alex Guseynov"
-          className={clsx(
-            "absolute top-[142px] left-1/2 h-[34.028px] w-[calc(100%-23.382px)] -translate-x-1/2 transition-opacity duration-300 ease-out motion-reduce:transition-none",
-            isMenuOpen ? "opacity-100" : "opacity-0",
-          )}
-          height="34.028"
-          src={`${assetRoot}/mobile-name-open.svg`}
-          width="378.618"
-        />
-
         <div className="absolute top-[105px] right-3 left-3" aria-hidden="true">
           <img
             alt=""
@@ -237,7 +228,7 @@ export function HeroSection() {
       </header>
 
       <h1 className="hero-desktop-identity absolute top-[597px] left-1/2 z-10 m-0 hidden w-[min(calc(100%-192px),1088px)] -translate-x-1/2 items-center justify-between font-sans text-[clamp(38px,3.75vw,48px)] leading-normal font-medium tracking-[0.48px] whitespace-nowrap uppercase md:flex max-[901px]:w-[calc(100%-68px)] max-[901px]:text-[34px]">
-        <span className="-translate-x-1.5">Frontend Engineer</span>
+        <span>Frontend Engineer</span>
         <span>Alex Guseynov</span>
       </h1>
 

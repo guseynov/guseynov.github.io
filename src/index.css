@@ -98,6 +98,14 @@
   }
 }
 
+@media (max-width: 767px) {
+  .hero-ascii-video {
+    /* Reserve the full-width SVGs' rendered heights plus their existing gaps. */
+    top: max(200px, calc(142px + (100vw - 23.38px) * 34.028 / 378.618 + 24px));
+    bottom: calc(clamp(164px, 25.8svh, 218px) + max(42px, (100vw - 29.1px) * 26.0645 / 367.188 + 16px));
+  }
+}
+
 @media (min-width: 768px) and (max-height: 650px) {
   .hero-section {
     height: 100svh;
@@ -108,5 +116,10 @@
     top: auto;
     bottom: 18px;
     font-size: clamp(22px, 3.4vw, 34px);
+  }
+
+  .hero-ascii-video {
+    top: 100px;
+    bottom: 75px;
   }
 }
