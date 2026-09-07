@@ -68,8 +68,8 @@ export function ProjectsSection() {
       const animationStart = window.innerHeight * 0.75;
       const firstCard = cardRefs.current[0];
       const animationEnd = firstCard
-        ? Number.parseFloat(window.getComputedStyle(firstCard).top) || 32
-        : 32;
+        ? Number.parseFloat(window.getComputedStyle(firstCard).top) || 100
+        : 100;
       const animationDistance = Math.max(1, animationStart - animationEnd);
       const nextArrivals = cardRefs.current.map((card) => {
         if (!card) {
@@ -139,7 +139,7 @@ export function ProjectsSection() {
 
           return (
             <article
-              className="relative mx-auto w-full origin-top overflow-hidden bg-white text-black md:sticky md:top-8 md:will-change-[transform,box-shadow] md:h-[548px] md:min-h-0 md:max-w-[1188px] md:max-[1280px]:h-[min(548px,calc(100vh-84px))] md:max-[1280px]:max-w-none motion-reduce:relative motion-reduce:top-auto motion-reduce:h-auto motion-reduce:min-h-[560px] motion-reduce:transform-none"
+              className="relative mx-auto w-full origin-top overflow-hidden bg-white text-black md:sticky md:top-[100px] md:will-change-[transform,box-shadow] md:h-[548px] md:min-h-0 md:max-w-[1188px] md:max-[1280px]:h-[min(548px,calc(100vh-84px))] md:max-[1280px]:max-w-none motion-reduce:relative motion-reduce:top-auto motion-reduce:h-auto motion-reduce:min-h-[560px] motion-reduce:transform-none"
               key={project.name}
               ref={(card) => {
                 cardRefs.current[index] = card;
